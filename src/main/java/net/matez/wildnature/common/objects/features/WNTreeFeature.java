@@ -4,7 +4,7 @@
  * Consider supporting this project on Patreon: https://patreon.com/wildnaturemod
  */
 
-package net.matez.wildnature.common.objects.gen.wn_features;
+package net.matez.wildnature.common.objects.features;
 
 import com.mojang.serialization.Codec;
 import net.matez.wildnature.common.objects.structures.WNStructurePlacement;
@@ -16,22 +16,13 @@ import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 
-public class WNTestFeature extends Feature<NoneFeatureConfiguration> {
+public class WNTreeFeature extends Feature<NoneFeatureConfiguration> {
 
-    public WNTestFeature(Codec<NoneFeatureConfiguration> p_65360_,WNStructurePlacement placement) {
+    public WNTreeFeature(Codec<NoneFeatureConfiguration> p_65360_, WNStructurePlacement placement) {
         super(p_65360_);
         this.placement= placement;
     }
-    private final WNStructurePlacement placement; /** = (WNStructurePlacement.make(
-                    WNStructureFolders.TREE_ASPEN
-            )
-            .with(1, "aspen_1")
-            .with(1, "aspen_2")
-            .with(1, "aspen_3"));
-
-    //public WNTestFeature(WNStructurePlacement placement) {
-    //    this.placement = placement; **/
-
+    private final WNStructurePlacement placement;
     @Override
     public boolean place(FeaturePlaceContext<NoneFeatureConfiguration> context) {
 

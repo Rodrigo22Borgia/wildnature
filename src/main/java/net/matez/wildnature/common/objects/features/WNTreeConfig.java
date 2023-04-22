@@ -1,4 +1,4 @@
-package net.matez.wildnature.common.objects.gen.wn_features;
+package net.matez.wildnature.common.objects.features;
 
 import net.matez.wildnature.common.objects.structures.WNStructureFolders;
 import net.matez.wildnature.common.objects.structures.WNStructurePlacement;
@@ -6,7 +6,8 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.Biomes;
 
-public enum Trees {
+public enum WNTreeConfig {
+    //Tree config
      ASPEN(3, 0.1f, 2,
              new ResourceKey[]{Biomes.FOREST, Biomes.BIRCH_FOREST},
              WNStructurePlacement.make(
@@ -64,7 +65,7 @@ public enum Trees {
 
 
 
-     Trees(int perChunk, float extraChance, int extra, ResourceKey<Biome>[] biome,  WNStructurePlacement placement) {
+     WNTreeConfig(int perChunk, float extraChance, int extra, ResourceKey<Biome>[] biome, WNStructurePlacement placement) {
           this.placement = placement;
          this.perChunk = perChunk;
          this.extraChance = extraChance;
