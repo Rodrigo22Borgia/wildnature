@@ -15,10 +15,10 @@ public class FeatureRegistry {
     //Registers all trees in the Trees Enum as features
     public static final DeferredRegister<Feature<?>> FEATURES = DeferredRegister.create(ForgeRegistries.FEATURES, WildNature.modid);
 
-    public static final Map<WNTreeConfig, RegistryObject<Feature<NoneFeatureConfiguration>>> TREE_FEATURES = new EnumMap<>(WNTreeConfig.class);
+    public static final Map<WNTreeEnum, RegistryObject<Feature<NoneFeatureConfiguration>>> TREE_FEATURES = new EnumMap<>(WNTreeEnum.class);
 
     static {
-        for (WNTreeConfig treeType : WNTreeConfig.values()) {
+        for (WNTreeEnum treeType : WNTreeEnum.values()) {
             String registryName = "wn_" + treeType.toString().toLowerCase();
             RegistryObject<Feature<NoneFeatureConfiguration>> registryObject = FEATURES.register(
                     registryName,

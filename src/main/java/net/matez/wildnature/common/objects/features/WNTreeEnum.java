@@ -1,15 +1,15 @@
 package net.matez.wildnature.common.objects.features;
 
+import net.matez.wildnature.common.objects.blocks.leaves.LeafType;
+import net.matez.wildnature.common.objects.structures.WNStructureConfig;
 import net.matez.wildnature.common.objects.structures.WNStructureFolders;
 import net.matez.wildnature.common.objects.structures.WNStructurePlacement;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.biome.Biomes;
+import net.matez.wildnature.common.objects.structures.configs.WNTreeConfig;
+import net.matez.wildnature.common.registry.blocks.WNBlocks;
 
-public enum WNTreeConfig {
+public enum WNTreeEnum {
     //Tree config
      ASPEN(3, 0.1f, 2,
-             new ResourceKey[]{Biomes.FOREST, Biomes.BIRCH_FOREST},
              WNStructurePlacement.make(
                      WNStructureFolders.TREE_ASPEN
              )
@@ -17,7 +17,6 @@ public enum WNTreeConfig {
              .with(1, "aspen_2")
              .with(1, "aspen_3")),
      BAOBAB(3, 0.1f, 2,
-             new ResourceKey[]{Biomes.DESERT},
              WNStructurePlacement.make(
                      WNStructureFolders.TREE_ASPEN
              )
@@ -25,28 +24,36 @@ public enum WNTreeConfig {
              .with(1, "baobab_2")
              .with(1, "baobab_3")),
      FIR(1, 0.1f, 2,
-             new ResourceKey[]{Biomes.TAIGA, Biomes.SNOWY_TAIGA},
              WNStructurePlacement.make(
                             WNStructureFolders.TREE_FIR
                     )
                     .with(1, "silver_fir_1")
                     .with(1, "silver_fir_2")
                     .with(1, "silver_fir_3")),
-     CHERRY(3, 0.1f, 2,
-             new ResourceKey[]{Biomes.PLAINS,Biomes.FLOWER_FOREST},
+    CHERRY_PINK(3, 0.1f, 2,
              WNStructurePlacement.make(
                      WNStructureFolders.TREE_CHERRY
              )
-             .with(1, "cherry_1")
-             .with(1, "cherry_2")
-             .with(1, "cherry_3"));
-
-
+             .with(1, "cherry_1", WNTreeConfig.CHERRY_PINK)
+             .with(1, "cherry_2", WNTreeConfig.CHERRY_PINK)
+             .with(1, "cherry_3", WNTreeConfig.CHERRY_PINK)),
+    CHERRY_WHITE(3, 0.1f, 2,
+            WNStructurePlacement.make(
+                            WNStructureFolders.TREE_CHERRY
+                    )
+                    .with(1, "cherry_1", WNTreeConfig.CHERRY_WHITE)
+                    .with(1, "cherry_2", WNTreeConfig.CHERRY_WHITE)
+                    .with(1, "cherry_3", WNTreeConfig.CHERRY_WHITE)),
+    PALM(0, 0.5f, 2,
+            WNStructurePlacement.make(
+                            WNStructureFolders.TREE_PALM
+                    )
+                    .with(1, "tree_palm_1")
+                    .with(1, "tree_palm_2")
+                    .with(1, "tree_palm_3"));
      protected WNStructurePlacement getPlacement() {
         return placement;
     }
-     protected ResourceKey<Biome>[] getBiome() {return biome;}
-
      protected int getPerChunk() {
         return perChunk;
     }
@@ -58,18 +65,16 @@ public enum WNTreeConfig {
     }
 
      private final WNStructurePlacement placement;
-     private final ResourceKey<Biome>[] biome;
      private final int perChunk;
      private final float extraChance;
      private final int extra;
 
 
 
-     WNTreeConfig(int perChunk, float extraChance, int extra, ResourceKey<Biome>[] biome, WNStructurePlacement placement) {
+     WNTreeEnum(int perChunk, float extraChance, int extra, WNStructurePlacement placement) {
           this.placement = placement;
          this.perChunk = perChunk;
          this.extraChance = extraChance;
          this.extra = extra;
-         this.biome = biome;
      }
 }
