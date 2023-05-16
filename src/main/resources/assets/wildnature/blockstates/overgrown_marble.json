@@ -1,0 +1,24 @@
+{
+    "variants": {
+        "snowy=false": [
+            {
+                "model": "wildnature:block/overgrown_marble"
+            },
+            {
+                "model": "wildnature:block/overgrown_marble",
+                "y": 90
+            },
+            {
+                "model": "wildnature:block/overgrown_marble",
+                "y": 180
+            },
+            {
+                "model": "wildnature:block/overgrown_marble",
+                "y": 270
+            }
+        ],
+        "snowy=true": {
+            "model": "wildnature:block/overgrown_marble_snow"
+        }
+    }
+}
