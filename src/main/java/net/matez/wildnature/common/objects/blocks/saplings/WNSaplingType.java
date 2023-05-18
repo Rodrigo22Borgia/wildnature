@@ -305,10 +305,13 @@ public enum WNSaplingType {
 //    ),
     FIR(LeafType.FIR, () -> Blocks.SPRUCE_LOG,
             new WNStructurePlacement(WNStructureFolders.TREE_FIR)
-                    .with(1, "")
+                    .with(1, "silver_fir_1")
+                    .with(1, "silver_fir_2")
+                    .with(1, "silver_fir_3")
             ,
             new WNStructurePlacement(WNStructureFolders.TREE_FIR)
-                    .with(1, "")
+                    .with(1, ""),
+            1, 0.1f, 2
     ),
     SILVER_FIR(LeafType.SILVER_FIR, () -> Blocks.SPRUCE_LOG,
             new WNStructurePlacement(WNStructureFolders.TREE_FIR)
@@ -555,7 +558,7 @@ public enum WNSaplingType {
                     .with(1, "tree_palm_17")
             ,
             null,
-            BushPlacement.DIRT_OR_SAND
+            BushPlacement.DIRT_OR_SAND,0, 0.5f, 2
     ),
     PEAR(LeafType.PEAR, () -> WNBlocks.LOGS.get(LogType.ROSACEAE),
             new WNStructurePlacement(WNStructureFolders.TREE_PEAR)
@@ -671,10 +674,15 @@ public enum WNSaplingType {
     );
     private final LeafType leafType;
     private final Supplier<Block> logType;
-    private final WNStructurePlacement placement;
     private final WNStructurePlacement bigPlacement;
     private BushPlacement bushPlacement = BushPlacement.DIRT;
     private String id;
+
+//For 'in biome' generation:
+    private WNStructurePlacement placement;
+    private int perChunk = 2;
+    private float extraChance = 0.5F;
+    private int extra = 1;
 
     WNSaplingType(LeafType leafType, Supplier<Block> logType, WNStructurePlacement placement, WNStructurePlacement bigPlacement) {
         this.leafType = leafType;
@@ -688,10 +696,28 @@ public enum WNSaplingType {
         this.bushPlacement = bushPlacement;
     }
 
+    WNSaplingType(LeafType leafType, Supplier<Block> logType, WNStructurePlacement placement, WNStructurePlacement bigPlacement, int perChunk, float extraChance, int extra) {
+        this.leafType = leafType;
+        this.logType = logType;
+        this.placement = placement;
+        this.bigPlacement = bigPlacement;
+        this.perChunk = perChunk;
+        this.extraChance = extraChance;
+        this.extra = extra;
+    }
+
+    WNSaplingType(LeafType leafType, Supplier<Block> logType, WNStructurePlacement placement, WNStructurePlacement bigPlacement, BushPlacement bushPlacement, int perChunk, float extraChance, int extra) {
+        this(leafType, logType, placement, bigPlacement);
+        this.bushPlacement = bushPlacement;
+        this.perChunk = perChunk;
+        this.extraChance = extraChance;
+        this.extra = extra;
+    }
+/*
     WNSaplingType(LeafType leafType, Supplier<Block> logType, WNStructurePlacement placement, WNStructurePlacement bigPlacement, BushPlacement bushPlacement, String id) {
         this(leafType, logType, placement, bigPlacement, bushPlacement);
         this.id = id;
-    }
+    }*/
 
     public LeafType getLeafType() {
         return leafType;
@@ -722,5 +748,17 @@ public enum WNSaplingType {
 
     public Supplier<Block> getLogType() {
         return logType;
+    }
+
+    public int getPerChunk() {
+        return perChunk;
+    }
+
+    public float getExtraChance() {
+        return extraChance;
+    }
+
+    public int getExtra() {
+        return extra;
     }
 }

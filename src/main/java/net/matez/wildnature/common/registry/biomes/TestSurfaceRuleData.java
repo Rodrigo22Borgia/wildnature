@@ -17,22 +17,28 @@
  */
 package net.matez.wildnature.common.registry.biomes;
 
+import net.matez.wildnature.common.objects.blocks.grass.GrassType;
 import net.matez.wildnature.common.objects.blocks.grass.OvergrownGrassType;
+import net.matez.wildnature.common.objects.blocks.rocks.RockType;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.levelgen.Noises;
 import net.minecraft.world.level.levelgen.SurfaceRules;
 import net.matez.wildnature.common.registry.blocks.WNBlocks;
 
-import static net.minecraft.world.level.levelgen.SurfaceRules.ON_FLOOR;
+import static net.minecraft.world.level.levelgen.SurfaceRules.*;
 
 public class TestSurfaceRuleData
 {
     private static final SurfaceRules.RuleSource DIRT = makeStateRule(Blocks.DIRT);
     private static final SurfaceRules.RuleSource GRASS_BLOCK = makeStateRule(Blocks.GRASS_BLOCK);
-    private static final SurfaceRules.RuleSource RED_TERRACOTTA = makeStateRule(Blocks.RED_TERRACOTTA);
-    private static final SurfaceRules.RuleSource BLUE_TERRACOTTA = makeStateRule(Blocks.BLUE_TERRACOTTA);
     private static final SurfaceRules.RuleSource STONE = makeStateRule(Blocks.STONE);
+    private static final SurfaceRules.RuleSource LIMESTONE = makeStateRule(WNBlocks.ROCKS.get(RockType.LIMESTONE));
     private static final SurfaceRules.RuleSource OVERGROWN_STONE = makeStateRule(WNBlocks.OVERGROWN_STONES.get(OvergrownGrassType.OVERGROWN_STONE));
+    private static final SurfaceRules.RuleSource MOSSY_STONE = makeStateRule(WNBlocks.MOSSY_STONE);
+
+    private static final SurfaceRules.RuleSource TROPICAL_GRASS = makeStateRule(WNBlocks.GRASSES.get(GrassType.TROPICAL));
+    private static final SurfaceRules.RuleSource TROPICAL_DIRT = makeStateRule(WNBlocks.DIRTS.get(GrassType.TROPICAL));
 
     public static SurfaceRules.RuleSource makeRules()
     {
@@ -41,11 +47,17 @@ public class TestSurfaceRuleData
         SurfaceRules.RuleSource overgrown = SurfaceRules.sequence(SurfaceRules.ifTrue(ON_FLOOR, OVERGROWN_STONE), STONE);
 
         return SurfaceRules.sequence(
-            SurfaceRules.ifTrue(SurfaceRules.isBiome(WNBiomes.HOT_RED), RED_TERRACOTTA),
-            SurfaceRules.ifTrue(SurfaceRules.isBiome(WNBiomes.COLD_BLUE), overgrown),
+            SurfaceRules.ifTrue(SurfaceRules.isBiome(WNBiomes.HOT_RED), SurfaceRules.ifTrue(SurfaceRules.abovePreliminarySurface(),SurfaceRules.sequence(
+                    SurfaceRules.ifTrue(ON_FLOOR,TROPICAL_GRASS),SurfaceRules.ifTrue(UNDER_FLOOR,TROPICAL_DIRT),SurfaceRules.ifTrue(DEEP_UNDER_FLOOR,LIMESTONE)
+            ))),
+            SurfaceRules.ifTrue(SurfaceRules.isBiome(WNBiomes.COLD_BLUE), SurfaceRules.ifTrue(SurfaceRules.abovePreliminarySurface(),SurfaceRules.sequence(
+                    SurfaceRules.ifTrue(ON_FLOOR,SurfaceRules.ifTrue(SurfaceRules.noiseCondition(Noises.POWDER_SNOW, 0.35D, 0.6D),OVERGROWN_STONE)), SurfaceRules.ifTrue(ON_FLOOR,MOSSY_STONE)
+            ))),
 
             // Default to a grass and dirt surface
-            SurfaceRules.ifTrue(ON_FLOOR, grassSurface)
+            SurfaceRules.ifTrue(SurfaceRules.abovePreliminarySurface(),SurfaceRules.sequence(
+                SurfaceRules.ifTrue(ON_FLOOR,GRASS_BLOCK),SurfaceRules.ifTrue(UNDER_FLOOR,DIRT)
+                )), STONE
         );
     }
 

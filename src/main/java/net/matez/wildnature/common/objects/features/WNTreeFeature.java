@@ -34,7 +34,8 @@ public class WNTreeFeature extends Feature<NoneFeatureConfiguration> {
         }
 
         BlockState baseBlock = context.level().getBlockState(context.origin().below(1));
-        if (!(baseBlock.is(BlockTags.DIRT))||baseBlock.is(BlockTags.SAND)) {
+        if ((baseBlock.is(BlockTags.LOGS) || baseBlock.is(BlockTags.LEAVES))) {
+
             return false;
         }
 
