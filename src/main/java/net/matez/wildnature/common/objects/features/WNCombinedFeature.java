@@ -22,13 +22,28 @@ import java.util.Map;
 
 public class WNCombinedFeature {
 
+    //Methods for each placed feature
+    public static void generateTrees(final BiomeLoadingEvent event, final WNSaplingType tree) {
+        List<Holder<PlacedFeature>> base = event.getGeneration().getFeatures(GenerationStep.Decoration.VEGETAL_DECORATION);
+        base.add(TREE_PLACED.get(tree));
+
+    }
+
+    public static void generateFlowers(final BiomeLoadingEvent event, WNFlowerEnum flower) {
+        List<Holder<PlacedFeature>> base =
+                event.getGeneration().getFeatures(GenerationStep.Decoration.VEGETAL_DECORATION);
+        base.add(FLOWER_PLACED.get(flower));
+
+    }
+
+    //Placed features from all values in their enums
     public static final Map<WNSaplingType, Holder<PlacedFeature>> TREE_PLACED = new EnumMap<>(WNSaplingType.class);
     public static final Map<WNFlowerEnum, Holder<PlacedFeature>> FLOWER_PLACED = new EnumMap<>(WNFlowerEnum.class);
-//Placed features from all values in the enums
+
     static {
     WildNature.getLogger().progress("Registering features");
+
     for (WNSaplingType treeType : WNSaplingType.values()) {
-        //RegistryObject<Feature<NoneFeatureConfiguration>> treeFeature = FeatureRegistry.TREE_FEATURES.get(treeType);
         TREE_PLACED.put(treeType, PlacementUtils.register(treeType.toString().toLowerCase() + "_placed",
                 FeatureUtils.register(treeType.toString().toLowerCase() + "_tree", FeatureRegistry.TREE_FEATURES.get(treeType).get()),
                 VegetationPlacements.treePlacement(PlacementUtils.countExtra(treeType.getPerChunk(), treeType.getExtraChance(), treeType.getExtra()))));
@@ -41,18 +56,5 @@ public class WNCombinedFeature {
                 PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome()));
         }
     WildNature.getLogger().success("Registered " + (TREE_PLACED.size()+FLOWER_PLACED.size()) + " features");
-    }
-//Methods for each placed feature
-    public static void generateTrees(final BiomeLoadingEvent event, final WNSaplingType tree) {
-            List<Holder<PlacedFeature>> base = event.getGeneration().getFeatures(GenerationStep.Decoration.VEGETAL_DECORATION);
-            base.add(TREE_PLACED.get(tree));
-
-    }
-
-    public static void generateFlowers(final BiomeLoadingEvent event, WNFlowerEnum flower) {
-            List<Holder<PlacedFeature>> base =
-                    event.getGeneration().getFeatures(GenerationStep.Decoration.VEGETAL_DECORATION);
-            base.add(FLOWER_PLACED.get(flower));
-
     }
 }

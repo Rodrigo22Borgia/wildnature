@@ -1,6 +1,8 @@
-package net.matez.wildnature.common.objects.features;
+package net.matez.wildnature.common.registry.biomes;
 
 import net.matez.wildnature.common.objects.blocks.saplings.WNSaplingType;
+import net.matez.wildnature.common.objects.features.WNCombinedFeature;
+import net.matez.wildnature.common.objects.features.WNFlowerEnum;
 import net.matez.wildnature.setup.WildNature;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.event.world.BiomeLoadingEvent;
@@ -22,8 +24,5 @@ public class ModWorldEvents {
                 WNCombinedFeature.generateTrees(event, WNSaplingType.PALM); break;
             default: break;
         }
-        //WNCombinedFeature.generateTrees(event, WNTreeConfig.ASPEN);
-        //WNCombinedFeature.generateTrees(event, WNTreeConfig.CHERRY);
-        //WNCombinedFeature.generateTrees(event, WNTreeConfig.FIR);
     }
 }

@@ -35,7 +35,7 @@ And to our Discord community for awesome ideas.
 ''' #optional
 # A text field displayed in the mod UI
 authors = '''
-matez_, RhinoW, mesaacr, Cosmic, Chalkjr, TheArcaneBunny, Tuxxle, ZippyMagician, Skidush, wojek1900, Vx
+matez_, RhinoW, mesaacr, Cosmic, Chalkjr, TheArcaneBunny, Tuxxle, ZippyMagician, Skidush, wojek1900, Vx, Rodrigo_CZ
 '''#optional
 # The description text for the mod (multi line!) (#mandatory)
 description = '''

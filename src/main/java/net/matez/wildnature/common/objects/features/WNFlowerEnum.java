@@ -13,11 +13,6 @@ public enum WNFlowerEnum {
     protected Block getState() {
         return block;
     }
-     /*protected WeightedList<BlockState> getWeightedList(WNFlowerEnum flower) {
-         WeightedList<BlockState> flowers = new WeightedList<>();
-         flowers.put(flower.blocks[0].defaultBlockState(), flower.weight[0]);
-         flowers.put(flower.blocks[1].defaultBlockState(), flower.weight[1]);
-         return flowers; }*/
      protected int getTries() {
         return tries;
     }
