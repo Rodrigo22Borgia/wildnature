@@ -32,9 +32,9 @@ import java.util.function.Consumer;
 
 import static terrablender.api.ParameterUtils.*;
 
-public class TestRegion extends Region
+public class WNRegion extends Region
 {
-    public TestRegion(ResourceLocation name, int weight)
+    public WNRegion(ResourceLocation name, int weight)
     {
         super(name, RegionType.OVERWORLD, weight);
     }

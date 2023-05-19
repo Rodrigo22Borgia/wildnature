@@ -19,7 +19,6 @@ import java.util.EnumMap;
 import java.util.Map;
 
 public class FeatureRegistry {
-    //Registers all trees in the Trees Enum as features
     public static final DeferredRegister<Feature<?>> FEATURES = DeferredRegister.create(ForgeRegistries.FEATURES, WildNature.modid);
 
     public static final Map<WNSaplingType, RegistryObject<Feature<NoneFeatureConfiguration>>> TREE_FEATURES = new EnumMap<>(WNSaplingType.class);
@@ -27,7 +26,7 @@ public class FeatureRegistry {
 
     static {
         for (WNSaplingType treeType : WNSaplingType.values()) {
-            String registryName = "t_" + treeType.toString().toLowerCase();
+            String registryName = "r_" + treeType.toString().toLowerCase();
             RegistryObject<Feature<NoneFeatureConfiguration>> registryObject = FEATURES.register(
                     registryName,
                     () -> new WNTreeFeature(NoneFeatureConfiguration.CODEC, treeType.getPlacement())

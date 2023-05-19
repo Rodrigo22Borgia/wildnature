@@ -28,7 +28,7 @@ import net.matez.wildnature.common.registry.blocks.WNBlocks;
 
 import static net.minecraft.world.level.levelgen.SurfaceRules.*;
 
-public class TestSurfaceRuleData
+public class WNSurfaceRuleData
 {
     private static final SurfaceRules.RuleSource DIRT = makeStateRule(Blocks.DIRT);
     private static final SurfaceRules.RuleSource GRASS_BLOCK = makeStateRule(Blocks.GRASS_BLOCK);

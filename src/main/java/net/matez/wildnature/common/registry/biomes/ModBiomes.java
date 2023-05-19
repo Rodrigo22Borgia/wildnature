@@ -30,7 +30,7 @@ public class ModBiomes
     public static void registerBiomes(RegistryEvent.Register<Biome> event)
     {
         IForgeRegistry<Biome> registry = event.getRegistry();
-        registry.register(TestOverworldBiomes.hotRed().setRegistryName(WNBiomes.HOT_RED.location()));
-        registry.register(TestOverworldBiomes.coldBlue().setRegistryName(WNBiomes.COLD_BLUE.location()));
+        registry.register(WNOverworldBiomes.hotRed().setRegistryName(WNBiomes.HOT_RED.location()));
+        registry.register(WNOverworldBiomes.coldBlue().setRegistryName(WNBiomes.COLD_BLUE.location()));
     }
 }
