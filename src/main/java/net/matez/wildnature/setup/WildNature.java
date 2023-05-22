@@ -167,7 +167,7 @@ public class WildNature {
     {
         event.enqueueWork(() ->
         {
-            Regions.register(new WNRegion(new ResourceLocation(modid, "overworld"), 2));
+            Regions.register(new WNRegion(new ResourceLocation(modid, "overworld"), 10));
             SurfaceRuleManager.addSurfaceRules(SurfaceRuleManager.RuleCategory.OVERWORLD, modid, WNSurfaceRuleData.makeRules());
         });
     }

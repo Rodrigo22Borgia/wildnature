@@ -28,6 +28,10 @@ import javax.annotation.Nullable;
 
 public class WNOverworldBiomes
 {
+    private int def_grass = 5011004;
+    private int def_foliage = 5011004;
+    private int def_water = 5011004;
+    private int def_water_fog = 5011004;
     @Nullable
     private static final Music NORMAL_MUSIC = null;
 
@@ -40,11 +44,16 @@ public class WNOverworldBiomes
 
     private static Biome biome(Biome.Precipitation precipitation, Biome.BiomeCategory category, float temperature, float downfall, MobSpawnSettings.Builder spawnBuilder, BiomeGenerationSettings.Builder biomeBuilder, @Nullable Music music)
     {
-        return biome(precipitation, category, temperature, downfall,5011004, 5011004, 4159204, 329011, spawnBuilder, biomeBuilder, music);
+        return biome(precipitation, category, temperature, downfall,spawnBuilder, biomeBuilder, music,0);
     }
 
-    private static Biome biome(Biome.Precipitation precipitation, Biome.BiomeCategory category, float temperature, float downfall, int grassColor, int foliageColor, int waterColor, int waterFogColor, MobSpawnSettings.Builder spawnBuilder, BiomeGenerationSettings.Builder biomeBuilder, @Nullable Music music)
+    private static Biome biome(Biome.Precipitation precipitation, Biome.BiomeCategory category, float temperature, float downfall, MobSpawnSettings.Builder spawnBuilder, BiomeGenerationSettings.Builder biomeBuilder, @Nullable Music music, int... colors)
     {
+        int grassColor      = (colors.length > 0 && colors[0] != 0) ? colors[0] : 6994298;
+        int foliageColor    = (colors.length > 1 && colors[1] != 0) ? colors[1] : 5011004;
+        int waterColor      = (colors.length > 2 && colors[2] != 0) ? colors[2] : 4159204;
+        int waterFogColor   = (colors.length > 3 && colors[3] != 0) ? colors[3] : 329011;
+
         return (new Biome.BiomeBuilder()).precipitation(precipitation).biomeCategory(category).temperature(temperature).downfall(downfall).specialEffects((new BiomeSpecialEffects.Builder()).waterColor(waterColor).waterFogColor(waterFogColor).fogColor(12638463).grassColorOverride(grassColor).foliageColorOverride(foliageColor).skyColor(calculateSkyColor(temperature)).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(music).build()).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
 
@@ -58,7 +67,7 @@ public class WNOverworldBiomes
         BiomeDefaultFeatures.addSurfaceFreezing(builder);
     }
 
-    public static Biome hotRed()
+    public static Biome hot()
     {
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
         BiomeDefaultFeatures.desertSpawns(spawnBuilder);
@@ -77,7 +86,7 @@ public class WNOverworldBiomes
         return biome(Biome.Precipitation.NONE, Biome.BiomeCategory.DESERT, 2.0F, 0.0F, spawnBuilder, biomeBuilder, NORMAL_MUSIC);
     }
 
-    public static Biome coldBlue()
+    public static Biome cold()
     {
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
         spawnBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.GOAT, 5, 1, 3));
@@ -90,6 +99,19 @@ public class WNOverworldBiomes
         BiomeDefaultFeatures.addDefaultSoftDisks(biomeBuilder);
         BiomeDefaultFeatures.addExtraEmeralds(biomeBuilder);
         BiomeDefaultFeatures.addInfestedStone(biomeBuilder);
-        return biome(Biome.Precipitation.SNOW, Biome.BiomeCategory.MOUNTAIN, -0.7F, 0.9F,5007978, 5011004, 4159204, 329011, spawnBuilder, biomeBuilder, NORMAL_MUSIC);
+        return biome(Biome.Precipitation.SNOW, Biome.BiomeCategory.MOUNTAIN, -0.7F, 0.9F, spawnBuilder, biomeBuilder, NORMAL_MUSIC);
+    }
+
+    public static Biome normal(int... colours)
+    {
+        MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
+        spawnBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.GOAT, 5, 1, 3));
+        BiomeDefaultFeatures.commonSpawns(spawnBuilder);
+
+        BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder();
+        globalOverworldGeneration(biomeBuilder);
+        BiomeDefaultFeatures.addDefaultOres(biomeBuilder);
+        BiomeDefaultFeatures.addDefaultSoftDisks(biomeBuilder);
+        return biome(Biome.Precipitation.RAIN, Biome.BiomeCategory.PLAINS, 0.5F, 0.9F, spawnBuilder, biomeBuilder, NORMAL_MUSIC, colours);
     }
 }
