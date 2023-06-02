@@ -47,10 +47,10 @@ public class WNSurfaceRuleData
         SurfaceRules.RuleSource overgrown = SurfaceRules.sequence(SurfaceRules.ifTrue(ON_FLOOR, OVERGROWN_STONE), STONE);
 
         return SurfaceRules.sequence(
-            SurfaceRules.ifTrue(SurfaceRules.isBiome(WNBiomes.HOT_RED), SurfaceRules.ifTrue(isAtOrAboveWaterLevel, SurfaceRules.ifTrue(SurfaceRules.abovePreliminarySurface(),SurfaceRules.sequence(
+            SurfaceRules.ifTrue(SurfaceRules.isBiome(WNBiomes.EucalyptusForest), SurfaceRules.ifTrue(isAtOrAboveWaterLevel, SurfaceRules.ifTrue(SurfaceRules.abovePreliminarySurface(),SurfaceRules.sequence(
                     SurfaceRules.ifTrue(ON_FLOOR,TROPICAL_GRASS),SurfaceRules.ifTrue(UNDER_FLOOR,TROPICAL_DIRT),SurfaceRules.ifTrue(DEEP_UNDER_FLOOR,LIMESTONE))
             ))),
-            SurfaceRules.ifTrue(SurfaceRules.isBiome(WNBiomes.COLD_BLUE), SurfaceRules.ifTrue(SurfaceRules.abovePreliminarySurface(),SurfaceRules.sequence(
+            SurfaceRules.ifTrue(SurfaceRules.isBiome(WNBiomes.TatraMountains), SurfaceRules.ifTrue(SurfaceRules.abovePreliminarySurface(),SurfaceRules.sequence(
                     SurfaceRules.ifTrue(ON_FLOOR,SurfaceRules.ifTrue(SurfaceRules.noiseCondition(Noises.POWDER_SNOW, 0.35D, 0.6D),OVERGROWN_STONE)), SurfaceRules.ifTrue(ON_FLOOR,MOSSY_STONE)
             ))),
 

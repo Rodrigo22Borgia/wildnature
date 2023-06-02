@@ -28,10 +28,6 @@ import javax.annotation.Nullable;
 
 public class WNOverworldBiomes
 {
-    private int def_grass = 5011004;
-    private int def_foliage = 5011004;
-    private int def_water = 5011004;
-    private int def_water_fog = 5011004;
     @Nullable
     private static final Music NORMAL_MUSIC = null;
 
@@ -50,7 +46,7 @@ public class WNOverworldBiomes
     private static Biome biome(Biome.Precipitation precipitation, Biome.BiomeCategory category, float temperature, float downfall, MobSpawnSettings.Builder spawnBuilder, BiomeGenerationSettings.Builder biomeBuilder, @Nullable Music music, int... colors)
     {
         int grassColor      = (colors.length > 0 && colors[0] != 0) ? colors[0] : 6994298;
-        int foliageColor    = (colors.length > 1 && colors[1] != 0) ? colors[1] : 5011004;
+        int foliageColor    = (colors.length > 1 && colors[1] != 0) ? colors[1] : 4764952;
         int waterColor      = (colors.length > 2 && colors[2] != 0) ? colors[2] : 4159204;
         int waterFogColor   = (colors.length > 3 && colors[3] != 0) ? colors[3] : 329011;
 
@@ -114,4 +110,8 @@ public class WNOverworldBiomes
         BiomeDefaultFeatures.addDefaultSoftDisks(biomeBuilder);
         return biome(Biome.Precipitation.RAIN, Biome.BiomeCategory.PLAINS, 0.5F, 0.9F, spawnBuilder, biomeBuilder, NORMAL_MUSIC, colours);
     }
+
+
+
+
 }

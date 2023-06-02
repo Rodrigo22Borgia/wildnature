@@ -8,9 +8,11 @@ package net.matez.wildnature.common.objects.features;
 
 import com.mojang.serialization.Codec;
 import net.matez.wildnature.common.objects.structures.WNStructurePlacement;
+import net.matez.wildnature.common.registry.blocks.WNBlocks;
 import net.matez.wildnature.common.util.WNUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.Feature;
@@ -34,7 +36,7 @@ public class WNTreeFeature extends Feature<NoneFeatureConfiguration> {
         }
 
         BlockState baseBlock = context.level().getBlockState(context.origin().below(1));
-        if ((baseBlock.is(BlockTags.LOGS) || baseBlock.is(BlockTags.LEAVES))) {
+        if (!(baseBlock.is(BlockTags.AZALEA_GROWS_ON))) {
 
             return false;
         }

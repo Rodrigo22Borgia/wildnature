@@ -7,6 +7,7 @@
 package net.matez.wildnature.common.objects.blocks.plant;
 
 import net.matez.wildnature.common.objects.blocks.plant.config.BushConfig;
+import net.minecraft.world.level.block.Block;
 import org.jetbrains.annotations.Nullable;
 
 public enum BushType {
@@ -197,11 +198,31 @@ public enum BushType {
         this.variantName = null;
     }
 
-    private BushType(String variantName, int color, BushVariant variant){
+    private BushType(String variantName, int color, BushVariant variant) {
         this.colorType = null;
         this.color = color;
         this.variant = variant;
         this.variantName = variantName;
+    }
+
+    private BushType(FlowerColor colorType, int color, BushVariant variant, int tries, int xzSpred, int ySpread){
+        this.colorType = colorType;
+        this.color = color;
+        this.variant = variant;
+        this.variantName = null;
+        this.tries = tries;
+        this.xzSpread = xzSpread;
+        this.ySpread = ySpread;
+    }
+
+    private BushType(String variantName, int color, BushVariant variant, int tries, int xzSpred, int ySpread){
+        this.colorType = null;
+        this.color = color;
+        this.variant = variant;
+        this.variantName = variantName;
+        this.tries = tries;
+        this.xzSpread = xzSpread;
+        this.ySpread = ySpread;
     }
 
     BushType(FlowerColor colorType, int color, BushVariant variant, String item) {
@@ -243,4 +264,19 @@ public enum BushType {
     public BushConfig getConfig() {
         return getVariant().getConfig();
     }
+
+
+    public int getTries() {
+        return tries;
+    }
+    public int getXZ() {
+        return xzSpread;
+    }
+    public int getY() {
+        return ySpread;
+    }
+
+    private int tries =32;
+    private int xzSpread = 5;
+    private int ySpread = 2;
 }

@@ -23,10 +23,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.biome.Biome;
 
-public class WNBiomes
-{
-    protected static final ResourceKey<Biome> HOT_RED = register("hot_red");
-    protected static final ResourceKey<Biome> COLD_BLUE = register("cold_blue");
+public record WNBiomes() {
 
     protected static final ResourceKey<Biome> RiverValleySharp = register("river_valley_sharp");
     protected static final ResourceKey<Biome> RiverValleySmooth = register("river_valley_smooth");
@@ -157,8 +154,6 @@ public class WNBiomes
     //BIALOWIEZA
     protected static final ResourceKey<Biome> BialowiezaForest = register("bialowieza_forest");
     protected static final ResourceKey<Biome> BialowiezaMarsh = register("bialowieza_marsh");
-    protected static final ResourceKey<Biome> BialowiezaForestS = register("snowy_bialowieza_forest");
-    protected static final ResourceKey<Biome> BialowiezaMarshS = register("bialowieza_frozen_marsh");
 
     //CLIFFS
     protected static final ResourceKey<Biome> SnowyMountains = register("snowy_mountains");

@@ -19,6 +19,8 @@ import net.minecraft.world.level.block.Blocks;
 import java.util.function.Supplier;
 
 public enum WNSaplingType {
+    //perChunk can never be 0F, but extra can be 0
+
     APPLE(LeafType.APPLE, () -> WNBlocks.LOGS.get(LogType.ROSACEAE),
             new WNStructurePlacement(WNStructureFolders.TREE_APPLE)
                     .with(1, "apple_1")
@@ -35,7 +37,7 @@ public enum WNSaplingType {
                     .with(1, "aspen_4")
                     .with(1, "aspen_5")
             ,
-            null
+            null, 5,0.5F,2
     ),
     BAOBAB(LeafType.BAOBAB, () -> WNBlocks.LOGS.get(LogType.BAOBAB),
             new WNStructurePlacement(WNStructureFolders.TREE_BAOBAB)
@@ -79,7 +81,7 @@ public enum WNSaplingType {
                     .with(1, "thick_beech_4")
                     .with(1, "leafy_beech_1")
                     .with(1, "leafy_beech_3")
-                    .with(1, "leafy_beech_2")
+                    .with(1, "leafy_beech_2"), 6, 0.5F, 3
     ),
     PURPLE_BEECH(LeafType.PURPLE_BEECH, () -> WNBlocks.LOGS.get(LogType.BEECH),
             new WNStructurePlacement(WNStructureFolders.TREE_BEECH)
@@ -107,7 +109,7 @@ public enum WNSaplingType {
                     .with(1, "thick_beech_4", WNTreeConfig.PURPLE_BEECH)
                     .with(1, "leafy_beech_1", WNTreeConfig.PURPLE_BEECH)
                     .with(1, "leafy_beech_3", WNTreeConfig.PURPLE_BEECH)
-                    .with(1, "leafy_beech_2", WNTreeConfig.PURPLE_BEECH)
+                    .with(1, "leafy_beech_2", WNTreeConfig.PURPLE_BEECH), 3, 0.5F, 1
     ),
     CEDAR(LeafType.CEDAR, () -> WNBlocks.LOGS.get(LogType.CEDAR),
             new WNStructurePlacement(WNStructureFolders.TREE_CEDAR)
@@ -275,34 +277,48 @@ public enum WNSaplingType {
                     .with(1, "eucalyptus_8")
                     .with(1, "eucalyptus_9")
                     .with(1, "eucalyptus_10")
+
+                    .with(1, "eucalyptus_1",WNTreeConfig.RAINBOW_EUCALYPTUS)
+                    .with(1, "eucalyptus_2",WNTreeConfig.RAINBOW_EUCALYPTUS)
+                    .with(1, "eucalyptus_3",WNTreeConfig.RAINBOW_EUCALYPTUS)
+                    .with(1, "eucalyptus_4",WNTreeConfig.RAINBOW_EUCALYPTUS)
+                    .with(1, "eucalyptus_5",WNTreeConfig.RAINBOW_EUCALYPTUS)
+                    .with(1, "eucalyptus_6",WNTreeConfig.RAINBOW_EUCALYPTUS)
+                    .with(1, "eucalyptus_7",WNTreeConfig.RAINBOW_EUCALYPTUS)
+                    .with(1, "eucalyptus_8",WNTreeConfig.RAINBOW_EUCALYPTUS)
+                    .with(1, "eucalyptus_9",WNTreeConfig.RAINBOW_EUCALYPTUS)
+                    .with(1, "eucalyptus_10",WNTreeConfig.RAINBOW_EUCALYPTUS)
             ,
             new WNStructurePlacement(WNStructureFolders.TREE_EUCALYPTUS)
                     .with(1, "big_eucalyptus_1")
                     .with(1, "big_eucalyptus_2")
                     .with(1, "big_eucalyptus_3")
                     .with(1, "big_eucalyptus_4")
-    ),
-    //    RAINBOW_EUCALYPTUS(LeafType.EUCALYPTUS, () -> WNBlocks.LOGS.get(LogType.RAINBOW_EUCALYPTUS),
-//            new WNStructurePlacement(WNStructureFolders.TREE_EUCALYPTUS)
-//                    .with(1, "eucalyptus_1",WNTreeConfig.RAINBOW_EUCALYPTUS)
-//                    .with(1, "eucalyptus_2",WNTreeConfig.RAINBOW_EUCALYPTUS)
-//                    .with(1, "eucalyptus_3",WNTreeConfig.RAINBOW_EUCALYPTUS)
-//                    .with(1, "eucalyptus_4",WNTreeConfig.RAINBOW_EUCALYPTUS)
-//                    .with(1, "eucalyptus_5",WNTreeConfig.RAINBOW_EUCALYPTUS)
-//                    .with(1, "eucalyptus_6",WNTreeConfig.RAINBOW_EUCALYPTUS)
-//                    .with(1, "eucalyptus_7",WNTreeConfig.RAINBOW_EUCALYPTUS)
-//                    .with(1, "eucalyptus_8",WNTreeConfig.RAINBOW_EUCALYPTUS)
-//                    .with(1, "eucalyptus_9",WNTreeConfig.RAINBOW_EUCALYPTUS)
-//                    .with(1, "eucalyptus_10",WNTreeConfig.RAINBOW_EUCALYPTUS)
-//            ,
-//            new WNStructurePlacement(WNStructureFolders.TREE_EUCALYPTUS)
-//                    .with(1, "big_eucalyptus_1",WNTreeConfig.RAINBOW_EUCALYPTUS)
-//                    .with(1, "big_eucalyptus_2",WNTreeConfig.RAINBOW_EUCALYPTUS)
-//                    .with(1, "big_eucalyptus_3",WNTreeConfig.RAINBOW_EUCALYPTUS)
-//                    .with(1, "big_eucalyptus_4",WNTreeConfig.RAINBOW_EUCALYPTUS),
-//            BushPlacement.DIRT,
-//            "rainbow_eucalyptus"
-//    ),
+
+                    .with(1, "big_eucalyptus_1",WNTreeConfig.RAINBOW_EUCALYPTUS)
+                    .with(1, "big_eucalyptus_2",WNTreeConfig.RAINBOW_EUCALYPTUS)
+                    .with(1, "big_eucalyptus_3",WNTreeConfig.RAINBOW_EUCALYPTUS)
+                    .with(1, "big_eucalyptus_4",WNTreeConfig.RAINBOW_EUCALYPTUS), 4,0.5F, 1
+    ),/*
+    RAINBOW_EUCALYPTUS(LeafType.EUCALYPTUS, () -> WNBlocks.LOGS.get(LogType.RAINBOW_EUCALYPTUS),
+            new WNStructurePlacement(WNStructureFolders.TREE_EUCALYPTUS)
+                    .with(1, "eucalyptus_1",WNTreeConfig.RAINBOW_EUCALYPTUS)
+                    .with(1, "eucalyptus_2",WNTreeConfig.RAINBOW_EUCALYPTUS)
+                    .with(1, "eucalyptus_3",WNTreeConfig.RAINBOW_EUCALYPTUS)
+                    .with(1, "eucalyptus_4",WNTreeConfig.RAINBOW_EUCALYPTUS)
+                    .with(1, "eucalyptus_5",WNTreeConfig.RAINBOW_EUCALYPTUS)
+                    .with(1, "eucalyptus_6",WNTreeConfig.RAINBOW_EUCALYPTUS)
+                    .with(1, "eucalyptus_7",WNTreeConfig.RAINBOW_EUCALYPTUS)
+                    .with(1, "eucalyptus_8",WNTreeConfig.RAINBOW_EUCALYPTUS)
+                    .with(1, "eucalyptus_9",WNTreeConfig.RAINBOW_EUCALYPTUS)
+                    .with(1, "eucalyptus_10",WNTreeConfig.RAINBOW_EUCALYPTUS),
+            new WNStructurePlacement(WNStructureFolders.TREE_EUCALYPTUS)
+                    .with(1, "big_eucalyptus_1",WNTreeConfig.RAINBOW_EUCALYPTUS)
+                    .with(1, "big_eucalyptus_2",WNTreeConfig.RAINBOW_EUCALYPTUS)
+                    .with(1, "big_eucalyptus_3",WNTreeConfig.RAINBOW_EUCALYPTUS)
+                    .with(1, "big_eucalyptus_4",WNTreeConfig.RAINBOW_EUCALYPTUS),
+            BushPlacement.DIRT
+    ), */
     FIR(LeafType.FIR, () -> Blocks.SPRUCE_LOG,
             new WNStructurePlacement(WNStructureFolders.TREE_FIR)
                     .with(1, "silver_fir_1")
@@ -311,7 +327,7 @@ public enum WNSaplingType {
             ,
             new WNStructurePlacement(WNStructureFolders.TREE_FIR)
                     .with(1, ""),
-            1, 0.1f, 2
+            2, 0.5f, 3
     ),
     SILVER_FIR(LeafType.SILVER_FIR, () -> Blocks.SPRUCE_LOG,
             new WNStructurePlacement(WNStructureFolders.TREE_FIR)
@@ -347,9 +363,8 @@ public enum WNSaplingType {
                     .with(1, "tree_hornbeam_4")
                     .with(1, "tree_hornbeam_5")
                     .with(1, "tree_hornbeam_6")
-                    .with(1, "tree_hornbeam_7")
-            ,
-            null
+                    .with(1, "tree_hornbeam_7"),
+            null, 1, 1F, 0
     ),
     HAZEL(LeafType.HAZEL, () -> Blocks.OAK_LOG,
             new WNStructurePlacement(WNStructureFolders.TREE_HAZEL)
@@ -358,7 +373,7 @@ public enum WNSaplingType {
                     .with(1, "hazel_3")
                     .with(1, "hazel_4")
             ,
-            null
+            null, 3, 0.5F,2
     ),
     JACARANDA(LeafType.JACARANDA, () -> WNBlocks.LOGS.get(LogType.JACARANDA),
             new WNStructurePlacement(WNStructureFolders.TREE_JACARANDA)
@@ -367,7 +382,7 @@ public enum WNSaplingType {
                     .with(1, "jacaranda_3")
                     .with(1, "jacaranda_4")
             ,
-            null
+            null,1,0.5F,1
     ),
     RED_JACARANDA(LeafType.RED_JACARANDA, () -> WNBlocks.LOGS.get(LogType.JACARANDA),
             new WNStructurePlacement(WNStructureFolders.TREE_JACARANDA)
@@ -376,7 +391,7 @@ public enum WNSaplingType {
                     .with(1, "red_jacaranda_3")
                     .with(1, "red_jacaranda_4")
             ,
-            null
+            null, 1,0.5F,1
     ),
     LARCH(LeafType.LARCH, () -> WNBlocks.LOGS.get(LogType.PINE),
             new WNStructurePlacement(WNStructureFolders.TREE_LARCH)
@@ -402,7 +417,7 @@ public enum WNSaplingType {
                     .with(1, "mahogany_3")
                     .with(1, "mahogany_4")
             ,
-            null
+            null,6,0.5F,3
     ),
     MANGROVE(LeafType.MANGROVE, () -> WNBlocks.LOGS.get(LogType.MANGROVE),
             new WNStructurePlacement(WNStructureFolders.TREE_MANGROVE)
@@ -412,7 +427,7 @@ public enum WNSaplingType {
                     .with(1, "mangrove_4")
                     .with(1, "mangrove_5")
             ,
-            null
+            null, 4,0.5F,2
     ),
     //todo small maples
     MAPLE(LeafType.MAPLE, () -> WNBlocks.LOGS.get(LogType.MAPLE),
@@ -559,15 +574,15 @@ public enum WNSaplingType {
             ,
             null,
             BushPlacement.DIRT_OR_SAND,0, 0.5f, 2
-    ),
+    ),/*
     PEAR(LeafType.PEAR, () -> WNBlocks.LOGS.get(LogType.ROSACEAE),
             new WNStructurePlacement(WNStructureFolders.TREE_PEAR)
-                    .with(1, "pear1")
-                    .with(1, "pear2")
-                    .with(1, "pear3")
+                    .with(1, "pear_1")
+                    .with(1, "pear_2")
+                    .with(1, "pear_3")
             ,
             null
-    ),
+    ),*/
     PINE(LeafType.PINE, () -> WNBlocks.LOGS.get(LogType.PINE),
             new WNStructurePlacement(WNStructureFolders.TREE)
                     .with(1, "pine/thin_pine_1")
@@ -580,28 +595,23 @@ public enum WNSaplingType {
                     .with(1, "pine/tree_pine_4")
                     .with(1, "pine/tree_pine_5")
                     .with(1, "pine/tree_pine_6")
-                    .with(1, "boreal/boreal_pine_1")
-                    .with(1, "boreal/boreal_pine_2")
-                    .with(1, "boreal/boreal_pine_3")
-                    .with(1, "boreal/boreal_pine_4")
-                    .with(1, "boreal/boreal_pine_5")
-                    .with(1, "boreal/boreal_pine_6")
             ,
             new WNStructurePlacement(WNStructureFolders.TREE_PINE)
                     .with(1, "tall_pine_1")
                     .with(1, "tall_pine_2")
                     .with(1, "tall_pine_3")
-                    .with(1, "tall_pine_4")
+                    .with(1, "tall_pine_4"), 4,0.5F,2
     ),
-    PLUM(LeafType.PLUM, () -> WNBlocks.LOGS.get(LogType.PLUM),
-            new WNStructurePlacement(WNStructureFolders.TREE_PLUM)
+    //TODO add plums, pears & poplar
+    /*PLUM(LeafType.PLUM, () -> WNBlocks.LOGS.get(LogType.PLUM),
+            new WNStructurePlacement(WNStructureFolders.TREE_APPLE)
                     .with(1, "")
             ,
             new WNStructurePlacement(WNStructureFolders.TREE_PLUM)
                     .with(1, "")
     ),
     MIRABELLE_PLUM(LeafType.MIRABELLE_PLUM, () -> WNBlocks.LOGS.get(LogType.PLUM),
-            new WNStructurePlacement(WNStructureFolders.TREE_PLUM)
+            new WNStructurePlacement(WNStructureFolders.TREE_APPLE)
                     .with(1, "")
             ,
             new WNStructurePlacement(WNStructureFolders.TREE_PLUM)
@@ -613,7 +623,7 @@ public enum WNSaplingType {
             ,
             new WNStructurePlacement(WNStructureFolders.TREE_POPLAR)
                     .with(1, "")
-    ),
+    ),*/
     REDWOOD(LeafType.REDWOOD, () -> WNBlocks.LOGS.get(LogType.REDWOOD),
             new WNStructurePlacement(WNStructureFolders.TREE_REDWOOD)
                     .with(1, "small_redwood_1")
