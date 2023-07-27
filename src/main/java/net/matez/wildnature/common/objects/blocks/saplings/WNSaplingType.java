@@ -600,7 +600,7 @@ public enum WNSaplingType {
                     .with(1, "tall_pine_1")
                     .with(1, "tall_pine_2")
                     .with(1, "tall_pine_3")
-                    .with(1, "tall_pine_4"), 4,0.5F,2
+                    .with(1, "tall_pine_4"), 6,0.5F,3
     ),
     //TODO add plums, pears & poplar
     /*PLUM(LeafType.PLUM, () -> WNBlocks.LOGS.get(LogType.PLUM),
@@ -646,7 +646,7 @@ public enum WNSaplingType {
                     .with(1, "rowan_3")
                     .with(1, "rowan_4")
             ,
-            null
+            null,0,0.5F,1
     ),
     WILLOW(LeafType.WILLOW, () -> WNBlocks.LOGS.get(LogType.WILLOW),
             new WNStructurePlacement(WNStructureFolders.TREE_WILLOW)

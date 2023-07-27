@@ -334,7 +334,7 @@ public class ModBiomes
         registry.register(WNOverworldBiomes.normal(12171099).setRegistryName(WNBiomes.OliveHills.location()));
 
         //HORNBEAM
-        registry.register(WNOverworldBiomes.normal().setRegistryName(WNBiomes.HornbeamForest.location()));
+        registry.register(WNOverworldBiomes.hornbeam().setRegistryName(WNBiomes.HornbeamForest.location()));
         registry.register(WNOverworldBiomes.normal().setRegistryName(WNBiomes.HornbeamHills.location()));
         registry.register(WNOverworldBiomes.normal().setRegistryName(WNBiomes.HornbeamValley.location()));
 

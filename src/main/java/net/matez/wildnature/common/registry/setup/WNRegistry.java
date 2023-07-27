@@ -17,7 +17,6 @@ import net.matez.wildnature.common.registry.items.WNItems;
 import net.matez.wildnature.common.registry.particles.WNParticles;
 import net.matez.wildnature.setup.WildNature;
 import net.minecraft.core.particles.ParticleType;
-//testing
 
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.inventory.MenuType;
@@ -28,8 +27,6 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-
-
 @Mod.EventBusSubscriber(bus=Mod.EventBusSubscriber.Bus.MOD)
 public class WNRegistry {
     private static final WNLogger log = WildNature.getLogger();
@@ -113,4 +110,5 @@ public class WNRegistry {
         log.success("Registered " + WNContainers.MENU_TYPES.size() + " menus");
     }
 }
+
 

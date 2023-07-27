@@ -1,17 +1,23 @@
 package net.matez.wildnature.common.objects.features;
 
+import net.matez.wildnature.common.objects.blocks.fruit_bush.plants.FruitPlantType;
+import net.matez.wildnature.common.objects.blocks.mushrooms.Mushroom;
 import net.matez.wildnature.common.objects.blocks.plant.BushType;
-import net.matez.wildnature.common.objects.blocks.rocks.RockType;
 import net.matez.wildnature.common.objects.blocks.saplings.WNSaplingType;
 import net.matez.wildnature.common.objects.blocks.setup.WNBlock;
+import net.matez.wildnature.common.objects.initializer.InitStage;
+import net.matez.wildnature.common.objects.initializer.Initialize;
 import net.matez.wildnature.common.registry.blocks.WNBlocks;
+import net.matez.wildnature.common.registry.setup.WNRegistry;
 import net.matez.wildnature.setup.WildNature;
 import net.minecraft.core.Holder;
 import net.minecraft.data.worldgen.features.FeatureUtils;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.data.worldgen.placement.VegetationPlacements;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.feature.Feature;
+import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.RandomPatchConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.SimpleBlockConfiguration;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
@@ -19,11 +25,17 @@ import net.minecraft.world.level.levelgen.placement.BiomeFilter;
 import net.minecraft.world.level.levelgen.placement.InSquarePlacement;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.minecraftforge.event.world.BiomeLoadingEvent;
+import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.RegistryObject;
 
 import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
 
+import static net.matez.wildnature.common.objects.blocks.plant.flowering.WNAnemoneFlowerBlock.STAGE;
+import static net.matez.wildnature.common.objects.blocks.plant.flowering.WNFloweringBushBlock.FLOWERING;
+@Initialize(InitStage.SETUP)
 public class WNCombinedFeature {
 
     //Methods for each placed feature
@@ -40,9 +52,40 @@ public class WNCombinedFeature {
 
     }
 
+    public static void generateBushes(final BiomeLoadingEvent event, BushType flower) {
+        List<Holder<PlacedFeature>> base = event.getGeneration().getFeatures(GenerationStep.Decoration.VEGETAL_DECORATION);
+        base.add(FRUIT_PLACED.get(flower));
+    }
+
+    public static void generateMushrooms(final BiomeLoadingEvent event, Mushroom mushroom) {
+        List<Holder<PlacedFeature>> base = event.getGeneration().getFeatures(GenerationStep.Decoration.VEGETAL_DECORATION);
+        base.add(MUSHROOMS_PLACED.get(mushroom));
+    }
+    /*public static void generatePatch(final BiomeLoadingEvent event, BlockState flower, int tries, int XZ, int Y) {
+        List<Holder<PlacedFeature>> base =
+                event.getGeneration().getFeatures(GenerationStep.Decoration.VEGETAL_DECORATION);
+        base.add(PlacementUtils.register(flower.toString().toLowerCase() + "_placed",
+                FeatureUtils.register(flower.toString().toLowerCase() + "_flower",
+                        Feature.FLOWER, new RandomPatchConfiguration(tries, XZ, Y, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK,
+                                new SimpleBlockConfiguration(BlockStateProvider.simple(flower))))), InSquarePlacement.spread(),
+                PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome()));
+    }*/
+
+
+    private static BlockState flowering(WNBlock flower) {
+        if (flower.defaultBlockState().hasProperty(FLOWERING))
+        {return flower.defaultBlockState().setValue(FLOWERING, true);}
+        else if (flower.defaultBlockState().hasProperty(STAGE))
+        {return flower.defaultBlockState().setValue(STAGE, 3);}
+
+        else {return flower.defaultBlockState();}
+    }
+
     //Placed features from all values in WNSaplingType & BushType
     public static final Map<WNSaplingType, Holder<PlacedFeature>> TREE_PLACED = new EnumMap<>(WNSaplingType.class);
     public static final Map<BushType, Holder<PlacedFeature>> FLOWER_PLACED = new EnumMap<>(BushType.class);
+    public static final Map<FruitPlantType, Holder<PlacedFeature>> FRUIT_PLACED = new EnumMap<>(FruitPlantType.class);
+    public static final Map<Mushroom, Holder<PlacedFeature>> MUSHROOMS_PLACED = new EnumMap<>(Mushroom.class);
 
     static {
     WildNature.getLogger().progress("Registering features");
@@ -56,9 +99,26 @@ public class WNCombinedFeature {
         FLOWER_PLACED.put(flower, PlacementUtils.register(flower.toString().toLowerCase()+"_placed",
                 FeatureUtils.register(flower.toString().toLowerCase()+"_flower",
                         Feature.FLOWER, new RandomPatchConfiguration(flower.getTries(), flower.getXZ(), flower.getY(), PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK,
-                                new SimpleBlockConfiguration(BlockStateProvider.simple(WNBlocks.BUSHES.get(flower)))))), InSquarePlacement.spread(),
+                                new SimpleBlockConfiguration(BlockStateProvider.simple(flowering(WNBlocks.BUSHES.get(flower))))))), InSquarePlacement.spread(),
                 PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome()));
         }
-    WildNature.getLogger().success("Registered " + (TREE_PLACED.size()+FLOWER_PLACED.size()) + " features");
+    for (
+        FruitPlantType flower : FruitPlantType.values()) {
+            FRUIT_PLACED.put(flower, PlacementUtils.register(flower.toString().toLowerCase() + "_p",
+                    FeatureUtils.register(flower.toString().toLowerCase() + "_c",
+                            Feature.FLOWER, new RandomPatchConfiguration(32, 5, 2, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK,
+                                    new SimpleBlockConfiguration(BlockStateProvider.simple(WNBlocks.FRUIT_BUSH_PLANTS.get(flower)))))), InSquarePlacement.spread(),
+                    PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome()));
+        } //flowering(WNBlocks.FRUIT_BUSH_PLANTS.get(flower))
+    for (
+        Mushroom mushroom : Mushroom.values()) {
+            MUSHROOMS_PLACED.put(mushroom, PlacementUtils.register(mushroom.toString().toLowerCase() + "_p",
+                    FeatureUtils.register(mushroom.toString().toLowerCase() + "_c",
+                            Feature.FLOWER, new RandomPatchConfiguration(32, 5, 2, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK,
+                                    new SimpleBlockConfiguration(BlockStateProvider.simple(WNBlocks.MUSHROOMS.get(mushroom)))))), InSquarePlacement.spread(),
+                    PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome()));
+        }
+
+        WildNature.getLogger().success("Registered " + (TREE_PLACED.size() + FLOWER_PLACED.size() + MUSHROOMS_PLACED.size() + FRUIT_PLACED.size()) + " features");
     }
 }
