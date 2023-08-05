@@ -22,7 +22,10 @@ import net.matez.wildnature.common.objects.features.WNCombinedFeature;
 import net.matez.wildnature.common.registry.blocks.WNBlocks;
 import net.matez.wildnature.setup.WildNature;
 import net.minecraft.data.worldgen.BiomeDefaultFeatures;
+import net.minecraft.data.worldgen.placement.AquaticPlacements;
+import net.minecraft.data.worldgen.placement.CavePlacements;
 import net.minecraft.data.worldgen.placement.MiscOverworldPlacements;
+import net.minecraft.data.worldgen.placement.VegetationPlacements;
 import net.minecraft.sounds.Music;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.EntityType;
@@ -77,7 +80,7 @@ public class WNOverworldBiomes
         BiomeDefaultFeatures.addSurfaceFreezing(builder);
     }
 
-    public static Biome hot()
+    public static Biome jungle()
     {
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
         BiomeDefaultFeatures.desertSpawns(spawnBuilder);
@@ -87,16 +90,16 @@ public class WNOverworldBiomes
         globalOverworldGeneration(biomeBuilder);
         BiomeDefaultFeatures.addDefaultOres(biomeBuilder);
         BiomeDefaultFeatures.addDefaultSoftDisks(biomeBuilder);
-        BiomeDefaultFeatures.addDefaultFlowers(biomeBuilder);
-        BiomeDefaultFeatures.addDefaultGrass(biomeBuilder);
-        BiomeDefaultFeatures.addDesertVegetation(biomeBuilder);
-        BiomeDefaultFeatures.addDefaultMushrooms(biomeBuilder);
-        BiomeDefaultFeatures.addDesertExtraVegetation(biomeBuilder);
-        BiomeDefaultFeatures.addDesertExtraDecoration(biomeBuilder);
-        return biome(Biome.Precipitation.NONE, Biome.BiomeCategory.DESERT, 2.0F, 0.0F, spawnBuilder, biomeBuilder, NORMAL_MUSIC);
+        BiomeDefaultFeatures.addJungleGrass(biomeBuilder);
+        BiomeDefaultFeatures.addJungleMelons(biomeBuilder);
+        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, CavePlacements.LUSH_CAVES_CLAY);
+        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, CavePlacements.LUSH_CAVES_VEGETATION);
+        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, CavePlacements.ROOTED_AZALEA_TREE);
+        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, AquaticPlacements.SEAGRASS_SWAMP);
+        return biome(Biome.Precipitation.RAIN, Biome.BiomeCategory.JUNGLE, 2.0F, 1.0F, spawnBuilder, biomeBuilder, NORMAL_MUSIC);
     }
 
-    public static Biome hornbeam()
+    public static Biome wetland()
     {
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
         spawnBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.GOAT, 5, 1, 3));
@@ -104,13 +107,34 @@ public class WNOverworldBiomes
 
         BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder();
         globalOverworldGeneration(biomeBuilder);
-        BiomeDefaultFeatures.addFrozenSprings(biomeBuilder);
+        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.FLOWER_SWAMP);
+        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.PATCH_GRASS_NORMAL);
+        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.PATCH_DEAD_BUSH);
+        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.PATCH_WATERLILY);
+        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.BROWN_MUSHROOM_SWAMP);
+        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.RED_MUSHROOM_SWAMP);
+        BiomeDefaultFeatures.addSwampExtraVegetation(biomeBuilder);
+        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, CavePlacements.LUSH_CAVES_VEGETATION);
+        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, AquaticPlacements.SEAGRASS_SWAMP);
+        return biome(Biome.Precipitation.RAIN, Biome.BiomeCategory.SWAMP, 0.7F, 0.9F, spawnBuilder, biomeBuilder, NORMAL_MUSIC);
+    }
+
+    public static Biome swamp()
+    {
+        MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
+        spawnBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.GOAT, 5, 1, 3));
+        BiomeDefaultFeatures.commonSpawns(spawnBuilder);
+
+        BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder();
+        globalOverworldGeneration(biomeBuilder);
         BiomeDefaultFeatures.addDefaultOres(biomeBuilder);
-        BiomeDefaultFeatures.addDefaultSoftDisks(biomeBuilder);
-        BiomeDefaultFeatures.addExtraEmeralds(biomeBuilder);
-        BiomeDefaultFeatures.addInfestedStone(biomeBuilder);
-        //wrong load order:  addFruit(biomeBuilder, FruitPlantType.WILD_BLUEBERRY);
-        return biome(Biome.Precipitation.SNOW, Biome.BiomeCategory.MOUNTAIN, -0.7F, 0.9F, spawnBuilder, biomeBuilder, NORMAL_MUSIC);
+        BiomeDefaultFeatures.addSwampClayDisk(biomeBuilder);
+        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.PATCH_WATERLILY);
+        BiomeDefaultFeatures.addDefaultMushrooms(biomeBuilder);
+        BiomeDefaultFeatures.addSwampExtraVegetation(biomeBuilder);
+        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, CavePlacements.LUSH_CAVES_CLAY);
+        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, AquaticPlacements.SEAGRASS_SWAMP);
+        return biome(Biome.Precipitation.RAIN, Biome.BiomeCategory.SWAMP, 0.7F, 0.9F, spawnBuilder, biomeBuilder, NORMAL_MUSIC);
     }
 
     public static Biome normal(int... colours)

@@ -94,7 +94,7 @@ public class ModBiomes
         //MEADOWS flat
         registry.register(WNOverworldBiomes.normal().setRegistryName(WNBiomes.Meadow.location()));
         registry.register(WNOverworldBiomes.normal().setRegistryName(WNBiomes.WoodedMeadow.location()));
-        registry.register(WNOverworldBiomes.normal().setRegistryName(WNBiomes.WoodedJacarandaMeadow.location()));
+        registry.register(WNOverworldBiomes.jungle().setRegistryName(WNBiomes.WoodedJacarandaMeadow.location()));
 
         //SAHARA flat
         registry.register(WNOverworldBiomes.normal().setRegistryName(WNBiomes.Sahara.location()));
@@ -119,7 +119,7 @@ public class ModBiomes
         registry.register(WNOverworldBiomes.normal().setRegistryName(WNBiomes.Farmlands.location()));
 
         //MAHOGANY hot
-        registry.register(WNOverworldBiomes.normal(5622079).setRegistryName(WNBiomes.MahoganyRainforest.location()));
+        registry.register(WNOverworldBiomes.swamp().setRegistryName(WNBiomes.MahoganyRainforest.location()));
         registry.register(WNOverworldBiomes.normal().setRegistryName(WNBiomes.MahoganyCliffs.location()));
 
         //SAKURA hot
@@ -315,8 +315,8 @@ public class ModBiomes
         registry.register(WNOverworldBiomes.normal().setRegistryName(WNBiomes.GoldenWoods.location()));
 
         //WETLANDS
-        registry.register(WNOverworldBiomes.normal(5011004).setRegistryName(WNBiomes.Wetlands.location()));
-        registry.register(WNOverworldBiomes.normal(5011004).setRegistryName(WNBiomes.MangroveForest.location()));
+        registry.register(WNOverworldBiomes.wetland().setRegistryName(WNBiomes.Wetlands.location()));
+        registry.register(WNOverworldBiomes.swamp().setRegistryName(WNBiomes.MangroveForest.location()));
         registry.register(WNOverworldBiomes.normal().setRegistryName(WNBiomes.Backwaters.location()));
 
         //TROPICAL hot
@@ -334,7 +334,7 @@ public class ModBiomes
         registry.register(WNOverworldBiomes.normal(12171099).setRegistryName(WNBiomes.OliveHills.location()));
 
         //HORNBEAM
-        registry.register(WNOverworldBiomes.hornbeam().setRegistryName(WNBiomes.HornbeamForest.location()));
+        registry.register(WNOverworldBiomes.normal().setRegistryName(WNBiomes.HornbeamForest.location()));
         registry.register(WNOverworldBiomes.normal().setRegistryName(WNBiomes.HornbeamHills.location()));
         registry.register(WNOverworldBiomes.normal().setRegistryName(WNBiomes.HornbeamValley.location()));
 

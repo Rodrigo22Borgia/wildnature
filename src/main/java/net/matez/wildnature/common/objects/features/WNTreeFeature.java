@@ -39,7 +39,7 @@ public class WNTreeFeature extends Feature<NoneFeatureConfiguration> {
         }
 
         BlockState baseBlock = context.level().getBlockState(context.origin().below(1));
-        if (!(baseBlock.is(BlockTags.AZALEA_GROWS_ON))) {
+        if (!(baseBlock.is(BlockTags.AZALEA_GROWS_ON)||baseBlock.is(Blocks.CLAY))) {
 
             return false;
         }

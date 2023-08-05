@@ -20,16 +20,22 @@ package net.matez.wildnature.common.registry.biomes;
 import net.matez.wildnature.common.objects.blocks.grass.GrassType;
 import net.matez.wildnature.common.objects.blocks.grass.OvergrownGrassType;
 import net.matez.wildnature.common.objects.blocks.rocks.RockType;
+import net.matez.wildnature.common.objects.blocks.water_plants.WaterPlant;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.Noises;
 import net.minecraft.world.level.levelgen.SurfaceRules;
 import net.matez.wildnature.common.registry.blocks.WNBlocks;
+import net.minecraft.world.level.levelgen.VerticalAnchor;
 
 import static net.minecraft.world.level.levelgen.SurfaceRules.*;
 
 public class WNSurfaceRuleData
 {
+    private static final SurfaceRules.RuleSource AIR = makeStateRule(Blocks.AIR);
+
+    private static final SurfaceRules.RuleSource POND_WEED = makeStateRule(WNBlocks.WATER_PLANTS.get(WaterPlant.POND_WEED));
+    private static final SurfaceRules.RuleSource WATER = makeStateRule(Blocks.WATER);
     private static final SurfaceRules.RuleSource DIRT = makeStateRule(Blocks.DIRT);
     private static final SurfaceRules.RuleSource GRASS_BLOCK = makeStateRule(Blocks.GRASS_BLOCK);
     private static final SurfaceRules.RuleSource STONE = makeStateRule(Blocks.STONE);
@@ -37,36 +43,32 @@ public class WNSurfaceRuleData
     private static final SurfaceRules.RuleSource OVERGROWN_STONE = makeStateRule(WNBlocks.OVERGROWN_STONES.get(OvergrownGrassType.OVERGROWN_STONE));
     private static final SurfaceRules.RuleSource MOSSY_STONE = makeStateRule(WNBlocks.MOSSY_STONE);
     private static final SurfaceRules.RuleSource MOSS = makeStateRule(Blocks.MOSS_BLOCK);
-    private static final SurfaceRules.RuleSource COARSE_DIRT = makeStateRule(Blocks.COARSE_DIRT);
+    private static final SurfaceRules.RuleSource BARREN_DIRT = makeStateRule(WNBlocks.DIRTS.get(GrassType.BARREN));
     private static final SurfaceRules.RuleSource TROPICAL_GRASS = makeStateRule(WNBlocks.GRASSES.get(GrassType.TROPICAL));
     private static final SurfaceRules.RuleSource TROPICAL_DIRT = makeStateRule(WNBlocks.DIRTS.get(GrassType.TROPICAL));
+    private static final SurfaceRules.RuleSource MUD = makeStateRule(WNBlocks.MUD);
 
     public static SurfaceRules.RuleSource makeRules()
     {
         SurfaceRules.ConditionSource isAtOrAboveWaterLevel = SurfaceRules.waterBlockCheck(-1, 0);
         SurfaceRules.RuleSource grassSurface = SurfaceRules.sequence(SurfaceRules.ifTrue(isAtOrAboveWaterLevel, GRASS_BLOCK), DIRT);
-        SurfaceRules.RuleSource overgrown = SurfaceRules.sequence(SurfaceRules.ifTrue(ON_FLOOR, OVERGROWN_STONE), STONE);
+        SurfaceRules.RuleSource overgrown = SurfaceRules.sequence(SurfaceRules.ifTrue(ON_FLOOR,SurfaceRules.ifTrue(SurfaceRules.noiseCondition(Noises.SWAMP, 0.35D, 0.9D),OVERGROWN_STONE)), SurfaceRules.ifTrue(ON_FLOOR,MOSS));
+        SurfaceRules.RuleSource muddy = SurfaceRules.ifTrue(isAtOrAboveWaterLevel, SurfaceRules.sequence(SurfaceRules.ifTrue(ON_FLOOR,MUD),SurfaceRules.ifTrue(UNDER_FLOOR,MUD),SurfaceRules.ifTrue(DEEP_UNDER_FLOOR,DIRT)));
+        SurfaceRules.RuleSource waterLevel = SurfaceRules.ifTrue(yBlockCheck(VerticalAnchor.absolute(62),0),SurfaceRules.sequence(SurfaceRules.ifTrue(yBlockCheck(VerticalAnchor.absolute(64),0),AIR),SurfaceRules.ifTrue(yBlockCheck(VerticalAnchor.absolute(63),0),SurfaceRules.sequence(SurfaceRules.ifTrue(ON_FLOOR,POND_WEED),AIR)),SurfaceRules.ifTrue(UNDER_FLOOR,WATER),BARREN_DIRT));
 
-        return SurfaceRules.sequence(
-                SurfaceRules.ifTrue(SurfaceRules.isBiome(WNBiomes.EucalyptusForest), SurfaceRules.ifTrue(isAtOrAboveWaterLevel, SurfaceRules.ifTrue(SurfaceRules.abovePreliminarySurface(),SurfaceRules.sequence(
+        return SurfaceRules.ifTrue(SurfaceRules.abovePreliminarySurface(),SurfaceRules.sequence(
+                SurfaceRules.ifTrue(SurfaceRules.isBiome(WNBiomes.EucalyptusForest), SurfaceRules.ifTrue(isAtOrAboveWaterLevel, SurfaceRules.sequence(
                         SurfaceRules.ifTrue(ON_FLOOR,TROPICAL_GRASS),SurfaceRules.ifTrue(UNDER_FLOOR,TROPICAL_DIRT),SurfaceRules.ifTrue(DEEP_UNDER_FLOOR,LIMESTONE))
-                ))),
-                SurfaceRules.ifTrue(SurfaceRules.isBiome(WNBiomes.TatraMountains), SurfaceRules.ifTrue(SurfaceRules.abovePreliminarySurface(),SurfaceRules.sequence(
-                        SurfaceRules.ifTrue(ON_FLOOR,SurfaceRules.ifTrue(SurfaceRules.noiseCondition(Noises.SWAMP, 0.35D, 0.9D),OVERGROWN_STONE)), SurfaceRules.ifTrue(ON_FLOOR,MOSSY_STONE)
-                ))),
-                SurfaceRules.ifTrue(SurfaceRules.isBiome(WNBiomes.BeechForest), SurfaceRules.ifTrue(SurfaceRules.abovePreliminarySurface(),SurfaceRules.sequence(
-                        SurfaceRules.ifTrue(ON_FLOOR,SurfaceRules.ifTrue(SurfaceRules.noiseCondition(Noises.SWAMP, 0.35D, 0.9D),OVERGROWN_STONE)), SurfaceRules.ifTrue(ON_FLOOR,MOSS)
-                ))),
-                SurfaceRules.ifTrue(SurfaceRules.isBiome(WNBiomes.SeasonalTaiga), SurfaceRules.ifTrue(SurfaceRules.abovePreliminarySurface(),SurfaceRules.sequence(
-                        SurfaceRules.ifTrue(ON_FLOOR,SurfaceRules.ifTrue(SurfaceRules.noiseCondition(Noises.SWAMP, 0.35D, 0.9D),OVERGROWN_STONE)), SurfaceRules.ifTrue(ON_FLOOR,COARSE_DIRT)
-                ))),
-
+                )),
+                SurfaceRules.ifTrue(SurfaceRules.isBiome(WNBiomes.MahoganyRainforest,WNBiomes.MangroveForest), muddy),
+                SurfaceRules.ifTrue(SurfaceRules.isBiome(WNBiomes.Wetlands), waterLevel),
+                SurfaceRules.ifTrue(SurfaceRules.isBiome(WNBiomes.TatraMountains, WNBiomes.SeasonalTaiga, WNBiomes.BeechForest), overgrown),
 
             // Default to a grass and dirt surface
-            SurfaceRules.ifTrue(isAtOrAboveWaterLevel,SurfaceRules.ifTrue(SurfaceRules.abovePreliminarySurface(),SurfaceRules.sequence(
+            SurfaceRules.ifTrue(isAtOrAboveWaterLevel,SurfaceRules.sequence(
                 SurfaceRules.ifTrue(ON_FLOOR,GRASS_BLOCK),SurfaceRules.ifTrue(UNDER_FLOOR,DIRT)
-                ))), STONE
-        );
+                )), STONE
+        ));
     }
 
     private static SurfaceRules.RuleSource makeStateRule(Block block)

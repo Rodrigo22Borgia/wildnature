@@ -112,7 +112,7 @@ public class WNRegion extends Region {
             {{//PLAINS
                     {null                           , null                          , null                          , null                       , null},
                     {null                           , null                          , null                          , null                       , null},
-                    {null                           , WNBiomes.HornbeamForest       , null                          , WNBiomes.Fields                       , WNBiomes.Wetlands},
+                    {null                           , WNBiomes.HornbeamForest       , null                          , WNBiomes.Fields            , WNBiomes.Wetlands},
                     {null                           , null                          , null                          , WNBiomes.MahoganyRainforest, WNBiomes.MangroveForest},
                     {null                           , WNBiomes.BaobabSavanna        , null                          , WNBiomes.BananaThicket     , null}},
 
