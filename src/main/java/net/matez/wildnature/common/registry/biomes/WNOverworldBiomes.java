@@ -66,10 +66,6 @@ public class WNOverworldBiomes
         return (new Biome.BiomeBuilder()).precipitation(precipitation).biomeCategory(category).temperature(temperature).downfall(downfall).specialEffects((new BiomeSpecialEffects.Builder()).waterColor(waterColor).waterFogColor(waterFogColor).fogColor(12638463).grassColorOverride(grassColor).foliageColorOverride(foliageColor).skyColor(calculateSkyColor(temperature)).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(music).build()).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
 
-    public static void addFruit(BiomeGenerationSettings.Builder builder, FruitPlantType fruit) {
-        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION,FRUIT_PLACED.get(fruit));
-    }
-
     private static void globalOverworldGeneration(BiomeGenerationSettings.Builder builder)
     {
         BiomeDefaultFeatures.addDefaultCarversAndLakes(builder);

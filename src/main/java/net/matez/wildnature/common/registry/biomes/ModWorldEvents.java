@@ -17,6 +17,30 @@ public class ModWorldEvents {
     //On Biome event triggers generation of specific feature
     @SubscribeEvent
     public static void biomeLoadingEvent(final BiomeLoadingEvent event) {
+        switch(event.getCategory()) {
+            // case NONE:a;
+            // case TAIGA:a;
+            // case EXTREME_HILLS:a;
+            case JUNGLE:
+                WNCombinedFeature.generateFlowers(event, BushType.AZALEA_PINK);
+            // case MESA:a;
+            // case PLAINS:a;
+            // case SAVANNA:a;
+            // case ICY:a;
+            // case THEEND:a;
+            // case BEACH:a;
+            // case FOREST:a;
+            // case OCEAN:a;
+            // case DESERT:a;
+            // case RIVER:a;
+            // case SWAMP:a;
+            // case MUSHROOM:a;
+            // case NETHER:a;
+            // case UNDERGROUND:a;
+            // case MOUNTAIN:a;
+            default: break;
+        }
+
         switch(event.getName().toString()) {
             case "wildnature:orchard":
                 WNCombinedFeature.generateFlowers(event, BushType.ANEMONE);
@@ -93,7 +117,7 @@ public class ModWorldEvents {
                 WNCombinedFeature.generateTrees(event, WNSaplingType.MAPLE_ORANGE);
                 WNCombinedFeature.generateTrees(event, WNSaplingType.MAPLE_RED);
                 WNCombinedFeature.generateTrees(event, WNSaplingType.MAPLE_YELLOW); break;
-            case "wildnature:palm_beach":
+            case "minecraft:beach":
                 WNCombinedFeature.generateTrees(event, WNSaplingType.PALM); break;
             case "wildnature:pine_mixed_forest":
                 WNCombinedFeature.generateTrees(event, WNSaplingType.PINE);

@@ -253,7 +253,7 @@ public class WNRegion extends Region {
             }
             this.addSurfaceBiome(mapper, temperature, this.FULL_RANGE, this.deepOceanContinentalness, this.FULL_RANGE, this.FULL_RANGE, 0.0F, this.OCEANS[0][t]);
             this.addSurfaceBiome(mapper, temperature, this.FULL_RANGE, this.oceanContinentalness, this.FULL_RANGE, this.FULL_RANGE, 0.0F, this.OCEANS[1][t]);
-            this.addSurfaceBiome(mapper, temperature, this.FULL_RANGE, this.coastContinentalness, this.FULL_RANGE, Climate.Parameter.span(-0.055F, 0.055F), 0.0F, WNBiomes.PalmBeach);
+            this.addSurfaceBiome(mapper, temperature, this.FULL_RANGE, this.coastContinentalness, this.FULL_RANGE, Climate.Parameter.span(-0.055F, 0.055F), 0.0F, Biomes.BEACH);
         }
         WildNature.getLogger().success("Biomes added");
     }

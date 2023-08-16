@@ -437,7 +437,7 @@ public enum WNSaplingType {
                     .with(1, "maple_3")
                     .with(1, "maple_4")
             ,
-            null
+            null, 1, 0.1F, 1
     ),
     MAPLE_RED(LeafType.MAPLE_RED, () -> WNBlocks.LOGS.get(LogType.MAPLE),
             new WNStructurePlacement(WNStructureFolders.TREE_MAPLE)
@@ -446,7 +446,7 @@ public enum WNSaplingType {
                     .with(1, "maple_3", WNTreeConfig.MAPLE_RED)
                     .with(1, "maple_4", WNTreeConfig.MAPLE_RED)
             ,
-            null
+            null, 1, 0.1F, 1
     ),
     MAPLE_ORANGE(LeafType.MAPLE_ORANGE, () -> WNBlocks.LOGS.get(LogType.MAPLE),
             new WNStructurePlacement(WNStructureFolders.TREE_MAPLE)
@@ -455,7 +455,7 @@ public enum WNSaplingType {
                     .with(1, "maple_3", WNTreeConfig.MAPLE_ORANGE)
                     .with(1, "maple_4", WNTreeConfig.MAPLE_ORANGE)
             ,
-            null
+            null, 1, 0.1F, 1
     ),
     MAPLE_YELLOW(LeafType.MAPLE_YELLOW, () -> WNBlocks.LOGS.get(LogType.MAPLE),
             new WNStructurePlacement(WNStructureFolders.TREE_MAPLE)
@@ -464,7 +464,7 @@ public enum WNSaplingType {
                     .with(1, "maple_3", WNTreeConfig.MAPLE_YELLOW)
                     .with(1, "maple_4", WNTreeConfig.MAPLE_YELLOW)
             ,
-            null
+            null, 1, 0.1F, 1
     ),
     MAPLE_BROWN(LeafType.MAPLE_BROWN, () -> WNBlocks.LOGS.get(LogType.MAPLE),
             new WNStructurePlacement(WNStructureFolders.TREE_MAPLE)
@@ -473,7 +473,7 @@ public enum WNSaplingType {
                     .with(1, "maple_3", WNTreeConfig.MAPLE_BROWN)
                     .with(1, "maple_4", WNTreeConfig.MAPLE_BROWN)
             ,
-            null
+            null, 1, 0.1F, 1
     ),
     MAGNOLIA(LeafType.MAGNOLIA, () -> WNBlocks.LOGS.get(LogType.ROSACEAE),
             new WNStructurePlacement(WNStructureFolders.TREE_MAGNOLIA)
