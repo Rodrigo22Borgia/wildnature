@@ -46,28 +46,28 @@ public class ModBiomes
         registry.register(WNOverworldBiomes.normal().setRegistryName(WNBiomes.Fields.location()));
 
         // SAVANNA
-        registry.register(WNOverworldBiomes.normal().setRegistryName(WNBiomes.EucalyptusForest.location()));
-        registry.register(WNOverworldBiomes.normal().setRegistryName(WNBiomes.BananaThicket.location()));
-        registry.register(WNOverworldBiomes.normal().setRegistryName(WNBiomes.BaobabSavanna.location()));
-        registry.register(WNOverworldBiomes.normal().setRegistryName(WNBiomes.CitrusOrchard.location()));
-        registry.register(WNOverworldBiomes.normal().setRegistryName(WNBiomes.OliveGarden.location()));
-        registry.register(WNOverworldBiomes.normal().setRegistryName(WNBiomes.OliveHills.location()));
-        registry.register(WNOverworldBiomes.normal().setRegistryName(WNBiomes.Shrublands.location()));
+        registry.register(WNOverworldBiomes.savana().setRegistryName(WNBiomes.EucalyptusForest.location()));
+        registry.register(WNOverworldBiomes.savana().setRegistryName(WNBiomes.BananaThicket.location()));
+        registry.register(WNOverworldBiomes.savana().setRegistryName(WNBiomes.BaobabSavanna.location()));
+        registry.register(WNOverworldBiomes.savana().setRegistryName(WNBiomes.CitrusOrchard.location()));
+        registry.register(WNOverworldBiomes.savana().setRegistryName(WNBiomes.OliveGarden.location()));
+        registry.register(WNOverworldBiomes.savana().setRegistryName(WNBiomes.OliveHills.location()));
+        registry.register(WNOverworldBiomes.savana().setRegistryName(WNBiomes.Shrublands.location()));
 
         // BEACH
 
         // FOREST
-        registry.register(WNOverworldBiomes.normal().setRegistryName(WNBiomes.AspenGrove.location()));
-        registry.register(WNOverworldBiomes.normal().setRegistryName(WNBiomes.BeechForest.location()));
-        registry.register(WNOverworldBiomes.normal().setRegistryName(WNBiomes.CedarForest.location()));
-        registry.register(WNOverworldBiomes.normal().setRegistryName(WNBiomes.HornbeamForest.location()));
-        registry.register(WNOverworldBiomes.normal().setRegistryName(WNBiomes.MapleForest.location()));
-        registry.register(WNOverworldBiomes.normal().setRegistryName(WNBiomes.PineMixedForest.location()));
-        registry.register(WNOverworldBiomes.normal().setRegistryName(WNBiomes.RedwoodForest.location()));
-        registry.register(WNOverworldBiomes.normal().setRegistryName(WNBiomes.CherryParadise.location()));
-        registry.register(WNOverworldBiomes.normal().setRegistryName(WNBiomes.GoldenWoods.location()));
-        registry.register(WNOverworldBiomes.normal().setRegistryName(WNBiomes.HazelFields.location()));
-        registry.register(WNOverworldBiomes.normal().setRegistryName(WNBiomes.Orchard.location()));
+        registry.register(WNOverworldBiomes.forest().setRegistryName(WNBiomes.AspenGrove.location()));
+        registry.register(WNOverworldBiomes.forest().setRegistryName(WNBiomes.BeechForest.location()));
+        registry.register(WNOverworldBiomes.forest().setRegistryName(WNBiomes.CedarForest.location()));
+        registry.register(WNOverworldBiomes.forest().setRegistryName(WNBiomes.HornbeamForest.location()));
+        registry.register(WNOverworldBiomes.forest().setRegistryName(WNBiomes.MapleForest.location()));
+        registry.register(WNOverworldBiomes.forest().setRegistryName(WNBiomes.PineMixedForest.location()));
+        registry.register(WNOverworldBiomes.forest().setRegistryName(WNBiomes.RedwoodForest.location()));
+        registry.register(WNOverworldBiomes.forest().setRegistryName(WNBiomes.CherryParadise.location()));
+        registry.register(WNOverworldBiomes.forest().setRegistryName(WNBiomes.GoldenWoods.location()));
+        registry.register(WNOverworldBiomes.forest().setRegistryName(WNBiomes.HazelFields.location()));
+        registry.register(WNOverworldBiomes.forest().setRegistryName(WNBiomes.Orchard.location()));
         // DESERT
 
         // SWAMP

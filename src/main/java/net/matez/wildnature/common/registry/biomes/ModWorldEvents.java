@@ -25,11 +25,18 @@ public class ModWorldEvents {
                 WNCombinedFeature.generateFlowers(event, BushType.AZALEA_PINK);
             // case MESA:a;
             // case PLAINS:a;
-            // case SAVANNA:a;
+            case SAVANNA:
+                WNCombinedFeature.generateFlowers(event, BushType.PRAIRIE_GRASS);
+                WNCombinedFeature.generateFlowers(event, BushType.LUPINE_YELLOW);
+                WNCombinedFeature.generateFlowers(event, BushType.RAPESEED);
+                WNCombinedFeature.generateFlowers(event, BushType.GRASS_FLOWER);break;
             // case ICY:a;
             // case THEEND:a;
             // case BEACH:a;
-            // case FOREST:a;
+            case FOREST:
+                WNCombinedFeature.generateMushrooms(event, Mushroom.PSILOCYBIN_MUSHROOM);
+                WNCombinedFeature.generateMushrooms(event, Mushroom.TOADSTOOL_MUSHROOM);
+                WNCombinedFeature.generateMushrooms(event, Mushroom.DEATH_CAP);break;
             // case OCEAN:a;
             // case DESERT:a;
             // case RIVER:a;
@@ -50,10 +57,7 @@ public class ModWorldEvents {
                 WNCombinedFeature.generateTrees(event, WNSaplingType.CHERRY);break;
             case "wildnature:aspen_grove":
                 WNCombinedFeature.generateTrees(event, WNSaplingType.ASPEN);
-                WNCombinedFeature.generateFlowers(event, BushType.ANTHURIUM_PINK);
-                WNCombinedFeature.generateMushrooms(event, Mushroom.PSILOCYBIN_MUSHROOM);
-                WNCombinedFeature.generateMushrooms(event, Mushroom.TOADSTOOL_MUSHROOM);
-                WNCombinedFeature.generateMushrooms(event, Mushroom.DEATH_CAP);break;
+                WNCombinedFeature.generateFlowers(event, BushType.ANTHURIUM_PINK);break;
             case "wildnature:baobab_savanna":
                 WNCombinedFeature.generateTrees(event, WNSaplingType.BAOBAB); break;
             case "wildnature:beech_forest":
@@ -85,11 +89,7 @@ public class ModWorldEvents {
                 WNCombinedFeature.generateTrees(event, WNSaplingType.FIR);
                 WNCombinedFeature.generateTrees(event, WNSaplingType.SILVER_FIR); break;
             case "wildnature:olive_hills":
-                WNCombinedFeature.generateTrees(event, WNSaplingType.FORSYTHIA);
-                WNCombinedFeature.generateFlowers(event, BushType.PRAIRIE_GRASS);
-                WNCombinedFeature.generateFlowers(event, BushType.LUPINE_YELLOW);
-                WNCombinedFeature.generateFlowers(event, BushType.RAPESEED);
-                WNCombinedFeature.generateFlowers(event, BushType.GRASS_FLOWER);break;
+                WNCombinedFeature.generateTrees(event, WNSaplingType.FORSYTHIA);break;
             case "wildnature:golden_woods":
                 WNCombinedFeature.generateTrees(event, WNSaplingType.GINKGO);
                 WNCombinedFeature.generateTrees(event, WNSaplingType.MAGNOLIA); break;

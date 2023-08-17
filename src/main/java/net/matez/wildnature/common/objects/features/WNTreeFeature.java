@@ -7,20 +7,17 @@
 package net.matez.wildnature.common.objects.features;
 
 import com.mojang.serialization.Codec;
-import net.matez.wildnature.common.objects.blocks.wood.LogType;
 import net.matez.wildnature.common.objects.structures.WNStructurePlacement;
-import net.matez.wildnature.common.registry.blocks.WNBlocks;
 import net.matez.wildnature.common.util.WNUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
-import net.minecraft.world.level.material.Material;
+
 
 public class WNTreeFeature extends Feature<NoneFeatureConfiguration> {
 
@@ -57,20 +54,21 @@ public class WNTreeFeature extends Feature<NoneFeatureConfiguration> {
         structure.place(context.level(), context.origin().below(), Rotation.values()[WNUtil.rint(0, 3, context.random())], placement.config(), context.random(), 19);
 
         //Generates support for trees
-        BlockState block = context.level().getBlockState(context.origin().above(2));
-        if (context.level().getBlockState(context.origin().north()) == block
-        ||  context.level().getBlockState(context.origin().east())  == block
-        ||  context.level().getBlockState(context.origin().west())  == block
-        ||  context.level().getBlockState(context.origin().south()) == block){
+        BlockState wood = context.level().getBlockState(context.origin().above(2));
+        if (context.level().getBlockState(context.origin().north()).is(BlockTags.LOGS)
+        ||  context.level().getBlockState(context.origin().east()).is(BlockTags.LOGS)
+        ||  context.level().getBlockState(context.origin().west()).is(BlockTags.LOGS)
+        ||  context.level().getBlockState(context.origin().south()).is(BlockTags.LOGS)){
             for (int i = -3; i < 4; i++) {
                 for (int j = -3; j < 4; j++) {
                     //Checks if there are logs above before placing blocks below
-                    BlockPos support = context.origin().east(i).north(j);
-                    for (int k = 1; k < 8 && !context.level().getBlockState(support).isAir(); k++) {
-                        if (context.level().getBlockState(support.below(k)).isAir()) {
-                            context.level().setBlock(support.below(k), block, 19);
-                        } else {
-                            context.level().setBlock(support.below(k), Blocks.ROOTED_DIRT.defaultBlockState(), 19);
+                    BlockPos root = context.origin().east(i).north(j);
+                    for (int k = 1; k < 8 && context.level().getBlockState(root).canOcclude(); k++) {
+                        if (!context.level().getBlockState(root.below(k)).canOcclude()) {
+                            context.level().setBlock(root.below(k), wood, 19);
+                        }
+                        else {
+                            context.level().setBlock(root.below(k), Blocks.ROOTED_DIRT.defaultBlockState(), 19);
                             break;
                         }
                     }

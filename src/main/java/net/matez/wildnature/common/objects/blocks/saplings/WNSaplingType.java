@@ -19,8 +19,6 @@ import net.minecraft.world.level.block.Blocks;
 import java.util.function.Supplier;
 
 public enum WNSaplingType {
-    //perChunk can never be 0F, but extra can be 0
-
     APPLE(LeafType.APPLE, () -> WNBlocks.LOGS.get(LogType.ROSACEAE),
             new WNStructurePlacement(WNStructureFolders.TREE_APPLE)
                     .with(1, "apple_1")
@@ -53,7 +51,7 @@ public enum WNSaplingType {
                     .with(1, "giant_baobab_3")
                     .with(1, "giant_baobab_4")
                     .with(1, "giant_extra_baobab_1")
-                    .with(1, "giant_extra_baobab_2")
+                    .with(1, "giant_extra_baobab_2"), 0, 0.5F, 2
     ),
     BEECH(LeafType.BEECH, () -> WNBlocks.LOGS.get(LogType.BEECH),
             new WNStructurePlacement(WNStructureFolders.TREE_BEECH)
@@ -437,7 +435,7 @@ public enum WNSaplingType {
                     .with(1, "maple_3")
                     .with(1, "maple_4")
             ,
-            null, 1, 0.1F, 1
+            null, 0, 0.1F, 1
     ),
     MAPLE_RED(LeafType.MAPLE_RED, () -> WNBlocks.LOGS.get(LogType.MAPLE),
             new WNStructurePlacement(WNStructureFolders.TREE_MAPLE)
@@ -446,7 +444,7 @@ public enum WNSaplingType {
                     .with(1, "maple_3", WNTreeConfig.MAPLE_RED)
                     .with(1, "maple_4", WNTreeConfig.MAPLE_RED)
             ,
-            null, 1, 0.1F, 1
+            null, 0, 0.1F, 1
     ),
     MAPLE_ORANGE(LeafType.MAPLE_ORANGE, () -> WNBlocks.LOGS.get(LogType.MAPLE),
             new WNStructurePlacement(WNStructureFolders.TREE_MAPLE)
@@ -455,7 +453,7 @@ public enum WNSaplingType {
                     .with(1, "maple_3", WNTreeConfig.MAPLE_ORANGE)
                     .with(1, "maple_4", WNTreeConfig.MAPLE_ORANGE)
             ,
-            null, 1, 0.1F, 1
+            null, 0, 0.1F, 1
     ),
     MAPLE_YELLOW(LeafType.MAPLE_YELLOW, () -> WNBlocks.LOGS.get(LogType.MAPLE),
             new WNStructurePlacement(WNStructureFolders.TREE_MAPLE)
@@ -464,7 +462,7 @@ public enum WNSaplingType {
                     .with(1, "maple_3", WNTreeConfig.MAPLE_YELLOW)
                     .with(1, "maple_4", WNTreeConfig.MAPLE_YELLOW)
             ,
-            null, 1, 0.1F, 1
+            null, 0, 0.1F, 1
     ),
     MAPLE_BROWN(LeafType.MAPLE_BROWN, () -> WNBlocks.LOGS.get(LogType.MAPLE),
             new WNStructurePlacement(WNStructureFolders.TREE_MAPLE)
@@ -473,7 +471,7 @@ public enum WNSaplingType {
                     .with(1, "maple_3", WNTreeConfig.MAPLE_BROWN)
                     .with(1, "maple_4", WNTreeConfig.MAPLE_BROWN)
             ,
-            null, 1, 0.1F, 1
+            null, 0, 0.1F, 1
     ),
     MAGNOLIA(LeafType.MAGNOLIA, () -> WNBlocks.LOGS.get(LogType.ROSACEAE),
             new WNStructurePlacement(WNStructureFolders.TREE_MAGNOLIA)
