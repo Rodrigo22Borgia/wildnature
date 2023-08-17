@@ -52,7 +52,7 @@ public class WNCombinedFeature {
 
     }
 
-    public static void generateBushes(final BiomeLoadingEvent event, BushType flower) {
+    public static void generateBushes(final BiomeLoadingEvent event, FruitPlantType flower) {
         List<Holder<PlacedFeature>> base = event.getGeneration().getFeatures(GenerationStep.Decoration.VEGETAL_DECORATION);
         base.add(FRUIT_PLACED.get(flower));
     }
@@ -71,6 +71,12 @@ public class WNCombinedFeature {
                 PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome()));
     }*/
 
+    private static BlockState growing(WNBlock bush) {
+        if (bush.defaultBlockState().hasProperty(STAGE))
+        {return bush.defaultBlockState().setValue(STAGE, 3);}
+
+        else {return bush.defaultBlockState();}
+    }
 
     private static BlockState flowering(WNBlock flower) {
         if (flower.defaultBlockState().hasProperty(FLOWERING))
@@ -107,7 +113,7 @@ public class WNCombinedFeature {
             FRUIT_PLACED.put(flower, PlacementUtils.register(flower.toString().toLowerCase() + "_p",
                     FeatureUtils.register(flower.toString().toLowerCase() + "_c",
                             Feature.FLOWER, new RandomPatchConfiguration(32, 5, 2, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK,
-                                    new SimpleBlockConfiguration(BlockStateProvider.simple(WNBlocks.FRUIT_BUSH_PLANTS.get(flower)))))), InSquarePlacement.spread(),
+                                    new SimpleBlockConfiguration(BlockStateProvider.simple(growing(WNBlocks.FRUIT_BUSH_PLANTS.get(flower))))))), InSquarePlacement.spread(),
                     PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome()));
         } //flowering(WNBlocks.FRUIT_BUSH_PLANTS.get(flower))
     for (

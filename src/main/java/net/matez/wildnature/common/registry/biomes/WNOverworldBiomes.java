@@ -17,15 +17,8 @@
  */
 package net.matez.wildnature.common.registry.biomes;
 
-import net.matez.wildnature.common.objects.blocks.fruit_bush.plants.FruitPlantType;
-import net.matez.wildnature.common.objects.features.WNCombinedFeature;
-import net.matez.wildnature.common.registry.blocks.WNBlocks;
-import net.matez.wildnature.setup.WildNature;
 import net.minecraft.data.worldgen.BiomeDefaultFeatures;
-import net.minecraft.data.worldgen.placement.AquaticPlacements;
-import net.minecraft.data.worldgen.placement.CavePlacements;
-import net.minecraft.data.worldgen.placement.MiscOverworldPlacements;
-import net.minecraft.data.worldgen.placement.VegetationPlacements;
+import net.minecraft.data.worldgen.placement.*;
 import net.minecraft.sounds.Music;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.EntityType;
@@ -34,10 +27,6 @@ import net.minecraft.world.level.biome.*;
 import net.minecraft.world.level.levelgen.GenerationStep;
 
 import javax.annotation.Nullable;
-
-import static net.matez.wildnature.common.objects.features.WNCombinedFeature.FRUIT_PLACED;
-import static net.matez.wildnature.common.objects.features.WNCombinedFeature.TREE_PLACED;
-import static net.matez.wildnature.common.registry.blocks.WNBlocks.FRUIT_BUSH_PLANTS;
 
 public class WNOverworldBiomes
 {
@@ -133,6 +122,64 @@ public class WNOverworldBiomes
         return biome(Biome.Precipitation.RAIN, Biome.BiomeCategory.SWAMP, 0.7F, 0.9F, spawnBuilder, biomeBuilder, NORMAL_MUSIC);
     }
 
+    public static Biome forest()
+    {
+        MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
+        spawnBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.GOAT, 5, 1, 3));
+        BiomeDefaultFeatures.commonSpawns(spawnBuilder);
+
+        BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder();
+        globalOverworldGeneration(biomeBuilder);
+        BiomeDefaultFeatures.addDefaultOres(biomeBuilder);
+        BiomeDefaultFeatures.addDefaultSoftDisks(biomeBuilder);
+        BiomeDefaultFeatures.addSavannaGrass(biomeBuilder);
+        BiomeDefaultFeatures.addForestFlowers(biomeBuilder);
+        BiomeDefaultFeatures.addForestGrass(biomeBuilder);
+        BiomeDefaultFeatures.addDefaultMushrooms(biomeBuilder);
+        return biome(Biome.Precipitation.RAIN, Biome.BiomeCategory.FOREST, 0.5F, 0.9F, spawnBuilder, biomeBuilder, NORMAL_MUSIC,7979098,5877296);
+    }
+
+    public static Biome plains()
+    {
+        MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
+        spawnBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.GOAT, 5, 1, 3));
+        BiomeDefaultFeatures.commonSpawns(spawnBuilder);
+
+        BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder();
+        globalOverworldGeneration(biomeBuilder);
+        biomeBuilder.addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES, VillagePlacements.ACACIA_VILLAGE);
+        BiomeDefaultFeatures.addSavannaExtraGrass(biomeBuilder);
+        return biome(Biome.Precipitation.RAIN, Biome.BiomeCategory.PLAINS, 0.5F, 0.9F, spawnBuilder, biomeBuilder, NORMAL_MUSIC,11450154,5877296);
+    }
+
+    public static Biome taiga()
+    {
+        MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
+        spawnBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.GOAT, 5, 1, 3));
+        BiomeDefaultFeatures.commonSpawns(spawnBuilder);
+
+        BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder();
+        globalOverworldGeneration(biomeBuilder);
+        BiomeDefaultFeatures.addGiantTaigaVegetation(biomeBuilder);
+        BiomeDefaultFeatures.addTaigaGrass(biomeBuilder);
+        return biome(Biome.Precipitation.SNOW, Biome.BiomeCategory.TAIGA, -1.0F, 0.5F, spawnBuilder, biomeBuilder, NORMAL_MUSIC,8828803,6857828);
+    }
+
+    public static Biome savanna()
+    {
+        MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
+        spawnBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.GOAT, 5, 1, 3));
+        BiomeDefaultFeatures.commonSpawns(spawnBuilder);
+
+        BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder();
+        globalOverworldGeneration(biomeBuilder);
+        biomeBuilder.addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES, VillagePlacements.ACACIA_VILLAGE);
+        BiomeDefaultFeatures.addDefaultOres(biomeBuilder);
+        BiomeDefaultFeatures.addDefaultSoftDisks(biomeBuilder);
+        BiomeDefaultFeatures.addSavannaGrass(biomeBuilder);
+        BiomeDefaultFeatures.addSavannaExtraGrass(biomeBuilder);
+        return biome(Biome.Precipitation.RAIN, Biome.BiomeCategory.SAVANNA, 2.0F, 0.0F, spawnBuilder, biomeBuilder, NORMAL_MUSIC, 12564309,11445290,3319192,3319192);
+    }
     public static Biome normal(int... colours)
     {
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
