@@ -50,22 +50,58 @@ public class WNSurfaceRuleData
 
     public static SurfaceRules.RuleSource makeRules()
     {
-        SurfaceRules.ConditionSource isAtOrAboveWaterLevel = SurfaceRules.waterBlockCheck(-1, 0);
-        SurfaceRules.RuleSource grassSurface = SurfaceRules.sequence(SurfaceRules.ifTrue(isAtOrAboveWaterLevel, GRASS_BLOCK), DIRT);
-        SurfaceRules.RuleSource overgrown = SurfaceRules.sequence(SurfaceRules.ifTrue(ON_FLOOR,SurfaceRules.ifTrue(SurfaceRules.noiseCondition(Noises.SWAMP, 0.35D, 0.9D),OVERGROWN_STONE)), SurfaceRules.ifTrue(ON_FLOOR,MOSS));
-        SurfaceRules.RuleSource muddy = SurfaceRules.ifTrue(isAtOrAboveWaterLevel, SurfaceRules.sequence(SurfaceRules.ifTrue(ON_FLOOR,MUD),SurfaceRules.ifTrue(UNDER_FLOOR,MUD),SurfaceRules.ifTrue(DEEP_UNDER_FLOOR,DIRT)));
-        SurfaceRules.RuleSource waterLevel = SurfaceRules.ifTrue(yBlockCheck(VerticalAnchor.absolute(62),0),SurfaceRules.sequence(SurfaceRules.ifTrue(yBlockCheck(VerticalAnchor.absolute(64),0),AIR),SurfaceRules.ifTrue(yBlockCheck(VerticalAnchor.absolute(63),0),SurfaceRules.sequence(SurfaceRules.ifTrue(ON_FLOOR,POND_WEED),AIR)),SurfaceRules.ifTrue(UNDER_FLOOR,WATER),BARREN_DIRT));
+        SurfaceRules.ConditionSource isUnderWater = SurfaceRules.waterBlockCheck(-1, 0);
+
+        SurfaceRules.RuleSource mossy =
+                SurfaceRules.sequence(
+                    SurfaceRules.ifTrue(ON_FLOOR,
+                            SurfaceRules.ifTrue(SurfaceRules.noiseCondition(Noises.SWAMP, 0.35D, 0.9D),
+                                    OVERGROWN_STONE)),
+                    SurfaceRules.ifTrue(ON_FLOOR,
+                                    MOSS));
+
+        SurfaceRules.RuleSource muddy =
+                SurfaceRules.ifTrue(isUnderWater,
+                        SurfaceRules.sequence(
+                                SurfaceRules.ifTrue(ON_FLOOR,
+                                        MUD),
+                                SurfaceRules.ifTrue(UNDER_FLOOR,
+                                        MUD),
+                                SurfaceRules.ifTrue(DEEP_UNDER_FLOOR,
+                                        DIRT)));
+
+        SurfaceRules.RuleSource wetland =
+                SurfaceRules.ifTrue(yBlockCheck(VerticalAnchor.absolute(62),0),
+                        SurfaceRules.sequence(
+                                SurfaceRules.ifTrue(yBlockCheck(VerticalAnchor.absolute(64),0),
+                                                        AIR),
+                                SurfaceRules.ifTrue(yBlockCheck(VerticalAnchor.absolute(63),0),
+                                        SurfaceRules.sequence(
+                                                SurfaceRules.ifTrue(ON_FLOOR,
+                                                        POND_WEED),
+                                                        AIR)),
+                                SurfaceRules.ifTrue(UNDER_FLOOR,
+                                                        WATER),
+                                                        BARREN_DIRT));
+
+        SurfaceRules.RuleSource tropical =
+                SurfaceRules.ifTrue(isUnderWater,
+                        SurfaceRules.sequence(
+                                SurfaceRules.ifTrue(ON_FLOOR,
+                                        TROPICAL_GRASS),
+                                SurfaceRules.ifTrue(UNDER_FLOOR,
+                                        TROPICAL_DIRT),
+                                SurfaceRules.ifTrue(DEEP_UNDER_FLOOR,
+                                        LIMESTONE)));
 
         return SurfaceRules.ifTrue(SurfaceRules.abovePreliminarySurface(),SurfaceRules.sequence(
-                SurfaceRules.ifTrue(SurfaceRules.isBiome(WNBiomes.EucalyptusForest), SurfaceRules.ifTrue(isAtOrAboveWaterLevel, SurfaceRules.sequence(
-                        SurfaceRules.ifTrue(ON_FLOOR,TROPICAL_GRASS),SurfaceRules.ifTrue(UNDER_FLOOR,TROPICAL_DIRT),SurfaceRules.ifTrue(DEEP_UNDER_FLOOR,LIMESTONE))
-                )),
+                SurfaceRules.ifTrue(SurfaceRules.isBiome(WNBiomes.EucalyptusForest), tropical),
                 SurfaceRules.ifTrue(SurfaceRules.isBiome(WNBiomes.MahoganyRainforest,WNBiomes.MangroveForest), muddy),
-                SurfaceRules.ifTrue(SurfaceRules.isBiome(WNBiomes.Wetlands), waterLevel),
-                SurfaceRules.ifTrue(SurfaceRules.isBiome(WNBiomes.TatraMountains, WNBiomes.SeasonalTaiga, WNBiomes.BeechForest), overgrown),
+                SurfaceRules.ifTrue(SurfaceRules.isBiome(WNBiomes.Wetlands), wetland),
+                SurfaceRules.ifTrue(SurfaceRules.isBiome(WNBiomes.TatraMountains, WNBiomes.SeasonalTaiga, WNBiomes.BeechForest), mossy),
 
             // Default to a grass and dirt surface
-            SurfaceRules.ifTrue(isAtOrAboveWaterLevel,SurfaceRules.sequence(
+            SurfaceRules.ifTrue(isUnderWater,SurfaceRules.sequence(
                 SurfaceRules.ifTrue(ON_FLOOR,GRASS_BLOCK),SurfaceRules.ifTrue(UNDER_FLOOR,DIRT)
                 )), STONE
         ));
