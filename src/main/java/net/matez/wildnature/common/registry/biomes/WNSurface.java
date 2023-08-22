@@ -30,7 +30,7 @@ import net.minecraft.world.level.levelgen.VerticalAnchor;
 
 import static net.minecraft.world.level.levelgen.SurfaceRules.*;
 
-public class WNSurfaceRuleData
+public class WNSurface
 {
     private static final SurfaceRules.RuleSource AIR = makeStateRule(Blocks.AIR);
 
@@ -96,7 +96,7 @@ public class WNSurfaceRuleData
 
         return SurfaceRules.ifTrue(SurfaceRules.abovePreliminarySurface(),SurfaceRules.sequence(
                 SurfaceRules.ifTrue(SurfaceRules.isBiome(WNBiomes.EucalyptusForest), tropical),
-                SurfaceRules.ifTrue(SurfaceRules.isBiome(WNBiomes.MahoganyRainforest,WNBiomes.MangroveForest), muddy),
+                SurfaceRules.ifTrue(SurfaceRules.isBiome(WNBiomes.MahoganyRainforest, WNBiomes.MangroveForest), muddy),
                 SurfaceRules.ifTrue(SurfaceRules.isBiome(WNBiomes.Wetlands), wetland),
                 SurfaceRules.ifTrue(SurfaceRules.isBiome(WNBiomes.TatraMountains, WNBiomes.SeasonalTaiga, WNBiomes.BeechForest), mossy),
 

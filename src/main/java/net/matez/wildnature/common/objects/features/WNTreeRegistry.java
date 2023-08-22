@@ -12,7 +12,7 @@ import net.minecraftforge.registries.RegistryObject;
 import java.util.EnumMap;
 import java.util.Map;
 
-public class FeatureRegistry {
+public class WNTreeRegistry {
     public static final DeferredRegister<Feature<?>> FEATURES = DeferredRegister.create(ForgeRegistries.FEATURES, WildNature.modid);
 
     public static final Map<WNSaplingType, RegistryObject<Feature<NoneFeatureConfiguration>>> TREE_FEATURES = new EnumMap<>(WNSaplingType.class);

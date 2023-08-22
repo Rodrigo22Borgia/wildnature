@@ -13,12 +13,12 @@ import net.matez.wildnature.client.registry.screen.WNScreenMenuBindings;
 import net.matez.wildnature.client.registry.setup.WNClientRegistry;
 import net.matez.wildnature.common.log.WNLogger;
 import net.matez.wildnature.common.networking.WNNetworking;
-import net.matez.wildnature.common.objects.features.FeatureRegistry;
+import net.matez.wildnature.common.objects.features.WNTreeRegistry;
 import net.matez.wildnature.common.objects.initializer.InitStage;
 import net.matez.wildnature.common.objects.initializer.NewInitializer;
 import net.matez.wildnature.common.objects.structures.WNStructures;
 import net.matez.wildnature.common.registry.biomes.WNRegion;
-import net.matez.wildnature.common.registry.biomes.WNSurfaceRuleData;
+import net.matez.wildnature.common.registry.biomes.WNSurface;
 import net.matez.wildnature.common.registry.commands.WNCommandArguments;
 import net.matez.wildnature.common.registry.commands.WNCommands;
 import net.matez.wildnature.data.setup.DataGenType;
@@ -70,7 +70,7 @@ public class WildNature {
         initializer.prepare();
 
         final IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
-        FeatureRegistry.init(modEventBus);
+        WNTreeRegistry.init(modEventBus);
 
         //# --- EVENT BUS ---
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::construct);
@@ -168,7 +168,7 @@ public class WildNature {
         event.enqueueWork(() ->
         {
             Regions.register(new WNRegion(new ResourceLocation(modid, "overworld"), 10));
-            SurfaceRuleManager.addSurfaceRules(SurfaceRuleManager.RuleCategory.OVERWORLD, modid, WNSurfaceRuleData.makeRules());
+            SurfaceRuleManager.addSurfaceRules(SurfaceRuleManager.RuleCategory.OVERWORLD, modid, WNSurface.makeRules());
         });
     }
 }

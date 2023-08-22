@@ -1,20 +1,17 @@
 package net.matez.wildnature.common.registry.biomes;
 
-import net.matez.wildnature.common.objects.blocks.fruit_bush.leaves.FruitBushType;
-import net.matez.wildnature.common.objects.blocks.fruit_bush.leaves.stages.WNFruitBushBlock_Stage1;
 import net.matez.wildnature.common.objects.blocks.fruit_bush.plants.FruitPlantType;
 import net.matez.wildnature.common.objects.blocks.mushrooms.Mushroom;
 import net.matez.wildnature.common.objects.blocks.plant.BushType;
 import net.matez.wildnature.common.objects.blocks.saplings.WNSaplingType;
 import net.matez.wildnature.common.objects.features.WNCombinedFeature;
 import net.matez.wildnature.setup.WildNature;
-import net.minecraft.world.level.biome.Biome;
 import net.minecraftforge.event.world.BiomeLoadingEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber(modid = WildNature.modid)
-public class ModWorldEvents {
+public class WNFeatureAdder {
 
     //On Biome event triggers generation of specific feature
     @SubscribeEvent

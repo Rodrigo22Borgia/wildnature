@@ -8,7 +8,6 @@ import net.matez.wildnature.common.objects.blocks.setup.WNBlock;
 import net.matez.wildnature.common.objects.initializer.InitStage;
 import net.matez.wildnature.common.objects.initializer.Initialize;
 import net.matez.wildnature.common.registry.blocks.WNBlocks;
-import net.matez.wildnature.common.registry.setup.WNRegistry;
 import net.matez.wildnature.setup.WildNature;
 import net.minecraft.core.Holder;
 import net.minecraft.data.worldgen.features.FeatureUtils;
@@ -17,7 +16,6 @@ import net.minecraft.data.worldgen.placement.VegetationPlacements;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.feature.Feature;
-import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.RandomPatchConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.SimpleBlockConfiguration;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
@@ -25,9 +23,6 @@ import net.minecraft.world.level.levelgen.placement.BiomeFilter;
 import net.minecraft.world.level.levelgen.placement.InSquarePlacement;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.minecraftforge.event.world.BiomeLoadingEvent;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegistryObject;
 
 import java.util.EnumMap;
 import java.util.List;
@@ -98,7 +93,7 @@ public class WNCombinedFeature {
 
     for (WNSaplingType treeType : WNSaplingType.values()) {
         TREE_PLACED.put(treeType, PlacementUtils.register(treeType.toString().toLowerCase() + "_placed",
-                FeatureUtils.register(treeType.toString().toLowerCase() + "_tree", FeatureRegistry.TREE_FEATURES.get(treeType).get()),
+                FeatureUtils.register(treeType.toString().toLowerCase() + "_tree", WNTreeRegistry.TREE_FEATURES.get(treeType).get()),
                 VegetationPlacements.treePlacement(PlacementUtils.countExtra(treeType.getPerChunk(), treeType.getExtraChance(), treeType.getExtra()))));
         }
     for (BushType flower : BushType.values()) {

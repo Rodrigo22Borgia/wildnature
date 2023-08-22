@@ -28,7 +28,7 @@ import net.minecraft.world.level.levelgen.GenerationStep;
 
 import javax.annotation.Nullable;
 
-public class WNOverworldBiomes
+public class WNBiomeBuilder
 {
     @Nullable
     private static final Music NORMAL_MUSIC = null;
