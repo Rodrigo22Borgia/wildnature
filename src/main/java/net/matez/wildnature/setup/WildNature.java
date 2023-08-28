@@ -18,7 +18,7 @@ import net.matez.wildnature.common.objects.initializer.InitStage;
 import net.matez.wildnature.common.objects.initializer.NewInitializer;
 import net.matez.wildnature.common.objects.structures.WNStructures;
 import net.matez.wildnature.common.registry.biomes.WNRegion;
-import net.matez.wildnature.common.registry.biomes.WNSurface;
+import net.matez.wildnature.common.registry.biomes.WNSurfaceConstructor;
 import net.matez.wildnature.common.registry.commands.WNCommandArguments;
 import net.matez.wildnature.common.registry.commands.WNCommands;
 import net.matez.wildnature.data.setup.DataGenType;
@@ -163,12 +163,12 @@ public class WildNature {
         WNCommandArguments.register();
         WNCommands.register(event.getDispatcher());
     }
-    private void terraBlender(final FMLCommonSetupEvent event)
-    {
+
+    private void terraBlender(final FMLCommonSetupEvent event) {
         event.enqueueWork(() ->
         {
             Regions.register(new WNRegion(new ResourceLocation(modid, "overworld"), 10));
-            SurfaceRuleManager.addSurfaceRules(SurfaceRuleManager.RuleCategory.OVERWORLD, modid, WNSurface.makeRules());
+            SurfaceRuleManager.addSurfaceRules(SurfaceRuleManager.RuleCategory.OVERWORLD, modid, WNSurfaceConstructor.makeRules());
         });
     }
 }
