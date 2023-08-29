@@ -1,8 +1,10 @@
 package net.matez.wildnature.common.objects.biomes.land;
 
+import net.matez.wildnature.common.objects.blocks.fruit_bush.leaves.FruitBushType;
+import net.matez.wildnature.common.objects.blocks.fruit_bush.plants.FruitPlantType;
+import net.matez.wildnature.common.objects.blocks.mushrooms.Mushroom;
 import net.matez.wildnature.common.objects.blocks.plant.BushType;
 import net.matez.wildnature.common.objects.blocks.saplings.WNSaplingType;
-import net.matez.wildnature.common.objects.features.WNCombinedFeature;
 import net.matez.wildnature.common.objects.surface.WNSurface;
 import net.matez.wildnature.common.registry.biomes.WNBiome;
 import net.matez.wildnature.common.registry.biomes.WNBiomes;
@@ -39,24 +41,31 @@ public class WNBiomeSeasonalTaiga extends WNBiome {
         return biomeBuilder;
     }
 
+
     @Override
     public void applyCustomFeatures(BiomeLoadingEvent event) {
-        // -- BUSHES
 
+        // -- BUSHES
+        addBushes(event, BushType.AZALEA_PINK,40,5,2);
+        addFruitPlants(event, FruitPlantType.BLACKBERRY,40,5,2);
+        addMushrooms(event, Mushroom.DEATH_CAP,40,5,2);
+        addFruitBushes(event, FruitBushType.BLUEBERRY,40,5,2);
         // ---
 
         // -- FLOWERS
-        WNCombinedFeature.generateFlowers(event, BushType.AZALEA_PINK);
         // ---
 
         // -- TREES
-        WNCombinedFeature.generateTrees(event, WNSaplingType.METASEQUOIA_GREEN);
-        WNCombinedFeature.generateTrees(event, WNSaplingType.METASEQUOIA_ORANGE);
-        WNCombinedFeature.generateTrees(event, WNSaplingType.METASEQUOIA_BROWN);
-        WNCombinedFeature.generateTrees(event, WNSaplingType.METASEQUOIA_RED);
-        WNCombinedFeature.generateTrees(event, WNSaplingType.METASEQUOIA_YELLOW);
+
+        addTrees(event,WNSaplingType.METASEQUOIA_BROWN,1,0.5F,1);
+        addTrees(event,WNSaplingType.METASEQUOIA_YELLOW,1,0.5F,1);
+        addTrees(event,WNSaplingType.METASEQUOIA_RED,1,0.5F,1);
+        addTrees(event,WNSaplingType.METASEQUOIA_GREEN,1,0.5F,1);
+        addTrees(event,WNSaplingType.METASEQUOIA_ORANGE,1,0.5F,1);
+
         // ---
     }
+
 
     @Override
     public SurfaceRules.RuleSource getSurface() {
