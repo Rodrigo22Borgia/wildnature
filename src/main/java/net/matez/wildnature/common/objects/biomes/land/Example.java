@@ -1,12 +1,5 @@
 package net.matez.wildnature.common.objects.biomes.land;
 
-import net.matez.wildnature.common.objects.blocks.fruit_bush.leaves.FruitBushType;
-import net.matez.wildnature.common.objects.blocks.fruit_bush.plants.FruitPlantType;
-import net.matez.wildnature.common.objects.blocks.mushrooms.Mushroom;
-import net.matez.wildnature.common.objects.blocks.plant.FlowerType;
-import net.matez.wildnature.common.objects.blocks.saplings.WNSaplingType;
-import net.matez.wildnature.common.objects.blocks.water_plants.WaterPlant;
-import net.matez.wildnature.common.objects.surface.WNSurface;
 import net.matez.wildnature.common.registry.biomes.WNBiome;
 import net.matez.wildnature.common.registry.biomes.WNBiomes;
 import net.minecraft.data.worldgen.BiomeDefaultFeatures;
@@ -18,10 +11,9 @@ import net.minecraft.world.level.biome.MobSpawnSettings;
 import net.minecraft.world.level.levelgen.SurfaceRules;
 import net.minecraftforge.event.world.BiomeLoadingEvent;
 
-
-public class WNBiomeSeasonalTaiga extends WNBiome {
-    public WNBiomeSeasonalTaiga() {
-        super(WNBiomes.SeasonalTaiga, Biome.Precipitation.SNOW, Biome.BiomeCategory.TAIGA, -1.0F, 0.5F, NORMAL_MUSIC);
+public class Example extends WNBiome {
+    public Example() {
+        super(WNBiomes.HornbeamForest, Biome.Precipitation.RAIN, Biome.BiomeCategory.FOREST, 0.0F, 0.5F, NORMAL_MUSIC);
     }
 
     @Override
@@ -37,8 +29,7 @@ public class WNBiomeSeasonalTaiga extends WNBiome {
     public BiomeGenerationSettings.Builder buildBiome() {
         BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder();
         globalOverworldGeneration(biomeBuilder);
-        BiomeDefaultFeatures.addGiantTaigaVegetation(biomeBuilder);
-        BiomeDefaultFeatures.addTaigaGrass(biomeBuilder);
+        BiomeDefaultFeatures.addForestGrass(biomeBuilder);
 
         return biomeBuilder;
     }
@@ -48,22 +39,14 @@ public class WNBiomeSeasonalTaiga extends WNBiome {
     public void applyCustomFeatures(BiomeLoadingEvent event) {
 
         // -- BUSHES
-        addBush(event, FruitBushType.BLUEBERRY, 2);
+
         // ---
 
         // -- FLOWERS
-        addPlant(event, Mushroom.DEATH_CAP, 2);
-        addPlant(event, FlowerType.AZALEA_PINK, 4);
-        addPlant(event, FruitPlantType.BLACKBERRY, 4);
+
         // ---
-        addPlant(event, WaterPlant.POND_WEED,1);
 
         // -- TREES
-        addTree(event,WNSaplingType.METASEQUOIA_BROWN,1,0.5F,1);
-        addTree(event,WNSaplingType.METASEQUOIA_YELLOW,1,0.5F,1);
-        addTree(event,WNSaplingType.METASEQUOIA_RED,1,0.5F,1);
-        addTree(event,WNSaplingType.METASEQUOIA_GREEN,1,0.5F,1);
-        addTree(event,WNSaplingType.METASEQUOIA_ORANGE,1,0.5F,1);
 
         // ---
     }
@@ -71,6 +54,6 @@ public class WNBiomeSeasonalTaiga extends WNBiome {
 
     @Override
     public SurfaceRules.RuleSource getSurface() {
-        return WNSurface.SURFACE_MOSSY;
+        return null;
     }
 }

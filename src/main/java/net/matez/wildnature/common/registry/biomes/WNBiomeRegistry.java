@@ -18,6 +18,7 @@
 package net.matez.wildnature.common.registry.biomes;
 
 import net.matez.wildnature.common.log.WNLogger;
+import net.matez.wildnature.common.objects.biomes.land.WNBiomeAspenGrove;
 import net.matez.wildnature.common.objects.biomes.land.WNBiomeSeasonalTaiga;
 import net.matez.wildnature.setup.WildNature;
 import net.minecraft.resources.ResourceLocation;
@@ -41,6 +42,7 @@ public class WNBiomeRegistry {
         log.progress("Registering biomes");
         // TAIGA
         register(e, new WNBiomeSeasonalTaiga());
+        register(e, new WNBiomeAspenGrove());
 
         log.success("Registered " + WN_BIOMES.size() + " biomes");
     }

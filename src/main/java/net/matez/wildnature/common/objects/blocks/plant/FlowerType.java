@@ -288,9 +288,10 @@ public enum FlowerType implements PlantFeature {
     @Override
     public BlockState featureBlockState() {
         BlockState state = WNBlocks.FLOWERS.get(this).defaultBlockState();
-        if (state.getValue(FLOWERING) != null) {
+        try {
             return state.setValue(FLOWERING, true);
         }
+        catch (Exception e) {
         return state;
-    }
+    }}
 }

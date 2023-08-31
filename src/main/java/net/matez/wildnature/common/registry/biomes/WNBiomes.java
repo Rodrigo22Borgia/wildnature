@@ -27,7 +27,8 @@ public record WNBiomes() {
     public static final ResourceKey<Biome> SeasonalTaiga = register("seasonal_taiga"); // DEMO BIOME
 
     // try to rewrite all the biomes (for now just the base biomes, without sub) step by step to make look&feel almost the same
-    public static final ResourceKey<Biome> AspenGrove = null;
+    public static final ResourceKey<Biome> AspenGrove = register("aspen_grove");
+    public static final ResourceKey<Biome> AutumnalMapleForest = null;
     public static final ResourceKey<Biome> BananaThicket = null;
     public static final ResourceKey<Biome> BaobabSavanna = null;
     public static final ResourceKey<Biome> BeechForest = null;

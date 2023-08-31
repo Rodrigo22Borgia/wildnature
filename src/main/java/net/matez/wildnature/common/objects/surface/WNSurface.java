@@ -13,6 +13,13 @@ import net.minecraft.world.level.levelgen.SurfaceRules;
 import static net.minecraft.world.level.levelgen.SurfaceRules.ON_FLOOR;
 
 public class WNSurface {
+    public static final SurfaceRules.RuleSource PODZOL =
+            SurfaceRules.sequence(
+                    SurfaceRules.ifTrue(ON_FLOOR,
+                            SurfaceRules.ifTrue(SurfaceRules.noiseCondition(Noises.SWAMP, 0.35D, 0.9D),
+                                    makeStateRule(Blocks.COARSE_DIRT))),
+                    SurfaceRules.ifTrue(ON_FLOOR,
+                            makeStateRule(Blocks.PODZOL)));
     private static final SurfaceRules.RuleSource AIR = makeStateRule(Blocks.AIR);
 
     private static final SurfaceRules.RuleSource POND_WEED = makeStateRule(WNBlocks.WATER_PLANTS.get(WaterPlant.POND_WEED));

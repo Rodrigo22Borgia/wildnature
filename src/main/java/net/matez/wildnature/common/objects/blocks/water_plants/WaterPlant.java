@@ -6,9 +6,12 @@
 
 package net.matez.wildnature.common.objects.blocks.water_plants;
 
+import net.matez.wildnature.common.objects.blocks.plant.PlantFeature;
+import net.matez.wildnature.common.registry.blocks.WNBlocks;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.MaterialColor;
 
-public enum WaterPlant {
+public enum WaterPlant implements PlantFeature {
     DUCKWEED("duckweed", MaterialColor.PLANT,(type, location, blockProperties, itemProperties) -> {
         return new WNDuckweedBlock(location,blockProperties,itemProperties,type);
     }),
@@ -78,5 +81,10 @@ public enum WaterPlant {
 
     public WaterPlantConstructor<WaterPlant> getConstructor() {
         return constructor;
+    }
+
+    @Override
+    public BlockState featureBlockState() {
+        return WNBlocks.WATER_PLANTS.get(this).defaultBlockState();
     }
 }

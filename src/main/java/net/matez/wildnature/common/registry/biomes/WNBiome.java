@@ -1,12 +1,7 @@
 package net.matez.wildnature.common.registry.biomes;
 
-import net.matez.wildnature.common.objects.blocks.fruit_bush.leaves.FruitBushType;
-import net.matez.wildnature.common.objects.blocks.fruit_bush.plants.FruitPlantType;
-import net.matez.wildnature.common.objects.blocks.mushrooms.Mushroom;
-import net.matez.wildnature.common.objects.blocks.plant.FlowerType;
 import net.matez.wildnature.common.objects.blocks.plant.PlantFeature;
 import net.matez.wildnature.common.objects.blocks.saplings.WNSaplingType;
-import net.matez.wildnature.common.objects.blocks.setup.WNBlock;
 import net.matez.wildnature.common.objects.blocks.water_plants.WaterPlant;
 import net.matez.wildnature.common.objects.features.WNTreeRegistry;
 import net.matez.wildnature.common.registry.blocks.WNBlocks;
@@ -21,8 +16,6 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.BiomeGenerationSettings;
 import net.minecraft.world.level.biome.MobSpawnSettings;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.SurfaceRules;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
@@ -30,16 +23,12 @@ import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.RandomPatchConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.SimpleBlockConfiguration;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
-import net.minecraft.world.level.levelgen.placement.BiomeFilter;
 import net.minecraft.world.level.levelgen.placement.InSquarePlacement;
 import net.minecraft.world.level.levelgen.placement.RarityFilter;
 import net.minecraftforge.event.world.BiomeLoadingEvent;
-import net.minecraftforge.registries.ForgeRegistryEntry;
 
 import javax.annotation.Nullable;
 
-import static net.matez.wildnature.common.objects.blocks.plant.flowering.WNAnemoneFlowerBlock.STAGE;
-import static net.matez.wildnature.common.objects.blocks.plant.flowering.WNFloweringBushBlock.FLOWERING;
 import static net.minecraft.data.worldgen.placement.VegetationPlacements.worldSurfaceSquaredWithCount;
 
 public abstract class WNBiome {
@@ -96,20 +85,16 @@ public abstract class WNBiome {
 
     //Features:
     protected static void addTree(final BiomeLoadingEvent event, WNSaplingType tree, int perChunk, float extraChance, int extra) {
-        String rLocation = tree.toString().toLowerCase() + perChunk + "_" + extraChance + "_" + extra;
-            event.getGeneration().getFeatures(GenerationStep.Decoration.VEGETAL_DECORATION).add(
-                    PlacementUtils.register(rLocation, FeatureUtils.register(rLocation, WNTreeRegistry.TREE_FEATURES.get(tree).get()),
-                    VegetationPlacements.treePlacement(PlacementUtils.countExtra(perChunk, extraChance, extra))));
+        String rLocation = tree.toString().toLowerCase() + "_" + perChunk;
+                event.getGeneration().getFeatures(GenerationStep.Decoration.VEGETAL_DECORATION).add(PlacementUtils.register(rLocation, FeatureUtils.register(rLocation,
+                        WNTreeRegistry.TREE_FEATURES.get(tree).get()),
+                VegetationPlacements.treePlacement(PlacementUtils.countExtra(
+                        perChunk,
+                        extraChance,
+                        extra
+                ))));
     }
 
-    public static void addWaterPlant(final BiomeLoadingEvent event, WaterPlant plant, int tries, int XZ, int Y) {
-        String rLocation = plant.toString().toLowerCase() + "_" + tries + "_" + XZ + "_" + Y;
-            event.getGeneration().getFeatures(GenerationStep.Decoration.VEGETAL_DECORATION).add(
-                    PlacementUtils.register(rLocation, FeatureUtils.register(rLocation,
-                                    Feature.RANDOM_PATCH, new RandomPatchConfiguration(tries, XZ, Y, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK,
-                                    new SimpleBlockConfiguration(BlockStateProvider.simple(WNBlocks.WATER_PLANTS.get(plant)))))),
-                    worldSurfaceSquaredWithCount(4)));
-    }
     public static void addBush(final BiomeLoadingEvent event, PlantFeature plant, int chunkAverage) {
         String rLocation = plant.toString().toLowerCase() + "_" + chunkAverage;
         event.getGeneration().getFeatures(GenerationStep.Decoration.VEGETAL_DECORATION).add(PlacementUtils.register(rLocation, FeatureUtils.register(rLocation, Feature.FLOWER, new RandomPatchConfiguration(

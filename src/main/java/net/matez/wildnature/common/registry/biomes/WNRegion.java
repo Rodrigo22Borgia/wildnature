@@ -135,7 +135,7 @@ public class WNRegion extends Region {
 
                     {null                           , null                          , null                          , null                       , null},
                     {null                           , null                          , null                          , WNBiomes.CedarForest       , null},
-                    {null                           , WNBiomes.BeechForest          , null                          , WNBiomes.CherryParadise    , null},
+                    {null                           , WNBiomes.BeechForest          , WNBiomes.AutumnalMapleForest  , WNBiomes.CherryParadise    , null},
                     {null                           , WNBiomes.WoodedJacarandaMeadow, WNBiomes.WoodedJacarandaMeadow, null                       , WNBiomes.Orchard},
                     {null                           , null                          , null                          , null                       , null}},
 

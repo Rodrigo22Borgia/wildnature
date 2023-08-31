@@ -1,12 +1,7 @@
 package net.matez.wildnature.common.objects.biomes.land;
 
-import net.matez.wildnature.common.objects.blocks.fruit_bush.leaves.FruitBushType;
-import net.matez.wildnature.common.objects.blocks.fruit_bush.plants.FruitPlantType;
-import net.matez.wildnature.common.objects.blocks.mushrooms.Mushroom;
 import net.matez.wildnature.common.objects.blocks.plant.FlowerType;
 import net.matez.wildnature.common.objects.blocks.saplings.WNSaplingType;
-import net.matez.wildnature.common.objects.blocks.water_plants.WaterPlant;
-import net.matez.wildnature.common.objects.surface.WNSurface;
 import net.matez.wildnature.common.registry.biomes.WNBiome;
 import net.matez.wildnature.common.registry.biomes.WNBiomes;
 import net.minecraft.data.worldgen.BiomeDefaultFeatures;
@@ -18,10 +13,9 @@ import net.minecraft.world.level.biome.MobSpawnSettings;
 import net.minecraft.world.level.levelgen.SurfaceRules;
 import net.minecraftforge.event.world.BiomeLoadingEvent;
 
-
-public class WNBiomeSeasonalTaiga extends WNBiome {
-    public WNBiomeSeasonalTaiga() {
-        super(WNBiomes.SeasonalTaiga, Biome.Precipitation.SNOW, Biome.BiomeCategory.TAIGA, -1.0F, 0.5F, NORMAL_MUSIC);
+public class WNBiomeAspenGrove extends WNBiome {
+    public WNBiomeAspenGrove() {
+        super(WNBiomes.AspenGrove, Biome.Precipitation.RAIN, Biome.BiomeCategory.FOREST, 0.4F, 0.8F, NORMAL_MUSIC);
     }
 
     @Override
@@ -37,8 +31,7 @@ public class WNBiomeSeasonalTaiga extends WNBiome {
     public BiomeGenerationSettings.Builder buildBiome() {
         BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder();
         globalOverworldGeneration(biomeBuilder);
-        BiomeDefaultFeatures.addGiantTaigaVegetation(biomeBuilder);
-        BiomeDefaultFeatures.addTaigaGrass(biomeBuilder);
+        BiomeDefaultFeatures.addForestGrass(biomeBuilder);
 
         return biomeBuilder;
     }
@@ -47,30 +40,27 @@ public class WNBiomeSeasonalTaiga extends WNBiome {
     @Override
     public void applyCustomFeatures(BiomeLoadingEvent event) {
 
-        // -- BUSHES
-        addBush(event, FruitBushType.BLUEBERRY, 2);
-        // ---
-
-        // -- FLOWERS
-        addPlant(event, Mushroom.DEATH_CAP, 2);
-        addPlant(event, FlowerType.AZALEA_PINK, 4);
-        addPlant(event, FruitPlantType.BLACKBERRY, 4);
-        // ---
-        addPlant(event, WaterPlant.POND_WEED,1);
+        // -- PLANTS
+        addPlant(event, FlowerType.HEATHER_YELLOW, 2);
+        addPlant(event, FlowerType.HEATHER_WHITE, 1);
+        addPlant(event, FlowerType.HEATHER_PINK, 2);
+        addPlant(event, FlowerType.HEATH_PURPLE, 2);
+        addPlant(event, FlowerType.PASQUE_YELLOW, 3);
+        addPlant(event, FlowerType.GERANIUM_WHITE, 2);
+        addPlant(event, FlowerType.CHRYSANTHEMUM_LIGHT_YELLOW, 3);
+        addPlant(event, FlowerType.CLOVER, 3);
 
         // -- TREES
-        addTree(event,WNSaplingType.METASEQUOIA_BROWN,1,0.5F,1);
-        addTree(event,WNSaplingType.METASEQUOIA_YELLOW,1,0.5F,1);
-        addTree(event,WNSaplingType.METASEQUOIA_RED,1,0.5F,1);
-        addTree(event,WNSaplingType.METASEQUOIA_GREEN,1,0.5F,1);
-        addTree(event,WNSaplingType.METASEQUOIA_ORANGE,1,0.5F,1);
 
+        addTree(event, WNSaplingType.ASPEN, 6,1F,0);
+        addTree(event, WNSaplingType.FIR, 0,0.5F,2);
+        addTree(event, WNSaplingType.PINE, 1,1F,0);
         // ---
     }
 
 
     @Override
     public SurfaceRules.RuleSource getSurface() {
-        return WNSurface.SURFACE_MOSSY;
+        return null;
     }
 }
