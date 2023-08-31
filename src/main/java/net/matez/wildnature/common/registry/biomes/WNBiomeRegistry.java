@@ -51,7 +51,7 @@ public class WNBiomeRegistry {
         IForgeRegistry<Biome> registry = event.getRegistry();
 
         registry.register(biome.build());
-        WN_BIOMES.put(biome.getKey().getRegistryName(), biome);
+        WN_BIOMES.put(biome.getKey().location(), biome);
         return biome;
     }
 }

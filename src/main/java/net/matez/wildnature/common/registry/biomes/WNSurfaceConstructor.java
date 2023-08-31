@@ -64,7 +64,7 @@ public class WNSurfaceConstructor {
         WNBiomeRegistry.WN_BIOMES.forEach((key, biome) -> {
             var surface = biome.getSurface();
             if (surface != null) {
-                biomesSequence.add(surface);
+                biomesSequence.add(SurfaceRules.ifTrue(SurfaceRules.isBiome(biome.getKey()), surface));
                 reg.getAndIncrement();
             }
         });
