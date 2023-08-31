@@ -7,13 +7,17 @@
 package net.matez.wildnature.common.objects.blocks.fruit_bush.leaves;
 
 import net.matez.wildnature.common.objects.blocks.leaves.LeafConfig;
+import net.matez.wildnature.common.objects.blocks.plant.PlantFeature;
 import net.matez.wildnature.common.objects.items.fruits.Fruit;
+import net.matez.wildnature.common.registry.blocks.WNBlocks;
 import net.matez.wildnature.common.registry.items.WNItems;
 import net.matez.wildnature.common.registry.tabs.WNTabs;
 import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.material.MaterialColor;
 
-public enum FruitBushType {
+public enum FruitBushType implements PlantFeature {
     BILBERRY("bilberry","bilberry", MaterialColor.PLANT, false, new LeafConfig(1,false)
             .with(1,() -> WNItems.FRUITS.get(Fruit.BILBERRIES),1,2)),
     BLUEBERRY("blueberry","blueberry", MaterialColor.PLANT, false, new LeafConfig(1,false)
@@ -72,5 +76,10 @@ public enum FruitBushType {
 
     public CreativeModeTab getTab() {
         return tab;
+    }
+
+    @Override
+    public BlockState featureBlockState() {
+        return WNBlocks.FRUIT_BUSH_LEAVES.get(this).defaultBlockState().setValue(IntegerProperty.create("stage",0,1), 1);
     }
 }

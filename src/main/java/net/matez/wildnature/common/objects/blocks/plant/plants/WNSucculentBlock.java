@@ -1,6 +1,6 @@
 package net.matez.wildnature.common.objects.blocks.plant.plants;
 
-import net.matez.wildnature.common.objects.blocks.plant.BushType;
+import net.matez.wildnature.common.objects.blocks.plant.FlowerType;
 import net.matez.wildnature.common.objects.blocks.plant.WNBushConfiguredBlock;
 import net.matez.wildnature.data.block_models.plants.WNBlockModel_Succulent;
 import net.matez.wildnature.data.blockstates.plants.WNBlockstate_Succulent;
@@ -9,11 +9,11 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 
 public class WNSucculentBlock extends WNBushConfiguredBlock {
-    public WNSucculentBlock(ResourceLocation location, Properties properties, BushType type) {
+    public WNSucculentBlock(ResourceLocation location, Properties properties, FlowerType type) {
         super(location, properties, type);
     }
 
-    public WNSucculentBlock(ResourceLocation location, Properties properties, Item.Properties itemProperties, BushType type) {
+    public WNSucculentBlock(ResourceLocation location, Properties properties, Item.Properties itemProperties, FlowerType type) {
         super(location, properties, itemProperties, type);
     }
 

@@ -7,10 +7,15 @@
 package net.matez.wildnature.common.objects.blocks.plant;
 
 import net.matez.wildnature.common.objects.blocks.plant.config.BushConfig;
-import net.minecraft.world.level.block.Block;
+import net.matez.wildnature.common.objects.blocks.setup.WNBlock;
+import net.matez.wildnature.common.registry.biomes.WNBiome;
+import net.matez.wildnature.common.registry.blocks.WNBlocks;
+import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.Nullable;
 
-public enum BushType {
+import static net.matez.wildnature.common.objects.blocks.setup.WNBlockProperties.FLOWERING;
+
+public enum FlowerType implements PlantFeature {
     ANEMONE(FlowerColor.WHITE,0xFFFFFF,BushVariant.ANEMONE),
     ANTHURIUM_PINK(FlowerColor.PINK,0xEA5D84, BushVariant.ANTHURIUM),
     ANTHURIUM_RED(FlowerColor.RED,0xB51026, BushVariant.ANTHURIUM),
@@ -191,21 +196,21 @@ public enum BushType {
     private final BushVariant variant;
     private String item;
 
-    private BushType(FlowerColor colorType, int color, BushVariant variant){
+    private FlowerType(FlowerColor colorType, int color, BushVariant variant){
         this.colorType = colorType;
         this.color = color;
         this.variant = variant;
         this.variantName = null;
     }
 
-    private BushType(String variantName, int color, BushVariant variant) {
+    private FlowerType(String variantName, int color, BushVariant variant) {
         this.colorType = null;
         this.color = color;
         this.variant = variant;
         this.variantName = variantName;
     }
 
-    private BushType(FlowerColor colorType, int color, BushVariant variant, int tries, int xzSpred, int ySpread){
+    private FlowerType(FlowerColor colorType, int color, BushVariant variant, int tries, int xzSpred, int ySpread){
         this.colorType = colorType;
         this.color = color;
         this.variant = variant;
@@ -215,7 +220,7 @@ public enum BushType {
         this.ySpread = ySpread;
     }
 
-    private BushType(String variantName, int color, BushVariant variant, int tries, int xzSpred, int ySpread){
+    private FlowerType(String variantName, int color, BushVariant variant, int tries, int xzSpred, int ySpread){
         this.colorType = null;
         this.color = color;
         this.variant = variant;
@@ -225,7 +230,7 @@ public enum BushType {
         this.ySpread = ySpread;
     }
 
-    BushType(FlowerColor colorType, int color, BushVariant variant, String item) {
+    FlowerType(FlowerColor colorType, int color, BushVariant variant, String item) {
         this(colorType, color, variant);
         this.item = item;
     }
@@ -279,4 +284,13 @@ public enum BushType {
     private int tries =32;
     private int xzSpread = 5;
     private int ySpread = 2;
+
+    @Override
+    public BlockState featureBlockState() {
+        BlockState state = WNBlocks.FLOWERS.get(this).defaultBlockState();
+        if (state.getValue(FLOWERING) != null) {
+            return state.setValue(FLOWERING, true);
+        }
+        return state;
+    }
 }

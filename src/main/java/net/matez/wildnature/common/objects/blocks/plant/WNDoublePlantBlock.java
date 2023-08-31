@@ -26,7 +26,6 @@ import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -44,11 +43,11 @@ public class WNDoublePlantBlock extends WNBushConfiguredBlock {
 
    public static final EnumProperty<DoubleBlockHalf> HALF = BlockStateProperties.DOUBLE_BLOCK_HALF;
 
-   public WNDoublePlantBlock(ResourceLocation location, Properties properties, BushType type) {
+   public WNDoublePlantBlock(ResourceLocation location, Properties properties, FlowerType type) {
       super(location, properties, type);
    }
 
-   public WNDoublePlantBlock(ResourceLocation location, Properties properties, Item.Properties itemProperties, BushType type) {
+   public WNDoublePlantBlock(ResourceLocation location, Properties properties, Item.Properties itemProperties, FlowerType type) {
       super(location, properties, itemProperties, type);
    }
 

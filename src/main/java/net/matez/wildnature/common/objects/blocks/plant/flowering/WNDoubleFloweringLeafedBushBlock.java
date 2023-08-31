@@ -1,17 +1,17 @@
 package net.matez.wildnature.common.objects.blocks.plant.flowering;
 
-import net.matez.wildnature.common.objects.blocks.plant.BushType;
+import net.matez.wildnature.common.objects.blocks.plant.FlowerType;
 import net.matez.wildnature.data.block_models.plants.WNBlockModel_FloweringBush;
 import net.matez.wildnature.data.block_models.plants.WNBlockModel_LeafedFloweringBush;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 
 public class WNDoubleFloweringLeafedBushBlock extends WNDoubleFloweringBushBlock{
-    public WNDoubleFloweringLeafedBushBlock(ResourceLocation location, Properties properties, BushType type) {
+    public WNDoubleFloweringLeafedBushBlock(ResourceLocation location, Properties properties, FlowerType type) {
         super(location, properties, type);
     }
 
-    public WNDoubleFloweringLeafedBushBlock(ResourceLocation location, Properties properties, Item.Properties itemProperties, BushType type) {
+    public WNDoubleFloweringLeafedBushBlock(ResourceLocation location, Properties properties, Item.Properties itemProperties, FlowerType type) {
         super(location, properties, itemProperties, type);
     }
 

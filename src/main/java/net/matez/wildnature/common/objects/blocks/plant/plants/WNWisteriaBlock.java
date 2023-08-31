@@ -6,33 +6,27 @@
 
 package net.matez.wildnature.common.objects.blocks.plant.plants;
 
-import net.matez.wildnature.common.objects.blocks.plant.BushType;
-import net.matez.wildnature.common.registry.particles.WNParticles;
-import net.matez.wildnature.common.util.WNUtil;
+import net.matez.wildnature.common.objects.blocks.plant.FlowerType;
 import net.matez.wildnature.data.block_models.plants.wisteria.WNBlockModel_WisteriaBottom;
 import net.matez.wildnature.data.block_models.plants.wisteria.WNBlockModel_WisteriaSide;
 import net.matez.wildnature.data.blockstates.plants.WNBlockstate_Wisteria;
 import net.matez.wildnature.data.setup.base.WNResource;
-import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 import java.util.Map;
-import java.util.Random;
 
 public class WNWisteriaBlock extends WNVerticalBushBlock{
     public static Map<Direction, VoxelShape> SHAPE = createFacingShape(16,3);
 
-    public WNWisteriaBlock(ResourceLocation location, Properties properties, BushType type) {
+    public WNWisteriaBlock(ResourceLocation location, Properties properties, FlowerType type) {
         super(location, properties, type);
     }
 
-    public WNWisteriaBlock(ResourceLocation location, Properties properties, Item.Properties itemProperties, BushType type) {
+    public WNWisteriaBlock(ResourceLocation location, Properties properties, Item.Properties itemProperties, FlowerType type) {
         super(location, properties, itemProperties, type);
     }
 

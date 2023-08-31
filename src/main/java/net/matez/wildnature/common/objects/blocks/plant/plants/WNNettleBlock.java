@@ -1,6 +1,6 @@
 package net.matez.wildnature.common.objects.blocks.plant.plants;
 
-import net.matez.wildnature.common.objects.blocks.plant.BushType;
+import net.matez.wildnature.common.objects.blocks.plant.FlowerType;
 import net.matez.wildnature.common.objects.blocks.plant.WNBushConfiguredBlock;
 import net.matez.wildnature.common.util.WNUtil;
 import net.matez.wildnature.data.block_models.plants.WNBlockModel_FloweringBushRetinted;
@@ -16,11 +16,11 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 
 public class WNNettleBlock extends WNBushConfiguredBlock {
-    public WNNettleBlock(ResourceLocation location, Properties properties, BushType type) {
+    public WNNettleBlock(ResourceLocation location, Properties properties, FlowerType type) {
         super(location, properties, type);
     }
 
-    public WNNettleBlock(ResourceLocation location, Properties properties, Item.Properties itemProperties, BushType type) {
+    public WNNettleBlock(ResourceLocation location, Properties properties, Item.Properties itemProperties, FlowerType type) {
         super(location, properties, itemProperties, type);
     }
 

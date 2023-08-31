@@ -6,7 +6,11 @@
 
 package net.matez.wildnature.common.objects.blocks.mushrooms;
 
-public enum Mushroom {
+import net.matez.wildnature.common.objects.blocks.plant.PlantFeature;
+import net.matez.wildnature.common.registry.blocks.WNBlocks;
+import net.minecraft.world.level.block.state.BlockState;
+
+public enum Mushroom implements PlantFeature {
     BIRCH_BOLETE("birch_bolete_mushroom",MushroomType.NORMAL),
     BOLETUS("boletus_mushroom",MushroomType.NORMAL),
     CHAMPIGNON("champignon_mushroom",MushroomType.NORMAL),
@@ -44,5 +48,10 @@ public enum Mushroom {
 
     public boolean isPoisonous() {
         return isPoisonous;
+    }
+
+    @Override
+    public BlockState featureBlockState() {
+        return WNBlocks.MUSHROOMS.get(this).defaultBlockState();
     }
 }

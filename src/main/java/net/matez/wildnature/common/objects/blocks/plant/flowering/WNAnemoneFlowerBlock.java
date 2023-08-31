@@ -1,8 +1,7 @@
 package net.matez.wildnature.common.objects.blocks.plant.flowering;
 
-import net.matez.wildnature.common.objects.blocks.plant.BushType;
+import net.matez.wildnature.common.objects.blocks.plant.FlowerType;
 import net.matez.wildnature.common.objects.blocks.plant.WNBushConfiguredBlock;
-import net.matez.wildnature.common.objects.blocks.setup.WNBlock;
 import net.matez.wildnature.common.objects.blocks.setup.WNBlockProperties;
 import net.matez.wildnature.common.objects.tags.WNTags;
 import net.matez.wildnature.common.util.WNUtil;
@@ -27,11 +26,11 @@ import java.util.Random;
 public class WNAnemoneFlowerBlock extends WNBushConfiguredBlock {
     public static final IntegerProperty STAGE = WNBlockProperties.ANEMONE_STAGE;
 
-    public WNAnemoneFlowerBlock(ResourceLocation location, Properties properties, BushType type) {
+    public WNAnemoneFlowerBlock(ResourceLocation location, Properties properties, FlowerType type) {
         super(location, properties, type);
     }
 
-    public WNAnemoneFlowerBlock(ResourceLocation location, Properties properties, Item.Properties itemProperties, BushType type) {
+    public WNAnemoneFlowerBlock(ResourceLocation location, Properties properties, Item.Properties itemProperties, FlowerType type) {
         super(location, properties, itemProperties, type);
     }
 

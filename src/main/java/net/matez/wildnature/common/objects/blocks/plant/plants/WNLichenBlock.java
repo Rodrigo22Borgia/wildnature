@@ -1,6 +1,6 @@
 package net.matez.wildnature.common.objects.blocks.plant.plants;
 
-import net.matez.wildnature.common.objects.blocks.plant.BushType;
+import net.matez.wildnature.common.objects.blocks.plant.FlowerType;
 import net.matez.wildnature.data.block_models.plants.WNBlockModel_VerticalBush;
 import net.matez.wildnature.data.blockstates.plants.WNBlockstate_Lichen;
 import net.matez.wildnature.data.setup.base.WNResource;
@@ -8,11 +8,11 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 
 public class WNLichenBlock extends WNVerticalBushBlock{
-    public WNLichenBlock(ResourceLocation location, Properties properties, BushType type) {
+    public WNLichenBlock(ResourceLocation location, Properties properties, FlowerType type) {
         super(location, properties, type);
     }
 
-    public WNLichenBlock(ResourceLocation location, Properties properties, Item.Properties itemProperties, BushType type) {
+    public WNLichenBlock(ResourceLocation location, Properties properties, Item.Properties itemProperties, FlowerType type) {
         super(location, properties, itemProperties, type);
     }
 

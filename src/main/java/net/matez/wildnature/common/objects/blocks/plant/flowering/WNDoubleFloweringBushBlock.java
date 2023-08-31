@@ -1,6 +1,6 @@
 package net.matez.wildnature.common.objects.blocks.plant.flowering;
 
-import net.matez.wildnature.common.objects.blocks.plant.BushType;
+import net.matez.wildnature.common.objects.blocks.plant.FlowerType;
 import net.matez.wildnature.common.objects.blocks.plant.WNDoublePlantBlock;
 import net.matez.wildnature.common.objects.blocks.setup.WNBlockProperties;
 import net.matez.wildnature.common.objects.tags.WNTags;
@@ -31,11 +31,11 @@ import java.util.Random;
 public class WNDoubleFloweringBushBlock extends WNDoublePlantBlock implements BonemealableBlock {
     public static final BooleanProperty FLOWERING = WNBlockProperties.FLOWERING;
 
-    public WNDoubleFloweringBushBlock(ResourceLocation location, Properties properties, BushType type) {
+    public WNDoubleFloweringBushBlock(ResourceLocation location, Properties properties, FlowerType type) {
         super(location, properties,type);
     }
 
-    public WNDoubleFloweringBushBlock(ResourceLocation location, Properties properties, Item.Properties itemProperties, BushType type) {
+    public WNDoubleFloweringBushBlock(ResourceLocation location, Properties properties, Item.Properties itemProperties, FlowerType type) {
         super(location, properties, itemProperties,type);
     }
 

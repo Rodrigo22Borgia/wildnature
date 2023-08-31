@@ -1,8 +1,11 @@
 package net.matez.wildnature.common.objects.blocks.leaves;
 
+import net.matez.wildnature.common.objects.blocks.plant.PlantFeature;
+import net.matez.wildnature.common.registry.blocks.WNBlocks;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.MaterialColor;
 
-public enum LeafBushType {
+public enum LeafBushType implements PlantFeature {
     LARGE_BUSH("large"),
     DENSE_BUSH("dense"),
     SMALL_BUSH("small");
@@ -24,5 +27,10 @@ public enum LeafBushType {
 
     public MaterialColor getColor() {
         return color;
+    }
+
+    @Override
+    public BlockState featureBlockState() {
+        return WNBlocks.BUSH_LEAVES.get(this).defaultBlockState();
     }
 }

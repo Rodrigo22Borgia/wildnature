@@ -1,6 +1,6 @@
 package net.matez.wildnature.common.objects.blocks.plant.flowering;
 
-import net.matez.wildnature.common.objects.blocks.plant.BushType;
+import net.matez.wildnature.common.objects.blocks.plant.FlowerType;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.damagesource.DamageSource;
@@ -10,11 +10,11 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 
 public class WNThistleBlock extends WNFloweringBushBlock{
-    public WNThistleBlock(ResourceLocation location, Properties properties, BushType type) {
+    public WNThistleBlock(ResourceLocation location, Properties properties, FlowerType type) {
         super(location, properties, type);
     }
 
-    public WNThistleBlock(ResourceLocation location, Properties properties, Item.Properties itemProperties, BushType type) {
+    public WNThistleBlock(ResourceLocation location, Properties properties, Item.Properties itemProperties, FlowerType type) {
         super(location, properties, itemProperties, type);
     }
 

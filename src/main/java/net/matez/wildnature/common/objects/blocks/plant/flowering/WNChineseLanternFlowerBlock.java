@@ -1,6 +1,6 @@
 package net.matez.wildnature.common.objects.blocks.plant.flowering;
 
-import net.matez.wildnature.common.objects.blocks.plant.BushType;
+import net.matez.wildnature.common.objects.blocks.plant.FlowerType;
 import net.matez.wildnature.common.objects.blocks.plant.WNDoublePlantBlock;
 import net.matez.wildnature.common.objects.blocks.setup.WNBlockProperties;
 import net.matez.wildnature.common.objects.tags.WNTags;
@@ -29,11 +29,11 @@ import java.util.Random;
 public class WNChineseLanternFlowerBlock extends WNDoublePlantBlock {
     public static final IntegerProperty STAGE = WNBlockProperties.CHINESE_LANTERN_STAGE;
 
-    public WNChineseLanternFlowerBlock(ResourceLocation location, Properties properties, BushType type) {
+    public WNChineseLanternFlowerBlock(ResourceLocation location, Properties properties, FlowerType type) {
         super(location, properties, type);
     }
 
-    public WNChineseLanternFlowerBlock(ResourceLocation location, Properties properties, Item.Properties itemProperties, BushType type) {
+    public WNChineseLanternFlowerBlock(ResourceLocation location, Properties properties, Item.Properties itemProperties, FlowerType type) {
         super(location, properties, itemProperties, type);
     }
 

@@ -6,9 +6,8 @@
 
 package net.matez.wildnature.common.objects.blocks.plant.flowering;
 
-import net.matez.wildnature.common.objects.blocks.plant.BushType;
+import net.matez.wildnature.common.objects.blocks.plant.FlowerType;
 import net.matez.wildnature.common.objects.blocks.plant.WNBushConfiguredBlock;
-import net.matez.wildnature.common.objects.blocks.setup.WNBlock;
 import net.matez.wildnature.common.objects.blocks.setup.WNBlockProperties;
 import net.matez.wildnature.common.objects.tags.WNTags;
 import net.matez.wildnature.common.util.WNUtil;
@@ -33,11 +32,11 @@ import java.util.Random;
 public class WNFloweringBushBlock extends WNBushConfiguredBlock {
     public static final BooleanProperty FLOWERING = WNBlockProperties.FLOWERING;
 
-    public WNFloweringBushBlock(ResourceLocation location, Properties properties, BushType type) {
+    public WNFloweringBushBlock(ResourceLocation location, Properties properties, FlowerType type) {
         super(location, properties,type);
     }
 
-    public WNFloweringBushBlock(ResourceLocation location, Properties properties, Item.Properties itemProperties, BushType type) {
+    public WNFloweringBushBlock(ResourceLocation location, Properties properties, Item.Properties itemProperties, FlowerType type) {
         super(location, properties, itemProperties,type);
     }
 
@@ -100,7 +99,7 @@ public class WNFloweringBushBlock extends WNBushConfiguredBlock {
 
     @Override
     public @Nullable BlockColor getBlockColor() {
-        if(this.getType() == BushType.HEATHER_MIXED || this.getType() == BushType.HEATHER_YELLOW){
+        if(this.getType() == FlowerType.HEATHER_MIXED || this.getType() == FlowerType.HEATHER_YELLOW){
             return (state, getter, pos, num) -> {
                 return 0xB8F10C;
             };

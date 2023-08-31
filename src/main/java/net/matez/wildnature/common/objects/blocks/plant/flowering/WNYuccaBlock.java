@@ -6,8 +6,7 @@
 
 package net.matez.wildnature.common.objects.blocks.plant.flowering;
 
-import net.matez.wildnature.common.objects.blocks.plant.BushType;
-import net.matez.wildnature.common.objects.blocks.setup.WNBlock;
+import net.matez.wildnature.common.objects.blocks.plant.FlowerType;
 import net.matez.wildnature.data.block_models.plants.WNBlockModel_FloweringBush;
 import net.matez.wildnature.data.block_models.plants.WNBlockModel_TintedCross;
 import net.matez.wildnature.data.blockstates.plants.WNBlockstate_Yucca;
@@ -36,11 +35,11 @@ public class WNYuccaBlock extends WNDoubleFloweringBushBlock{
     private static final double OFFSET = 3D;
     protected static final VoxelShape FULL_SHAPE = Block.box(OFFSET, 0.0D, OFFSET, 16.0D - OFFSET, 16.0D, 16.0D - OFFSET);
 
-    public WNYuccaBlock(ResourceLocation location, Properties properties, BushType type) {
+    public WNYuccaBlock(ResourceLocation location, Properties properties, FlowerType type) {
         super(location, properties, type);
     }
 
-    public WNYuccaBlock(ResourceLocation location, Properties properties, Item.Properties itemProperties, BushType type) {
+    public WNYuccaBlock(ResourceLocation location, Properties properties, Item.Properties itemProperties, FlowerType type) {
         super(location, properties, itemProperties, type);
     }
 

@@ -7,14 +7,19 @@
 package net.matez.wildnature.common.objects.blocks.fruit_bush.plants;
 
 import net.matez.wildnature.common.objects.blocks.leaves.LeafConfig;
+import net.matez.wildnature.common.objects.blocks.plant.PlantFeature;
 import net.matez.wildnature.common.objects.items.fruits.Fruit;
 import net.matez.wildnature.common.registry.blocks.WNBlocks;
 import net.matez.wildnature.common.registry.items.WNItems;
 import net.matez.wildnature.common.registry.tabs.WNTabs;
 import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.material.MaterialColor;
 
-public enum FruitPlantType {
+import static net.matez.wildnature.common.objects.blocks.setup.WNBlockProperties.FLOWERING;
+
+public enum FruitPlantType implements PlantFeature {
     BELLADONNA("belladonna","belladonna", MaterialColor.PLANT, true, new FruitBushConfig(4)
             .with(0, new FruitBushConfig.StageConfig().makeAfterFruitCollect())
             .with(1, new FruitBushConfig.StageConfig())
@@ -145,4 +150,10 @@ public enum FruitPlantType {
     public CreativeModeTab getTab() {
         return tab;
     }
+
+    @Override
+    public BlockState featureBlockState() {
+        int stages = this.getConfig().getStages()-1;
+            return WNBlocks.FRUIT_BUSH_PLANTS.get(this).defaultBlockState().setValue(IntegerProperty.create("stage",0,stages), stages);
+        }
 }

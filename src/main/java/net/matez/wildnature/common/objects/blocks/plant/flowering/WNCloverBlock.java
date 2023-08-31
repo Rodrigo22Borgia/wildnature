@@ -6,7 +6,7 @@
 
 package net.matez.wildnature.common.objects.blocks.plant.flowering;
 
-import net.matez.wildnature.common.objects.blocks.plant.BushType;
+import net.matez.wildnature.common.objects.blocks.plant.FlowerType;
 import net.matez.wildnature.common.objects.blocks.plant.WNBushConfiguredBlock;
 import net.matez.wildnature.common.objects.blocks.setup.WNBlockProperties;
 import net.matez.wildnature.common.util.WNUtil;
@@ -39,11 +39,11 @@ public class WNCloverBlock extends WNBushConfiguredBlock {
     protected static final VoxelShape SHAPE_STAGE_1 = Block.box(OFFSET, 0.0D, OFFSET, 16.0D - OFFSET, 6.0D, 16.0D - OFFSET);
     protected static final VoxelShape SHAPE_STAGE_2 = Block.box(OFFSET, 0.0D, OFFSET, 16.0D - OFFSET, 9.0D, 16.0D - OFFSET);
 
-    public WNCloverBlock(ResourceLocation location, Properties properties, BushType type) {
+    public WNCloverBlock(ResourceLocation location, Properties properties, FlowerType type) {
         super(location, properties, type);
     }
 
-    public WNCloverBlock(ResourceLocation location, Properties properties, Item.Properties itemProperties, BushType type) {
+    public WNCloverBlock(ResourceLocation location, Properties properties, Item.Properties itemProperties, FlowerType type) {
         super(location, properties, itemProperties, type);
     }
 

@@ -6,19 +6,18 @@
 
 package net.matez.wildnature.common.objects.blocks.plant.flowering;
 
-import net.matez.wildnature.common.objects.blocks.plant.BushType;
-import net.matez.wildnature.common.objects.blocks.setup.WNBlock;
+import net.matez.wildnature.common.objects.blocks.plant.FlowerType;
 import net.matez.wildnature.data.block_models.plants.WNBlockModel_BigBush;
 import net.matez.wildnature.data.block_models.plants.WNBlockModel_BigBushFlowering;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 
 public class WNBigBushBlock extends WNFloweringBushBlock{
-    public WNBigBushBlock(ResourceLocation location, Properties properties, BushType type) {
+    public WNBigBushBlock(ResourceLocation location, Properties properties, FlowerType type) {
         super(location, properties, type);
     }
 
-    public WNBigBushBlock(ResourceLocation location, Properties properties, Item.Properties itemProperties, BushType type) {
+    public WNBigBushBlock(ResourceLocation location, Properties properties, Item.Properties itemProperties, FlowerType type) {
         super(location, properties, itemProperties, type);
     }
 

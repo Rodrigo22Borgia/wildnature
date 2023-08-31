@@ -6,7 +6,7 @@
 
 package net.matez.wildnature.common.objects.blocks.plant.plants;
 
-import net.matez.wildnature.common.objects.blocks.plant.BushType;
+import net.matez.wildnature.common.objects.blocks.plant.FlowerType;
 import net.matez.wildnature.common.objects.blocks.plant.WNBushConfiguredBlock;
 import net.matez.wildnature.common.objects.tags.WNTags;
 import net.matez.wildnature.common.util.WNUtil;
@@ -36,11 +36,11 @@ public class WNStranglingVineBlock extends WNBushConfiguredBlock {
     private static final double OFFSET = 3D;
     protected static final VoxelShape SHAPE = Block.box(OFFSET, 0.0D, OFFSET, 16.0D - OFFSET, 16.0D, 16.0D - OFFSET);
 
-    public WNStranglingVineBlock(ResourceLocation location, Properties properties, BushType type) {
+    public WNStranglingVineBlock(ResourceLocation location, Properties properties, FlowerType type) {
         super(location, properties, type);
     }
 
-    public WNStranglingVineBlock(ResourceLocation location, Properties properties, Item.Properties itemProperties, BushType type) {
+    public WNStranglingVineBlock(ResourceLocation location, Properties properties, Item.Properties itemProperties, FlowerType type) {
         super(location, properties, itemProperties, type);
     }
 

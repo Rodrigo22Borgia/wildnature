@@ -1,6 +1,6 @@
 package net.matez.wildnature.common.objects.blocks.plant.flowering;
 
-import net.matez.wildnature.common.objects.blocks.plant.BushType;
+import net.matez.wildnature.common.objects.blocks.plant.FlowerType;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
@@ -10,11 +10,11 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 
 public class WNSpiderGrassBlock extends WNFloweringBushBlock {
-    public WNSpiderGrassBlock(ResourceLocation location, Properties properties, BushType type) {
+    public WNSpiderGrassBlock(ResourceLocation location, Properties properties, FlowerType type) {
         super(location, properties, type);
     }
 
-    public WNSpiderGrassBlock(ResourceLocation location, Properties properties, Item.Properties itemProperties, BushType type) {
+    public WNSpiderGrassBlock(ResourceLocation location, Properties properties, Item.Properties itemProperties, FlowerType type) {
         super(location, properties, itemProperties, type);
     }
 

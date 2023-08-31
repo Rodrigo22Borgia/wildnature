@@ -6,7 +6,6 @@
 
 package net.matez.wildnature.common.objects.blocks.plant;
 
-import net.matez.wildnature.common.objects.blocks.setup.WNBlock;
 import net.matez.wildnature.common.objects.tags.WNTags;
 import net.matez.wildnature.data.block_models.plants.WNBlockModel_TintedCross;
 import net.matez.wildnature.data.blockstates.WNBlockstate_Cube;
@@ -32,16 +31,16 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 
 public class WNBushConfiguredBlock extends WNBushBlock implements net.minecraftforge.common.IPlantable {
-    private BushType type;
+    private FlowerType type;
     private static final double OFFSET = 3D;
     protected static final VoxelShape SHAPE = Block.box(OFFSET, 0.0D, OFFSET, 16.0D - OFFSET, 10.0D, 16.0D - OFFSET);
 
-    public WNBushConfiguredBlock(ResourceLocation location, Properties properties, BushType type) {
+    public WNBushConfiguredBlock(ResourceLocation location, Properties properties, FlowerType type) {
         super(location, properties,type.getConfig());
         this.type = type;
     }
 
-    public WNBushConfiguredBlock(ResourceLocation location, Properties properties, Item.Properties itemProperties, BushType type) {
+    public WNBushConfiguredBlock(ResourceLocation location, Properties properties, Item.Properties itemProperties, FlowerType type) {
         super(location, properties, itemProperties,type.getConfig());
         this.type = type;
     }
@@ -54,7 +53,7 @@ public class WNBushConfiguredBlock extends WNBushBlock implements net.minecraftf
         return !p_51032_.canSurvive(p_51035_, p_51036_) ? Blocks.AIR.defaultBlockState() : super.updateShape(p_51032_, p_51033_, p_51034_, p_51035_, p_51036_, p_51037_);
     }
 
-    public BushType getType() {
+    public FlowerType getType() {
         return type;
     }
 

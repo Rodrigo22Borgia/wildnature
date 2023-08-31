@@ -6,7 +6,7 @@
 
 package net.matez.wildnature.common.objects.blocks.plant.flowering;
 
-import net.matez.wildnature.common.objects.blocks.plant.BushType;
+import net.matez.wildnature.common.objects.blocks.plant.FlowerType;
 import net.matez.wildnature.common.registry.items.WNItems;
 import net.matez.wildnature.common.util.WNUtil;
 import net.minecraft.core.BlockPos;
@@ -21,11 +21,11 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 
 public class WNCottonBlock extends WNFloweringBushBlock{
-    public WNCottonBlock(ResourceLocation location, Properties properties, BushType type) {
+    public WNCottonBlock(ResourceLocation location, Properties properties, FlowerType type) {
         super(location, properties, type);
     }
 
-    public WNCottonBlock(ResourceLocation location, Properties properties, Item.Properties itemProperties, BushType type) {
+    public WNCottonBlock(ResourceLocation location, Properties properties, Item.Properties itemProperties, FlowerType type) {
         super(location, properties, itemProperties, type);
     }
 

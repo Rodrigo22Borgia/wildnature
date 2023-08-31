@@ -6,8 +6,7 @@
 
 package net.matez.wildnature.common.objects.blocks.plant.vines;
 
-import net.matez.wildnature.common.objects.blocks.plant.BushType;
-import net.matez.wildnature.common.objects.blocks.setup.WNBlock;
+import net.matez.wildnature.common.objects.blocks.plant.FlowerType;
 import net.matez.wildnature.common.objects.blocks.setup.WNBlockProperties;
 import net.matez.wildnature.common.objects.tags.WNTags;
 import net.matez.wildnature.common.registry.setup.WNRenderType;
@@ -30,15 +29,15 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Random;
 
 public class WNFloweringVineBlock extends WNAbstractVineBlock{
-    private BushType type;
+    private FlowerType type;
     public static final BooleanProperty FLOWERING = WNBlockProperties.FLOWERING;
 
-    public WNFloweringVineBlock(ResourceLocation location, Properties properties, BushType type) {
+    public WNFloweringVineBlock(ResourceLocation location, Properties properties, FlowerType type) {
         super(location, properties);
         this.type = type;
     }
 
-    public WNFloweringVineBlock(ResourceLocation location, Properties properties, Item.Properties itemProperties, BushType type) {
+    public WNFloweringVineBlock(ResourceLocation location, Properties properties, Item.Properties itemProperties, FlowerType type) {
         super(location, properties, itemProperties);
         this.type = type;
     }
@@ -105,7 +104,7 @@ public class WNFloweringVineBlock extends WNAbstractVineBlock{
         return new WNItemModel_Generated(getRegName()).with("texture", this.getRegistryName().getNamespace() + ":blocks/" + getType().getVariant().getPath() + "/" + getType().getItem());
     }
 
-    public BushType getType() {
+    public FlowerType getType() {
         return type;
     }
 

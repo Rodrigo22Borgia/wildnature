@@ -44,11 +44,11 @@ public class WNTriplePlantBlock extends WNBushConfiguredBlock {
 
    public static final EnumProperty<TripleBlockHalf> HALF = WNBlockProperties.TRIPLE_BLOCK_HALF;
 
-   public WNTriplePlantBlock(ResourceLocation location, Properties properties, BushType type) {
+   public WNTriplePlantBlock(ResourceLocation location, Properties properties, FlowerType type) {
       super(location, properties, type);
    }
 
-   public WNTriplePlantBlock(ResourceLocation location, Properties properties, Item.Properties itemProperties, BushType type) {
+   public WNTriplePlantBlock(ResourceLocation location, Properties properties, Item.Properties itemProperties, FlowerType type) {
       super(location, properties, itemProperties, type);
    }
 

@@ -191,13 +191,13 @@ public enum BushSetup {
         return new WNCottonBlock(WNBlocks.location(variant.getVariant().getBaseName()),blockProp,itemProp,variant);
     })
     ;
-    private BushConstructor<BushType> constructor;
+    private BushConstructor<FlowerType> constructor;
 
-    BushSetup(BushConstructor<BushType> constructor) {
+    BushSetup(BushConstructor<FlowerType> constructor) {
         this.constructor = constructor;
     }
 
-    public BushConstructor<BushType> getConstructor() {
+    public BushConstructor<FlowerType> getConstructor() {
         return constructor;
     }
 }

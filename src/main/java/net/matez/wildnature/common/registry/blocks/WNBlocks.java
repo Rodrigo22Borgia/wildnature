@@ -27,7 +27,7 @@ import net.matez.wildnature.common.objects.blocks.leaves.WNBushLeafBlock;
 import net.matez.wildnature.common.objects.blocks.leaves.WNLeavesTypedBlock;
 import net.matez.wildnature.common.objects.blocks.mushrooms.*;
 import net.matez.wildnature.common.objects.blocks.ores.*;
-import net.matez.wildnature.common.objects.blocks.plant.BushType;
+import net.matez.wildnature.common.objects.blocks.plant.FlowerType;
 import net.matez.wildnature.common.objects.blocks.rocks.*;
 import net.matez.wildnature.common.objects.blocks.sand.SandType;
 import net.matez.wildnature.common.objects.blocks.sand.WNMudBlock;
@@ -622,6 +622,7 @@ public class WNBlocks {
                         .strength(0.2F)
                         .sound(SoundType.GRASS)
                         .noOcclusion()
+                        .noCollission()
                         .isValidSpawn(WNBlocks::ocelotOrParrot)
                         .isSuffocating(WNBlocks::never)
                         .isViewBlocking(WNBlocks::never),
@@ -631,7 +632,7 @@ public class WNBlocks {
         );
     });
     //################# FLOWERS
-    public static final LinkedHashMap<BushType, WNBlock> BUSHES = register(BushType.values(), (value) -> {
+    public static final LinkedHashMap<FlowerType, WNBlock> FLOWERS = register(FlowerType.values(), (value) -> {
         BlockBehaviour.Properties blockProp = BlockBehaviour.Properties.of(Material.PLANT, MaterialColor.PLANT)
                 .sound(SoundType.GRASS)
                 .instabreak()
@@ -654,6 +655,7 @@ public class WNBlocks {
                         .sound(SoundType.GRASS)
                         .randomTicks()
                         .noOcclusion()
+                        .noCollission()
                         .isSuffocating(WNBlocks::never)
                         .isViewBlocking(WNBlocks::never),
                 new Item.Properties()
@@ -822,6 +824,7 @@ public class WNBlocks {
         var prop = BlockBehaviour.Properties.of(Material.WATER_PLANT, value.getColor())
                 .sound(SoundType.LILY_PAD)
                 .noOcclusion()
+                .noCollission()
                 .instabreak()
                 .dynamicShape();
         var itemProp = new Item.Properties()

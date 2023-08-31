@@ -8,7 +8,7 @@ package net.matez.wildnature.common.objects.blocks.plant.plants;
 
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;
-import net.matez.wildnature.common.objects.blocks.plant.BushType;
+import net.matez.wildnature.common.objects.blocks.plant.FlowerType;
 import net.matez.wildnature.common.objects.blocks.plant.WNBushConfiguredBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -45,11 +45,11 @@ public abstract class WNVerticalBushBlock extends WNBushConfiguredBlock {
 
     public static final DirectionProperty FACING = BlockStateProperties.FACING;
 
-    public WNVerticalBushBlock(ResourceLocation location, Properties properties, BushType type) {
+    public WNVerticalBushBlock(ResourceLocation location, Properties properties, FlowerType type) {
         super(location, properties, type);
     }
 
-    public WNVerticalBushBlock(ResourceLocation location, Properties properties, Item.Properties itemProperties, BushType type) {
+    public WNVerticalBushBlock(ResourceLocation location, Properties properties, Item.Properties itemProperties, FlowerType type) {
         super(location, properties, itemProperties, type);
     }
 

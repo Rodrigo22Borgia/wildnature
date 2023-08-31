@@ -7,7 +7,7 @@
 package net.matez.wildnature.common.registry.tabs;
 
 import net.matez.wildnature.common.objects.blocks.grass.GrassType;
-import net.matez.wildnature.common.objects.blocks.plant.BushType;
+import net.matez.wildnature.common.objects.blocks.plant.FlowerType;
 import net.matez.wildnature.common.objects.blocks.rocks.RockType;
 import net.matez.wildnature.common.objects.blocks.underwater_plants.UnderwaterPlant;
 import net.matez.wildnature.common.objects.blocks.wood.LogType;
@@ -33,7 +33,7 @@ public class WNTabs {
     });
     public static final CreativeModeTab TAB_SURFACE_PLANTS = register("surface_plants", new CreativeModeTab(WildNature.modid + ".surface_plants") {
         public ItemStack makeIcon() {
-            return new ItemStack(WNBlocks.BUSHES.get(BushType.MATTHIOLA_PINK));
+            return new ItemStack(WNBlocks.FLOWERS.get(FlowerType.MATTHIOLA_PINK));
         }
     });
     public static final CreativeModeTab TAB_CAVES = register("caves", new CreativeModeTab(WildNature.modid + ".caves") {

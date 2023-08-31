@@ -1,6 +1,6 @@
 package net.matez.wildnature.common.objects.blocks.plant.plants;
 
-import net.matez.wildnature.common.objects.blocks.plant.BushType;
+import net.matez.wildnature.common.objects.blocks.plant.FlowerType;
 import net.matez.wildnature.common.objects.blocks.plant.WNTriplePlantBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
@@ -19,11 +19,11 @@ import org.jetbrains.annotations.Nullable;
 public class WNReedsBlock extends WNTriplePlantBlock implements SimpleWaterloggedBlock {
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
 
-    public WNReedsBlock(ResourceLocation location, Properties properties, BushType type) {
+    public WNReedsBlock(ResourceLocation location, Properties properties, FlowerType type) {
         super(location, properties, type);
     }
 
-    public WNReedsBlock(ResourceLocation location, Properties properties, Item.Properties itemProperties, BushType type) {
+    public WNReedsBlock(ResourceLocation location, Properties properties, Item.Properties itemProperties, FlowerType type) {
         super(location, properties, itemProperties, type);
     }
 
