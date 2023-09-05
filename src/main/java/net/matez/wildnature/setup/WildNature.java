@@ -13,7 +13,7 @@ import net.matez.wildnature.client.registry.screen.WNScreenMenuBindings;
 import net.matez.wildnature.client.registry.setup.WNClientRegistry;
 import net.matez.wildnature.common.log.WNLogger;
 import net.matez.wildnature.common.networking.WNNetworking;
-import net.matez.wildnature.common.objects.features.WNTreeRegistry;
+import net.matez.wildnature.common.objects.features.WNStructureRegistry;
 import net.matez.wildnature.common.objects.initializer.InitStage;
 import net.matez.wildnature.common.objects.initializer.NewInitializer;
 import net.matez.wildnature.common.objects.structures.WNStructures;
@@ -70,7 +70,7 @@ public class WildNature {
         initializer.prepare();
 
         final IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
-        WNTreeRegistry.init(modEventBus);
+        WNStructureRegistry.init(modEventBus);
 
         //# --- EVENT BUS ---
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::construct);

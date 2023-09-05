@@ -87,71 +87,70 @@ public class WNRegion extends Region {
             Climate.Parameter.span(0.56666666F, 0.7666667F),    //peaks
     };
 
-    protected static final Climate.Parameter COMMON_RARENESS_RANGE  =  Climate.Parameter.span(-1.0F, 0.35F);
-    protected static final Climate.Parameter RARE_RARENESS_RANGE  =  Climate.Parameter.span(0.35F, 1.0F);
+    protected static final Climate.Parameter COMMON_RARENESS_RANGE     =     Climate.Parameter.span(-1.0F, 0.35F);
+    protected static final Climate.Parameter RARE_RARENESS_RANGE     =     Climate.Parameter.span(0.35F, 1.0F);
 
-    protected final Climate.Parameter FROZEN_RANGE  =  this.temperatures[0];
-    protected final Climate.Parameter UNFROZEN_RANGE  =  Climate.Parameter.span(this.temperatures[1], this.temperatures[4]);
-    protected final Climate.Parameter mushroomFieldsContinentalness  =  Climate.Parameter.span(-1.2F, -1.05F);
-    protected final Climate.Parameter deepOceanContinentalness  =  Climate.Parameter.span(-1.05F, -0.455F);
-    protected final Climate.Parameter oceanContinentalness  =  Climate.Parameter.span(-0.455F, -0.19F);
-    protected final Climate.Parameter coastContinentalness  =  Climate.Parameter.span(-0.19F, -0.11F);
-    protected final Climate.Parameter inlandContinentalness  =  Climate.Parameter.span(-0.11F, 0.55F);
-    protected final Climate.Parameter nearInlandContinentalness  =  Climate.Parameter.span(-0.11F, 0.03F);
-    protected final Climate.Parameter midInlandContinentalness  =  Climate.Parameter.span(0.03F, 0.3F);
-    protected final Climate.Parameter farInlandContinentalness  =  Climate.Parameter.span(0.3F, 1.0F);
+    protected final Climate.Parameter FROZEN_RANGE     =     this.temperatures[0];
+    protected final Climate.Parameter UNFROZEN_RANGE     =     Climate.Parameter.span(this.temperatures[1], this.temperatures[4]);
+    protected final Climate.Parameter mushroomFieldsContinentalness     =     Climate.Parameter.span(-1.2F, -1.05F);
+    protected final Climate.Parameter deepOceanContinentalness     =     Climate.Parameter.span(-1.05F, -0.455F);
+    protected final Climate.Parameter oceanContinentalness     =     Climate.Parameter.span(-0.455F, -0.19F);
+    protected final Climate.Parameter coastContinentalness     =     Climate.Parameter.span(-0.19F, -0.11F);
+    protected final Climate.Parameter inlandContinentalness     =     Climate.Parameter.span(-0.11F, 0.55F);
+    protected final Climate.Parameter nearInlandContinentalness     =     Climate.Parameter.span(-0.11F, 0.03F);
+    protected final Climate.Parameter midInlandContinentalness     =     Climate.Parameter.span(0.03F, 0.3F);
+    protected final Climate.Parameter farInlandContinentalness     =     Climate.Parameter.span(0.3F, 1.0F);
 
-    private final ResourceKey<Biome>[][] OCEANS  =  new ResourceKey[][]{
+    private final ResourceKey<Biome>[][] OCEANS     =     new ResourceKey[][]{
             {Biomes.DEEP_FROZEN_OCEAN, Biomes.DEEP_COLD_OCEAN, Biomes.DEEP_OCEAN, Biomes.DEEP_LUKEWARM_OCEAN, Biomes.WARM_OCEAN},
             {Biomes.FROZEN_OCEAN,      Biomes.COLD_OCEAN,      Biomes.OCEAN,      Biomes.LUKEWARM_OCEAN,      Biomes.WARM_OCEAN}
     };
 
-    private final ResourceKey<Biome>[][][][] COASTLANDS  =  new ResourceKey[][][][]{
+    private final ResourceKey<Biome>[][][][] COASTLANDS = new ResourceKey[][][][]{
 //↓ Temperature \ Humidity →
     //LOWLAND
             {{//PLAINS
-                    {null                           , null                          , null                          , null                       , null},
-                    {null                           , null                          , null                          , null                       , null},
-                    {null                           , WNBiomes.HornbeamForest       , null                          , WNBiomes.Fields            , WNBiomes.Wetlands},
-                    {null                           , null                          , null                          , WNBiomes.MahoganyRainforest, WNBiomes.MangroveForest},
-                    {null                           , WNBiomes.BaobabSavanna        , null                          , WNBiomes.BananaThicket     , null}},
+                    {null, null, null, null, null},
+                    {null, null, null, null, null},
+                    {null, null, null, null, null},
+                    {null, null, null, null, null},
+                    {null, null, null, null, null}},
 
             {//HILLSIDES (small - ignores continentalness)
-                    {null                           , null                          , null                          , null                       , null},
-                    {null                           , null                          , null                          , null                       , null},
-                    {null                           , null                          , null                          , null                       , null},
-                    {null                           , null                          , null                          , null                       , null},
-                    {null                           , null                          , null                          , null                       , null}},
+                    {null, null, null                        , null, null},
+                    {null, null, WNBiomes.AutumnalMapleForest, null, null},
+                    {null, null, WNBiomes.AspenGrove         , null, null},
+                    {null, null, null                        , null, null},
+                    {null, null, null                        , null, null}},
 
             {//HILLS
-                    {null                           , null                          , null                          , null                       , null},
-                    {null                           , null                          , null                          , null                       , null},
-                    {null                           , null                          , null                          , null                       , null},
-                    {null                           , null                          , null                          , null                       , null},
-                    {null                           , null                          , null                          , null                       , null}}},
+                    {null, null, null, null, null},
+                    {null, null, null, null, null},
+                    {null, null, null, null, null},
+                    {null, null, null, null, null},
+                    {null, null, null, null, null}}},
 
     //HIGHLAND
             {{//PLATEAUS
-
-                    {null                           , null                          , null                          , null                       , null},
-                    {null                           , null                          , null                          , WNBiomes.CedarForest       , null},
-                    {null                           , WNBiomes.BeechForest          , WNBiomes.AutumnalMapleForest  , WNBiomes.CherryParadise    , null},
-                    {null                           , WNBiomes.WoodedJacarandaMeadow, WNBiomes.WoodedJacarandaMeadow, null                       , WNBiomes.Orchard},
-                    {null                           , null                          , null                          , null                       , null}},
+                    {null, null, null, null, null},
+                    {null, null, null, null, null},
+                    {null, null, null, null, null},
+                    {null, null, null, null, null},
+                    {null, null, null, null, null}},
 
             {//MOUNTAINS (small - ignores continentalness)
-                    {null                           , null                          , null                          , null                       , null},
-                    {null                           , null                          , null                          , null                       , null},
-                    {null                           , null                          , null                          , null                       , null},
-                    {null                           , null                          , null                          , null                       , null},
-                    {null                           , null                          , null                          , null                       , null}},
+                    {null, null, null, null, null},
+                    {null, null, null, null, null},
+                    {null, null, null, null, null},
+                    {null, null, null, null, null},
+                    {null, null, null, null, null}},
 
             {//PEAKS
-                    {null                           , null                          , null                          , null                       , null},
-                    {null                           , null                          , null                          , null                       , null},
-                    {null                           , null                          , null                          , null                       , null},
-                    {null                           , null                          , null                          , null                       , null},
-                    {null                           , null                          , null                          , null                       , null}}}
+                    {null, null, null, null, null},
+                    {null, null, null, null, null},
+                    {null, null, null, null, null},
+                    {null, null, null, null, null},
+                    {null, null, null, null, null}}}
     };
 
 
@@ -159,47 +158,47 @@ public class WNRegion extends Region {
 //↓ Temperature \ Humidity →
     //LOWLAND
             {{//PLAINS
-                    {null                           , null                          , null                          , null                       , null},
-                    {null                           , null                          , null                          , null                       , null},
-                    {null                           , null                          , WNBiomes.RedwoodForest        , null                       , null},
-                    {null                           , null                          , null                          , null                       , null},
-                    {null                           , null                          , null                          , null                       , null}},
+                    {null, null, null, null, null},
+                    {null, null, null, null, null},
+                    {null, null, null, null, null},
+                    {null, null, null, null, null},
+                    {null, null, null, null, null}},
 
             {//HILLSIDES (ignores continentalness)
-                    {null                           , null                          , null                          , null                       , null},
-                    {WNBiomes.MapleForest           , null                          , WNBiomes.PineMixedForest      , null                       , null},
-                    {null                           , null                          , WNBiomes.HazelFields          , null                       , null},
-                    {null                           , null                          , null                          , null                       , null},
-                    {null                           , null                          , null                          , null                       , null}},
+                    {null, null, null, null, null},
+                    {null, null, null, null, null},
+                    {null, null, null, null, null},
+                    {null, null, null, null, null},
+                    {null, null, null, null, null}},
 
             {//HILLS
-                    {null                           , null                          , null                          , null                       , null},
-                    {null                           , null                          , null                          , null                       , null},
-                    {null                           , null                          , null                          , null                       , null},
-                    {null                           , null                          , null                          , null                       , null},
-                    {null                           , null                          , null                          , null                       , null}}},
+                    {null, null, null, null, null},
+                    {null, null, null, null, null},
+                    {null, null, null, null, null},
+                    {null, null, null, null, null},
+                    {null, null, null, null, null}}},
 
     //HIGHLAND
             {{//VALLEYS - can be quite cliffy
-                    {null                           , null                          , null                          , null                       , null},
-                    {null                           , null                          , WNBiomes.SeasonalTaiga        , null                       , null},
-                    {null                           , null                          , null                          , WNBiomes.GoldenWoods       , null},
-                    {WNBiomes.CitrusOrchard         , null                          , null                          , WNBiomes.EucalyptusForest  , WNBiomes.Rainforest},
-                    {WNBiomes.Shrublands            , WNBiomes.OliveGarden          , null                          , WNBiomes.EucalyptusForest  , WNBiomes.RainforestMoor}},
+                    {null, null, null, null, null},
+                    {null, null, null, null, null},
+                    {null, null, null, null, null},
+                    {null, null, null, null, null},
+                    {null, null, null, null, null}},
 
             {//MOUNTAINS (ignores continentalness)
-                    {null                           , null                          , WNBiomes.TatraMountains       , null                       , null},
-                    {null                           , null                          , null                          , null                       , null},
-                    {null                           , null                          , null                          , WNBiomes.AspenGrove        , null},
-                    {null                           , null                          , null                          , null                       , null},
-                    {null                           , WNBiomes.OliveHills           , null                          , null                       , null}},
+                    {null, null, null, null, null},
+                    {null, null, null, null, null},
+                    {null, null, null, null, null},
+                    {null, null, null, null, null},
+                    {null, null, null, null, null}},
 
             {//PEAKS
-                    {null                           , null                          , null                          , null                       , null},
-                    {null                           , null                          , null                          , null                       , null},
-                    {null                           , null                          , null                          , null                       , null},
-                    {null                           , null                          , null                          , null                       , null},
-                    {null                           , null                          , null                          , null                       , null}}}
+                    {null, null, null, null, null},
+                    {null, null, null, null, null},
+                    {null, null, null, null, null},
+                    {null, null, null, null, null},
+                    {null, null, null, null, null}}}
     };
 
     @Override

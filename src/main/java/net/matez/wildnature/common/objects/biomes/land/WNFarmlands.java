@@ -11,9 +11,9 @@ import net.minecraft.world.level.biome.MobSpawnSettings;
 import net.minecraft.world.level.levelgen.SurfaceRules;
 import net.minecraftforge.event.world.BiomeLoadingEvent;
 
-public class Example extends WNBiome {
-    public Example() {
-        super(WNBiomes.HornbeamForest, Biome.Precipitation.RAIN, Biome.BiomeCategory.FOREST, 0.0F, 0.5F, NORMAL_MUSIC);
+public class WNFarmlands extends WNBiome { 
+    public WNFarmlands() { 
+        super(WNBiomes.Farmlands, Biome.Precipitation.RAIN, Biome.BiomeCategory.FOREST, 0.6F, 0.8F, NORMAL_MUSIC);
     }
 
     @Override
@@ -37,16 +37,15 @@ public class Example extends WNBiome {
 
     @Override
     public void applyCustomFeatures(BiomeLoadingEvent event) {
+        // -- TREES
+
+        // ---
 
         // -- BUSHES
 
         // ---
 
         // -- FLOWERS
-
-        // ---
-
-        // -- TREES
 
         // ---
     }

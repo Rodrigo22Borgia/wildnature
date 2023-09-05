@@ -51,7 +51,7 @@ public class WNTreeFeature extends Feature<NoneFeatureConfiguration> {
             }
         }
 
-        structure.place(context.level(), context.origin().below(), Rotation.values()[WNUtil.rint(0, 3, context.random())], placement.config(), context.random(), 19);
+        structure.place(context.level(), context.origin().below(), Rotation.values()[WNUtil.rint(0, 3, context.random())], placement.config(), context.random(), 3);
 
         //Generates support for trees
         BlockState wood = context.level().getBlockState(context.origin().above(2));
@@ -78,27 +78,6 @@ public class WNTreeFeature extends Feature<NoneFeatureConfiguration> {
         else {
             context.level().setBlock(context.origin().below(), Blocks.ROOTED_DIRT.defaultBlockState(), 19);
         }
-/*
-        int rad = 3; //Set scan range.
-        BlockPos blockRoot = context.origin();
-        BlockPos.MutableBlockPos blockPos;
-        for (int dx = -rad; dx <= rad; dx++) {
-            for (int dz = -rad; dz <= rad; dz++) {
-
-                //Set x/z coord
-                blockPos = blockRoot.mutable();
-                blockPos.move(dx, 0, dz);
-
-                //Iterate down till we hit non-air
-                while (context.level().getBlockState(blockPos).isAir()) {
-                    context.level().setBlock(blockPos, block, 3);
-                    blockPos.move(0, -1, 0);
-                }
-                context.level().setBlock(blockPos, Blocks.ROOTED_DIRT.defaultBlockState(), 3);
-                //Finished x/z iteration
-            }
-        }*/
-
         return true;
     }
 }

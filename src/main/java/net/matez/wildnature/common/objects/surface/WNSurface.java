@@ -17,19 +17,10 @@ public class WNSurface {
             SurfaceRules.sequence(
                     SurfaceRules.ifTrue(ON_FLOOR,
                             SurfaceRules.ifTrue(SurfaceRules.noiseCondition(Noises.SWAMP, 0.35D, 0.9D),
-                                    makeStateRule(Blocks.COARSE_DIRT))),
+                                    makeStateRule(Blocks.PODZOL))),
                     SurfaceRules.ifTrue(ON_FLOOR,
-                            makeStateRule(Blocks.PODZOL)));
-    private static final SurfaceRules.RuleSource AIR = makeStateRule(Blocks.AIR);
-
-    private static final SurfaceRules.RuleSource POND_WEED = makeStateRule(WNBlocks.WATER_PLANTS.get(WaterPlant.POND_WEED));
-    private static final SurfaceRules.RuleSource WATER = makeStateRule(Blocks.WATER);
-    private static final SurfaceRules.RuleSource DIRT = makeStateRule(Blocks.DIRT);
-    private static final SurfaceRules.RuleSource GRASS_BLOCK = makeStateRule(Blocks.GRASS_BLOCK);
-    private static final SurfaceRules.RuleSource STONE = makeStateRule(Blocks.STONE);
-    private static final SurfaceRules.RuleSource LIMESTONE = makeStateRule(WNBlocks.ROCKS.get(RockType.LIMESTONE));
+                            makeStateRule(Blocks.GRASS_BLOCK)));
     private static final SurfaceRules.RuleSource OVERGROWN_STONE = makeStateRule(WNBlocks.OVERGROWN_STONES.get(OvergrownGrassType.OVERGROWN_STONE));
-    private static final SurfaceRules.RuleSource MOSSY_STONE = makeStateRule(WNBlocks.MOSSY_STONE);
     private static final SurfaceRules.RuleSource MOSS = makeStateRule(Blocks.MOSS_BLOCK);
     public static final SurfaceRules.RuleSource SURFACE_MOSSY =
             SurfaceRules.sequence(
@@ -38,10 +29,6 @@ public class WNSurface {
                                     OVERGROWN_STONE)),
                     SurfaceRules.ifTrue(ON_FLOOR,
                             MOSS));
-    private static final SurfaceRules.RuleSource BARREN_DIRT = makeStateRule(WNBlocks.DIRTS.get(GrassType.BARREN));
-    private static final SurfaceRules.RuleSource TROPICAL_GRASS = makeStateRule(WNBlocks.GRASSES.get(GrassType.TROPICAL));
-    private static final SurfaceRules.RuleSource TROPICAL_DIRT = makeStateRule(WNBlocks.DIRTS.get(GrassType.TROPICAL));
-    private static final SurfaceRules.RuleSource MUD = makeStateRule(WNBlocks.MUD);
 
 
     // --------------------------

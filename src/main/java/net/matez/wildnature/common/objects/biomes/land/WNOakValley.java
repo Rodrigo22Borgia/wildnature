@@ -1,7 +1,5 @@
 package net.matez.wildnature.common.objects.biomes.land;
 
-import net.matez.wildnature.common.objects.blocks.plant.FlowerType;
-import net.matez.wildnature.common.objects.blocks.saplings.WNSaplingType;
 import net.matez.wildnature.common.registry.biomes.WNBiome;
 import net.matez.wildnature.common.registry.biomes.WNBiomes;
 import net.minecraft.data.worldgen.BiomeDefaultFeatures;
@@ -13,9 +11,9 @@ import net.minecraft.world.level.biome.MobSpawnSettings;
 import net.minecraft.world.level.levelgen.SurfaceRules;
 import net.minecraftforge.event.world.BiomeLoadingEvent;
 
-public class WNBiomeAspenGrove extends WNBiome {
-    public WNBiomeAspenGrove() {
-        super(WNBiomes.AspenGrove, Biome.Precipitation.RAIN, Biome.BiomeCategory.FOREST, 0.4F, 0.8F, NORMAL_MUSIC);
+public class WNOakValley extends WNBiome { 
+    public WNOakValley() { 
+        super(WNBiomes.OakValley, Biome.Precipitation.RAIN, Biome.BiomeCategory.FOREST, 0.6F, 0.8F, NORMAL_MUSIC);
     }
 
     @Override
@@ -39,22 +37,16 @@ public class WNBiomeAspenGrove extends WNBiome {
 
     @Override
     public void applyCustomFeatures(BiomeLoadingEvent event) {
-
-        // -- PLANTS
-        addPlant(event, FlowerType.HEATHER_YELLOW, 2);
-        addPlant(event, FlowerType.HEATHER_WHITE, 1);
-        addPlant(event, FlowerType.HEATHER_PINK, 2);
-        addPlant(event, FlowerType.HEATH_PURPLE, 2);
-        addPlant(event, FlowerType.PASQUE_YELLOW, 3);
-        addPlant(event, FlowerType.GERANIUM_WHITE, 2);
-        addPlant(event, FlowerType.CHRYSANTHEMUM_LIGHT_YELLOW, 3);
-        addPlant(event, FlowerType.CLOVER, 3);
-
         // -- TREES
 
-        addTree(event, WNSaplingType.ASPEN, 6,1F,0);
-        addTree(event, WNSaplingType.FIR, 0,0.5F,2);
-        addTree(event, WNSaplingType.PINE, 1,1F,0);
+        // ---
+
+        // -- BUSHES
+
+        // ---
+
+        // -- FLOWERS
+
         // ---
     }
 
