@@ -30,11 +30,10 @@ public class WNSurface {
                             makeStateRule(WNBlocks.OVERGROWN_STONES.get(OvergrownGrassType.OVERGROWN_STONE))));
 
     public static final SurfaceRules.RuleSource SAND_SAND_GRAVEL_CONFIG =
-            SurfaceRules.ifTrue(ON_FLOOR,
-                    SurfaceRules.sequence(
-                            SurfaceRules.ifTrue(SurfaceRules.noiseCondition(Noises.SWAMP, -1.0D, -0.5D),
-                                    makeStateRule(Blocks.GRAVEL)),
-                            makeStateRule(Blocks.SAND)));
+            SurfaceRules.sequence(
+                    SurfaceRules.ifTrue(ON_FLOOR,
+                            SurfaceRules.ifTrue(SurfaceRules.noiseCondition(Noises.SWAMP, -1.0D, -0.5D),makeStateRule(Blocks.GRAVEL))),
+                    SurfaceRules.ifTrue(UNDER_FLOOR,makeStateRule(Blocks.SAND)));
     public static final SurfaceRules.RuleSource RED_SAND_WHITE_TERRACOTTA_GRAVEL_CONFIG =
             SurfaceRules.ifTrue(ON_FLOOR,
                     SurfaceRules.sequence(
