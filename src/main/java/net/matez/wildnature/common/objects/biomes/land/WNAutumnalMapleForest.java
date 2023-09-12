@@ -1,7 +1,6 @@
 package net.matez.wildnature.common.objects.biomes.land;
 
 import net.matez.wildnature.common.objects.blocks.plant.FlowerType;
-import net.matez.wildnature.common.objects.blocks.saplings.WNSaplingType;
 import net.matez.wildnature.common.objects.features.WNExtraTrees;
 import net.matez.wildnature.common.objects.surface.WNSurface;
 import net.matez.wildnature.common.registry.biomes.WNBiome;
@@ -52,16 +51,16 @@ public class WNAutumnalMapleForest extends WNBiome {
 
         // -- TREES
 
-        addTree(event, WNExtraTrees.OAK, 1,0.5F,1);
 
-        addTree(event, WNSaplingType.MAPLE_BROWN, 1,1F,0);
-        addTree(event, WNSaplingType.MAPLE, 1,1F,0);
-        addTree(event, WNSaplingType.MAPLE_RED, 1,1F,0);
-        addTree(event, WNSaplingType.MAPLE_YELLOW, 1,1F,0);
-        addTree(event, WNSaplingType.MAPLE_ORANGE, 1,1F,0);
+        addTree(event, WNExtraTrees.OAK, 1,0.5F,1);
+        addTree(event, WNExtraTrees.MAPLE, 1,1F,0);
+        addTree(event, WNExtraTrees.MAPLE_BROWN, 1,1F,0);
+        addTree(event, WNExtraTrees.MAPLE_ORANGE, 1,1F,0);
+        addTree(event, WNExtraTrees.MAPLE_RED, 1,1F,0);
+        addTree(event, WNExtraTrees.MAPLE_YELLOW, 1,1F,0);
         // ---
-        addPlant(event, FlowerType.HEATHER_YELLOW, 6);
         addPlant(event, FlowerType.HEATHER_WHITE, 6);
+        addPlant(event, FlowerType.HEATHER_YELLOW, 6);
         addPlant(event, FlowerType.YEW_BUSH, 3);
     }
 

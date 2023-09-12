@@ -41,7 +41,7 @@ public class WNBiomeRegistry {
         log.progress("Registering biomes");
 
         register(e, new WNAspenGrove());
-        register(e, new WNAutumnalMapleForest());/*
+        register(e, new WNAutumnalMapleForest());
         register(e, new WNAutumnalPoplarForest());
         register(e, new WNAutumnalPoplarForestHills());
         register(e, new WNAutumnalPoplarForestValley());
@@ -244,7 +244,6 @@ public class WNBiomeRegistry {
         register(e, new WNTintedDesert());
         register(e, new WNTintedDesertHills());
         register(e, new WNTropicalBadlands());
-        register(e, new WNTropicalLake());
         register(e, new WNTucholaForest());
         register(e, new WNTucholaForestHill());
         register(e, new WNTucholaValley());
@@ -254,7 +253,7 @@ public class WNBiomeRegistry {
         register(e, new WNWetTaiga());
         register(e, new WNWoodedJacarandaMeadow());
         register(e, new WNWoodedMeadow());
-        register(e, new WNWoodedOutback());*/
+        register(e, new WNWoodedOutback());/**/
 
         log.success("Registered " + WN_BIOMES.size() + " biomes");
     }

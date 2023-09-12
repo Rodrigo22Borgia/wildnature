@@ -124,11 +124,11 @@ public class WNRegion extends Region {
                     {null, null, null                        , null, null}},
 
             {//HILLS
-                    {null, null, null, null, null},
-                    {null, null, null, null, null},
-                    {null, null, null, null, null},
-                    {null, null, null, null, null},
-                    {null, null, null, null, null}}},
+                    {WNBiomes.AutumnalSpruceForest      , null, null, null, null},
+                    {WNBiomes.AutumnalSequoiaRainforest , null, null, null, null},
+                    {WNBiomes.AutumnalPoplarForest      , null, null, null, null},
+                    {WNBiomes.AutumnalPoplarForestHills , null, null, null, null},
+                    {WNBiomes.AutumnalPoplarForestValley, null, null, null, null}}},
 
     //HIGHLAND
             {{//PLATEAUS

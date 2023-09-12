@@ -154,6 +154,13 @@ public enum FruitPlantType implements PlantFeature {
     @Override
     public BlockState featureBlockState() {
         int stages = this.getConfig().getStages()-1;
-            return WNBlocks.FRUIT_BUSH_PLANTS.get(this).defaultBlockState().setValue(IntegerProperty.create("stage",0,stages), stages);
+            //return WNBlocks.FRUIT_BUSH_PLANTS.get(this).defaultBlockState().setValue(IntegerProperty.create("stage",0,stages), stages);
+        BlockState state = WNBlocks.FRUIT_BUSH_PLANTS.get(this).defaultBlockState();
+        try {
+            return state.setValue(IntegerProperty.create("stage",0,stages), stages);
         }
+        catch (Exception e) {
+            return state;
+        }
+    }
 }

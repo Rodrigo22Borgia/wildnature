@@ -17,6 +17,8 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.material.MaterialColor;
 
+import static net.matez.wildnature.common.objects.blocks.setup.WNBlockProperties.FLOWERING;
+
 public enum FruitBushType implements PlantFeature {
     BILBERRY("bilberry","bilberry", MaterialColor.PLANT, false, new LeafConfig(1,false)
             .with(1,() -> WNItems.FRUITS.get(Fruit.BILBERRIES),1,2)),
@@ -80,6 +82,14 @@ public enum FruitBushType implements PlantFeature {
 
     @Override
     public BlockState featureBlockState() {
-        return WNBlocks.FRUIT_BUSH_LEAVES.get(this).defaultBlockState().setValue(IntegerProperty.create("stage",0,1), 1);
+        //return WNBlocks.FRUIT_BUSH_LEAVES.get(this).defaultBlockState().setValue(IntegerProperty.create("stage",0,1), 1);
+
+        BlockState state = WNBlocks.FRUIT_BUSH_LEAVES.get(this).defaultBlockState();
+        try {
+            return state.setValue(IntegerProperty.create("stage",0,1), 1);
+        }
+        catch (Exception e) {
+            return state;
+        }
     }
 }

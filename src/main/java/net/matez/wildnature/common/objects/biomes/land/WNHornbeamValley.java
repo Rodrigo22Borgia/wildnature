@@ -1,5 +1,8 @@
 package net.matez.wildnature.common.objects.biomes.land;
 
+import net.matez.wildnature.common.objects.blocks.plant.FlowerType;
+import net.matez.wildnature.common.objects.features.WNExtraTrees;
+import net.matez.wildnature.common.objects.surface.WNSurface;
 import net.matez.wildnature.common.registry.biomes.WNBiome;
 import net.matez.wildnature.common.registry.biomes.WNBiomes;
 import net.minecraft.data.worldgen.BiomeDefaultFeatures;
@@ -13,14 +16,25 @@ import net.minecraftforge.event.world.BiomeLoadingEvent;
 
 public class WNHornbeamValley extends WNBiome { 
     public WNHornbeamValley() { 
-        super(WNBiomes.HornbeamValley, Biome.Precipitation.RAIN, Biome.BiomeCategory.FOREST, 0.4F, 0.8F, NORMAL_MUSIC);
+        super(WNBiomes.HornbeamValley, Biome.Precipitation.RAIN, Biome.BiomeCategory.FOREST, 0.4F, 0.8F, NORMAL_MUSIC, 0x81C46A /*0x95CF65*/, 0x5CB72B /*0x5EBD32*/);
     }
 
     @Override
     public MobSpawnSettings.Builder buildMobSpawn() {
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
-        spawnBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.GOAT, 5, 1, 3));
-        BiomeDefaultFeatures.commonSpawns(spawnBuilder);
+        spawnBuilder.addSpawn(MobCategory.AMBIENT, new MobSpawnSettings.SpawnerData(EntityType.BAT, 10, 8, 8));
+        spawnBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.CHICKEN, 10, 4, 4));
+        spawnBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.FOX, 2, 1, 3));
+        spawnBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.SHEEP, 12, 4, 4));
+        spawnBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.WOLF, 2, 4, 4));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.CREEPER, 100, 4, 4));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.ENDERMAN, 10, 1, 4));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.SKELETON, 100, 4, 4));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.SLIME, 100, 4, 4));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.SPIDER, 100, 4, 4));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.WITCH, 5, 1, 1));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.ZOMBIE, 95, 4, 4));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.ZOMBIE_VILLAGER, 5, 1, 1));
 
         return spawnBuilder;
     }
@@ -38,21 +52,30 @@ public class WNHornbeamValley extends WNBiome {
     @Override
     public void applyCustomFeatures(BiomeLoadingEvent event) {
         // -- TREES
-
-        // ---
-
-        // -- BUSHES
-
-        // ---
+        addTree(event, WNExtraTrees.FORSYTHIA, 1, 0.5F, 2);
+        addTree(event, WNExtraTrees.HAZEL, 4, 0.5F, 2);
+        addTree(event, WNExtraTrees.MAGNOLIA, 1, 0.5F, 2);
+        addTree(event, WNExtraTrees.OAKLANDS_SHRUB, 1, 0.5F, 2);
+        addTree(event, WNExtraTrees.OAKLANDS_SMALLSHRUB, 1, 0.5F, 2);
+        addTree(event, WNExtraTrees.POINTY_BIRCH, 1, 0.5F, 2);
+        addTree(event, WNExtraTrees.ROWAN, 1, 0.5F, 2);
+        addTree(event, WNExtraTrees.WEEPING_CEDAR_, 1, 0.5F, 2);
 
         // -- FLOWERS
-
-        // ---
-    }
+        addPlant(event, FlowerType.CLOVER, 2);
+        addPlant(event, FlowerType.GRASS_WHEAT, 2);
+        addPlant(event, FlowerType.HYACINTH_PINK, 12);
+        addPlant(event, FlowerType.HYACINTH_PURPLE, 12);
+        addPlant(event, FlowerType.HYACINTH_RED, 12);
+        addPlant(event, FlowerType.HYACINTH_WHITE, 6);
+        addPlant(event, FlowerType.MARIGOLD_ORANGE, 12);
+        addPlant(event, FlowerType.MARIGOLD_RED, 12);
+        addPlant(event, FlowerType.YEW_BUSH, 2);
+}
 
 
     @Override
     public SurfaceRules.RuleSource getSurface() {
-        return null;
+        return SurfaceRules.sequence(WNSurface.GRASS_DIRT_GRAVEL_CONFIG, WNSurface.PODZOL_DIRT_GRAVEL_CONFIG);
     }
 }

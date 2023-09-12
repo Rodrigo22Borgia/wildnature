@@ -1,26 +1,39 @@
 package net.matez.wildnature.common.objects.biomes.land;
 
+import net.matez.wildnature.common.objects.blocks.leaves.LeafType;
+import net.matez.wildnature.common.objects.blocks.plant.FlowerType;
+import net.matez.wildnature.common.objects.features.WNExtraTrees;
 import net.matez.wildnature.common.registry.biomes.WNBiome;
 import net.matez.wildnature.common.registry.biomes.WNBiomes;
+import net.matez.wildnature.common.registry.blocks.WNBlocks;
 import net.minecraft.data.worldgen.BiomeDefaultFeatures;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.BiomeGenerationSettings;
 import net.minecraft.world.level.biome.MobSpawnSettings;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.SurfaceRules;
 import net.minecraftforge.event.world.BiomeLoadingEvent;
 
 public class WNAutumnalSpruceForest extends WNBiome { 
     public WNAutumnalSpruceForest() { 
-        super(WNBiomes.AutumnalSpruceForest, Biome.Precipitation.RAIN, Biome.BiomeCategory.TAIGA, 0.3F, 0.4F, NORMAL_MUSIC);
+        super(WNBiomes.AutumnalSpruceForest, Biome.Precipitation.RAIN, Biome.BiomeCategory.TAIGA, 0.3F, 0.4F, NORMAL_MUSIC, 0x7FE282 /*0x90E287*/, 0xC72700 /*0xC79100*/);
     }
 
     @Override
     public MobSpawnSettings.Builder buildMobSpawn() {
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
-        spawnBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.GOAT, 5, 1, 3));
-        BiomeDefaultFeatures.commonSpawns(spawnBuilder);
+        spawnBuilder.addSpawn(MobCategory.AMBIENT, new MobSpawnSettings.SpawnerData(EntityType.BAT, 10, 8, 8));
+        spawnBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.CHICKEN, 10, 4, 4));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.CREEPER, 100, 4, 4));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.ENDERMAN, 10, 1, 4));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.SKELETON, 100, 4, 4));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.SLIME, 100, 4, 4));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.SPIDER, 100, 4, 4));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.WITCH, 5, 1, 1));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.ZOMBIE, 95, 4, 4));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.ZOMBIE_VILLAGER, 5, 1, 1));
 
         return spawnBuilder;
     }
@@ -38,17 +51,26 @@ public class WNAutumnalSpruceForest extends WNBiome {
     @Override
     public void applyCustomFeatures(BiomeLoadingEvent event) {
         // -- TREES
+        addTree(event, WNExtraTrees.ASPEN, 1, 0.5F, 2);
+        addTree(event, WNExtraTrees.SEASONAL_BIRCH, 1, 0.5F, 2);
+        addTree(event, WNExtraTrees.TREE_FIR, 2, 0.5F, 2);
+        addTree(event, WNExtraTrees.TREE_PINE, 1, 0.5F, 2);
+        addTree(event, WNExtraTrees.TREE_SPRUCE_M, 1, 0.5F, 2);
+        addTree(event, WNExtraTrees.TREE_TAIGA, 2, 0.5F, 2);
 
-        // ---
-
-        // -- BUSHES
-
-        // ---
+        addShrub(event, Blocks.BIRCH_LOG, WNBlocks.LEAVES.get(LeafType.ASPEN), 4, 0.5F, 2);
 
         // -- FLOWERS
-
-        // ---
-    }
+        addPlant(event, FlowerType.BLUEBELL, 12);
+        addPlant(event, FlowerType.GLADIOLUS_ORANGE, 6);
+        addPlant(event, FlowerType.HEATHER_PINK, 6);
+        //addPlant(event, FlowerType.HEATHER_PURPLE, 6);
+        addPlant(event, FlowerType.HEATHER_WHITE, 6);
+        addPlant(event, FlowerType.HEATH_PINK, 3);
+        addPlant(event, FlowerType.HOLLYHOCK_RED, 12);
+        addPlant(event, FlowerType.PASQUE_PURPLE, 12);
+        addPlant(event, FlowerType.SCOTCHBROOM_YELLOW, 12);
+}
 
 
     @Override

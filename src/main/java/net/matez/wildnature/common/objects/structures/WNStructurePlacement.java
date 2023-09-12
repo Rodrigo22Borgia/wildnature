@@ -10,6 +10,7 @@ import net.matez.wildnature.common.log.WNLogger;
 import net.matez.wildnature.common.util.WeightedList;
 import net.matez.wildnature.setup.WildNature;
 import net.minecraft.resources.ResourceLocation;
+import java.io.File;
 
 import javax.annotation.Nullable;
 import java.util.LinkedHashMap;
@@ -61,7 +62,19 @@ public class WNStructurePlacement {
         }
 
         return this;
-    }
+    }/*
+    public WNStructurePlacement all(@Nullable WNStructureConfig config) {
+        File[] features = new File(new ResourceLocation(baseName).getPath()).listFiles() ;
+        for (File feature: features) {
+            String path = baseName + feature.getName();
+            preStructures.put(new Entry<>(path, config), 1);
+            }
+        if (WNStructures.isLoaded()) {
+            load();
+        }
+
+        return this;
+    }*/
 
     public void load() {
         if (!loaded) {

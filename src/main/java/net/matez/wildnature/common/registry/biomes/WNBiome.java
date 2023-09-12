@@ -111,14 +111,14 @@ public abstract class WNBiome {
     }
 
     protected static void addTree(final BiomeLoadingEvent event, WNSaplingType tree, int perChunk, float extraChance, int extra) {
-        String rLocation = tree.toString().toLowerCase() + "_" + perChunk;
+        String rLocation = "tree_" + tree.toString().toLowerCase() + "_" + perChunk;
         String reg = "tree_" + tree.toString().toLowerCase();
         placeFeature(event, rLocation, reg, perChunk, extraChance, extra);
     }
 
     protected static void addTree(final BiomeLoadingEvent event, WNExtraTrees tree, int perChunk, float extraChance, int extra) {
-        String rLocation = tree.toString().toLowerCase() + "_" + perChunk;
-        String reg = "tree_" + tree.toString().toLowerCase();
+        String rLocation = "extra_" + tree.toString().toLowerCase() + "_" + perChunk;
+        String reg = "extra_" + tree.toString().toLowerCase();
         placeFeature(event, rLocation, reg, perChunk, extraChance, extra);
     }
 

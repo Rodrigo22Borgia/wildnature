@@ -29,7 +29,7 @@ public class WNStructureRegistry {
             WN_FEATURES.put(registryName, registryObject);
         }
         for (WNExtraTrees treeType : WNExtraTrees.values()) {
-            String registryName = "tree_" + treeType.toString().toLowerCase();
+            String registryName = "extra_" + treeType.toString().toLowerCase();
             RegistryObject<Feature<NoneFeatureConfiguration>> registryObject = FEATURES.register(
                     registryName,
                     () -> new WNTreeFeature(NoneFeatureConfiguration.CODEC, treeType.getPlacement())

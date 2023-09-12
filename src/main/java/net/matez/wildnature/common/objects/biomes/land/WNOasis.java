@@ -1,5 +1,7 @@
 package net.matez.wildnature.common.objects.biomes.land;
 
+import net.matez.wildnature.common.objects.blocks.plant.FlowerType;
+import net.matez.wildnature.common.objects.features.WNExtraTrees;
 import net.matez.wildnature.common.registry.biomes.WNBiome;
 import net.matez.wildnature.common.registry.biomes.WNBiomes;
 import net.minecraft.data.worldgen.BiomeDefaultFeatures;
@@ -13,14 +15,24 @@ import net.minecraftforge.event.world.BiomeLoadingEvent;
 
 public class WNOasis extends WNBiome { 
     public WNOasis() { 
-        super(WNBiomes.Oasis, Biome.Precipitation.RAIN, Biome.BiomeCategory.JUNGLE, 0.7F, 0.8F, NORMAL_MUSIC);
+        super(WNBiomes.Oasis, Biome.Precipitation.RAIN, Biome.BiomeCategory.JUNGLE, 0.7F, 0.8F, NORMAL_MUSIC, 0x59C236 /*0x87DD34*/);
     }
 
     @Override
     public MobSpawnSettings.Builder buildMobSpawn() {
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
-        spawnBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.GOAT, 5, 1, 3));
-        BiomeDefaultFeatures.commonSpawns(spawnBuilder);
+        spawnBuilder.addSpawn(MobCategory.AMBIENT, new MobSpawnSettings.SpawnerData(EntityType.BAT, 20, 8, 8));
+        spawnBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.COW, 10, 4, 4));
+        spawnBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.PARROT, 12, 4, 4));
+        spawnBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.SHEEP, 10, 4, 4));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.CREEPER, 100, 4, 4));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.ENDERMAN, 10, 1, 4));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.SKELETON, 100, 4, 4));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.SLIME, 100, 4, 4));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.SPIDER, 100, 4, 4));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.WITCH, 5, 1, 1));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.ZOMBIE, 95, 4, 4));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.ZOMBIE_VILLAGER, 5, 1, 1));
 
         return spawnBuilder;
     }
@@ -38,17 +50,16 @@ public class WNOasis extends WNBiome {
     @Override
     public void applyCustomFeatures(BiomeLoadingEvent event) {
         // -- TREES
-
-        // ---
-
-        // -- BUSHES
-
-        // ---
+        addTree(event, WNExtraTrees.JUNGLE_MEDIUM, 2, 0.5F, 2);
+        addTree(event, WNExtraTrees.JUNGLE_SMALL, 1, 0.5F, 2);
+        addTree(event, WNExtraTrees.TREE_PALM, 2, 0.5F, 2);
 
         // -- FLOWERS
-
-        // ---
-    }
+        addPlant(event, FlowerType.BIRD_OF_PARADISE, 4);
+        addPlant(event, FlowerType.CANNA_BULB_RED, 4);
+        addPlant(event, FlowerType.ORCHID_WHITE, 12);
+        addPlant(event, FlowerType.PEACE_LILY, 12);
+}
 
 
     @Override

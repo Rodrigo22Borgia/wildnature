@@ -1,5 +1,6 @@
 package net.matez.wildnature.common.objects.biomes.land;
 
+import net.matez.wildnature.common.objects.blocks.plant.FlowerType;
 import net.matez.wildnature.common.registry.biomes.WNBiome;
 import net.matez.wildnature.common.registry.biomes.WNBiomes;
 import net.minecraft.data.worldgen.BiomeDefaultFeatures;
@@ -13,14 +14,24 @@ import net.minecraftforge.event.world.BiomeLoadingEvent;
 
 public class WNSnowyTatraFoothills extends WNBiome { 
     public WNSnowyTatraFoothills() { 
-        super(WNBiomes.SnowyTatraFoothills, Biome.Precipitation.SNOW, Biome.BiomeCategory.EXTREME_HILLS, -0.6F, 0.8F, NORMAL_MUSIC);
+        super(WNBiomes.SnowyTatraFoothills, Biome.Precipitation.SNOW, Biome.BiomeCategory.EXTREME_HILLS, -0.6F, 0.8F, NORMAL_MUSIC, 0xB5DA62 /*0x9DD858*/, 0xFBFF00 /*0xFFEA00*/);
     }
 
     @Override
     public MobSpawnSettings.Builder buildMobSpawn() {
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
-        spawnBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.GOAT, 5, 1, 3));
-        BiomeDefaultFeatures.commonSpawns(spawnBuilder);
+        spawnBuilder.addSpawn(MobCategory.AMBIENT, new MobSpawnSettings.SpawnerData(EntityType.BAT, 10, 8, 8));
+        spawnBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.COW, 8, 4, 4));
+        spawnBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.PIG, 3, 4, 4));
+        spawnBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.WOLF, 5, 4, 4));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.CREEPER, 100, 4, 4));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.ENDERMAN, 10, 1, 4));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.SKELETON, 100, 4, 4));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.SLIME, 100, 4, 4));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.SPIDER, 100, 4, 4));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.WITCH, 5, 1, 1));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.ZOMBIE, 95, 4, 4));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.ZOMBIE_VILLAGER, 5, 1, 1));
 
         return spawnBuilder;
     }
@@ -39,16 +50,13 @@ public class WNSnowyTatraFoothills extends WNBiome {
     public void applyCustomFeatures(BiomeLoadingEvent event) {
         // -- TREES
 
-        // ---
-
-        // -- BUSHES
-
-        // ---
-
         // -- FLOWERS
-
-        // ---
-    }
+        addPlant(event, FlowerType.BLUEBELL, 12);
+        addPlant(event, FlowerType.CROCUS_WHITE, 12);
+        addPlant(event, FlowerType.FIREWEED, 12);
+        addPlant(event, FlowerType.PASQUE_PURPLE, 12);
+        addPlant(event, FlowerType.PRIMROSE_PINK, 12);
+}
 
 
     @Override

@@ -1,5 +1,8 @@
 package net.matez.wildnature.common.objects.biomes.land;
 
+import net.matez.wildnature.common.objects.blocks.plant.FlowerType;
+import net.matez.wildnature.common.objects.features.WNExtraTrees;
+import net.matez.wildnature.common.objects.surface.WNSurface;
 import net.matez.wildnature.common.registry.biomes.WNBiome;
 import net.matez.wildnature.common.registry.biomes.WNBiomes;
 import net.minecraft.data.worldgen.BiomeDefaultFeatures;
@@ -13,14 +16,28 @@ import net.minecraftforge.event.world.BiomeLoadingEvent;
 
 public class WNGiantEucalyptusForest extends WNBiome { 
     public WNGiantEucalyptusForest() { 
-        super(WNBiomes.GiantEucalyptusForest, Biome.Precipitation.RAIN, Biome.BiomeCategory.JUNGLE, 0.7F, 0.9F, NORMAL_MUSIC);
+        super(WNBiomes.GiantEucalyptusForest, Biome.Precipitation.RAIN, Biome.BiomeCategory.JUNGLE, 0.7F, 0.9F, NORMAL_MUSIC, 0x5DB259 /*0x7FBC70*/);
     }
 
     @Override
     public MobSpawnSettings.Builder buildMobSpawn() {
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
-        spawnBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.GOAT, 5, 1, 3));
-        BiomeDefaultFeatures.commonSpawns(spawnBuilder);
+        spawnBuilder.addSpawn(MobCategory.AMBIENT, new MobSpawnSettings.SpawnerData(EntityType.BAT, 10, 8, 8));
+        spawnBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.CHICKEN, 10, 4, 4));
+        spawnBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.CHICKEN, 10, 4, 4));
+        spawnBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.COW, 8, 4, 4));
+        spawnBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.PANDA, 8, 2, 4));
+        spawnBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.PARROT, 40, 1, 2));
+        spawnBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.PIG, 10, 4, 4));
+        spawnBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.SHEEP, 12, 4, 4));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.CREEPER, 100, 4, 4));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.ENDERMAN, 10, 1, 4));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.SKELETON, 100, 4, 4));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.SLIME, 100, 4, 4));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.SPIDER, 100, 4, 4));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.WITCH, 5, 1, 1));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.ZOMBIE, 95, 4, 4));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.ZOMBIE_VILLAGER, 5, 1, 1));
 
         return spawnBuilder;
     }
@@ -38,21 +55,21 @@ public class WNGiantEucalyptusForest extends WNBiome {
     @Override
     public void applyCustomFeatures(BiomeLoadingEvent event) {
         // -- TREES
-
-        // ---
-
-        // -- BUSHES
-
-        // ---
+        addTree(event, WNExtraTrees.BIG_EUCALYPTUS, 6, 0.5F, 2);
+        addTree(event, WNExtraTrees.EUCALYPTUS_, 1, 0.5F, 2);
+        addTree(event, WNExtraTrees.EUCALYPTUS_SHRUB, 1, 0.5F, 2);
 
         // -- FLOWERS
-
-        // ---
-    }
+        addPlant(event, FlowerType.ANTHURIUM_PINK, 6);
+        addPlant(event, FlowerType.ANTHURIUM_RED, 6);
+        addPlant(event, FlowerType.ANTHURIUM_WHITE, 6);
+        addPlant(event, FlowerType.CLOVER, 4);
+        addPlant(event, FlowerType.ORCHID_WHITE, 6);
+}
 
 
     @Override
     public SurfaceRules.RuleSource getSurface() {
-        return null;
+        return WNSurface.PODZOL_DIRT_GRAVEL_CONFIG;
     }
 }

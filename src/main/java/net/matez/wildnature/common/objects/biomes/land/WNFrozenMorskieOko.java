@@ -13,14 +13,22 @@ import net.minecraftforge.event.world.BiomeLoadingEvent;
 
 public class WNFrozenMorskieOko extends WNBiome { 
     public WNFrozenMorskieOko() { 
-        super(WNBiomes.FrozenMorskieOko, Biome.Precipitation.SNOW, Biome.BiomeCategory.EXTREME_HILLS, -0.7F, 0.8F, NORMAL_MUSIC);
+        super(WNBiomes.FrozenMorskieOko, Biome.Precipitation.SNOW, Biome.BiomeCategory.EXTREME_HILLS, -0.7F, 0.8F, NORMAL_MUSIC, 0x75B420 /*0x6DAE00*/, 0xA0C18D /*0x9CC179*/);
     }
 
     @Override
     public MobSpawnSettings.Builder buildMobSpawn() {
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
-        spawnBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.GOAT, 5, 1, 3));
-        BiomeDefaultFeatures.commonSpawns(spawnBuilder);
+        spawnBuilder.addSpawn(MobCategory.AMBIENT, new MobSpawnSettings.SpawnerData(EntityType.BAT, 10, 8, 8));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.CREEPER, 100, 4, 4));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.ENDERMAN, 10, 1, 4));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.SKELETON, 100, 4, 4));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.SLIME, 100, 4, 4));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.SPIDER, 100, 4, 4));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.WITCH, 5, 1, 1));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.ZOMBIE, 95, 4, 4));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.ZOMBIE_VILLAGER, 5, 1, 1));
+        spawnBuilder.addSpawn(MobCategory.WATER_CREATURE, new MobSpawnSettings.SpawnerData(EntityType.SALMON, 5, 1, 5));
 
         return spawnBuilder;
     }
@@ -39,16 +47,8 @@ public class WNFrozenMorskieOko extends WNBiome {
     public void applyCustomFeatures(BiomeLoadingEvent event) {
         // -- TREES
 
-        // ---
-
-        // -- BUSHES
-
-        // ---
-
         // -- FLOWERS
-
-        // ---
-    }
+}
 
 
     @Override
