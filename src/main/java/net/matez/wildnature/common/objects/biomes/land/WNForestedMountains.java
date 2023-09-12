@@ -52,7 +52,6 @@ public class WNForestedMountains extends WNBiome {
     public void applyCustomFeatures(BiomeLoadingEvent event) {
         // -- TREES
         addTree(event, WNExtraTrees.BEECH, 1, 0.5F, 2);
-        addTree(event, WNExtraTrees.TREE_BIRCH, 1, 0.5F, 2);
         addTree(event, WNExtraTrees.TREE_BIRCH, 6, 0.5F, 2);
         addTree(event, WNExtraTrees.TREE_FIR, 1, 0.5F, 2);
         addTree(event, WNExtraTrees.TREE_SPRUCE_BIG, 3, 0.5F, 2);

@@ -23,7 +23,6 @@ public class WNSakuraJungle extends WNBiome {
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
         spawnBuilder.addSpawn(MobCategory.AMBIENT, new MobSpawnSettings.SpawnerData(EntityType.BAT, 20, 8, 8));
         spawnBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.CHICKEN, 10, 4, 4));
-        spawnBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.CHICKEN, 10, 4, 4));
         spawnBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.COW, 8, 4, 4));
         spawnBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.PARROT, 40, 1, 2));
         spawnBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.PIG, 10, 4, 4));
@@ -69,7 +68,6 @@ public class WNSakuraJungle extends WNBiome {
         addPlant(event, FlowerType.CHRYSANTHEMUM_LIGHT_YELLOW, 6);
         addPlant(event, FlowerType.CHRYSANTHEMUM_PURPLE, 6);
         addPlant(event, FlowerType.GERANIUM_PINK, 6);
-        addPlant(event, FlowerType.GERANIUM_RED, 6);
         addPlant(event, FlowerType.GERANIUM_RED, 6);
         addPlant(event, FlowerType.ORCHID_PURPLE, 12);
         addPlant(event, FlowerType.PEACE_LILY, 12);

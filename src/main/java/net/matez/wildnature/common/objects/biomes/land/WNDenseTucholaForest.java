@@ -56,8 +56,8 @@ public class WNDenseTucholaForest extends WNBiome {
         addPlant(event, FlowerType.BLUEBELL, 12);
         addPlant(event, FlowerType.FERNSPROUT, 6);
         addPlant(event, FlowerType.HEATHER_PINK, 12);
-        addPlant(event, FlowerType.HEATH_PURPLE, 12);
         addPlant(event, FlowerType.HEATHER_WHITE, 12);
+        addPlant(event, FlowerType.HEATH_PURPLE, 12);
         addPlant(event, FlowerType.PERENNIAL_BLUE, 6);
         addPlant(event, FlowerType.PERENNIAL_PINK, 6);
         addPlant(event, FlowerType.PERENNIAL_VIOLET, 6);

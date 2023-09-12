@@ -117,18 +117,18 @@ public class WNRegion extends Region {
                     {null, null, null, null, null}},
 
             {//HILLSIDES (small - ignores continentalness)
-                    {null, null, null                        , null, null},
-                    {null, null, WNBiomes.AutumnalMapleForest, null, null},
-                    {null, null, WNBiomes.AspenGrove         , null, null},
-                    {null, null, null                        , null, null},
-                    {null, null, null                        , null, null}},
+                    {null, null, null, null, null},
+                    {null, null, null, null, null},
+                    {null, null, null, null, null},
+                    {null, null, null, null, null},
+                    {null, null, null, null, null}},
 
             {//HILLS
-                    {WNBiomes.AutumnalSpruceForest      , null, null, null, null},
-                    {WNBiomes.AutumnalSequoiaRainforest , null, null, null, null},
-                    {WNBiomes.AutumnalPoplarForest      , null, null, null, null},
-                    {WNBiomes.AutumnalPoplarForestHills , null, null, null, null},
-                    {WNBiomes.AutumnalPoplarForestValley, null, null, null, null}}},
+                    {null, null, null, null, null},
+                    {null, null, null, null, null},
+                    {null, null, null, null, null},
+                    {null, null, null, null, null},
+                    {null, null, null, null, null}}},
 
     //HIGHLAND
             {{//PLATEAUS
@@ -257,10 +257,11 @@ public class WNRegion extends Region {
         WildNature.getLogger().success("Biomes added");
     }
 
+
     private ResourceKey<Biome> pickCoastal(Registry<Biome> biomeRegistry, int erosionIndex, int slopeIndex, int temperatureIndex, int humidityIndex)
-    {return biomeOrFallback(biomeRegistry, this.COASTLANDS[erosionIndex][slopeIndex][temperatureIndex][humidityIndex], Biomes.SUNFLOWER_PLAINS);}
+    {return biomeOrFallback(biomeRegistry, this.COASTLANDS[erosionIndex][slopeIndex][temperatureIndex][humidityIndex],Biomes.SUNFLOWER_PLAINS);}
     private ResourceKey<Biome> pickInland(Registry<Biome> biomeRegistry, int erosionIndex, int slopeIndex, int temperatureIndex, int humidityIndex)
-    {return biomeOrFallback(biomeRegistry, this.INLANDS[erosionIndex][slopeIndex][temperatureIndex][humidityIndex], Biomes.FLOWER_FOREST);}
+    {return biomeOrFallback(biomeRegistry, this.INLANDS[erosionIndex][slopeIndex][temperatureIndex][humidityIndex],Biomes.FLOWER_FOREST);}
 
 
     private void addSurfaceBiome(Consumer<Pair<Climate.ParameterPoint, ResourceKey<Biome>>> mapper, Climate.Parameter temperature, Climate.Parameter humidity, Climate.Parameter continentalness, Climate.Parameter erosion, Climate.Parameter weirdness, float offset, ResourceKey<Biome> biome)
@@ -268,13 +269,23 @@ public class WNRegion extends Region {
         mapper.accept(Pair.of(Climate.parameters(temperature, humidity, continentalness, erosion, Climate.Parameter.point(0.0F), weirdness, offset), biome));
         mapper.accept(Pair.of(Climate.parameters(temperature, humidity, continentalness, erosion, Climate.Parameter.point(1.0F), weirdness, offset), biome));
     }
+
+    private static int index = 0;
+    private static final ResourceKey<Biome>[] list = WNBiomes.getAllBiomes();
+
     private static ResourceKey<Biome> biomeOrFallback(Registry<Biome> biomeRegistry, ResourceKey<Biome>... biomes)
     {
-        for (ResourceKey<Biome> key : biomes)
+        index ++;
+        if (index >= list.length) {
+            index = 0;
+        }
+        return list[index];
+        /*for (ResourceKey<Biome> key : biomes)
         {
+
             if (key != null) {return key;}
         }
 
-        throw new RuntimeException("Failed to find fallback for biome!");
+        throw new RuntimeException("Failed to find fallback for biome!");*/
     }
 }

@@ -66,7 +66,6 @@ public class WNSnowyTatraUpperForest extends WNBiome {
         //addPlant(event, FlowerType.HEATHER_PURPLE, 6);
         addPlant(event, FlowerType.HEATH_PINK, 6);
         addPlant(event, FlowerType.HEATH_PURPLE, 6);
-        addPlant(event, FlowerType.HEATH_PURPLE, 6);
         addPlant(event, FlowerType.MONKSHOOD_BLUE, 12);
         //addPlant(event, FlowerType.OVERGROWN_STONE, 3);
         addPlant(event, FlowerType.PASQUE_PURPLE, 6);

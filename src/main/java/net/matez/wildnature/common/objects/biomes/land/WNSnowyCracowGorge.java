@@ -62,11 +62,11 @@ public class WNSnowyCracowGorge extends WNBiome {
         addTree(event, WNExtraTrees.TREE_TAIGA, 7, 0.5F, 2);
 
         // -- FLOWERS
-        addPlant(event, FlowerType.BLUEBELL, 12);
         //addPlant(event, FlowerType.BROWN_PODZOL, 4);
+        //addPlant(event, FlowerType.GRANITE_COBBLE_MOSSY, 12);
+        addPlant(event, FlowerType.BLUEBELL, 12);
         addPlant(event, FlowerType.CROCUS_WHITE, 6);
         addPlant(event, FlowerType.FIREWEED, 12);
-        //addPlant(event, FlowerType.GRANITE_COBBLE_MOSSY, 12);
         addPlant(event, FlowerType.HEATHER_PINK, 6);
         addPlant(event, FlowerType.HEATHER_YELLOW, 6);
         addPlant(event, FlowerType.HEATH_PURPLE, 12);

@@ -52,9 +52,7 @@ public class WNHillyShrublands extends WNBiome {
 
         // -- FLOWERS
         addPlant(event, FlowerType.AZALEA_ORANGE, 12);
-        addPlant(event, FlowerType.AZALEA_ORANGE, 12);
         addPlant(event, FlowerType.AZALEA_PINK, 12);
-        addPlant(event, FlowerType.AZALEA_RED, 12);
         addPlant(event, FlowerType.AZALEA_RED, 12);
         addPlant(event, FlowerType.AZALEA_YELLOW, 12);
         addPlant(event, FlowerType.BUTTERCUP_ORANGE, 6);

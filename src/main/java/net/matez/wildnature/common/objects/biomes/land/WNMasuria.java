@@ -62,7 +62,6 @@ public class WNMasuria extends WNBiome {
         addTree(event, WNExtraTrees.THIN_BIRCH, 1, 0.5F, 2);
         addTree(event, WNExtraTrees.TREE_BIRCH, 4, 0.5F, 2);
         addTree(event, WNExtraTrees.TREE_OAK, 1, 0.5F, 2);
-        addTree(event, WNExtraTrees.TREE_OAK, 1, 0.5F, 2);
         addTree(event, WNExtraTrees.TREE_PINE, 2, 0.5F, 2);
         addTree(event, WNExtraTrees.TREE_SPRUCE_M, 1, 0.5F, 2);
         addTree(event, WNExtraTrees.WILD_CHERRY, 1, 0.5F, 2);

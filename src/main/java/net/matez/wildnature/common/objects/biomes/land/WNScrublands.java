@@ -55,7 +55,6 @@ public class WNScrublands extends WNBiome {
         // -- FLOWERS
         addPlant(event, FlowerType.AZALEA_ORANGE, 12);
         addPlant(event, FlowerType.AZALEA_RED, 12);
-        addPlant(event, FlowerType.AZALEA_RED, 12);
         addPlant(event, FlowerType.BOXWOOD, 2);
         addPlant(event, FlowerType.CANNA_BULB_PINK, 12);
         addPlant(event, FlowerType.CANNA_BULB_RED, 12);

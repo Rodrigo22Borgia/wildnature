@@ -53,7 +53,6 @@ public class WNTaigaValley extends WNBiome {
     public void applyCustomFeatures(BiomeLoadingEvent event) {
         // -- TREES
         addTree(event, WNExtraTrees.LEAFY_BEECH_, 1, 0.5F, 2);
-        addTree(event, WNExtraTrees.LEAFY_BEECH_, 1, 0.5F, 2);
         addTree(event, WNExtraTrees.POINTY_BIRCH, 1, 0.5F, 2);
         addTree(event, WNExtraTrees.ROWAN, 1, 0.5F, 2);
         addTree(event, WNExtraTrees.SPIKY_BIRCH_, 1, 0.5F, 2);

@@ -20,14 +20,14 @@ public class WNStructureRegistry {
 
 
     static {
-        for (WNSaplingType treeType : WNSaplingType.values()) {
+        /*for (WNSaplingType treeType : WNSaplingType.values()) {
             String registryName = "tree_" + treeType.toString().toLowerCase();
             RegistryObject<Feature<NoneFeatureConfiguration>> registryObject = FEATURES.register(
                     registryName,
                     () -> new WNTreeFeature(NoneFeatureConfiguration.CODEC, treeType.getPlacement())
             );
             WN_FEATURES.put(registryName, registryObject);
-        }
+        }*/
         for (WNExtraTrees treeType : WNExtraTrees.values()) {
             String registryName = "extra_" + treeType.toString().toLowerCase();
             RegistryObject<Feature<NoneFeatureConfiguration>> registryObject = FEATURES.register(

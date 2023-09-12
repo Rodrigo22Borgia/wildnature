@@ -56,7 +56,6 @@ public class WNLushDesert extends WNBiome {
 
         // -- FLOWERS
         addPlant(event, FlowerType.AZALEA_ORANGE, 6);
-        addPlant(event, FlowerType.AZALEA_ORANGE, 6);
         addPlant(event, FlowerType.AZALEA_PINK, 6);
         addPlant(event, FlowerType.AZALEA_RED, 6);
         addPlant(event, FlowerType.AZALEA_WHITE, 6);

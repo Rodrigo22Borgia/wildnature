@@ -53,7 +53,6 @@ public class WNErodedFields extends WNBiome {
         // -- TREES
         addTree(event, WNExtraTrees.TREE_FIR, 2, 0.5F, 2);
         addTree(event, WNExtraTrees.TREE_FIR, 3, 0.5F, 2);
-        addTree(event, WNExtraTrees.TREE_TAIGA, 2, 0.5F, 2);
         addTree(event, WNExtraTrees.TREE_TAIGA, 3, 0.5F, 2);
         addTree(event, WNExtraTrees.SHRUB_TALL, 4,0.5F,2);
 
