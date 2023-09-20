@@ -110,47 +110,47 @@ public class WNRegion extends Region {
 //↓ Temperature \ Humidity →
     //LOWLAND
             {{//PLAINS
-                    {null                  , WNBiomes.SnowyDenseTucholaForest, WNBiomes.ForestedFields , WNBiomes.ColdTaigaMarsh, WNBiomes.FrozenTaiga},
-                    {WNBiomes.SaltFlats    , WNBiomes.BorealForest           , WNBiomes.OakValley      , WNBiomes.PineMixedMarsh, WNBiomes.BialowiezaFrozenMarsh},
-                    {WNBiomes.CrackedDesert, WNBiomes.Steppe                 , WNBiomes.HyacinthFields , WNBiomes.Scrublands    , WNBiomes.BialowiezaMarsh},
-                    {WNBiomes.Oasis        , WNBiomes.Safari                 , WNBiomes.MarigoldFields , WNBiomes.Wetlands      , WNBiomes.Rainforest},
-                    {WNBiomes.Sahara       , WNBiomes.LushDesert             , WNBiomes.SunflowerFields, WNBiomes.BananaThicket , null}},
+                    {null                        , WNBiomes.SnowyDenseTucholaForest  , WNBiomes.ForestedFields      , WNBiomes.ColdTaigaMarsh    , WNBiomes.FrozenTaiga},
+                    {WNBiomes.SaltFlats          , WNBiomes.BorealForest             , WNBiomes.OakValley           , WNBiomes.PineMixedMarsh    , WNBiomes.BialowiezaFrozenMarsh},
+                    {WNBiomes.CrackedDesert      , WNBiomes.Steppe                   , WNBiomes.HyacinthFields      , WNBiomes.Scrublands        , WNBiomes.BialowiezaMarsh},
+                    {WNBiomes.Oasis              , WNBiomes.Safari                   , WNBiomes.MarigoldFields      , WNBiomes.Wetlands          , WNBiomes.Rainforest},
+                    {WNBiomes.Sahara             , WNBiomes.LushDesert               , WNBiomes.SunflowerFields     , WNBiomes.BananaThicket     , null}},
 
             {//HILLSIDES (small - ignores continentalness)
-                    {null                   , WNBiomes.SnowyTucholaForest      , null                    , null                , null},
-                    {WNBiomes.Mirkwood      , WNBiomes.SnowyBorealForest       , WNBiomes.Oaklands       , WNBiomes.SnowyForest, WNBiomes.SequoiaForest},
-                    {WNBiomes.OliveGarden   , WNBiomes.TemperatePineMixedForest, WNBiomes.TemperateForest, WNBiomes.CornField  , WNBiomes.SakuraJungle},
-                    {WNBiomes.DeadDesolation, WNBiomes.CottonFields            , WNBiomes.FlowerField    , WNBiomes.Shrublands , WNBiomes.RainforestMoor},
-                    {WNBiomes.TintedDesert  , WNBiomes.CaatingaScrubs          , WNBiomes.RapeseedField  , null                , null}},
+                    {null                        , WNBiomes.SnowyTucholaForest       , null                         , null                       , null},
+                    {WNBiomes.Mirkwood           , WNBiomes.SnowyBorealForest        , WNBiomes.Oaklands            , WNBiomes.SnowyForest       , WNBiomes.SequoiaForest},
+                    {WNBiomes.OliveGarden        , WNBiomes.TemperatePineMixedForest , WNBiomes.TemperateForest     , WNBiomes.CornField         , WNBiomes.SakuraJungle},
+                    {WNBiomes.DeadDesolation     , WNBiomes.CottonFields             , WNBiomes.FlowerField         , WNBiomes.Shrublands        , WNBiomes.RainforestMoor},
+                    {WNBiomes.TintedDesert       , WNBiomes.CaatingaScrubs           , WNBiomes.RapeseedField       , null                       , null}},
 
             {//HILLS
-                    {null                      , WNBiomes.SnowyTucholaForestHill, null                  , WNBiomes.ColdTaigaHills , null},
-                    {WNBiomes.MapleForest      , WNBiomes.SnowyBorealForestHill , WNBiomes.RedwoodForest, WNBiomes.SnowyBirchGrove, WNBiomes.CypressHills},
-                    {WNBiomes.OliveHills       , WNBiomes.ErodedHills           , WNBiomes.Masuria      , WNBiomes.OaklandHills   , null},
-                    {WNBiomes.Prairie          , WNBiomes.SafariHills           , WNBiomes.DenseMoor    , WNBiomes.HillyShrublands, WNBiomes.RainforestHills},
-                    {WNBiomes.TintedDesertHills, WNBiomes.CaatingaHills         , WNBiomes.OrchardPlum  , null                    , null}}},
+                    {null                        , WNBiomes.SnowyTucholaForestHill   , null                         , WNBiomes.ColdTaigaHills    , null},
+                    {WNBiomes.MapleForest        , WNBiomes.SnowyBorealForestHill    , WNBiomes.RedwoodForest       , WNBiomes.SnowyBirchGrove   , WNBiomes.CypressHills},
+                    {WNBiomes.OliveHills         , WNBiomes.ErodedHills              , WNBiomes.Masuria             , WNBiomes.OaklandHills      , null},
+                    {WNBiomes.Prairie            , WNBiomes.SafariHills              , WNBiomes.DenseMoor           , WNBiomes.HillyShrublands   , WNBiomes.RainforestHills},
+                    {WNBiomes.TintedDesertHills  , WNBiomes.CaatingaHills            , WNBiomes.OrchardPlum         , null                       , null}}},
 
     //HIGHLAND
             {{//PLATEAUS
-                    {null                   , WNBiomes.ColdTaiga             , WNBiomes.ColdTaigaClearing   , null                     , null},
-                    {WNBiomes.DarkMirkwood  , WNBiomes.ColdSilverlands       , WNBiomes.AspenGrove          , WNBiomes.SnowyAspenGrove , WNBiomes.CypressFields},
-                    {WNBiomes.PrairiePlateau, WNBiomes.TemperateRedwoodScrubs, WNBiomes.AutumnalPoplarForest, WNBiomes.PoppyFields     , WNBiomes.TemperateSequoiaRainforest},
-                    {WNBiomes.Badlands      , WNBiomes.TemperateCedarScrubs  , WNBiomes.RoofedForest        , WNBiomes.ShrublandPlateau, WNBiomes.GiantEucalyptusForest},
-                    {WNBiomes.PoldersEdge   , WNBiomes.Polders               , WNBiomes.LavenderGarden      , WNBiomes.DaintreePlateau , null}},
+                    {null                        , WNBiomes.ColdTaiga                , WNBiomes.ColdTaigaClearing   , null                       , null},
+                    {WNBiomes.DarkMirkwood       , WNBiomes.ColdSilverlands          , WNBiomes.AspenGrove          , WNBiomes.SnowyAspenGrove   , WNBiomes.CypressFields},
+                    {WNBiomes.PrairiePlateau     , WNBiomes.TemperateRedwoodScrubs   , WNBiomes.AutumnalPoplarForest, WNBiomes.PoppyFields       , WNBiomes.TemperateSequoiaRainforest},
+                    {WNBiomes.Badlands           , WNBiomes.TemperateCedarScrubs     , WNBiomes.RoofedForest        , WNBiomes.ShrublandPlateau  , WNBiomes.GiantEucalyptusForest},
+                    {WNBiomes.PoldersEdge        , WNBiomes.Polders                  , WNBiomes.LavenderGarden      , WNBiomes.DaintreePlateau   , null}},
 
             {//MOUNTAINS (small - ignores continentalness)
-                    {null                  , WNBiomes.ColdRockyTaiga           , WNBiomes.ColdBerryTaiga    , null                       , null},
-                    {WNBiomes.RockyTaiga   , WNBiomes.SnowyCedarForest         , WNBiomes.BerryTaiga        , WNBiomes.ColdForest        , null},
-                    {WNBiomes.ErodedFields , WNBiomes.AutumnalPoplarForestHills, WNBiomes.WeepingBirchForest, WNBiomes.TropicalBadlands  , null},
-                    {WNBiomes.CitrusOrchard, WNBiomes.DeciduousForest          , WNBiomes.BirchGrove        , WNBiomes.MahoganyRainforest, WNBiomes.EucalyptusForest},
-                    {WNBiomes.BaobabSavanna, WNBiomes.GiantSavanna             , WNBiomes.VibrantForest     , WNBiomes.DaintreeForest    , null}},
+                    {null                        , WNBiomes.ColdRockyTaiga           , WNBiomes.ColdBerryTaiga      , null                       , null},
+                    {WNBiomes.RockyTaiga         , WNBiomes.SnowyCedarForest         , WNBiomes.BerryTaiga          , WNBiomes.ColdForest        , null},
+                    {WNBiomes.ErodedFields       , WNBiomes.AutumnalPoplarForestHills, WNBiomes.WeepingBirchForest  , WNBiomes.TropicalBadlands  , null},
+                    {WNBiomes.CitrusOrchard      , WNBiomes.DeciduousForest          , WNBiomes.BirchGrove          , WNBiomes.MahoganyRainforest, WNBiomes.EucalyptusForest},
+                    {WNBiomes.BaobabSavanna      , WNBiomes.GiantSavanna             , WNBiomes.VibrantForest       , WNBiomes.DaintreeForest    , null}},
 
             {//PEAKS
-                    {null                        , null                     , null                     , null                   , null},
-                    {WNBiomes.AutumnalMapleForest, WNBiomes.BorealForestHill, WNBiomes.RedwoodHills    , null                   , null},
-                    {WNBiomes.PrairieHills       , null                     , WNBiomes.OldRedwoodForest, WNBiomes.Moor          , null},
-                    {null                        , null                     , null                     , WNBiomes.MahoganyCliffs, null},
-                    {null                        , null                     , WNBiomes.Orchard         , WNBiomes.DaintreeCliffs, null}}}
+                    {null                        , null                              , null                         , null                       , null},
+                    {WNBiomes.AutumnalMapleForest, WNBiomes.BorealForestHill         , WNBiomes.RedwoodHills        , null                       , null},
+                    {WNBiomes.PrairieHills       , null                              , WNBiomes.OldRedwoodForest    , WNBiomes.Moor              , null},
+                    {null                        , null                              , null                         , WNBiomes.MahoganyCliffs    , null},
+                    {null                        , null                              , WNBiomes.Orchard             , WNBiomes.DaintreeCliffs    , null}}}
     };
 
 
@@ -158,47 +158,47 @@ public class WNRegion extends Region {
 //↓ Temperature \ Humidity →
     //LOWLAND
             {{//PLAINS
-                    {null                , WNBiomes.SnowyGiantConiferousForest, WNBiomes.TaigaClearing        , WNBiomes.SnowyTatraChocholowskaGlade, WNBiomes.WetTaiga},
-                    {WNBiomes.Silverlands, WNBiomes.CedarForest               , WNBiomes.SnowyBialowiezaForest, WNBiomes.TaigaMarsh                 , WNBiomes.AutumnalSequoiaRainforest},
-                    {WNBiomes.Forest     , WNBiomes.GiantConiferousForest     , WNBiomes.BirchMarsh           , WNBiomes.TatraChocholowskaGlade     , null},
-                    {WNBiomes.Farmlands  , WNBiomes.Meadow                    , WNBiomes.HornbeamValley       , WNBiomes.Backwaters                 , WNBiomes.MangroveBayou},
-                    {WNBiomes.Grasslands , WNBiomes.Fields                    , WNBiomes.Bog                  , WNBiomes.RoofedValley               , null}},
+                    {null                      , WNBiomes.SnowyGiantConiferousForest, WNBiomes.TaigaClearing           , WNBiomes.SnowyTatraChocholowskaGlade, WNBiomes.WetTaiga},
+                    {WNBiomes.Silverlands      , WNBiomes.CedarForest               , WNBiomes.SnowyBialowiezaForest   , WNBiomes.TaigaMarsh                 , WNBiomes.AutumnalSequoiaRainforest},
+                    {WNBiomes.Forest           , WNBiomes.GiantConiferousForest     , WNBiomes.BirchMarsh              , WNBiomes.TatraChocholowskaGlade     , null},
+                    {WNBiomes.Farmlands        , WNBiomes.Meadow                    , WNBiomes.HornbeamValley          , WNBiomes.Backwaters                 , WNBiomes.MangroveBayou},
+                    {WNBiomes.Grasslands       , WNBiomes.Fields                    , WNBiomes.Bog                     , WNBiomes.RoofedValley               , null}},
 
             {//HILLSIDES (ignores continentalness)
-                    {null                    , null                         , null                , null                   , WNBiomes.SnowyTatraLowerForest},
-                    {WNBiomes.TucholaForest  , WNBiomes.DenseTucholaForest  , WNBiomes.Taiga      , WNBiomes.SeasonalTaiga , WNBiomes.ThujaShield},
-                    {WNBiomes.BeechGrove     , WNBiomes.AutumnalSpruceForest, WNBiomes.Greenwood  , WNBiomes.GoldenWoods   , WNBiomes.TatraLowerForest},
-                    {WNBiomes.GrasslandsHills, WNBiomes.BeechForestTall     , WNBiomes.BirchScrubs, WNBiomes.PoplarForest  , null},
-                    {WNBiomes.Outback        , WNBiomes.WoodedOutback       , WNBiomes.HazelFields, WNBiomes.CherryParadise, null}},
+                    {null                      , null                               , null                             , null                                , WNBiomes.SnowyTatraLowerForest},
+                    {WNBiomes.TucholaForest    , WNBiomes.DenseTucholaForest        , WNBiomes.Taiga                   , WNBiomes.SeasonalTaiga              , WNBiomes.ThujaShield},
+                    {WNBiomes.BeechGrove       , WNBiomes.AutumnalSpruceForest      , WNBiomes.Greenwood               , WNBiomes.GoldenWoods                , WNBiomes.TatraLowerForest},
+                    {WNBiomes.GrasslandsHills  , WNBiomes.BeechForestTall           , WNBiomes.BirchScrubs             , WNBiomes.PoplarForest               , null},
+                    {WNBiomes.Outback          , WNBiomes.WoodedOutback             , WNBiomes.HazelFields             , WNBiomes.CherryParadise             , null}},
 
             {//HILLS
-                    {null                      , null                          , null                   , WNBiomes.SnowyTatraFoothills    , WNBiomes.SnowyTatraUpperForest},
-                    {WNBiomes.TucholaForestHill, WNBiomes.HighForestHills      , WNBiomes.TaigaHills    , null                            , null},
-                    {WNBiomes.BeechForestHills , WNBiomes.Highlands            , WNBiomes.HornbeamForest, WNBiomes.TatraGreenedPeak       , WNBiomes.TatraUpperForest},
-                    {null                      , WNBiomes.WoodedMeadow         , WNBiomes.GreenwoodHills, null                            , null},
-                    {null                      , WNBiomes.WoodedJacarandaMeadow, WNBiomes.HornbeamHills , WNBiomes.ForestedGrasslandsHills, null}}},
+                    {null                      , null                               , null                             , WNBiomes.SnowyTatraFoothills        , WNBiomes.SnowyTatraUpperForest},
+                    {WNBiomes.TucholaForestHill, WNBiomes.HighForestHills           , WNBiomes.TaigaHills              , null                                , null},
+                    {WNBiomes.BeechForestHills , WNBiomes.Highlands                 , WNBiomes.HornbeamForest          , WNBiomes.TatraGreenedPeak           , WNBiomes.TatraUpperForest},
+                    {null                      , WNBiomes.WoodedMeadow              , WNBiomes.GreenwoodHills          , null                                , null},
+                    {null                      , WNBiomes.WoodedJacarandaMeadow     , WNBiomes.HornbeamHills           , WNBiomes.ForestedGrasslandsHills    , null}}},
 
     //HIGHLAND
             {{//VALLEYS - can be quite cliffy
-                    {WNBiomes.ColdTaigaValley, WNBiomes.SnowyTucholaValley        , WNBiomes.SnowyTatraFireweedValley, WNBiomes.FrozenMorskieOko  , WNBiomes.SnowyCracowGorge},
-                    {WNBiomes.TaigaValley    , WNBiomes.HighForestValley          , WNBiomes.SnowyBorealValley       , WNBiomes.BorealValley      , WNBiomes.CracowGorge},
-                    {WNBiomes.TucholaValley  , WNBiomes.AutumnalPoplarForestValley, WNBiomes.OvergrownCliffs         , WNBiomes.MorskieOko        , WNBiomes.TatraFireweedValley},
-                    {WNBiomes.Canyons        , WNBiomes.BeechValley               , WNBiomes.GreenwoodValley         , WNBiomes.ForestValley      , null},
-                    {WNBiomes.GrandCanyon    , WNBiomes.PrehistoricValley         , WNBiomes.PoplarForestValley      , WNBiomes.ForestedGrasslands, WNBiomes.LandOfRivers}},
+                    {WNBiomes.ColdTaigaValley  , WNBiomes.SnowyTucholaValley        , WNBiomes.SnowyTatraFireweedValley, WNBiomes.FrozenMorskieOko           , WNBiomes.SnowyCracowGorge},
+                    {WNBiomes.TaigaValley      , WNBiomes.HighForestValley          , WNBiomes.SnowyBorealValley       , WNBiomes.BorealValley               , WNBiomes.CracowGorge},
+                    {WNBiomes.TucholaValley    , WNBiomes.AutumnalPoplarForestValley, WNBiomes.OvergrownCliffs         , WNBiomes.MorskieOko                 , WNBiomes.TatraFireweedValley},
+                    {WNBiomes.Canyons          , WNBiomes.BeechValley               , WNBiomes.GreenwoodValley         , WNBiomes.ForestValley               , null},
+                    {WNBiomes.GrandCanyon      , WNBiomes.PrehistoricValley         , WNBiomes.PoplarForestValley      , WNBiomes.ForestedGrasslands         , WNBiomes.LandOfRivers}},
 
             {//MOUNTAINS (ignores continentalness)
-                    {null                    , null                      , null                      , WNBiomes.SnowedMountains, WNBiomes.SnowyTatraMountains},
-                    {WNBiomes.PineMixedForest, WNBiomes.HighForest       , WNBiomes.PurpleWoodland   , WNBiomes.Glacier        , null},
-                    {WNBiomes.BeechForest    , WNBiomes.ForestedMountains, WNBiomes.DenseOaklands    , WNBiomes.TatraFoothills , WNBiomes.TatraMountains},
-                    {WNBiomes.SequoiaValley  , null                      , null                      , null                    , null},
-                    {null                    , null                      , WNBiomes.PoplarForestHills, null                    , null}},
+                    {null                      , null                               , null                             , WNBiomes.SnowedMountains            , WNBiomes.SnowyTatraMountains},
+                    {WNBiomes.PineMixedForest  , WNBiomes.HighForest                , WNBiomes.PurpleWoodland          , WNBiomes.Glacier                    , null},
+                    {WNBiomes.BeechForest      , WNBiomes.ForestedMountains         , WNBiomes.DenseOaklands           , WNBiomes.TatraFoothills             , WNBiomes.TatraMountains},
+                    {WNBiomes.SequoiaValley    , null                               , null                             , null                                , null},
+                    {null                      , null                               , WNBiomes.PoplarForestHills       , null                                , null}},
 
             {//PEAKS
-                    {null                 , null                   , null, WNBiomes.SnowyGiewont, WNBiomes.Rysy},
-                    {null                 , WNBiomes.ChristmasDream, null, WNBiomes.Giewont     , WNBiomes.SnowyTatraKasprowyPeak},
-                    {null                 , null                   , null, WNBiomes.TatraRedPeak, WNBiomes.TatraKasprowyPeak},
-                    {WNBiomes.SequoiaHills, null                   , null, null                 , null},
-                    {null                 , null                   , null, null                 , null}}}
+                    {null                      , null                               , null                             , WNBiomes.SnowyGiewont               , WNBiomes.Rysy},
+                    {null                      , WNBiomes.ChristmasDream            , null                             , WNBiomes.Giewont                    , WNBiomes.SnowyTatraKasprowyPeak},
+                    {null                      , null                               , null                             , WNBiomes.TatraRedPeak               , WNBiomes.TatraKasprowyPeak},
+                    {WNBiomes.SequoiaHills     , null                               , null                             , null                                , null},
+                    {null                      , null                               , null                             , null                                , null}}}
     };
 
     @Override
