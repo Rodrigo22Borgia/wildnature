@@ -13,6 +13,20 @@ import net.minecraft.world.level.levelgen.SurfaceRules;
 import static net.minecraft.world.level.levelgen.SurfaceRules.*;
 
 public class WNSurface {
+    public static final SurfaceRules.RuleSource BROWN_PODZOL =
+            SurfaceRules.ifTrue(ON_FLOOR,
+                    makeStateRule(WNBlocks.PODZOLS.get(GrassType.BARREN)));
+
+    public static final SurfaceRules.RuleSource OVERGROWN_STONE =
+            SurfaceRules.ifTrue(ON_FLOOR,
+                    makeStateRule(WNBlocks.OVERGROWN_STONES.get(OvergrownGrassType.OVERGROWN_STONE)));
+
+    public static final SurfaceRules.RuleSource BROWN_GRASS_BLOCK =
+            SurfaceRules.ifTrue(UNDER_FLOOR,
+                    makeStateRule(WNBlocks.MOSSY_STONE));
+    public static final SurfaceRules.RuleSource GRANITE_COBBLE_MOSSY =
+            SurfaceRules.ifTrue(UNDER_FLOOR,
+                    makeStateRule(Blocks.GRANITE));
     public static final SurfaceRules.RuleSource SAND_CONFIG =
             SurfaceRules.sequence(
                     SurfaceRules.ifTrue(UNDER_FLOOR,
@@ -32,7 +46,8 @@ public class WNSurface {
     public static final SurfaceRules.RuleSource SAND_SAND_GRAVEL_CONFIG =
             SurfaceRules.sequence(
                     SurfaceRules.ifTrue(ON_FLOOR,
-                            SurfaceRules.ifTrue(SurfaceRules.noiseCondition(Noises.SWAMP, -1.0D, -0.5D),makeStateRule(Blocks.GRAVEL))),
+                            SurfaceRules.ifTrue(SurfaceRules.noiseCondition(Noises.SWAMP, -1.0D, -0.5D),
+                                    makeStateRule(Blocks.GRAVEL))),
                     SurfaceRules.ifTrue(UNDER_FLOOR,makeStateRule(Blocks.SAND)));
     public static final SurfaceRules.RuleSource RED_SAND_WHITE_TERRACOTTA_GRAVEL_CONFIG =
             SurfaceRules.ifTrue(ON_FLOOR,

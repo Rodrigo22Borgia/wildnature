@@ -19,7 +19,7 @@ import net.minecraftforge.event.world.BiomeLoadingEvent;
 
 public class WNMahoganyRainforest extends WNBiome { 
     public WNMahoganyRainforest() { 
-        super(WNBiomes.MahoganyRainforest, Biome.Precipitation.RAIN, Biome.BiomeCategory.TAIGA, 0.7F, 0.8F, NORMAL_MUSIC, 0x89D036 /*0x81D417*/, 0x72D624 /*0x92DD29*/);
+        super(WNBiomes.MahoganyRainforest, Biome.Precipitation.RAIN, Biome.BiomeCategory.JUNGLE, 0.7F, 0.8F, NORMAL_MUSIC, 0x89D036 /*0x81D417*/, 0x72D624 /*0x92DD29*/);
     }
 
     @Override

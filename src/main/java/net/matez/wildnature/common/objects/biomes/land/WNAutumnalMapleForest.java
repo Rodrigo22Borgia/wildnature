@@ -41,24 +41,15 @@ public class WNAutumnalMapleForest extends WNBiome {
     @Override
     public void applyCustomFeatures(BiomeLoadingEvent event) {
 
-        // -- BUSHES
-
-        // ---
-
-        // -- FLOWERS
-
-        // ---
-
         // -- TREES
-
-
         addTree(event, WNExtraTrees.OAK, 1,0.5F,1);
         addTree(event, WNExtraTrees.MAPLE, 1,1F,0);
         addTree(event, WNExtraTrees.MAPLE_BROWN, 1,1F,0);
         addTree(event, WNExtraTrees.MAPLE_ORANGE, 1,1F,0);
         addTree(event, WNExtraTrees.MAPLE_RED, 1,1F,0);
         addTree(event, WNExtraTrees.MAPLE_YELLOW, 1,1F,0);
-        // ---
+
+        // -- FLOWERS
         addPlant(event, FlowerType.HEATHER_WHITE, 6);
         addPlant(event, FlowerType.HEATHER_YELLOW, 6);
         addPlant(event, FlowerType.YEW_BUSH, 3);

@@ -2,6 +2,7 @@ package net.matez.wildnature.common.objects.biomes.land;
 
 import net.matez.wildnature.common.objects.blocks.plant.FlowerType;
 import net.matez.wildnature.common.objects.features.WNExtraTrees;
+import net.matez.wildnature.common.objects.surface.WNSurface;
 import net.matez.wildnature.common.registry.biomes.WNBiome;
 import net.matez.wildnature.common.registry.biomes.WNBiomes;
 import net.minecraft.data.worldgen.BiomeDefaultFeatures;
@@ -68,6 +69,6 @@ public class WNAutumnalPoplarForestHills extends WNBiome {
 
     @Override
     public SurfaceRules.RuleSource getSurface() {
-        return null;//WNSurface.GRASS_DIRT_GRAVEL_CONFIG;
+        return WNSurface.GRASS_DIRT_GRAVEL_CONFIG;
     }
 }
