@@ -54,12 +54,12 @@ public class WNTemperateRedwoodScrubs extends WNBiome {
         addTree(event, WNExtraTrees.OAKLANDS_SHRUB, 1, 0.5F, 2);
         addTree(event, WNExtraTrees.OAKLANDS_SMALLSHRUB, 1, 0.5F, 2);
         addTree(event, WNExtraTrees.PEAR, 1, 0.5F, 2);
-        addTree(event, WNExtraTrees.POINTY_BIRCH, 2, 0.5F, 2);
-        addTree(event, WNExtraTrees.POINTY_OAK_, 2, 0.5F, 2);
+        addTree(event, WNExtraTrees.POINTY_BIRCH, 1, 0.5F, 2);
+        addTree(event, WNExtraTrees.POINTY_OAK_, 1, 0.5F, 2);
         addTree(event, WNExtraTrees.SMALL_REDWOOD, 2, 0.5F, 2);
-        addTree(event, WNExtraTrees.SPIKY_BIRCH_, 2, 0.5F, 2);
+        addTree(event, WNExtraTrees.SPIKY_BIRCH_, 1, 0.5F, 2);
         addTree(event, WNExtraTrees.TREE_OAK, 1, 0.5F, 2);
-        addTree(event, WNExtraTrees.WEEPING_CEDAR_, 2, 0.5F, 2);
+        addTree(event, WNExtraTrees.WEEPING_CEDAR_, 1, 0.5F, 2);
         addTree(event, WNExtraTrees.WILD_CHERRY, 1, 0.5F, 2);
 
         // -- FLOWERS

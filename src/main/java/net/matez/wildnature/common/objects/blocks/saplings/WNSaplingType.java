@@ -319,16 +319,24 @@ public enum WNSaplingType {
     ), */
     FIR(LeafType.FIR, () -> Blocks.SPRUCE_LOG,
             new WNStructurePlacement(WNStructureFolders.TREE_FIR)
-                    .with(1, "silver_fir_1")
-                    .with(1, "silver_fir_2")
-                    .with(1, "silver_fir_3")
+                    .with(1, "tree_fir_1")
+                    .with(1, "tree_fir_2")
+                    .with(1, "tree_fir_3")
+                    .with(1, "tree_fir_4")
+                    .with(1, "tree_fir_5")
+                    .with(1, "tree_fir_6")
+                    .with(1, "tree_fir_7")
+                    .with(1, "tree_fir_8")
+                    .with(1, "tree_fir_9")
             ,
             new WNStructurePlacement(WNStructureFolders.TREE_FIR)
                     .with(1, "")
     ),
     SILVER_FIR(LeafType.SILVER_FIR, () -> Blocks.SPRUCE_LOG,
             new WNStructurePlacement(WNStructureFolders.TREE_FIR)
-                    .with(1, "")
+                    .with(1, "silver_fir_1")
+                    .with(1, "silver_fir_2")
+                    .with(1, "silver_fir_3")
             ,
             new WNStructurePlacement(WNStructureFolders.TREE_FIR)
                     .with(1, "")

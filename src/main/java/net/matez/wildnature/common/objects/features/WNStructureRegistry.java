@@ -2,6 +2,7 @@ package net.matez.wildnature.common.objects.features;
 
 import net.matez.wildnature.common.objects.blocks.saplings.WNSaplingType;
 import net.matez.wildnature.setup.WildNature;
+import net.minecraft.data.worldgen.features.FeatureUtils;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -20,14 +21,6 @@ public class WNStructureRegistry {
 
 
     static {
-        /*for (WNSaplingType treeType : WNSaplingType.values()) {
-            String registryName = "tree_" + treeType.toString().toLowerCase();
-            RegistryObject<Feature<NoneFeatureConfiguration>> registryObject = FEATURES.register(
-                    registryName,
-                    () -> new WNTreeFeature(NoneFeatureConfiguration.CODEC, treeType.getPlacement())
-            );
-            WN_FEATURES.put(registryName, registryObject);
-        }*/
         for (WNExtraTrees treeType : WNExtraTrees.values()) {
             String registryName = "extra_" + treeType.toString().toLowerCase();
             RegistryObject<Feature<NoneFeatureConfiguration>> registryObject = FEATURES.register(

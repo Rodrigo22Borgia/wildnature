@@ -1,27 +1,24 @@
 package net.matez.wildnature.common.registry.biomes;
 
-import net.matez.wildnature.common.objects.blocks.leaves.LeafType;
 import net.matez.wildnature.common.objects.blocks.plant.PlantFeature;
-import net.matez.wildnature.common.objects.blocks.saplings.WNSaplingType;
-import net.matez.wildnature.common.objects.blocks.wood.LogType;
 import net.matez.wildnature.common.objects.features.WNExtraTrees;
 import net.matez.wildnature.common.objects.features.WNFallenTrees;
 import net.matez.wildnature.common.objects.features.WNStructureRegistry;
-import net.matez.wildnature.common.registry.blocks.WNBlocks;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Registry;
+import net.minecraft.data.BuiltinRegistries;
 import net.minecraft.data.worldgen.BiomeDefaultFeatures;
 import net.minecraft.data.worldgen.features.FeatureUtils;
-import net.minecraft.data.worldgen.features.TreeFeatures;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.data.worldgen.placement.VegetationPlacements;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.Music;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.BiomeGenerationSettings;
 import net.minecraft.world.level.biome.MobSpawnSettings;
-import net.minecraft.world.level.block.AzaleaBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.GenerationStep;
@@ -94,72 +91,99 @@ public abstract class WNBiome {
     }
 
     //Features:
-    private static void placeFeature(final BiomeLoadingEvent event, String rLocation, String reg, int perChunk, float extraChance, int extra) {
-        event.getGeneration().getFeatures(GenerationStep.Decoration.VEGETAL_DECORATION).add(PlacementUtils.register(rLocation, FeatureUtils.register(rLocation,
-                        WNStructureRegistry.WN_FEATURES.get(reg).get()),
-                VegetationPlacements.treePlacement(PlacementUtils.countExtra(
-                        perChunk,
-                        extraChance,
-                        extra
-                ))));
-    }
-    //FeatureUtils.register("jungle_bush", Feature.TREE, (new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(Blocks.JUNGLE_LOG), new StraightTrunkPlacer(1, 0, 0), BlockStateProvider.simple(Blocks.OAK_LEAVES), new BushFoliagePlacer(ConstantInt.of(2), ConstantInt.of(1), 2), new TwoLayersFeatureSize(0, 0, 0))).build());
-    protected static void addTree(final BiomeLoadingEvent event, WNFallenTrees tree, int perChunk, float extraChance, int extra) {
-        String rLocation = tree.toString().toLowerCase() + "_" + perChunk + "f";
-        String reg = "fallen_" + tree.toString().toLowerCase();
-        placeFeature(event, rLocation, reg, perChunk, extraChance, extra);
-    }
 
-    /*protected static void addTree(final BiomeLoadingEvent event, WNSaplingType tree, int perChunk, float extraChance, int extra) {
-        String rLocation = "tree_" + tree.toString().toLowerCase() + "_" + perChunk;
-        String reg = "tree_" + tree.toString().toLowerCase();
-        placeFeature(event, rLocation, reg, perChunk, extraChance, extra);
-    }*/
+    protected static void addTree(final BiomeLoadingEvent event, WNFallenTrees tree, int perChunk, float extraChance, int extra) {
+        String rLocation = "wildnature:fallen_" + tree.toString().toLowerCase() + "_" + perChunk + "f";
+        String reg = "fallen_" + tree.toString().toLowerCase();
+        placeTree(event, rLocation, reg, perChunk, extraChance, extra);
+    }
 
     protected static void addTree(final BiomeLoadingEvent event, WNExtraTrees tree, int perChunk, float extraChance, int extra) {
-        String rLocation = "extra_" + tree.toString().toLowerCase() + "_" + perChunk + "_" + extraChance + "_" + extra;
+        String rLocation = "wildnature:extra_" + tree.toString().toLowerCase() + "_" + perChunk + "_" + extraChance + "_" + extra;
         String reg = "extra_" + tree.toString().toLowerCase();
-        placeFeature(event, rLocation, reg, perChunk, extraChance, extra);
+        placeTree(event, rLocation, reg, perChunk, extraChance, extra);
+    }
+    private static void placeTree(final BiomeLoadingEvent event, String rLocation, String reg, int perChunk, float extraChance, int extra) {
+        if (!BuiltinRegistries.PLACED_FEATURE.containsKey(new ResourceLocation(rLocation))) {
+
+            if (!BuiltinRegistries.CONFIGURED_FEATURE.containsKey(new ResourceLocation(reg))) {
+            FeatureUtils.register(reg, WNStructureRegistry.WN_FEATURES.get(reg).get());
+            }
+            PlacementUtils.register(rLocation, BuiltinRegistries.CONFIGURED_FEATURE.getHolderOrThrow(ResourceKey.create(Registry.CONFIGURED_FEATURE_REGISTRY,new ResourceLocation(reg))),
+                    VegetationPlacements.treePlacement(PlacementUtils.countExtra(
+                            perChunk,
+                            extraChance,
+                            extra
+                    )));
+        }
+            event.getGeneration().getFeatures(GenerationStep.Decoration.VEGETAL_DECORATION).add(BuiltinRegistries.PLACED_FEATURE.getHolderOrThrow(ResourceKey.create(Registry.PLACED_FEATURE_REGISTRY,new ResourceLocation(rLocation))));
+
     }
 
     protected static void addShrub(final BiomeLoadingEvent event, Block log, Block leaves, int perChunk, float extraChance, int extra) {
         String txt = leaves.toString();
-        String rLocation = txt.substring(txt.indexOf(58)+1,txt.indexOf(125)) + "_" + perChunk;
-        event.getGeneration().getFeatures(GenerationStep.Decoration.VEGETAL_DECORATION).add(PlacementUtils.register(rLocation, FeatureUtils.register(rLocation, Feature.TREE,  (new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(
-                log
-        ), new StraightTrunkPlacer(1, 0, 0), BlockStateProvider.simple(
-                leaves
-        ), new BushFoliagePlacer(ConstantInt.of(2), ConstantInt.of(1), 2), new TwoLayersFeatureSize(0, 0, 0))).build()), VegetationPlacements.treePlacement(PlacementUtils.countExtra(
-                perChunk,
-                extraChance,
-                extra
-        ),
-                Blocks.AZALEA)
-        ));
+        String cLocation = "wildnature:" + txt.substring(txt.indexOf(58)+1,txt.indexOf(125));
+        String pLocation =  cLocation + "_" + perChunk + "_" + extraChance + "_" + extra;
+
+
+        if (!BuiltinRegistries.PLACED_FEATURE.containsKey(new ResourceLocation(pLocation))) {
+
+            if (!BuiltinRegistries.CONFIGURED_FEATURE.containsKey(new ResourceLocation(cLocation))) {
+                FeatureUtils.register(cLocation, Feature.TREE,  (new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(
+                        log
+                ), new StraightTrunkPlacer(1, 0, 0), BlockStateProvider.simple(
+                        leaves
+                ), new BushFoliagePlacer(ConstantInt.of(2), ConstantInt.of(1), 2), new TwoLayersFeatureSize(0, 0, 0))).build());
+            }
+            PlacementUtils.register(pLocation, BuiltinRegistries.CONFIGURED_FEATURE.getHolderOrThrow(ResourceKey.create(Registry.CONFIGURED_FEATURE_REGISTRY,new ResourceLocation(cLocation))), VegetationPlacements.treePlacement(PlacementUtils.countExtra(
+                                    perChunk,
+                                    extraChance,
+                                    extra
+                            ),
+                            Blocks.AZALEA
+                    ));
+        }
+        event.getGeneration().getFeatures(GenerationStep.Decoration.VEGETAL_DECORATION).add(BuiltinRegistries.PLACED_FEATURE.getHolderOrThrow(ResourceKey.create(Registry.PLACED_FEATURE_REGISTRY,new ResourceLocation(pLocation))));
     }
 
     protected static void addBush(final BiomeLoadingEvent event, PlantFeature plant, int chunkAverage) {
-        String rLocation = plant.toString().toLowerCase() + "_" + chunkAverage;
-        event.getGeneration().getFeatures(GenerationStep.Decoration.VEGETAL_DECORATION).add(PlacementUtils.register(rLocation, FeatureUtils.register(rLocation, Feature.FLOWER, new RandomPatchConfiguration(
+        String cLocation = "wildnature:" + plant.toString().toLowerCase() + "_";
+        String pLocation = cLocation + chunkAverage;
+
+        if (!BuiltinRegistries.PLACED_FEATURE.containsKey(new ResourceLocation(pLocation))) {
+
+            if (!BuiltinRegistries.CONFIGURED_FEATURE.containsKey(new ResourceLocation(cLocation))) {
+                FeatureUtils.register(cLocation, Feature.FLOWER, new RandomPatchConfiguration(
                         30,
                         5,
                         1,
-                PlacementUtils.filtered(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(
-                        plant.featureBlockState()
-                )), BlockPredicate.allOf(BlockPredicate.replaceable(), BlockPredicate.matchesTag(
-                        BlockTags.AZALEA_GROWS_ON,
-                new BlockPos(0, -1, 0)))))), RarityFilter.onAverageOnceEvery(chunkAverage), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE));
+                        PlacementUtils.filtered(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(
+                                plant.featureBlockState()
+                        )), BlockPredicate.allOf(BlockPredicate.replaceable(), BlockPredicate.matchesTag(
+                                BlockTags.AZALEA_GROWS_ON,
+                                new BlockPos(0, -1, 0))))));
+            }
+            PlacementUtils.register(pLocation, BuiltinRegistries.CONFIGURED_FEATURE.getHolderOrThrow(ResourceKey.create(Registry.CONFIGURED_FEATURE_REGISTRY,new ResourceLocation(cLocation))), RarityFilter.onAverageOnceEvery(chunkAverage), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE);
+        }
+        event.getGeneration().getFeatures(GenerationStep.Decoration.VEGETAL_DECORATION).add(BuiltinRegistries.PLACED_FEATURE.getHolderOrThrow(ResourceKey.create(Registry.PLACED_FEATURE_REGISTRY,new ResourceLocation(pLocation))));
     }
-
     protected static void addPlant(final BiomeLoadingEvent event, PlantFeature plant, int chunkAverage) {
-        String rLocation = plant.toString().toLowerCase() + "_" + chunkAverage;
+        String cLocation = "wildnature:" + plant.toString().toLowerCase() + "_";
+        String pLocation = cLocation + chunkAverage;
 
-        event.getGeneration().getFeatures(GenerationStep.Decoration.VEGETAL_DECORATION).add(PlacementUtils.register(rLocation, FeatureUtils.register(rLocation, Feature.FLOWER, new RandomPatchConfiguration(
+        if (!BuiltinRegistries.PLACED_FEATURE.containsKey(new ResourceLocation(pLocation))) {
+
+            if (!BuiltinRegistries.CONFIGURED_FEATURE.containsKey(new ResourceLocation(cLocation))) {
+                FeatureUtils.register(cLocation, Feature.FLOWER, new RandomPatchConfiguration(
                         30,
                         5,
                         1,
-                PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(
-                        plant.featureBlockState()
-                ))))), RarityFilter.onAverageOnceEvery(chunkAverage), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE));
+                        PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(
+                                plant.featureBlockState()
+                        )))));
+            }
+            PlacementUtils.register(pLocation, BuiltinRegistries.CONFIGURED_FEATURE.getHolderOrThrow(ResourceKey.create(Registry.CONFIGURED_FEATURE_REGISTRY,new ResourceLocation(cLocation))), RarityFilter.onAverageOnceEvery(chunkAverage), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE);
+        }
+        event.getGeneration().getFeatures(GenerationStep.Decoration.VEGETAL_DECORATION).add(BuiltinRegistries.PLACED_FEATURE.getHolderOrThrow(ResourceKey.create(Registry.PLACED_FEATURE_REGISTRY,new ResourceLocation(pLocation))));
     }
 }

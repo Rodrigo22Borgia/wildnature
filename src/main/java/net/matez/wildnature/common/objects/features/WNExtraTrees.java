@@ -190,8 +190,7 @@ public enum WNExtraTrees {
             .with(1, "tree_oak_20")
             .with(1, "tree_oak_15")
             .with(1, "tree_oak_17")
-            .with(1, "tree_oak_19")
-            .with(1, "tree_oak_29")),
+            .with(1, "tree_oak_19")),
     OAKLANDS_OAK(new WNStructurePlacement("wildnature:nature/trees/oaklands/")
             .with(1, "oaklands_oak_1")
             .with(1, "oaklands_oak_2")
@@ -365,7 +364,11 @@ public enum WNExtraTrees {
     TREE_PALM(WNSaplingType.PALM.getPlacement()),
     TREE_PINE(WNSaplingType.PINE.getPlacement()),
     TREE_REDWOOD(WNSaplingType.REDWOOD.getPlacement()),
-    TREE_SPRUCE_BIG(WNSaplingType.SILVER_FIR.getBigPlacement()),
+    TREE_SPRUCE_BIG(new WNStructurePlacement("wildnature:nature/trees/spruce/")
+            .with(1, "tree_spruce_big_1")
+            .with(1, "tree_spruce_big_2")
+            .with(1, "tree_spruce_big_3")
+            .with(1, "tree_spruce_big_4")),
     TREE_SPRUCE_M(new WNStructurePlacement("wildnature:nature/trees/spruce/")
             .with(1, "tree_spruce_m_1")
             .with(1, "tree_spruce_m_2")

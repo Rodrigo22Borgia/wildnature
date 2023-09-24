@@ -16,7 +16,7 @@ import net.minecraftforge.event.world.BiomeLoadingEvent;
 
 public class WNAutumnalPoplarForestValley extends WNBiome { 
     public WNAutumnalPoplarForestValley() { 
-        super(WNBiomes.AutumnalPoplarForestValley, Biome.Precipitation.RAIN, Biome.BiomeCategory.FOREST, 0.3F, 0.8F, NORMAL_MUSIC, 0xA64A25 /*0xA67131*/, 0xC72600 /*0xD03F00*/);
+        super(WNBiomes.AutumnalPoplarForestValley, Biome.Precipitation.RAIN, Biome.BiomeCategory.FOREST, 0.3F, 0.8F, NORMAL_MUSIC, 0xA64A25 /*0xA67131*/, 10050570 /*0xD03F00*/);
     }
 
     @Override
@@ -53,8 +53,8 @@ public class WNAutumnalPoplarForestValley extends WNBiome {
     @Override
     public void applyCustomFeatures(BiomeLoadingEvent event) {
         // -- TREES
-        addTree(event, WNExtraTrees.MINI_PINE, 1, 0.5F, 2);
-        addTree(event, WNExtraTrees.SHRUB_TALL, 6,0.5F,2);
+        addTree(event, WNExtraTrees.MINI_PINE, 10, 0.5F, 2);
+        addTree(event, WNExtraTrees.SHRUB_TALL, 1,0.5F,2);
 
         // -- FLOWERS
         addPlant(event, FlowerType.CARNATION_RED, 6);
