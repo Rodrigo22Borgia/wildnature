@@ -35,6 +35,7 @@ import net.minecraft.world.level.levelgen.feature.trunkplacers.StraightTrunkPlac
 import net.minecraft.world.level.levelgen.placement.InSquarePlacement;
 import net.minecraft.world.level.levelgen.placement.RarityFilter;
 import net.minecraftforge.event.world.BiomeLoadingEvent;
+import net.minecraftforge.registries.ForgeRegistries;
 
 import javax.annotation.Nullable;
 
@@ -116,7 +117,7 @@ public abstract class WNBiome {
                             extra
                     )));
         }
-            event.getGeneration().getFeatures(GenerationStep.Decoration.VEGETAL_DECORATION).add(BuiltinRegistries.PLACED_FEATURE.getHolderOrThrow(ResourceKey.create(Registry.PLACED_FEATURE_REGISTRY,new ResourceLocation(rLocation))));
+        event.getGeneration().getFeatures(GenerationStep.Decoration.VEGETAL_DECORATION).add(BuiltinRegistries.PLACED_FEATURE.getHolderOrThrow(ResourceKey.create(Registry.PLACED_FEATURE_REGISTRY,new ResourceLocation(rLocation))));
 
     }
 

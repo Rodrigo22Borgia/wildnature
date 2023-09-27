@@ -101,11 +101,11 @@ public class WNTreeStructure extends WNStructure {
         super.place(level, pos, rotation, config, random, placeData);
 
         level.setBlock(pos, WNBlocks.SOIL.defaultBlockState(), placeData | 3);
-        BlockEntity entity = null;
+        BlockEntity entity;
         var iChunk = level.getChunk(pos);
         if (iChunk instanceof LevelChunk chunk) {
             entity = chunk.getBlockEntity(pos, LevelChunk.EntityCreationType.IMMEDIATE);
-        } else {
+        } else {/**/
             entity = ((WNBaseEntityBlock) WNBlocks.SOIL).newBlockEntity(pos, WNBlocks.SOIL.defaultBlockState());
             assert entity != null;
             iChunk.setBlockEntity(entity);

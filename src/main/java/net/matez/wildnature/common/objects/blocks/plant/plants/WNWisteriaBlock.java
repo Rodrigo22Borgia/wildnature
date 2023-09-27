@@ -12,6 +12,7 @@ import net.matez.wildnature.data.block_models.plants.wisteria.WNBlockModel_Wiste
 import net.matez.wildnature.data.blockstates.plants.WNBlockstate_Wisteria;
 import net.matez.wildnature.data.setup.base.WNResource;
 import net.minecraft.core.Direction;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -56,12 +57,12 @@ public class WNWisteriaBlock extends WNVerticalBushBlock{
     }
 
     //TODO fix animateTick()
- /*   @Override
+    /*@Override
     public void animateTick(BlockState state, Level level, BlockPos pos, Random random) {
         super.animateTick(state, level, pos, random);
         if(WNUtil.rint(0,6,random) == 0){
             double delta = 0.05;
-            level.addParticle(WNParticles.WISTERIA_PINK, pos.getX() + 0.5 + WNUtil.rdoub(-0.3,0.3), pos.getY() + WNUtil.rdoub(-1,1), pos.getZ() + 0.5 + WNUtil.rdoub(-0.3,0.3), WNUtil.rdoub(-delta,delta), 0.01, WNUtil.rdoub(-delta,delta));
+            level.addParticle(ParticleTypes.CRIMSON_SPORE*//*WNParticles.WISTERIA_PINK*//*, pos.getX() + 0.5 + WNUtil.rdoub(-0.3,0.3), pos.getY() + WNUtil.rdoub(-1,1), pos.getZ() + 0.5 + WNUtil.rdoub(-0.3,0.3), WNUtil.rdoub(-delta,delta), 0.01, WNUtil.rdoub(-delta,delta));
         }
     }*/
 }

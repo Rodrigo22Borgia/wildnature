@@ -1,8 +1,6 @@
 package net.matez.wildnature.common.objects.features;
 
-import net.matez.wildnature.common.objects.blocks.saplings.WNSaplingType;
 import net.matez.wildnature.setup.WildNature;
-import net.minecraft.data.worldgen.features.FeatureUtils;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 import net.minecraftforge.eventbus.api.IEventBus;

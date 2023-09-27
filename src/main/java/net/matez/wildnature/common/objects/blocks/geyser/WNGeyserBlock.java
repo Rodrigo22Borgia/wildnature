@@ -179,11 +179,12 @@ public class WNGeyserBlock extends WNBaseEntityBlock {
                 if (state.getValue(SINGLE)) {
                     level.playLocalSound((double) pos.getX() + 0.5D, (double) pos.getY() + 0.5D, (double) pos.getZ() + 0.5D, SoundEvents.LAVA_EXTINGUISH, SoundSource.BLOCKS, 0.5F + random.nextFloat(), random.nextFloat() * 0.7F + 0.6F, false);
                     if (WNUtil.rint(0, 4) == 0) {
-                        level.addAlwaysVisibleParticle(WNParticles.THERMAL_SMOKE, true, (double) pos.getX() + 0.5D, (double) pos.getY() + 1D, (double) pos.getZ() + 0.5D, WNUtil.rdoub(-0.1, 0.1), WNUtil.rdoub(0, 0.05), WNUtil.rdoub(-0.1, 0.1));
+                        level.addAlwaysVisibleParticle(ParticleTypes.CLOUD/*WNParticles.THERMAL_SMOKE*/, true, (double) pos.getX() + 0.5D, (double) pos.getY() + 1D, (double) pos.getZ() + 0.5D, WNUtil.rdoub(-0.1, 0.1), WNUtil.rdoub(0, 0.05), WNUtil.rdoub(-0.1, 0.1));
                     }
+                    //TODO Re-add WNParticles
                 } else if (WNUtil.rint(0, 4) == 0) {
                     level.playLocalSound((double) pos.getX() + 0.5D, (double) pos.getY() + 0.5D, (double) pos.getZ() + 1D, SoundEvents.LAVA_EXTINGUISH, SoundSource.BLOCKS, 0.5F + random.nextFloat(), random.nextFloat() * 0.7F + 0.6F, false);
-                    level.addAlwaysVisibleParticle(WNParticles.THERMAL_SMOKE, true, (double) pos.getX() + 0.5D, (double) pos.getY() + 1D, (double) pos.getZ() + 0.5D, WNUtil.rdoub(-0.1, 0.1), WNUtil.rdoub(0, 0.05), WNUtil.rdoub(-0.1, 0.1));
+                    level.addAlwaysVisibleParticle(ParticleTypes.CLOUD/*WNParticles.THERMAL_SMOKE*/, true, (double) pos.getX() + 0.5D, (double) pos.getY() + 1D, (double) pos.getZ() + 0.5D, WNUtil.rdoub(-0.1, 0.1), WNUtil.rdoub(0, 0.05), WNUtil.rdoub(-0.1, 0.1));
                 }
                 level.addAlwaysVisibleParticle(ParticleTypes.CAMPFIRE_COSY_SMOKE, true, (double) pos.getX() + 0.5D, (double) pos.getY() + 1D, (double) pos.getZ() + 0.5D, 0.0D, 0.07D, 0.0D);
             }

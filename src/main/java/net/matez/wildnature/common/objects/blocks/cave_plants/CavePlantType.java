@@ -46,16 +46,17 @@ public enum CavePlantType {
     DRAGON_SHROOM("dragon_shroom",MaterialColor.PLANT,(type, blockProp, itemProp) -> new WNCaveBushBlock(type.getLoc(),blockProp,itemProp,type),BushConfig.CAVE_BUSH.get().makeSelfItem()),
     GLOWING_SHADOW_SHROOM("glowing_shadow_shroom",MaterialColor.PLANT,(type, blockProp, itemProp) -> new WNCaveBushBlock(type.getLoc(),blockProp,itemProp,type) {
         //TODO fix animateTick()
-        /*     @Override
+        @Override
         public void animateTick(BlockState state, Level level, BlockPos pos, Random random) {
             super.animateTick(state, level, pos, random);
             if(WNUtil.rint(0,1) == 0) {
                 Vec3 offset = state.getOffset(level, pos);
                 for (int i = 0; i < WNUtil.rint(1, 3); i++) {
                     level.addParticle(ParticleTypes.WITCH, pos.getX() + offset.x + WNUtil.rdoub(0.2, 0.8, random), pos.getY() + offset.y + WNUtil.rdoub(0.2, 0.6, random), pos.getZ() + offset.z + WNUtil.rdoub(0.2, 0.8, random), 0, 0, 0);
+
                 }
             }
-        } */
+        }
     },BushConfig.CAVE_BUSH.get().makeSelfItem()),
     GRAVITY_SHROOM("gravity_shroom",MaterialColor.PLANT,(type, blockProp, itemProp) -> new WNCaveBushBlock(type.getLoc(),blockProp,itemProp,type),BushConfig.CAVE_BUSH.get().makeSelfItem()),
     MAGMA_SHROOM("magma_shroom",MaterialColor.PLANT,(type, blockProp, itemProp) -> new WNMagmaShroomBlock(type.getLoc(),blockProp,itemProp,type),BushConfig.CAVE_BUSH.get()),
@@ -64,56 +65,56 @@ public enum CavePlantType {
 
         //TODO fix animateTick()
 
-        /*     @Override
-              public void animateTick(BlockState state, Level level, BlockPos pos, Random random) {
-            super.animateTick(state, level, pos, random);
-            if(WNUtil.rint(0,5) == 0) {
-                Vec3 offset = state.getOffset(level, pos);
-                for (int i = 0; i < WNUtil.rint(5, 25); i++) {
-                    level.addParticle(WNParticles.SLIME_SHROOM_BLUE, pos.getX() + offset.x + WNUtil.rdoub(0.2, 0.8, random), pos.getY() + offset.y + WNUtil.rdoub(0.2, 0.6, random), pos.getZ() + offset.z + WNUtil.rdoub(0.2, 0.8, random), 0, 0, 0);
-                }
-            }
-        } */
-    },BushConfig.CAVE_BUSH.get().makeSelfItem()),
-    HANGING_SLIME_SHROOM_BLUE("hanging_slime_shroom_blue","slime_shroom_blue",MaterialColor.PLANT,(type, blockProp, itemProp) -> new WNCaveHangingBushBlock(type.getLoc(),blockProp,itemProp,type) {
-        //TODO fix animateTick()
-        /*     @Override
+        @Override
         public void animateTick(BlockState state, Level level, BlockPos pos, Random random) {
             super.animateTick(state, level, pos, random);
             if(WNUtil.rint(0,5) == 0) {
                 Vec3 offset = state.getOffset(level, pos);
                 for (int i = 0; i < WNUtil.rint(5, 25); i++) {
-                    level.addParticle(WNParticles.SLIME_SHROOM_BLUE, pos.getX() + offset.x + WNUtil.rdoub(0.2, 0.8, random), pos.getY() + offset.y + WNUtil.rdoub(0.2, 0.6, random), pos.getZ() + offset.z + WNUtil.rdoub(0.2, 0.8, random), 0, 0, 0);
+                    level.addParticle(ParticleTypes.GLOW/*WNParticles.SLIME_SHROOM_BLUE*/, pos.getX() + offset.x + WNUtil.rdoub(0.2, 0.8, random), pos.getY() + offset.y + WNUtil.rdoub(0.2, 0.6, random), pos.getZ() + offset.z + WNUtil.rdoub(0.2, 0.8, random), 0, 0, 0);
                 }
             }
-        }*/
+        }
+    },BushConfig.CAVE_BUSH.get().makeSelfItem()),
+    HANGING_SLIME_SHROOM_BLUE("hanging_slime_shroom_blue","slime_shroom_blue",MaterialColor.PLANT,(type, blockProp, itemProp) -> new WNCaveHangingBushBlock(type.getLoc(),blockProp,itemProp,type) {
+        //TODO fix animateTick()
+        @Override
+        public void animateTick(BlockState state, Level level, BlockPos pos, Random random) {
+            super.animateTick(state, level, pos, random);
+            if(WNUtil.rint(0,5) == 0) {
+                Vec3 offset = state.getOffset(level, pos);
+                for (int i = 0; i < WNUtil.rint(5, 25); i++) {
+                    level.addParticle(ParticleTypes.GLOW/*WNParticles.SLIME_SHROOM_BLUE*/, pos.getX() + offset.x + WNUtil.rdoub(0.2, 0.8, random), pos.getY() + offset.y + WNUtil.rdoub(0.2, 0.6, random), pos.getZ() + offset.z + WNUtil.rdoub(0.2, 0.8, random), 0, 0, 0);
+                }
+            }
+        }
     },BushConfig.CAVE_BUSH.get().makeSelfItem()),
     SLIME_SHROOM_GREEN("slime_shroom_green",MaterialColor.PLANT,(type, blockProp, itemProp) -> new WNCaveBushBlock(type.getLoc(),blockProp,itemProp,type) {
         //TODO fix animateTick()
-        /*    @Override
+        @Override
         public void animateTick(BlockState state, Level level, BlockPos pos, Random random) {
             super.animateTick(state, level, pos, random);
             if(WNUtil.rint(0,6) == 0) {
                 Vec3 offset = state.getOffset(level, pos);
                 for (int i = 0; i < WNUtil.rint(5, 25); i++) {
-                    level.addParticle(WNParticles.SLIME_SHROOM_GREEN, pos.getX() + offset.x + WNUtil.rdoub(0.2, 0.8, random), pos.getY() + offset.y + WNUtil.rdoub(0.2, 0.6, random), pos.getZ() + offset.z + WNUtil.rdoub(0.2, 0.8, random), 0, 0, 0);
+                    level.addParticle(ParticleTypes.GLOW/*WNParticles.SLIME_SHROOM_GREEN*/, pos.getX() + offset.x + WNUtil.rdoub(0.2, 0.8, random), pos.getY() + offset.y + WNUtil.rdoub(0.2, 0.6, random), pos.getZ() + offset.z + WNUtil.rdoub(0.2, 0.8, random), 0, 0, 0);
                 }
             }
-        }*/
+        }
     },BushConfig.CAVE_BUSH.get().makeSelfItem()),
     HANGING_SLIME_SHROOM_GREEN("hanging_slime_shroom_green","slime_shroom_green",MaterialColor.PLANT,(type, blockProp, itemProp) -> new WNCaveHangingBushBlock(type.getLoc(),blockProp,itemProp,type) {
 
         //TODO fix animateTick()
-        /*    @Override
+        @Override
         public void animateTick(BlockState state, Level level, BlockPos pos, Random random) {
             super.animateTick(state, level, pos, random);
             if(WNUtil.rint(0,6) == 0) {
                 Vec3 offset = state.getOffset(level, pos);
                 for (int i = 0; i < WNUtil.rint(5, 25); i++) {
-                    level.addParticle(WNParticles.SLIME_SHROOM_GREEN, pos.getX() + offset.x + WNUtil.rdoub(0.2, 0.8, random), pos.getY() + offset.y + WNUtil.rdoub(0.2, 0.6, random), pos.getZ() + offset.z + WNUtil.rdoub(0.2, 0.8, random), 0, 0, 0);
+                    level.addParticle(ParticleTypes.GLOW/*WNParticles.SLIME_SHROOM_GREEN*/, pos.getX() + offset.x + WNUtil.rdoub(0.2, 0.8, random), pos.getY() + offset.y + WNUtil.rdoub(0.2, 0.6, random), pos.getZ() + offset.z + WNUtil.rdoub(0.2, 0.8, random), 0, 0, 0);
                 }
             }
-        }*/
+        }
     },BushConfig.CAVE_BUSH.get().makeSelfItem()),
     SULFUR_SHROOM("sulfur_shroom",MaterialColor.PLANT,(type, blockProp, itemProp) -> new WNCaveBushBlock(type.getLoc(),blockProp,itemProp,type),BushConfig.CAVE_BUSH.get().makeSelfItem()),
     SUN_SHROOM("sun_shroom",MaterialColor.PLANT,(type, blockProp, itemProp) -> new WNSunShroomBlock(type.getLoc(),blockProp.randomTicks(),itemProp,type),BushConfig.CAVE_BUSH.get().makeSelfItem()),
