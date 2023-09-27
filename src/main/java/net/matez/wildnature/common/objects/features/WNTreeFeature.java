@@ -7,7 +7,9 @@
 package net.matez.wildnature.common.objects.features;
 
 import com.mojang.serialization.Codec;
+import net.matez.wildnature.common.objects.blocks.setup.WNBlock;
 import net.matez.wildnature.common.objects.structures.WNStructurePlacement;
+import net.matez.wildnature.common.registry.blocks.WNBlocks;
 import net.matez.wildnature.common.util.WNUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.tags.BlockTags;
@@ -75,9 +77,9 @@ public class WNTreeFeature extends Feature<NoneFeatureConfiguration> {
                 }
             }
         }
-        else {
-            context.level().setBlock(context.origin().below(), Blocks.ROOTED_DIRT.defaultBlockState(), 19);
-        }
+        //Adds the Soil - Entity?
+        context.level().setBlock(context.origin().below(), WNBlocks.SOIL.defaultBlockState(), 19);
+
         return true;
     }
 }
