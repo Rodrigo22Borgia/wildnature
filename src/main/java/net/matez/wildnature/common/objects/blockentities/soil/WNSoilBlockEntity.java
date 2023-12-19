@@ -21,34 +21,11 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 
 public class WNSoilBlockEntity extends BlockEntity {
-    private BlockPos min, max;
-    private Block leaf;
+    public BlockPos min, max;
+    public Block leaf;
 
     public WNSoilBlockEntity(BlockPos pos, BlockState state) {
         super(WNBlockEntities.SOIL, pos, state);
-    }
-
-    public void set(WNStructure structure, @org.jetbrains.annotations.Nullable Rotation rotation, @org.jetbrains.annotations.Nullable WNStructureConfig config) {
-        if (structure instanceof WNTreeStructure treeStructure && level != null) {
-            var min = treeStructure.getMinLeaf();
-            var max = treeStructure.getMaxLeaf();
-            if (rotation != null) {
-                min = min.rotate(rotation);
-                max = max.rotate(rotation);
-            }
-
-            this.min = new BlockPos(Math.min(min.getX(), max.getX()), Math.min(min.getY(), max.getY()), Math.min(min.getZ(), max.getZ()));
-            this.max = new BlockPos(Math.max(min.getX(), max.getX()), Math.max(min.getY(), max.getY()), Math.max(min.getZ(), max.getZ()));
-
-            var state = treeStructure.getLeafBlock();
-            if (config != null) {
-                state = config.processState(level, state, getBlockPos(), level.getRandom(), rotation);
-            }
-
-            if (state != null) {
-                leaf = state.getBlock();
-            }
-        }
     }
 
     public void destroy() {

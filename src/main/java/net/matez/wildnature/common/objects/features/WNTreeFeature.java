@@ -7,6 +7,8 @@
 package net.matez.wildnature.common.objects.features;
 
 import com.mojang.serialization.Codec;
+import net.matez.wildnature.common.objects.blockentities.soil.WNSoilBlockEntity;
+import net.matez.wildnature.common.objects.blocks.basic.WNBaseEntityBlock;
 import net.matez.wildnature.common.objects.blocks.setup.WNBlock;
 import net.matez.wildnature.common.objects.structures.WNStructurePlacement;
 import net.matez.wildnature.common.registry.blocks.WNBlocks;
@@ -15,6 +17,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.Rotation;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
@@ -52,7 +55,6 @@ public class WNTreeFeature extends Feature<NoneFeatureConfiguration> {
                 return false;
             }
         }
-
         structure.place(context.level(), context.origin().below(), Rotation.values()[WNUtil.rint(0, 3, context.random())], placement.config(), context.random(), 3);
 
         //Generates support for trees
@@ -66,10 +68,11 @@ public class WNTreeFeature extends Feature<NoneFeatureConfiguration> {
                     //Checks if there are logs above before placing blocks below
                     BlockPos root = context.origin().east(i).north(j);
                     for (int k = 1; k < 8 && context.level().getBlockState(root).canOcclude(); k++) {
-                        if (!context.level().getBlockState(root.below(k)).canOcclude()) {
+                        if (i == 0 && j == 0) {
+                            continue;
+                        } else if (!context.level().getBlockState(root.below(k)).canOcclude()) {
                             context.level().setBlock(root.below(k), wood, 19);
-                        }
-                        else {
+                        } else {
                             context.level().setBlock(root.below(k), Blocks.ROOTED_DIRT.defaultBlockState(), 19);
                             break;
                         }
@@ -77,9 +80,6 @@ public class WNTreeFeature extends Feature<NoneFeatureConfiguration> {
                 }
             }
         }
-        //Adds the Soil - Entity?
-        context.level().setBlock(context.origin().below(), WNBlocks.SOIL.defaultBlockState(), 19);
-
         return true;
     }
 }

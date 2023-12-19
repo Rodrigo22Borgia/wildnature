@@ -15,6 +15,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
@@ -105,14 +106,32 @@ public class WNTreeStructure extends WNStructure {
         var iChunk = level.getChunk(pos);
         if (iChunk instanceof LevelChunk chunk) {
             entity = chunk.getBlockEntity(pos, LevelChunk.EntityCreationType.IMMEDIATE);
-        } else {/**/
+        } else {
             entity = ((WNBaseEntityBlock) WNBlocks.SOIL).newBlockEntity(pos, WNBlocks.SOIL.defaultBlockState());
             assert entity != null;
             iChunk.setBlockEntity(entity);
             iChunk.setBlockEntityNbt(entity.serializeNBT());
         }
         if (entity instanceof WNSoilBlockEntity soil) {
-            soil.set(this, rotation, config);
+            //Moved the method from the entity itself, because it did not trigger during generation
+            var min = this.getMinLeaf();
+            var max = this.getMaxLeaf();
+            if (rotation != null) {
+                min = min.rotate(rotation);
+                max = max.rotate(rotation);
+            }
+
+            soil.min = new BlockPos(Math.min(min.getX(), max.getX()), Math.min(min.getY(), max.getY()), Math.min(min.getZ(), max.getZ()));
+            soil.max = new BlockPos(Math.max(min.getX(), max.getX()), Math.max(min.getY(), max.getY()), Math.max(min.getZ(), max.getZ()));
+
+            var state = this.getLeafBlock();
+            if (config != null) {
+                state = config.processState(level, state, pos, level.getRandom(), rotation);
+            }
+
+            if (state != null) {
+                soil.leaf = state.getBlock();
+            }
         }
     }
 

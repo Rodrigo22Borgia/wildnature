@@ -276,25 +276,6 @@ public enum LeafType {
         this.config = config;
         this.hasSapling = hasSapling;
     }
-    LeafType(String idBase, String folder, MaterialColor color, CreativeModeTab tab, boolean tinted, LeafConfig config, boolean hasSapling){
-        this.idBase = idBase;
-        this.folder = folder;
-        this.color = color;
-        this.tab = tab;
-        this.tinted = tinted;
-        this.sapling = null;
-        this.config = config;
-        this.hasSapling = hasSapling;
-    }
-    LeafType(String idBase, String folder, MaterialColor color, Supplier<Item> sapling, boolean tinted, LeafConfig config){
-        this.idBase = idBase;
-        this.folder = folder;
-        this.color = color;
-        this.tinted = tinted;
-        this.sapling = sapling;
-        this.config = config;
-        this.hasSapling = true;
-    }
 
     public String getIdBase() {
         return idBase;
@@ -317,9 +298,6 @@ public enum LeafType {
         return sapling;
     }
 
-    public boolean isHasSapling() {
-        return hasSapling;
-    }
 
     public boolean isTinted() {
         return tinted;
