@@ -116,7 +116,7 @@ public class WNTreeStructure extends WNStructure {
             //Moved the method from the entity itself, because it did not trigger during generation
             var min = this.getMinLeaf();
             var max = this.getMaxLeaf();
-            if (rotation != null) {
+            if (rotation != null && min != null && max != null) {
                 min = min.rotate(rotation);
                 max = max.rotate(rotation);
             }

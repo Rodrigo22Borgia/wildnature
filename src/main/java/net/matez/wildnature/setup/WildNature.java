@@ -167,7 +167,7 @@ public class WildNature {
     private void terraBlender(final FMLCommonSetupEvent event) {
         event.enqueueWork(() ->
         {
-            Regions.register(new WNRegion(new ResourceLocation(modid, "overworld"), 80));
+            Regions.register(new WNRegion(new ResourceLocation(modid, "overworld"), 100));
             SurfaceRuleManager.addSurfaceRules(SurfaceRuleManager.RuleCategory.OVERWORLD, modid, WNSurfaceConstructor.makeRules());
         });
     }

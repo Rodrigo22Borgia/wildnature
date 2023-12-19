@@ -207,10 +207,10 @@ public class WNStructure {
                 newPos = blockPos.offset(pos);
             }
 
-            if (newState.hasProperty(BlockStateProperties.WATERLOGGED)) {
-                if (level.getBlockState(newPos).getFluidState().is(Fluids.WATER)) {
+            if (newState.hasProperty(BlockStateProperties.WATERLOGGED) && level.getBlockState(newPos).getFluidState().is(Fluids.WATER)) {
+
                     newState = newState.setValue(BlockStateProperties.WATERLOGGED, true);
-                }
+
             }
 
             if (config != null) {
