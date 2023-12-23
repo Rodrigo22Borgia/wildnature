@@ -38,7 +38,7 @@ public enum LeafType {
                     .with(5,() -> WNItems.FRUITS.get(Fruit.PARADISE_APPLE),1,1)
                     .with(6,() -> WNItems.FRUITS.get(Fruit.PARADISE_APPLE),2,2)
                     .with(7,() -> WNItems.FRUITS.get(Fruit.PARADISE_APPLE),2,2)
-    , false),
+    , LeafType.APPLE),
     ASPEN("aspen","aspen",MaterialColor.COLOR_RED, true, LeafConfig.SIMPLE.get()),
     BAOBAB("baobab","baobab",MaterialColor.PLANT, true, LeafConfig.SIMPLE.get()),
     BEECH("beech","beech",MaterialColor.PLANT, true, LeafConfig.SIMPLE.get()),
@@ -59,7 +59,7 @@ public enum LeafType {
                     .with(4,() -> WNItems.FRUITS.get(Fruit.CHERRY),2,2)
                     .with(5,() -> WNItems.FRUITS.get(Fruit.CHERRY),1,1)
                     .with(6,() -> WNItems.FRUITS.get(Fruit.CHERRY),2,2)
-    , false),
+    ),
     CHERRY_PINK("cherry_pink","cherry",MaterialColor.TERRACOTTA_WHITE, false,
             new LeafConfig(6,true)
                     .with(2,() -> WNItems.FRUITS.get(Fruit.CHERRY),3,3)
@@ -253,11 +253,18 @@ public enum LeafType {
     private final MaterialColor color;
     private final boolean tinted;
     private final LeafConfig config;
-    @Nullable
-    private final Supplier<Item> sapling; //if null, get from the WNBlocks.SAPLINGS list
-    private final boolean hasSapling;
+
+    private final LeafType sapling; //if null, get from the WNBlocks.SAPLINGS list
     private CreativeModeTab tab = WNTabs.TAB_SURFACE_PLANTS;
 
+    LeafType(String idBase, String folder, MaterialColor color, boolean tinted, LeafConfig config, LeafType sapling){
+        this.idBase = idBase;
+        this.folder = folder;
+        this.color = color;
+        this.tinted = tinted;
+        this.sapling = sapling;
+        this.config = config;
+    }
     LeafType(String idBase, String folder, MaterialColor color, boolean tinted, LeafConfig config){
         this.idBase = idBase;
         this.folder = folder;
@@ -265,16 +272,6 @@ public enum LeafType {
         this.tinted = tinted;
         this.sapling = null;
         this.config = config;
-        this.hasSapling = true;
-    }
-    LeafType(String idBase, String folder, MaterialColor color, boolean tinted, LeafConfig config, boolean hasSapling){
-        this.idBase = idBase;
-        this.folder = folder;
-        this.color = color;
-        this.tinted = tinted;
-        this.sapling = null;
-        this.config = config;
-        this.hasSapling = hasSapling;
     }
 
     public String getIdBase() {
@@ -294,8 +291,11 @@ public enum LeafType {
     }
 
     @Nullable
-    public Supplier<Item> getSapling() {
-        return sapling;
+    public String getSapling() {
+        if (sapling == null) {
+            return idBase;
+        }
+        return sapling.getIdBase();
     }
 
 

@@ -690,7 +690,6 @@ public enum WNSaplingType {
     private final Supplier<Block> logType;
     private final WNStructurePlacement bigPlacement;
     private BushPlacement bushPlacement = BushPlacement.DIRT;
-    private String id;
     private WNStructurePlacement placement;
 
 
@@ -724,9 +723,6 @@ public enum WNSaplingType {
     }
 
     public String getIdBase() {
-        if (id != null) {
-            return id;
-        }
         return leafType.getIdBase();
     }
 
@@ -741,5 +737,4 @@ public enum WNSaplingType {
     public Supplier<Block> getLogType() {
         return logType;
     }
-
 }

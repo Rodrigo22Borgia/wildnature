@@ -10,6 +10,7 @@ import net.matez.wildnature.common.objects.blocks.basic.WNLeavesBlock;
 import net.matez.wildnature.common.objects.blocks.leaves.stages.*;
 import net.matez.wildnature.common.objects.blocks.setup.ModelSupplier;
 import net.matez.wildnature.common.objects.structures.WNStructure;
+import net.matez.wildnature.common.registry.blocks.WNBlocks;
 import net.matez.wildnature.common.util.WNUtil;
 import net.matez.wildnature.data.block_models.WNBlockModel_Leaves;
 import net.matez.wildnature.data.blockstates.WNBlockstate_TypedLeaves;
@@ -19,6 +20,7 @@ import net.minecraft.client.color.block.BlockColors;
 import net.minecraft.client.color.item.ItemColor;
 import net.minecraft.client.renderer.BiomeColors;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
@@ -40,6 +42,8 @@ import net.minecraft.world.phys.BlockHitResult;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Random;
+
+import static net.matez.wildnature.setup.WildNature.modid;
 
 public abstract class WNLeavesTypedBlock extends WNLeavesBlock {
     public IntegerProperty LEAF_STAGE;
@@ -219,7 +223,8 @@ public abstract class WNLeavesTypedBlock extends WNLeavesBlock {
         if (fruit != null && list != null) {
             return list.with(fruit, 0);
         }
-        return list;
+        String sapling = leafType.getSapling();
+        return list.with(Registry.ITEM.get(new ResourceLocation((sapling == null ? "minecraft:stick" : modid + ":" + sapling + "_sapling") )),1);
     }
 
     @Override

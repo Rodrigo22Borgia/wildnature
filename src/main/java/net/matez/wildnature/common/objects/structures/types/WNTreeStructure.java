@@ -6,11 +6,13 @@
 
 package net.matez.wildnature.common.objects.structures.types;
 
+import net.matez.wildnature.common.log.WNLogger;
 import net.matez.wildnature.common.objects.blockentities.soil.WNSoilBlockEntity;
 import net.matez.wildnature.common.objects.blocks.basic.WNBaseEntityBlock;
 import net.matez.wildnature.common.objects.structures.WNStructure;
 import net.matez.wildnature.common.objects.structures.WNStructureConfig;
 import net.matez.wildnature.common.registry.blocks.WNBlocks;
+import net.matez.wildnature.setup.WildNature;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
@@ -25,6 +27,8 @@ import net.minecraft.world.level.chunk.LevelChunk;
 import javax.annotation.Nullable;
 import java.util.Map;
 import java.util.Random;
+
+import static net.matez.wildnature.setup.WildNature.getLogger;
 
 public class WNTreeStructure extends WNStructure {
     private BlockPos minLeaf, maxLeaf;
@@ -114,15 +118,13 @@ public class WNTreeStructure extends WNStructure {
         }
         if (entity instanceof WNSoilBlockEntity soil) {
             //Moved the method from the entity itself, because it did not trigger during generation
-            var min = this.getMinLeaf();
-            var max = this.getMaxLeaf();
-            if (rotation != null && min != null && max != null) {
-                min = min.rotate(rotation);
-                max = max.rotate(rotation);
-            }
+            try {
+                var min = this.getMinLeaf().rotate(rotation);
+                var max = this.getMaxLeaf().rotate(rotation);
 
-            soil.min = new BlockPos(Math.min(min.getX(), max.getX()), Math.min(min.getY(), max.getY()), Math.min(min.getZ(), max.getZ()));
-            soil.max = new BlockPos(Math.max(min.getX(), max.getX()), Math.max(min.getY(), max.getY()), Math.max(min.getZ(), max.getZ()));
+                soil.min = new BlockPos(Math.min(min.getX(), max.getX()), Math.min(min.getY(), max.getY()), Math.min(min.getZ(), max.getZ()));
+                soil.max = new BlockPos(Math.max(min.getX(), max.getX()), Math.max(min.getY(), max.getY()), Math.max(min.getZ(), max.getZ()));
+
 
             var state = this.getLeafBlock();
             if (config != null) {
@@ -132,6 +134,8 @@ public class WNTreeStructure extends WNStructure {
             if (state != null) {
                 soil.leaf = state.getBlock();
             }
+            } catch (NullPointerException e) {
+            WildNature.getLogger().error(super.location.toString() + " does not have leaf bounding box");}
         }
     }
 
