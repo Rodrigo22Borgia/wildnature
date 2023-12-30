@@ -1,0 +1,20 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " # ",
+        " / ",
+        " / "
+    ],
+    "key": {
+        "#": {
+            "item": "wildnature:topaz"
+        },
+        "/": {
+            "item": "minecraft:stick"
+        }
+    },
+    "result": {
+        "item": "wildnature:topaz_shovel",
+        "count": 1
+    }
+}

@@ -1,0 +1,12 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "wildnature:plum_stripped_wood"
+        }
+    ],
+    "result": {
+        "item": "wildnature:plum_planks",
+        "count": 4
+    }
+}

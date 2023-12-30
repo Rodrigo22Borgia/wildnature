@@ -1,0 +1,8 @@
+{
+"type": "minecraft:stonecutting",
+"ingredient": {
+    "item": "wildnature:willow_log"
+},
+"result": "wildnature:willow_branch",
+"count": 1
+}

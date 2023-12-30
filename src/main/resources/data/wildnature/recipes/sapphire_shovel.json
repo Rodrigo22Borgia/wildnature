@@ -1,0 +1,20 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " # ",
+        " / ",
+        " / "
+    ],
+    "key": {
+        "#": {
+            "item": "wildnature:sapphire"
+        },
+        "/": {
+            "item": "minecraft:stick"
+        }
+    },
+    "result": {
+        "item": "wildnature:sapphire_shovel",
+        "count": 1
+    }
+}

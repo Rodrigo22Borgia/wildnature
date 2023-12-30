@@ -1,0 +1,12 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "wildnature:palm_log"
+        }
+    ],
+    "result": {
+        "item": "wildnature:palm_planks",
+        "count": 4
+    }
+}

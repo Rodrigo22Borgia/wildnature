@@ -1,0 +1,16 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "##",
+        "##"
+    ],
+    "key": {
+        "#": {
+            "item": "wildnature:eucalyptus_log"
+        }
+    },
+    "result": {
+        "item": "wildnature:eucalyptus_wood",
+        "count": 3
+    }
+}

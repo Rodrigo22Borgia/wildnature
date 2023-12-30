@@ -15,12 +15,9 @@ import net.matez.wildnature.common.registry.blocks.WNBlocks;
 import net.matez.wildnature.data.block_models.WNBlockModel_PressurePlate;
 import net.matez.wildnature.data.block_models.WNBlockModel_PressurePlateDown;
 import net.matez.wildnature.data.blockstates.WNBlockstate_PressurePlate;
-import net.matez.wildnature.data.recipes.WNICraftingShaped;
 import net.matez.wildnature.data.setup.base.WNResource;
-import net.matez.wildnature.data.setup.recipes.WNRecipeList;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.Nullable;
 
 public class WNPlanksPressurePlate extends WNPressurePlateBlock implements ILog {
@@ -55,20 +52,6 @@ public class WNPlanksPressurePlate extends WNPressurePlateBlock implements ILog 
         );
     }
 
-
-    @Nullable
-    @Override
-    public WNRecipeList getRecipes() {
-        return new WNRecipeList(
-                new WNICraftingShaped(this.getRegName(), "wooden_pressure_plates", """
-                        ##
-                        """,
-                        new ItemStack(this.item,2),
-                        new WNICraftingShaped.ShapedItems()
-                                .with('#',this.getPlanks().getItem())
-                )
-        );
-    }
 
     @Nullable
     @Override

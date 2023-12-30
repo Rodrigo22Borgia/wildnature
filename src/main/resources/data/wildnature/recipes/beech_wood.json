@@ -1,0 +1,16 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "##",
+        "##"
+    ],
+    "key": {
+        "#": {
+            "item": "wildnature:beech_log"
+        }
+    },
+    "result": {
+        "item": "wildnature:beech_wood",
+        "count": 3
+    }
+}

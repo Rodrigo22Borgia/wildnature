@@ -1,0 +1,19 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "#/#",
+        "#/#"
+    ],
+    "key": {
+        "#": {
+            "item": "wildnature:plum_planks"
+        },
+        "/": {
+            "item": "minecraft:stick"
+        }
+    },
+    "result": {
+        "item": "wildnature:plum_fence",
+        "count": 3
+    }
+}

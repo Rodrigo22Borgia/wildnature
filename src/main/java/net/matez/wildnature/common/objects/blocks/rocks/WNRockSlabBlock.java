@@ -12,12 +12,9 @@ import net.matez.wildnature.common.objects.tags.WNTags;
 import net.matez.wildnature.data.block_models.WNBlockModel_Slab;
 import net.matez.wildnature.data.block_models.WNBlockModel_SlabTop;
 import net.matez.wildnature.data.blockstates.WNBlockstate_Slab;
-import net.matez.wildnature.data.recipes.WNICraftingShaped;
 import net.matez.wildnature.data.setup.base.WNResource;
-import net.matez.wildnature.data.setup.recipes.WNRecipeList;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.function.Supplier;
@@ -55,20 +52,6 @@ public class WNRockSlabBlock extends WNSlabBlock {
         return new ModelList().with(
                 new WNBlockModel_Slab(this.getRegName()).with("texture",planks.getTextureName("rocks/" + rockType.getIdBase())),
                 new WNBlockModel_SlabTop(this.getRegName() + "_top").with("texture",planks.getTextureName("rocks/" + rockType.getIdBase()))
-        );
-    }
-
-    @Nullable
-    @Override
-    public WNRecipeList getRecipes() {
-        return new WNRecipeList(
-                new WNICraftingShaped(this.getRegName(), "slabs", """
-                        ###
-                        """,
-                        new ItemStack(this.item),
-                        new WNICraftingShaped.ShapedItems()
-                                .with('#',this.getFullBlock().getItem())
-                )
         );
     }
 

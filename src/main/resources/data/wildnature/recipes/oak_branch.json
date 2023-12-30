@@ -1,0 +1,8 @@
+{
+"type": "minecraft:stonecutting",
+"ingredient": {
+    "item": "minecraft:oak_log"
+},
+"result": "wildnature:oak_branch",
+"count": 1
+}

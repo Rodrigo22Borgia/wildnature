@@ -1,0 +1,15 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "###"
+    ],
+    "key": {
+        "#": {
+            "item": "wildnature:willow_parquet"
+        }
+    },
+    "result": {
+        "item": "wildnature:willow_slab_parquet",
+        "count": 6
+    }
+}

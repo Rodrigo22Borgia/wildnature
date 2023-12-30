@@ -1,0 +1,8 @@
+{
+"type": "minecraft:stonecutting",
+"ingredient": {
+    "item": "wildnature:basanite_polished"
+},
+"result": "wildnature:basanite_polished_slabs",
+"count": 2
+}

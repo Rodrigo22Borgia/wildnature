@@ -1,0 +1,12 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "wildnature:glowing_cave_oak_stripped_wood"
+        }
+    ],
+    "result": {
+        "item": "wildnature:glowing_cave_oak_planks",
+        "count": 4
+    }
+}

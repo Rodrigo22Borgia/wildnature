@@ -1,0 +1,17 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "###",
+        "###",
+        "###"
+    ],
+    "key": {
+        "#": {
+            "item": "wildnature:amber"
+        }
+    },
+    "result": {
+        "item": "wildnature:amber_block",
+        "count": 1
+    }
+}

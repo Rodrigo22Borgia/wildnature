@@ -15,12 +15,9 @@ import net.matez.wildnature.data.block_models.WNBlockModel_WallSide;
 import net.matez.wildnature.data.block_models.WNBlockModel_WallSideTall;
 import net.matez.wildnature.data.blockstates.WNBlockstate_Wall;
 import net.matez.wildnature.data.item_models.WNItemModel_BlockParent;
-import net.matez.wildnature.data.recipes.WNICraftingShaped;
 import net.matez.wildnature.data.setup.base.WNResource;
-import net.matez.wildnature.data.setup.recipes.WNRecipeList;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.function.Supplier;
@@ -65,21 +62,6 @@ public class WNRockWallBlock extends WNAbstractWallBlock {
     @Override
     public WNResource getItemModel(){
         return new WNItemModel_BlockParent(getRegName()).with("parent",this.getRegName() + "_inventory");
-    }
-
-    @Nullable
-    @Override
-    public WNRecipeList getRecipes() {
-        return new WNRecipeList(
-                new WNICraftingShaped(this.getRegName(), "walls", """
-                        ###
-                        ###
-                        """,
-                        new ItemStack(this.item),
-                        new WNICraftingShaped.ShapedItems()
-                                .with('#',this.getFullBlock().getItem())
-                )
-        );
     }
 
     @Nullable

@@ -1,0 +1,12 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "wildnature:redwood_stripped_wood"
+        }
+    ],
+    "result": {
+        "item": "wildnature:redwood_planks",
+        "count": 4
+    }
+}

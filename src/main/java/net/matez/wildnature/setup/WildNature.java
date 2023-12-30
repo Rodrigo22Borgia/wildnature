@@ -41,8 +41,8 @@ import java.util.ArrayList;
 @Mod("wildnature")
 public class WildNature {
     public static WildNature instance;
-    public static final boolean debugMode = true; //! <-------- DISABLE IN PRODUCTION
-    public static final boolean devMode = true; //! <-------- DISABLE IN PRODUCTION
+    public static final boolean debugMode = false; //! <-------- DISABLE IN PRODUCTION
+    public static final boolean devMode = false; //! <-------- DISABLE IN PRODUCTION
     public static final String modid = "wildnature";
     public static final Gson gson = new GsonBuilder()
             .setPrettyPrinting()
@@ -60,7 +60,7 @@ public class WildNature {
     //! change this for data gen
     public WNDataGenerator dataGenerator;
     //private final DataGenType dataGenType = DataGenType.GEN_REFRESH_ALL;
-    private final DataGenType dataGenType = null;
+    private final DataGenType dataGenType = null;//DataGenType.GEN_RECIPES;
 
     public WildNature() {
         instance = this;
@@ -91,8 +91,7 @@ public class WildNature {
     private void construct(final FMLConstructModEvent event) {
         log.progress("WildNature Construct");
         //initializer.init(InitStage.CONSTRUCT);
-
-        if (dataGenType != null) {
+        if (dataGenType != null & dataGenType != dataGenType.GEN_RECIPES) {
             dataGenerator = new WNDataGenerator(modid, dataGenType);
             dataGenerator.register();
             dataGenerator.generate();
@@ -130,6 +129,8 @@ public class WildNature {
 
         long ms = System.currentTimeMillis() - startTime;
         log.success("WildNature loaded in " + (ms / 1000) + "s");
+        log.success("Datagen:");
+
     }
 
     private void setup(final FMLCommonSetupEvent event) {
@@ -138,6 +139,10 @@ public class WildNature {
         WNNetworking.register();
 
         log.success("WildNature Setup Complete");
+        if (dataGenType == dataGenType.GEN_RECIPES) {
+            dataGenerator = new WNDataGenerator(modid, dataGenType);
+            dataGenerator.generate();
+        }
     }
 
     @SubscribeEvent

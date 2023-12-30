@@ -1,0 +1,12 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "wildnature:eucalyptus_log"
+        }
+    ],
+    "result": {
+        "item": "wildnature:eucalyptus_planks",
+        "count": 4
+    }
+}

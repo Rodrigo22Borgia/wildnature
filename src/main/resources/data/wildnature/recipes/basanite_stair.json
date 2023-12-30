@@ -1,0 +1,17 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "#  ",
+        "## ",
+        "###"
+    ],
+    "key": {
+        "#": {
+            "item": "wildnature:basanite"
+        }
+    },
+    "result": {
+        "item": "wildnature:basanite_stairs",
+        "count": 4
+    }
+}

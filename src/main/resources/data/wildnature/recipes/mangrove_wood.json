@@ -1,0 +1,16 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "##",
+        "##"
+    ],
+    "key": {
+        "#": {
+            "item": "wildnature:mangrove_log"
+        }
+    },
+    "result": {
+        "item": "wildnature:mangrove_wood",
+        "count": 3
+    }
+}

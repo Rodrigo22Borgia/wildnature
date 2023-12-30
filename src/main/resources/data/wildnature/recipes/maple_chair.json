@@ -1,0 +1,8 @@
+{
+"type": "minecraft:stonecutting",
+"ingredient": {
+    "item": "wildnature:maple_planks"
+},
+"result": "wildnature:maple_chair",
+"count": 1
+}

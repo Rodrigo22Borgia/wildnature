@@ -13,12 +13,9 @@ import net.matez.wildnature.data.block_models.WNBlockModel_Stairs;
 import net.matez.wildnature.data.block_models.WNBlockModel_StairsInner;
 import net.matez.wildnature.data.block_models.WNBlockModel_StairsOuter;
 import net.matez.wildnature.data.blockstates.WNBlockstate_Stairs;
-import net.matez.wildnature.data.recipes.WNICraftingShaped;
 import net.matez.wildnature.data.setup.base.WNResource;
-import net.matez.wildnature.data.setup.recipes.WNRecipeList;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.function.Supplier;
@@ -62,22 +59,6 @@ public class WNRockStairBlock extends WNStairBlock {
                 new WNBlockModel_Stairs(this.getRegName()).with("texture",texture),
                 new WNBlockModel_StairsInner(this.getRegName() + "_inner").with("texture",texture),
                 new WNBlockModel_StairsOuter(this.getRegName() + "_outer").with("texture",texture)
-        );
-    }
-
-    @Nullable
-    @Override
-    public WNRecipeList getRecipes() {
-        return new WNRecipeList(
-                new WNICraftingShaped(this.getRegName(), "stairs", """
-                        #
-                        ##
-                        ###
-                        """,
-                        new ItemStack(this.item,4),
-                        new WNICraftingShaped.ShapedItems()
-                                .with('#',this.getFullBlock().getItem())
-                )
         );
     }
 

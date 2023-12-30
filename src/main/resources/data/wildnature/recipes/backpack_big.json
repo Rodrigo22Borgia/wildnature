@@ -1,0 +1,20 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " # ",
+        "O O",
+        "#O#"
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:scute"
+        },
+        "O": {
+            "item": "minecraft:rabbit_hide"
+        }
+    },
+    "result": {
+        "item": "wildnature:backpack_big",
+        "count": 1
+    }
+}

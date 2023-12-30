@@ -1,0 +1,12 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "wildnature:pine_stripped_wood"
+        }
+    ],
+    "result": {
+        "item": "wildnature:pine_planks",
+        "count": 4
+    }
+}

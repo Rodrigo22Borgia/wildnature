@@ -1,0 +1,16 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "##",
+        "##"
+    ],
+    "key": {
+        "#": {
+            "item": "wildnature:plum_log"
+        }
+    },
+    "result": {
+        "item": "wildnature:plum_wood",
+        "count": 3
+    }
+}

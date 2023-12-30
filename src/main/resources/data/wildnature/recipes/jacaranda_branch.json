@@ -1,0 +1,8 @@
+{
+"type": "minecraft:stonecutting",
+"ingredient": {
+    "item": "wildnature:jacaranda_log"
+},
+"result": "wildnature:jacaranda_branch",
+"count": 1
+}

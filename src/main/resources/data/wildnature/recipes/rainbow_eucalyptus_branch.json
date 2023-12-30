@@ -1,0 +1,8 @@
+{
+"type": "minecraft:stonecutting",
+"ingredient": {
+    "item": "wildnature:rainbow_eucalyptus_log"
+},
+"result": "wildnature:rainbow_eucalyptus_branch",
+"count": 1
+}

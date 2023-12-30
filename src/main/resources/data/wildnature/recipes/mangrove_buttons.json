@@ -1,0 +1,12 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "wildnature:mangrove_planks"
+        }
+    ],
+    "result": {
+        "item": "wildnature:mangrove_button",
+        "count": 1
+    }
+}

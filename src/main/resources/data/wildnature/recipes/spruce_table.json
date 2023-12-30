@@ -1,0 +1,8 @@
+{
+"type": "minecraft:stonecutting",
+"ingredient": {
+    "item": "minecraft:spruce_planks"
+},
+"result": "wildnature:spruce_table",
+"count": 1
+}

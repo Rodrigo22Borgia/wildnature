@@ -1,0 +1,8 @@
+{
+"type": "minecraft:stonecutting",
+"ingredient": {
+    "item": "wildnature:cedar_log"
+},
+"result": "wildnature:cedar_stripped_log",
+"count": 1
+}

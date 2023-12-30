@@ -1,0 +1,8 @@
+{
+"type": "minecraft:stonecutting",
+"ingredient": {
+    "item": "wildnature:baobab_log"
+},
+"result": "wildnature:baobab_stripped_wood",
+"count": 1
+}

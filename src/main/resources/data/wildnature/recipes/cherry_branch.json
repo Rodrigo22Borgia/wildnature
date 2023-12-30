@@ -1,0 +1,8 @@
+{
+"type": "minecraft:stonecutting",
+"ingredient": {
+    "item": "wildnature:cherry_log"
+},
+"result": "wildnature:cherry_branch",
+"count": 1
+}

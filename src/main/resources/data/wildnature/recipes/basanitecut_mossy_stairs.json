@@ -1,0 +1,8 @@
+{
+"type": "minecraft:stonecutting",
+"ingredient": {
+    "item": "wildnature:basanite_bricks_mossy"
+},
+"result": "wildnature:basanite_brick_mossy_stairs",
+"count": 1
+}

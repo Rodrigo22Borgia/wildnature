@@ -11,13 +11,10 @@ import net.matez.wildnature.common.objects.blocks.wood.ILog;
 import net.matez.wildnature.common.objects.blocks.wood.LogType;
 import net.matez.wildnature.common.objects.tags.WNTags;
 import net.matez.wildnature.data.block_models.WNBlockModel_CubeColumn;
-import net.matez.wildnature.data.recipes.WNICraftingShapeless;
-import net.matez.wildnature.data.setup.recipes.WNRecipeList;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.Nullable;
@@ -57,14 +54,6 @@ public class WNLogBlock extends WNRotatedPillarBlock implements ILog {
     public WNTags.TagList getWNTags() {
         return new WNTags.TagList(
                 WNTags.LOGS, WNTags.MINEABLE_AXE
-        );
-    }
-
-    @Nullable
-    @Override
-    public WNRecipeList getRecipes() {
-        return new WNRecipeList(
-                new WNICraftingShapeless(this.getRegName(),new ItemStack(this.item),new WNICraftingShapeless.ShapelessItems())
         );
     }
 

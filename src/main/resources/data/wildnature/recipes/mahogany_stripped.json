@@ -1,0 +1,8 @@
+{
+"type": "minecraft:stonecutting",
+"ingredient": {
+    "item": "wildnature:mahogany_log"
+},
+"result": "wildnature:mahogany_stripped_log",
+"count": 1
+}

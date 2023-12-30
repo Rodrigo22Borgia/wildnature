@@ -1,0 +1,15 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "###"
+    ],
+    "key": {
+        "#": {
+            "item": "wildnature:ebony_parquet"
+        }
+    },
+    "result": {
+        "item": "wildnature:ebony_slab_parquet",
+        "count": 6
+    }
+}

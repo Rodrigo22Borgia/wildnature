@@ -1,0 +1,8 @@
+{
+"type": "minecraft:stonecutting",
+"ingredient": {
+    "item": "wildnature:glowing_cave_oak_planks"
+},
+"result": "wildnature:glowing_cave_oak_parquet",
+"count": 1
+}

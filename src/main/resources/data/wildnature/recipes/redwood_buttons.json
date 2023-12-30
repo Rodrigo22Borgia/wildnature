@@ -1,0 +1,12 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "wildnature:redwood_planks"
+        }
+    ],
+    "result": {
+        "item": "wildnature:redwood_button",
+        "count": 1
+    }
+}

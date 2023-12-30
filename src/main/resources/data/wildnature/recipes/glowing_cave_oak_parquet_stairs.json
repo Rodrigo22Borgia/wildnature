@@ -1,0 +1,17 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "#  ",
+        "## ",
+        "###"
+    ],
+    "key": {
+        "#": {
+            "item": "wildnature:glowing_cave_oak_parquet"
+        }
+    },
+    "result": {
+        "item": "wildnature:glowing_cave_oak_stairs_parquet",
+        "count": 4
+    }
+}

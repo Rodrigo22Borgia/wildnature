@@ -223,8 +223,7 @@ public abstract class WNLeavesTypedBlock extends WNLeavesBlock {
         if (fruit != null && list != null) {
             return list.with(fruit, 0);
         }
-        String sapling = leafType.getSapling();
-        return list.with(Registry.ITEM.get(new ResourceLocation((sapling == null ? "minecraft:stick" : modid + ":" + sapling + "_sapling") )),1);
+        return list.with(Registry.ITEM.get(new ResourceLocation(modid, leafType.getSapling())),1);
     }
 
     @Override

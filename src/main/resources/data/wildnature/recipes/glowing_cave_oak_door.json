@@ -1,0 +1,17 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "##",
+        "##",
+        "##"
+    ],
+    "key": {
+        "#": {
+            "item": "wildnature:glowing_cave_oak_planks"
+        }
+    },
+    "result": {
+        "item": "wildnature:glowing_cave_oak_door",
+        "count": 3
+    }
+}

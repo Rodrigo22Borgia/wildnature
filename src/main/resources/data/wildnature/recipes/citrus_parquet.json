@@ -1,0 +1,8 @@
+{
+"type": "minecraft:stonecutting",
+"ingredient": {
+    "item": "wildnature:citrus_planks"
+},
+"result": "wildnature:citrus_parquet",
+"count": 1
+}

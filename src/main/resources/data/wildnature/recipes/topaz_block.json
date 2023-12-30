@@ -1,0 +1,17 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "###",
+        "###",
+        "###"
+    ],
+    "key": {
+        "#": {
+            "item": "wildnature:topaz"
+        }
+    },
+    "result": {
+        "item": "wildnature:topaz_block",
+        "count": 1
+    }
+}

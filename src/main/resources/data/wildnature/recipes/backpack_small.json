@@ -1,0 +1,20 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " # ",
+        "O O",
+        "#O#"
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:string"
+        },
+        "O": {
+            "item": "minecraft:leather"
+        }
+    },
+    "result": {
+        "item": "wildnature:backpack_small",
+        "count": 1
+    }
+}

@@ -293,9 +293,9 @@ public enum LeafType {
     @Nullable
     public String getSapling() {
         if (sapling == null) {
-            return idBase;
+            return idBase + "_sapling";
         }
-        return sapling.getIdBase();
+        return sapling.getIdBase() + "_sapling";
     }
 
 

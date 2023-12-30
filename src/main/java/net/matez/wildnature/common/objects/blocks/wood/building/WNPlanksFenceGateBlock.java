@@ -17,15 +17,11 @@ import net.matez.wildnature.data.block_models.WNBlockModel_FenceGateOpen;
 import net.matez.wildnature.data.block_models.WNBlockModel_FenceGateWall;
 import net.matez.wildnature.data.block_models.WNBlockModel_FenceGateWallOpen;
 import net.matez.wildnature.data.blockstates.WNBlockstate_FenceGate;
-import net.matez.wildnature.data.recipes.WNICraftingShaped;
 import net.matez.wildnature.data.setup.base.WNResource;
-import net.matez.wildnature.data.setup.recipes.WNRecipeList;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.Nullable;
@@ -61,22 +57,6 @@ public class WNPlanksFenceGateBlock extends WNFenceGateBlock implements ILog {
                 new WNBlockModel_FenceGateOpen(this.getRegName() + "_open").with("texture",texture),
                 new WNBlockModel_FenceGateWall(this.getRegName() + "_wall").with("texture",texture),
                 new WNBlockModel_FenceGateWallOpen(this.getRegName() + "_wall_open").with("texture",texture)
-        );
-    }
-
-    @Nullable
-    @Override
-    public WNRecipeList getRecipes() {
-        return new WNRecipeList(
-                new WNICraftingShaped(this.getRegName(), "wooden_fence_gates", """
-                        |#|
-                        |#|
-                        """,
-                        new ItemStack(this.item),
-                        new WNICraftingShaped.ShapedItems()
-                                .with('#',this.getPlanks().getItem())
-                                .with('|', Items.STICK)
-                )
         );
     }
 

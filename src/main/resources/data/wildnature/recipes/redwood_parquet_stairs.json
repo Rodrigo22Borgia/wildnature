@@ -1,0 +1,17 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "#  ",
+        "## ",
+        "###"
+    ],
+    "key": {
+        "#": {
+            "item": "wildnature:redwood_parquet"
+        }
+    },
+    "result": {
+        "item": "wildnature:redwood_stairs_parquet",
+        "count": 4
+    }
+}

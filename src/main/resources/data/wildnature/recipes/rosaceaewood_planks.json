@@ -1,0 +1,12 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "wildnature:rosaceae_wood"
+        }
+    ],
+    "result": {
+        "item": "wildnature:rosaceae_planks",
+        "count": 4
+    }
+}

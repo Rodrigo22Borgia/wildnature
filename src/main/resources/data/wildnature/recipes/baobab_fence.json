@@ -1,0 +1,19 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "#/#",
+        "#/#"
+    ],
+    "key": {
+        "#": {
+            "item": "wildnature:baobab_planks"
+        },
+        "/": {
+            "item": "minecraft:stick"
+        }
+    },
+    "result": {
+        "item": "wildnature:baobab_fence",
+        "count": 3
+    }
+}

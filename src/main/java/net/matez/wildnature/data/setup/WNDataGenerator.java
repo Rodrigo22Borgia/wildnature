@@ -10,6 +10,11 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import net.matez.wildnature.common.log.WNLogger;
+import net.matez.wildnature.common.objects.blocks.rocks.RockType;
+import net.matez.wildnature.common.objects.blocks.setup.WNBlock;
+import net.matez.wildnature.common.objects.blocks.wood.LogType;
+import net.matez.wildnature.common.objects.blocks.wood.vanilla.VanillaLogType;
+import net.matez.wildnature.common.objects.items.tools.ToolItem;
 import net.matez.wildnature.common.objects.tags.TagCategory;
 import net.matez.wildnature.common.objects.tags.WNTags;
 import net.matez.wildnature.common.registry.blocks.WNBlocks;
@@ -26,9 +31,8 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
+import java.util.function.Predicate;
 
 public class WNDataGenerator {
     private static final WNLogger log = new WNLogger(true);
@@ -36,7 +40,7 @@ public class WNDataGenerator {
 
     private final DataGenType mode;
     private final String modid;
-    private final String path = "E:/Programowanie/Java Projects/wildnature/src/main/resources"; //! <<-------- TO CHANGE
+    private final String path = ""; //! <<-------- TO CHANGE
     private final ArrayList<WNResource> resources = new ArrayList<>();
 
     private final String[] deletePaths;
@@ -127,18 +131,12 @@ public class WNDataGenerator {
         log.progress("Starting Data Generator on setting " + this.mode);
         log.log("Main Path: " + path);
 
-
-        if(mode == DataGenType.GEN_MISSING_TEXTURES) {
-            findMissingTextures();
-        }else if(mode == DataGenType.REMOVE_OLD_TEXTURES) {
-            removeOldTextures();
-        }else {
-            if (mode == DataGenType.GEN_DELETE_AND_REFRESH_ALL) {
-                deleteAll();
-            }
-
-            createFor(resources);
-            findMissingTextures();
+        switch (mode) {
+            case GEN_MISSING_TEXTURES -> findMissingTextures();
+            case REMOVE_OLD_TEXTURES -> removeOldTextures();
+            case GEN_RECIPES -> WNRecipes.generate();
+            case GEN_DELETE_AND_REFRESH_ALL -> {deleteAll(); createFor(resources); findMissingTextures();}
+            default -> {createFor(resources); findMissingTextures();}
         }
     }
 

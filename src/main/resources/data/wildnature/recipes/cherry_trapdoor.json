@@ -1,0 +1,16 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "###",
+        "###"
+    ],
+    "key": {
+        "#": {
+            "item": "wildnature:cherry_planks"
+        }
+    },
+    "result": {
+        "item": "wildnature:cherry_trapdoor",
+        "count": 2
+    }
+}

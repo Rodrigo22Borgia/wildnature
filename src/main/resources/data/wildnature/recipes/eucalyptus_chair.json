@@ -1,0 +1,8 @@
+{
+"type": "minecraft:stonecutting",
+"ingredient": {
+    "item": "wildnature:eucalyptus_planks"
+},
+"result": "wildnature:eucalyptus_chair",
+"count": 1
+}

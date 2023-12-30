@@ -1,0 +1,19 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "#/#",
+        "#/#"
+    ],
+    "key": {
+        "#": {
+            "item": "wildnature:jacaranda_planks"
+        },
+        "/": {
+            "item": "minecraft:stick"
+        }
+    },
+    "result": {
+        "item": "wildnature:jacaranda_fence",
+        "count": 3
+    }
+}

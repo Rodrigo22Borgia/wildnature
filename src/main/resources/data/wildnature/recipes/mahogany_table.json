@@ -1,0 +1,8 @@
+{
+"type": "minecraft:stonecutting",
+"ingredient": {
+    "item": "wildnature:mahogany_planks"
+},
+"result": "wildnature:mahogany_table",
+"count": 1
+}

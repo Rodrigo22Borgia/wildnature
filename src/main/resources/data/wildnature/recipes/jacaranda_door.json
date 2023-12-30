@@ -1,0 +1,17 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "##",
+        "##",
+        "##"
+    ],
+    "key": {
+        "#": {
+            "item": "wildnature:jacaranda_planks"
+        }
+    },
+    "result": {
+        "item": "wildnature:jacaranda_door",
+        "count": 3
+    }
+}

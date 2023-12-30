@@ -1,0 +1,17 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "#  ",
+        "## ",
+        "###"
+    ],
+    "key": {
+        "#": {
+            "item": "wildnature:beech_parquet"
+        }
+    },
+    "result": {
+        "item": "wildnature:beech_stairs_parquet",
+        "count": 4
+    }
+}

@@ -1,0 +1,8 @@
+{
+"type": "minecraft:stonecutting",
+"ingredient": {
+    "item": "wildnature:ebony_log"
+},
+"result": "wildnature:ebony_branch",
+"count": 1
+}

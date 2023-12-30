@@ -1,0 +1,8 @@
+{
+"type": "minecraft:stonecutting",
+"ingredient": {
+    "item": "wildnature:beech_log"
+},
+"result": "wildnature:beech_branch",
+"count": 1
+}

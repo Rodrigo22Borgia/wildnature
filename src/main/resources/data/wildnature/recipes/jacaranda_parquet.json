@@ -1,0 +1,8 @@
+{
+"type": "minecraft:stonecutting",
+"ingredient": {
+    "item": "wildnature:jacaranda_planks"
+},
+"result": "wildnature:jacaranda_parquet",
+"count": 1
+}

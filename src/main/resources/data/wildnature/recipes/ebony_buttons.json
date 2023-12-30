@@ -1,0 +1,12 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "wildnature:ebony_planks"
+        }
+    ],
+    "result": {
+        "item": "wildnature:ebony_button",
+        "count": 1
+    }
+}

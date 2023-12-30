@@ -17,15 +17,11 @@ import net.matez.wildnature.data.block_models.WNBlockModel_FencePost;
 import net.matez.wildnature.data.block_models.WNBlockModel_FenceSide;
 import net.matez.wildnature.data.blockstates.WNBlockstate_Fence;
 import net.matez.wildnature.data.item_models.WNItemModel_BlockParent;
-import net.matez.wildnature.data.recipes.WNICraftingShaped;
 import net.matez.wildnature.data.setup.base.WNResource;
-import net.matez.wildnature.data.setup.recipes.WNRecipeList;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.Nullable;
@@ -67,22 +63,6 @@ public class WNPlanksFenceBlock extends WNFenceBlock implements ILog {
     @Override
     public WNResource getItemModel(){
         return new WNItemModel_BlockParent(getRegName()).with("parent",this.getRegName() + "_inventory");
-    }
-
-    @Nullable
-    @Override
-    public WNRecipeList getRecipes() {
-        return new WNRecipeList(
-                new WNICraftingShaped(this.getRegName(), "wooden_fences", """
-                        #|#
-                        #|#
-                        """,
-                        new ItemStack(this.item,4),
-                        new WNICraftingShaped.ShapedItems()
-                                .with('#',this.getPlanks().getItem())
-                                .with('|', Items.STICK)
-                )
-        );
     }
 
     @Nullable

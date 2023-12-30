@@ -1,0 +1,17 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "##",
+        "##",
+        "##"
+    ],
+    "key": {
+        "#": {
+            "item": "wildnature:redwood_planks"
+        }
+    },
+    "result": {
+        "item": "wildnature:redwood_door",
+        "count": 3
+    }
+}

@@ -1,0 +1,8 @@
+{
+"type": "minecraft:stonecutting",
+"ingredient": {
+    "item": "wildnature:glowing_cave_oak_log"
+},
+"result": "wildnature:glowing_cave_oak_stripped_log",
+"count": 1
+}

@@ -17,12 +17,9 @@ import net.matez.wildnature.data.block_models.WNBlockModel_TrapdoorOpen;
 import net.matez.wildnature.data.block_models.WNBlockModel_TrapdoorTop;
 import net.matez.wildnature.data.blockstates.WNBlockstate_Trapdoor;
 import net.matez.wildnature.data.item_models.WNItemModel_BlockParent;
-import net.matez.wildnature.data.recipes.WNICraftingShaped;
 import net.matez.wildnature.data.setup.base.WNResource;
-import net.matez.wildnature.data.setup.recipes.WNRecipeList;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.Nullable;
 
 public class WNLogTrapDoorBlock extends WNTrapDoorBlock implements ILog {
@@ -39,7 +36,8 @@ public class WNLogTrapDoorBlock extends WNTrapDoorBlock implements ILog {
     }
 
     public WNBlock getPlanks(){
-        return WNBlocks.PLANKS.get(logType);
+        WNBlock plank = WNBlocks.PLANKS.get(logType);
+        return plank == null ? WNBlocks.DEV_STRUCTURE_CENTER : plank;
     }
 
     @Override
@@ -61,43 +59,6 @@ public class WNLogTrapDoorBlock extends WNTrapDoorBlock implements ILog {
     @Override
     public WNResource getItemModel(){
         return new WNItemModel_BlockParent(getRegName()).with("parent",this.getRegName() + "_bottom");
-    }
-
-    @Nullable
-    @Override
-    public WNRecipeList getRecipes() {
-        if(this.logType.getParent() != null){
-            return new WNRecipeList(
-                    new WNICraftingShaped(this.getRegName(), "wooden_trapdoors", """
-                        ###
-                        @#@
-                        """,
-                            new ItemStack(this.item,2),
-                            new WNICraftingShaped.ShapedItems()
-                                    .with('#',this.getPlanks().getItem())
-                                    .with('@',WNBlocks.LOGS.get(logType).getItem())
-                    ),
-                    new WNICraftingShaped(this.getRegName(), "wooden_trapdoors", """
-                        ###
-                        @#@
-                        """,
-                            new ItemStack(this.item,2),
-                            new WNICraftingShaped.ShapedItems()
-                                    .with('#',this.getPlanks().getItem())
-                                    .with('@',WNBlocks.WOODS.get(logType).getItem())
-                    )
-            );
-        }
-        return new WNRecipeList(
-                new WNICraftingShaped(this.getRegName(), "wooden_trapdoors", """
-                        ###
-                        ###
-                        """,
-                        new ItemStack(this.item,2),
-                        new WNICraftingShaped.ShapedItems()
-                                .with('#',this.getPlanks().getItem())
-                )
-        );
     }
 
     @Nullable

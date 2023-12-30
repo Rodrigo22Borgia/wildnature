@@ -1,0 +1,17 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "#  ",
+        "## ",
+        "###"
+    ],
+    "key": {
+        "#": {
+            "item": "wildnature:gneiss_bricks"
+        }
+    },
+    "result": {
+        "item": "wildnature:gneiss_brick_stairs",
+        "count": 4
+    }
+}

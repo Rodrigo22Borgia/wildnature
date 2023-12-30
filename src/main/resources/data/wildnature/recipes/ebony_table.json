@@ -1,0 +1,8 @@
+{
+"type": "minecraft:stonecutting",
+"ingredient": {
+    "item": "wildnature:ebony_planks"
+},
+"result": "wildnature:ebony_table",
+"count": 1
+}

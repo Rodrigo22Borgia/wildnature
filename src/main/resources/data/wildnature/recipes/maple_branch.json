@@ -1,0 +1,8 @@
+{
+"type": "minecraft:stonecutting",
+"ingredient": {
+    "item": "wildnature:maple_log"
+},
+"result": "wildnature:maple_branch",
+"count": 1
+}

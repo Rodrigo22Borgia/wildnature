@@ -1,0 +1,15 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "###"
+    ],
+    "key": {
+        "#": {
+            "item": "wildnature:marble_bricks_mossy"
+        }
+    },
+    "result": {
+        "item": "wildnature:marble_brick_mossy_slabs",
+        "count": 6
+    }
+}

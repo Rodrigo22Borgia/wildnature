@@ -1,0 +1,12 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "wildnature:willow_planks"
+        }
+    ],
+    "result": {
+        "item": "wildnature:willow_button",
+        "count": 1
+    }
+}

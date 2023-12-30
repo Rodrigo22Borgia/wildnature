@@ -18,12 +18,9 @@ import net.matez.wildnature.data.block_models.WNBlockModel_DoorTop;
 import net.matez.wildnature.data.block_models.WNBlockModel_DoorTopHinge;
 import net.matez.wildnature.data.blockstates.WNBlockstate_Door;
 import net.matez.wildnature.data.item_models.WNItemModel_Generated;
-import net.matez.wildnature.data.recipes.WNICraftingShaped;
 import net.matez.wildnature.data.setup.base.WNResource;
-import net.matez.wildnature.data.setup.recipes.WNRecipeList;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.Nullable;
 
 public class WNLogDoorBlock extends WNDoorBlock implements ILog {
@@ -66,46 +63,6 @@ public class WNLogDoorBlock extends WNDoorBlock implements ILog {
     @Override
     public WNResource getItemModel(){
         return new WNItemModel_Generated(this.getRegName()).with("texture",this.getTextureName("trees/" + logType.getBaseOrParent()) + "_item");
-    }
-
-    @Nullable
-    @Override
-    public WNRecipeList getRecipes() {
-        if(this.logType.getParent() != null){
-            return new WNRecipeList(
-                    new WNICraftingShaped(this.getRegName(), "wooden_doors", """
-                        ##
-                        @@
-                        ##
-                        """,
-                            new ItemStack(this.item,3),
-                            new WNICraftingShaped.ShapedItems()
-                                    .with('#',this.getPlanks().getItem())
-                                    .with('@',WNBlocks.LOGS.get(logType).getItem())
-                    ),
-                    new WNICraftingShaped(this.getRegName(), "wooden_doors", """
-                        ##
-                        @@
-                        ##
-                        """,
-                            new ItemStack(this.item,3),
-                            new WNICraftingShaped.ShapedItems()
-                                    .with('#',this.getPlanks().getItem())
-                                    .with('@',WNBlocks.WOODS.get(logType).getItem())
-                    )
-            );
-        }
-        return new WNRecipeList(
-                new WNICraftingShaped(this.getRegName(), "wooden_doors", """
-                        ##
-                        ##
-                        ##
-                        """,
-                        new ItemStack(this.item,3),
-                        new WNICraftingShaped.ShapedItems()
-                                .with('#',this.getPlanks().getItem())
-                )
-        );
     }
 
     @Nullable

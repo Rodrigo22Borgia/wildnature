@@ -1,0 +1,17 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "###",
+        "###",
+        "###"
+    ],
+    "key": {
+        "#": {
+            "item": "wildnature:steel_ingot"
+        }
+    },
+    "result": {
+        "item": "wildnature:steel_block",
+        "count": 1
+    }
+}

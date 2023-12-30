@@ -1,0 +1,8 @@
+{
+"type": "minecraft:stonecutting",
+"ingredient": {
+    "item": "wildnature:rosaceae_log"
+},
+"result": "wildnature:rosaceae_stripped_log",
+"count": 1
+}

@@ -17,14 +17,11 @@ import net.matez.wildnature.data.block_models.WNBlockModel_ButtonInventory;
 import net.matez.wildnature.data.block_models.WNBlockModel_ButtonPressed;
 import net.matez.wildnature.data.blockstates.WNBlockstate_Button;
 import net.matez.wildnature.data.item_models.WNItemModel_BlockParent;
-import net.matez.wildnature.data.recipes.WNICraftingShapeless;
 import net.matez.wildnature.data.setup.base.WNResource;
-import net.matez.wildnature.data.setup.recipes.WNRecipeList;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.Nullable;
 
 public class WNPlanksButton extends WNButtonBlock implements ILog {
@@ -68,18 +65,6 @@ public class WNPlanksButton extends WNButtonBlock implements ILog {
     @Override
     public WNResource getItemModel(){
         return new WNItemModel_BlockParent(getRegName()).with("parent",this.getRegName() + "_inventory");
-    }
-
-    @Nullable
-    @Override
-    public WNRecipeList getRecipes() {
-        return new WNRecipeList(
-                new WNICraftingShapeless(this.getRegName(), "wooden_buttons",
-                        new ItemStack(this.item,1),
-                        new WNICraftingShapeless.ShapelessItems()
-                                .with(this.getPlanks().getItem())
-                )
-        );
     }
 
     @Nullable

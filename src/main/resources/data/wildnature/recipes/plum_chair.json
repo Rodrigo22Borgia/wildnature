@@ -1,0 +1,8 @@
+{
+"type": "minecraft:stonecutting",
+"ingredient": {
+    "item": "wildnature:plum_planks"
+},
+"result": "wildnature:plum_chair",
+"count": 1
+}

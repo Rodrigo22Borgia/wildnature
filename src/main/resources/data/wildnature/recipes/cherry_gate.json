@@ -1,0 +1,19 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "/#/",
+        "/#/"
+    ],
+    "key": {
+        "#": {
+            "item": "wildnature:cherry_planks"
+        },
+        "/": {
+            "item": "minecraft:stick"
+        }
+    },
+    "result": {
+        "item": "wildnature:cherry_fence_gate",
+        "count": 1
+    }
+}

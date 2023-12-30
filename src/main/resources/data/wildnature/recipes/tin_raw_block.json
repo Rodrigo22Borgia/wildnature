@@ -1,0 +1,17 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "###",
+        "###",
+        "###"
+    ],
+    "key": {
+        "#": {
+            "item": "wildnature:tin_raw"
+        }
+    },
+    "result": {
+        "item": "wildnature:tin_raw_block",
+        "count": 1
+    }
+}

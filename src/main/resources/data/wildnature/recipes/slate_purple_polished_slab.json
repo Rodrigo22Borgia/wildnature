@@ -1,0 +1,15 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "###"
+    ],
+    "key": {
+        "#": {
+            "item": "wildnature:slate_purple_polished"
+        }
+    },
+    "result": {
+        "item": "wildnature:slate_purple_polished_slabs",
+        "count": 6
+    }
+}

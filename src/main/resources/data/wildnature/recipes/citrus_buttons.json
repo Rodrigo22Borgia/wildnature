@@ -1,0 +1,12 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "wildnature:citrus_planks"
+        }
+    ],
+    "result": {
+        "item": "wildnature:citrus_button",
+        "count": 1
+    }
+}

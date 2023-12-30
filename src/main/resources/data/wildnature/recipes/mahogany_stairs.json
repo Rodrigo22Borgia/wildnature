@@ -1,0 +1,17 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "#  ",
+        "## ",
+        "###"
+    ],
+    "key": {
+        "#": {
+            "item": "wildnature:mahogany_planks"
+        }
+    },
+    "result": {
+        "item": "wildnature:mahogany_stairs",
+        "count": 4
+    }
+}

@@ -1,0 +1,12 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "wildnature:ebony_stripped_wood"
+        }
+    ],
+    "result": {
+        "item": "wildnature:ebony_planks",
+        "count": 4
+    }
+}

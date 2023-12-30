@@ -1,0 +1,8 @@
+{
+"type": "minecraft:stonecutting",
+"ingredient": {
+    "item": "wildnature:beech_planks"
+},
+"result": "wildnature:beech_bench",
+"count": 1
+}

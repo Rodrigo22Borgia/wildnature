@@ -16,7 +16,6 @@ import net.matez.wildnature.data.block_models.WNBlockModel_CubeAll;
 import net.matez.wildnature.data.blockstates.WNBlockstate_Cube;
 import net.matez.wildnature.data.item_models.WNItemModel_BlockParent;
 import net.matez.wildnature.data.setup.base.WNResource;
-import net.matez.wildnature.data.setup.recipes.WNRecipeList;
 import net.minecraft.client.color.block.BlockColor;
 import net.minecraft.client.color.block.BlockColors;
 import net.minecraft.client.color.item.ItemColor;
@@ -227,12 +226,6 @@ public class WNBlock extends Block {
 
     //? ------------------------------------------------------------------------
 
-    @Nullable
-    public WNRecipeList getRecipes(){
-        return null;
-    }
-
-    //? ------------------------------------------------------------------------
 
     public static class ModelList{
         public final ArrayList<WNResource> models = new ArrayList<>();
