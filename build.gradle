@@ -20,7 +20,7 @@ apply plugin: 'org.parchmentmc.librarian.forgegradle'
 apply plugin: 'idea'
 apply plugin: 'org.spongepowered.mixin'
 
-version = '3.1_a2-18.2'
+version = 'b6-18.2'
 group = 'net.matez.wildnature'
 archivesBaseName = 'wildnature'
 

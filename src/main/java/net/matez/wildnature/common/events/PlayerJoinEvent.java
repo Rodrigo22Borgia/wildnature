@@ -23,18 +23,5 @@ public class PlayerJoinEvent {
     @SubscribeEvent
     public static void onPlayerJoinWorld(PlayerEvent.PlayerLoggedInEvent event) {
         WNChatUtil.send(event.getPlayer(), "This is an alpha &v" + WildNature.getVersion() + "&r version of WildNature.", true);
-        //WNChatUtil.send(event.getPlayer(), "To complete this mod we need &vcoders&r and &vdatapackers&r to help us with development. More on ", true);
-        WNChatUtil.send(event.getPlayer(),
-                WNChatUtil.getLogo()
-                        .append(WNChatUtil.parseMessage("To complete this mod we need &vcoders&r and &vdatapackers&r to help us with development. More on ", WNChatUtil.BRIGHT_ACCENT_COLOR))
-                        .append(new TextComponent("Discord")
-                                .withStyle(WNChatUtil.format(WNChatUtil.ACCENT_COLOR).withBold(false).withUnderlined(true)
-                                        .withClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://discord.gg/dazHZJE"))
-                                        .withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT,
-                                                new TextComponent("Check the Announcements channel in that Discord server.").withStyle(WNChatUtil.format(WNChatUtil.ACCENT_COLOR)
-                                                ))
-                                        ))
-                        )
-        );
     }
 }

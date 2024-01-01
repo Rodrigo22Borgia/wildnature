@@ -51,7 +51,7 @@ public class WildNature {
 
     private static final WNLogger log = getLogger();
     public final NewInitializer initializer;
-    public String version = "0_b4";
+    public String version = "0_b6";
     //---
     private final long startTime;
 
