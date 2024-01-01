@@ -1,0 +1,9 @@
+{
+    "type": "minecraft:blasting",
+    "ingredient": {
+        "item": "wildnature:topaz_formation"
+    },
+    "result": "wildnature:topaz",
+    "experience": 0.1,
+    "cookingtime": 400
+}

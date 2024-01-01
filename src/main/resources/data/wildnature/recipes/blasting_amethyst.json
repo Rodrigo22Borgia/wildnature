@@ -1,0 +1,9 @@
+{
+    "type": "minecraft:blasting",
+    "ingredient": {
+        "item": "wildnature:dark_amethyst_formation"
+    },
+    "result": "wildnature:dark_amethyst",
+    "experience": 0.1,
+    "cookingtime": 400
+}

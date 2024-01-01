@@ -1,0 +1,9 @@
+{
+    "type": "minecraft:blasting",
+    "ingredient": {
+        "item": "wildnature:silver_ore"
+    },
+    "result": "wildnature:silver_ingot",
+    "experience": 0.1,
+    "cookingtime": 400
+}

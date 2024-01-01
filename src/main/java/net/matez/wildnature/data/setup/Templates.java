@@ -1,6 +1,34 @@
 package net.matez.wildnature.data.setup;
 
 record Templates() {
+    protected static final String crossbow = """
+                {
+                    "type": "minecraft:crafting_shaped",
+                    "pattern": [
+                    "/I/",
+                    "STS",
+                    " / "
+                    ],
+                    "key": {
+                        "T": {
+                            "item": "minecraft:tripwire_hook"
+                        },
+                        "S": {
+                            "item": "minecraft:string"
+                        },
+                        "I": {
+                            "item": "wildnature:silver_ingot"
+                        },
+                        "/": {
+                            "item": "minecraft:stick"
+                        }
+                    },
+                    "result": {
+                        "item": "%s",
+                        "count": %d
+                    }
+                }
+                """;
     protected static final String stonecutter = """
                 {
                 "type": "minecraft:stonecutting",
@@ -8,7 +36,29 @@ record Templates() {
                     "item": "%s"
                 },
                 "result": "%s",
-                "count": %x
+                "count": %d
+                }
+                """;
+    protected static final String smelting = """
+                {
+                    "type": "minecraft:smelting",
+                    "ingredient": {
+                        "item": "%s"
+                    },
+                    "result": "%s",
+                    "experience": 0.1,
+                    "cookingtime": 200
+                }
+                """;
+    protected static final String blasting = """
+                {
+                    "type": "minecraft:blasting",
+                    "ingredient": {
+                        "item": "%s"
+                    },
+                    "result": "%s",
+                    "experience": 0.1,
+                    "cookingtime": %d
                 }
                 """;
     protected static final String backpack = """
@@ -29,7 +79,7 @@ record Templates() {
                     },
                     "result": {
                         "item": "%s",
-                        "count": %x
+                        "count": %d
                     }
                 }
                 """;
@@ -47,7 +97,24 @@ record Templates() {
                     },
                     "result": {
                         "item": "%s",
-                        "count": %x
+                        "count": %d
+                    }
+                }
+                """;
+    protected static final String twoByone = """
+                {
+                    "type": "minecraft:crafting_shaped",
+                    "pattern": [
+                        "##"
+                    ],
+                    "key": {
+                        "#": {
+                            "item": "%s"
+                        }
+                    },
+                    "result": {
+                        "item": "%s",
+                        "count": %d
                     }
                 }
                 """;
@@ -66,7 +133,7 @@ record Templates() {
                     },
                     "result": {
                         "item": "%s",
-                        "count": %x
+                        "count": %d
                     }
                 }
                 """;
@@ -85,7 +152,7 @@ record Templates() {
                     },
                     "result": {
                         "item": "%s",
-                        "count": %x
+                        "count": %d
                     }
                 }
                 """;
@@ -102,7 +169,7 @@ record Templates() {
                     },
                     "result": {
                         "item": "%s",
-                        "count": %x
+                        "count": %d
                     }
                 }
                 """;
@@ -116,9 +183,23 @@ record Templates() {
                     ],
                     "result": {
                         "item": "%s",
-                        "count": %x
+                        "count": %d
                     }
                 }
+                """;
+    protected static final String smithing = """
+                {
+                     "type": "minecraft:smithing",
+                     "base": {
+                         "item": "%s"
+                     },
+                     "addition": {
+                         "item": "%s"
+                     },
+                     "result": {
+                         "item": "%s"
+                     }
+                 }
                 """;
     protected static final String doors = """
                 {
@@ -135,7 +216,7 @@ record Templates() {
                     },
                     "result": {
                         "item": "%s",
-                        "count": %x
+                        "count": %d
                     }
                 }
                 """;
@@ -156,7 +237,7 @@ record Templates() {
                     },
                     "result": {
                         "item": "%s",
-                        "count": %x
+                        "count": %d
                     }
                 }
                 """;
@@ -177,7 +258,7 @@ record Templates() {
                     },
                     "result": {
                         "item": "%s",
-                        "count": %x
+                        "count": %d
                     }
                 }
                 """;
@@ -195,7 +276,7 @@ record Templates() {
                     },
                     "result": {
                         "item": "%s",
-                        "count": %x
+                        "count": %d
                     }
                 }
                 """;

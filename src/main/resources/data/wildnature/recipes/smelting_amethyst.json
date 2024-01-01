@@ -1,0 +1,9 @@
+{
+    "type": "minecraft:smelting",
+    "ingredient": {
+        "item": "wildnature:dark_amethyst_shard"
+    },
+    "result": "wildnature:dark_amethyst",
+    "experience": 0.1,
+    "cookingtime": 200
+}

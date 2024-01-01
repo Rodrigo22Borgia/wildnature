@@ -51,7 +51,7 @@ public class WildNature {
 
     private static final WNLogger log = getLogger();
     public final NewInitializer initializer;
-    public String version = "3.1_a2";
+    public String version = "0_b4";
     //---
     private final long startTime;
 
@@ -60,7 +60,7 @@ public class WildNature {
     //! change this for data gen
     public WNDataGenerator dataGenerator;
     //private final DataGenType dataGenType = DataGenType.GEN_REFRESH_ALL;
-    private final DataGenType dataGenType = null;//DataGenType.GEN_RECIPES;
+    private final DataGenType dataGenType = null;// DataGenType.GEN_RECIPES;
 
     public WildNature() {
         instance = this;
@@ -129,8 +129,6 @@ public class WildNature {
 
         long ms = System.currentTimeMillis() - startTime;
         log.success("WildNature loaded in " + (ms / 1000) + "s");
-        log.success("Datagen:");
-
     }
 
     private void setup(final FMLCommonSetupEvent event) {

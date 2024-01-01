@@ -2,13 +2,16 @@ package net.matez.wildnature.data.setup;
 
 import net.matez.wildnature.common.log.WNLogger;
 import net.matez.wildnature.common.objects.blocks.ores.GemBlock;
+import net.matez.wildnature.common.objects.blocks.ores.Ore;
 import net.matez.wildnature.common.objects.blocks.rocks.RockType;
 import net.matez.wildnature.common.objects.blocks.setup.WNBlock;
 import net.matez.wildnature.common.objects.blocks.wood.LogType;
 import net.matez.wildnature.common.objects.blocks.wood.vanilla.VanillaLogType;
 import net.matez.wildnature.common.objects.items.ores.OreFamily;
+import net.matez.wildnature.common.objects.items.ores.OreItem;
 import net.matez.wildnature.common.objects.items.tools.ToolItem;
 import net.matez.wildnature.common.registry.blocks.WNBlocks;
+import net.minecraft.world.item.Item;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -45,7 +48,9 @@ abstract class WNRecipes {
             String trapdoor      = RL(WNBlocks.WOODEN_TRAPDOORS.get(w));
             String fence         = RL(WNBlocks.WOODEN_FENCES.get(w));
             String gate          = RL(WNBlocks.WOODEN_FENCE_GATES.get(w));
+            String pressure      = RL(WNBlocks.WOODEN_PRESSURE_PLATE.get(w));
 
+            writeJSON(getJSON(twoByone   , plank        , pressure     , 1), fileName + "_pressure");
             writeJSON(getJSON(doors      , plank        , door         , 3), fileName + "_door");
             writeJSON(getJSON(fences     , plank        , fence        , 3), fileName + "_fence");
             writeJSON(getJSON(gates      , plank        , gate         , 1), fileName + "_gate");
@@ -148,6 +153,13 @@ abstract class WNRecipes {
             String material = modid + ":" + tool.getFamily().getName();
             String result = modid + ":" + tool.getId();
 
+            switch (tool.getFamily()) {
+                case SILVER:
+                case BRONZE:
+                case TIN:
+                case STEEL: material = material + "_ingot";
+            }
+
             switch (tool.getType()) {
                 case AXE    -> writeJSON(getJSON(axe    , material, result), tool.getId());
                 case HOE    -> writeJSON(getJSON(hoe    , material, result), tool.getId());
@@ -156,13 +168,45 @@ abstract class WNRecipes {
                 case SWORD  -> writeJSON(getJSON(sword  , material, result), tool.getId());
             }
         }
+        writeJSON(getJSON(crossbow, modid + ":silver_crossbow" , 1), "silver_crossbow");
+
 //GEMS
         for (GemBlock gem: GemBlock.values()) {
             String material = modid + ":" + gem.getItem().getId();
             String result = modid + ":" + gem.getId();
 
-            writeJSON(getJSON(threeByThree, material, result, 1), gem.getId());
+            writeJSON(getJSON(threeByThree, material, result, 1), "block_of_" + gem.getItem().getId());
+            writeJSON(getJSON(oneToOne, result, material, 9), gem.getItem().getId() + "_from_block");
         }
+//SMELTING
+        writeJSON(getJSON(smithing, modid + ":" + OreItem.TIN_INGOT.getId() , "minecraft:copper_ingot"                   , modid + ":" + OreItem.BRONZE_INGOT.getId()), "bronze_1");
+        writeJSON(getJSON(smithing, "minecraft:copper_ingot"                , modid + ":" + OreItem.TIN_INGOT.getId()    , modid + ":" + OreItem.BRONZE_INGOT.getId()), "bronze_2");
+        writeJSON(getJSON(blasting, "minecraft:iron_ingot"                        , modid + ":" + OreItem.STEEL_INGOT.getId()  , 8000), "blasting_steel");
+        writeJSON(getJSON(blasting, modid + ":" + Ore.SILVER_ORE.getId()          , modid + ":" + OreItem.SILVER_INGOT.getId() , 400) , "blasting_silver");
+        writeJSON(getJSON(blasting, modid + ":" + Ore.TIN_ORE.getId()             , modid + ":" + OreItem.TIN_INGOT.getId()    , 400) , "blasting_tin");
+        writeJSON(getJSON(blasting, modid + ":" + Ore.SILVER_DEEPSLATE_ORE.getId(), modid + ":" + OreItem.SILVER_INGOT.getId() , 400) , "blasting_deep_silver");
+        writeJSON(getJSON(blasting, modid + ":" + Ore.TIN_DEEPSLATE_ORE.getId()   , modid + ":" + OreItem.TIN_INGOT.getId()    , 400) , "blasting_deep_tin");
+        writeJSON(getJSON(blasting, modid + ":" + Ore.AMBER_ORE.getId()           , modid + ":" + OreItem.AMBER.getId()        , 200) , "blasting_amber");
+        writeJSON(getJSON(smelting, modid + ":" + Ore.AMBER_ORE.getId()           , modid + ":" + OreItem.AMBER.getId())       , "smelting_amber");
+        writeJSON(getJSON(smelting, modid + ":" + OreItem.SILVER_RAW.getId()      , modid + ":" + OreItem.SILVER_INGOT.getId()), "smelting_silver");
+        writeJSON(getJSON(smelting, modid + ":" + OreItem.TIN_RAW.getId()         , modid + ":" + OreItem.TIN_INGOT.getId())   , "smelting_tin");
+        writeJSON(getJSON(smelting, modid + ":" + Ore.SILVER_ORE.getId()          , modid + ":" + OreItem.SILVER_RAW.getId())  , "raw_silver");
+        writeJSON(getJSON(smelting, modid + ":" + Ore.TIN_ORE.getId()             , modid + ":" + OreItem.TIN_RAW.getId())     , "raw_tin");
+        writeJSON(getJSON(smelting, modid + ":" + Ore.SILVER_DEEPSLATE_ORE.getId(), modid + ":" + OreItem.SILVER_RAW.getId())  , "raw_deep_silver");
+        writeJSON(getJSON(smelting, modid + ":" + Ore.TIN_DEEPSLATE_ORE.getId()   , modid + ":" + OreItem.TIN_RAW.getId())     , "raw_deep_tin");
+
+        writeJSON(getJSON(blasting, modid + ":" + Ore.DARK_AMETHYST_FORMATION.getId(), modid + ":" + OreItem.DARK_AMETHYST.getId()       , 400), "blasting_amethyst");
+        writeJSON(getJSON(blasting, modid + ":" + Ore.SAPPHIRE_FORMATION.getId()     , modid + ":" + OreItem.SAPPHIRE.getId()            , 400), "blasting_sapphire");
+        writeJSON(getJSON(blasting, modid + ":" + Ore.RUBY_FORMATION.getId()         , modid + ":" + OreItem.RUBY.getId()                , 400), "blasting_ruby");
+        writeJSON(getJSON(blasting, modid + ":" + Ore.TOPAZ_FORMATION.getId()        , modid + ":" + OreItem.TOPAZ.getId()               , 400), "blasting_topaz");
+        writeJSON(getJSON(smelting, modid + ":" + Ore.DARK_AMETHYST_FORMATION.getId(), modid + ":" + OreItem.DARK_AMETHYST_SHARD.getId()), "raw_amethyst");
+        writeJSON(getJSON(smelting, modid + ":" + Ore.SAPPHIRE_FORMATION.getId()     , modid + ":" + OreItem.SAPPHIRE_RAW.getId())       , "raw_sapphire");
+        writeJSON(getJSON(smelting, modid + ":" + Ore.RUBY_FORMATION.getId()         , modid + ":" + OreItem.RUBY_RAW.getId())           , "raw_ruby");
+        writeJSON(getJSON(smelting, modid + ":" + Ore.TOPAZ_FORMATION.getId()        , modid + ":" + OreItem.TOPAZ_RAW.getId())          , "raw_topaz");
+        writeJSON(getJSON(smelting, modid + ":" + OreItem.DARK_AMETHYST_SHARD.getId(), modid + ":" + OreItem.DARK_AMETHYST.getId())      , "smelting_amethyst");
+        writeJSON(getJSON(smelting, modid + ":" + OreItem.SAPPHIRE_RAW.getId()       , modid + ":" + OreItem.SAPPHIRE.getId())           , "smelting_sapphire");
+        writeJSON(getJSON(smelting, modid + ":" + OreItem.RUBY_RAW.getId()           , modid + ":" + OreItem.RUBY.getId())               , "smelting_ruby");
+        writeJSON(getJSON(smelting, modid + ":" + OreItem.TOPAZ_RAW.getId()          , modid + ":" + OreItem.TOPAZ.getId())              , "smelting_topaz");
 //BACKPACKS
         writeJSON(getJSON(backpack, "minecraft:string"     , "minecraft:leather"    , modid + ":backpack_small" , 1), "backpack_small");
         writeJSON(getJSON(backpack, "minecraft:rabbit_hide", "minecraft:leather"    , modid + ":backpack_medium", 1), "backpack_medium");

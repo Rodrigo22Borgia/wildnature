@@ -1,0 +1,12 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "wildnature:dark_amethyst_block"
+        }
+    ],
+    "result": {
+        "item": "wildnature:dark_amethyst",
+        "count": 9
+    }
+}
