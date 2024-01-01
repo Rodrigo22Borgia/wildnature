@@ -109,6 +109,10 @@ public abstract class WNBiome {
         BiomeDefaultFeatures.addDefaultUndergroundVariety(builder);
 
         BiomeDefaultFeatures.addDefaultOres(builder);
+        BiomeDefaultFeatures.addDefaultSoftDisks(builder);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.PATCH_TALL_GRASS);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.PATCH_GRASS_NORMAL);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.PATCH_GRASS_SAVANNA);
         builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, AMBER_ORE);
         builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, SILVER_ORE);
         builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, TIN_ORE);
