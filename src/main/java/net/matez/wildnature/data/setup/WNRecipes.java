@@ -50,28 +50,29 @@ abstract class WNRecipes {
             String gate          = RL(WNBlocks.WOODEN_FENCE_GATES.get(w));
             String pressure      = RL(WNBlocks.WOODEN_PRESSURE_PLATE.get(w));
 
-            writeJSON(getJSON(twoByone   , plank        , pressure     , 1), fileName + "_pressure");
-            writeJSON(getJSON(doors      , plank        , door         , 3), fileName + "_door");
-            writeJSON(getJSON(fences     , plank        , fence        , 3), fileName + "_fence");
-            writeJSON(getJSON(gates      , plank        , gate         , 1), fileName + "_gate");
-            writeJSON(getJSON(oneToOne   , log          , plank        , 4), fileName + "_planks");
-            writeJSON(getJSON(oneToOne   , wood         , plank        , 4), fileName + "wood_planks");
-            writeJSON(getJSON(oneToOne   , stripped_wood, plank        , 4), fileName + "s_wood_planks");
-            writeJSON(getJSON(oneToOne   , plank        , button       , 1), fileName + "_buttons");
-            writeJSON(getJSON(slabs      , parquet      , parquet_slab , 6), fileName + "_parquet_slabs");
-            writeJSON(getJSON(slabs      , plank        , slab         , 6), fileName + "_slabs");
-            writeJSON(getJSON(stairs     , parquet      , parquet_stair, 4), fileName + "_parquet_stairs");
-            writeJSON(getJSON(stairs     , plank        , stair        , 4), fileName + "_stairs");
-            writeJSON(getJSON(stonecutter, log          , branch       , 1), fileName + "_branch");
-            writeJSON(getJSON(stonecutter, log          , stripped     , 1), fileName + "_stripped");
-            writeJSON(getJSON(stonecutter, log          , stripped_wood, 1), fileName + "_stripped_wood");
-            writeJSON(getJSON(stonecutter, plank        , bench        , 1), fileName + "_bench");
-            writeJSON(getJSON(stonecutter, plank        , chair        , 1), fileName + "_chair");
-            writeJSON(getJSON(stonecutter, plank        , parquet      , 1), fileName + "_parquet");
-            writeJSON(getJSON(stonecutter, plank        , table        , 1), fileName + "_table");
-            writeJSON(getJSON(trapdoors  , plank        , trapdoor     , 2), fileName + "_trapdoor");
-            writeJSON(getJSON(twoByTwo   , log          , wood         , 3), fileName + "_wood");
-            writeJSON(getJSON(twoByTwo   , stripped     , stripped_wood, 3), fileName + "s_wood");
+            writeJSON(getJSON(boat       , plank        , "minecraft:oak_boat", 1), fileName + "_boat");
+            writeJSON(getJSON(twoByone   , plank        , pressure            , 1), fileName + "_pressure");
+            writeJSON(getJSON(doors      , plank        , door                , 3), fileName + "_door");
+            writeJSON(getJSON(fences     , plank        , fence               , 3), fileName + "_fence");
+            writeJSON(getJSON(gates      , plank        , gate                , 1), fileName + "_gate");
+            writeJSON(getJSON(oneToOne   , log          , plank               , 4), fileName + "_planks");
+            writeJSON(getJSON(oneToOne   , wood         , plank               , 4), fileName + "wood_planks");
+            writeJSON(getJSON(oneToOne   , stripped_wood, plank               , 4), fileName + "s_wood_planks");
+            writeJSON(getJSON(oneToOne   , plank        , button              , 1), fileName + "_buttons");
+            writeJSON(getJSON(slabs      , parquet      , parquet_slab        , 6), fileName + "_parquet_slabs");
+            writeJSON(getJSON(slabs      , plank        , slab                , 6), fileName + "_slabs");
+            writeJSON(getJSON(stairs     , parquet      , parquet_stair       , 4), fileName + "_parquet_stairs");
+            writeJSON(getJSON(stairs     , plank        , stair               , 4), fileName + "_stairs");
+            writeJSON(getJSON(stonecutter, log          , branch              , 1), fileName + "_branch");
+            writeJSON(getJSON(stonecutter, log          , stripped            , 1), fileName + "_stripped");
+            writeJSON(getJSON(stonecutter, log          , stripped_wood       , 1), fileName + "_stripped_wood");
+            writeJSON(getJSON(stonecutter, plank        , bench               , 1), fileName + "_bench");
+            writeJSON(getJSON(stonecutter, plank        , chair               , 1), fileName + "_chair");
+            writeJSON(getJSON(stonecutter, plank        , parquet             , 1), fileName + "_parquet");
+            writeJSON(getJSON(stonecutter, plank        , table               , 1), fileName + "_table");
+            writeJSON(getJSON(trapdoors  , plank        , trapdoor            , 2), fileName + "_trapdoor");
+            writeJSON(getJSON(twoByTwo   , log          , wood                , 3), fileName + "_wood");
+            writeJSON(getJSON(twoByTwo   , stripped     , stripped_wood       , 3), fileName + "s_wood");
         }
 
 //WOODEN VANILLA
@@ -211,6 +212,17 @@ abstract class WNRecipes {
         writeJSON(getJSON(backpack, "minecraft:string"     , "minecraft:leather"    , modid + ":backpack_small" , 1), "backpack_small");
         writeJSON(getJSON(backpack, "minecraft:rabbit_hide", "minecraft:leather"    , modid + ":backpack_medium", 1), "backpack_medium");
         writeJSON(getJSON(backpack, "minecraft:scute"      , "minecraft:rabbit_hide", modid + ":backpack_big"   , 1), "backpack_big");
+//EXTRA
+        writeJSON(getJSON(string, "minecraft:string", 4), "wool_string");
+        writeJSON(getJSON(shaped2, """
+                " O ",
+                "X X",
+                "XXX"
+                """      , "minecraft:leather", "minecraft:string", "minecraft:bundle", 1), "bundle");
+        writeJSON(getJSON(shaped2, """
+                "XXX",
+                "OXO"
+                """      , "minecraft:leather", "minecraft:iron_ingot", "minecraft:saddle", 1), "saddle");
     }
     private static String RL(WNBlock block) {
         if (block == null) {

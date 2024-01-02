@@ -738,7 +738,7 @@ public class WNBlocks {
                 .dynamicShape()
                 .randomTicks();
         Item.Properties itemProp = new Item.Properties()
-                .tab(WNTabs.TAB_SURFACE_PLANTS);
+                .tab(WNTabs.TAB_SURFACE_PLANTS) ;
 
         return new WNSaplingBlock(location(value.getIdBase() + "_sapling"), blockProp, itemProp, value);
     });

@@ -26,8 +26,8 @@ public class SimpleOreDropConfig implements OreDropConfig{
     }
 
     @Override
-    public ItemStack getDrops(BlockState state, ServerLevel level, float luck) {
-        return new ItemStack(WNItems.ORE_ITEMS.get(item), WNUtil.rint(min,max));
+    public ItemStack getDrops(BlockState state, ServerLevel level, int luck) {
+        return new ItemStack(WNItems.ORE_ITEMS.get(item), WNUtil.rint(min,max+luck));
     }
 
     public SimpleOreDropConfig withExp(int min, int max){

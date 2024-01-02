@@ -1,6 +1,69 @@
 package net.matez.wildnature.data.setup;
 
 record Templates() {
+    protected static final String shaped2 = """
+                {
+                    "type": "minecraft:crafting_shaped",
+                    "pattern": [
+                    %s
+                    ],
+                    "key": {
+                        "X": {
+                            "item": "%s"
+                        },
+                        "O": {
+                            "item": "%s"
+                        }
+                    },
+                    "result": {
+                        "item": "%s",
+                        "count": %d
+                    }
+                }
+                """;
+    protected static final String string = """
+                {
+                    "type": "minecraft:crafting_shaped",
+                    "pattern": [
+                    "X",
+                    "O",
+                    "/"
+                    ],
+                    "key": {
+                        "X": {
+                            "tag": "minecraft:wool"
+                        },
+                        "O": {
+                            "tag": "minecraft:planks"
+                        },
+                        "/": {
+                            "item": "minecraft:stick"
+                        }
+                    },
+                    "result": {
+                        "item": "%s",
+                        "count": %d
+                    }
+                }
+                """;
+    protected static final String boat = """
+                {
+                    "type": "minecraft:crafting_shaped",
+                    "pattern": [
+                    "X X",
+                    "XXX"
+                    ],
+                    "key": {
+                        "X": {
+                            "item": "%s"
+                        }
+                    },
+                    "result": {
+                        "item": "%s",
+                        "count": %d
+                    }
+                }
+                """;
     protected static final String crossbow = """
                 {
                     "type": "minecraft:crafting_shaped",

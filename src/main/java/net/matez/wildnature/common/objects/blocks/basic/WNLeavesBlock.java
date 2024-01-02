@@ -143,7 +143,7 @@ public abstract class WNLeavesBlock extends WNBlock implements IForgeShearable, 
 //    }
 
     public VoxelShape getBlockSupportShape(BlockState p_56707_, BlockGetter p_56708_, BlockPos p_56709_) {
-        return Shapes.block();
+        return Shapes.empty();
     }
 
     public VoxelShape getVisualShape(BlockState p_56684_, BlockGetter p_56685_, BlockPos p_56686_, CollisionContext p_56687_) {
@@ -173,8 +173,7 @@ public abstract class WNLeavesBlock extends WNBlock implements IForgeShearable, 
         if (brokenBy.is(Tags.Items.SHEARS)) {
             return DropList.single(asItem());
         } else {
-            return new DropList()
-                    .with(ItemStack.EMPTY, 3).with(new ItemStack(Items.STICK, WNUtil.rint(1, Math.max(3, 2 * fortune))), 1);
+            return new DropList().with(ItemStack.EMPTY, 10).with(new ItemStack(Items.STICK, WNUtil.rint(1, Math.max(3, 2 * fortune))), 1);
         }
     }
 

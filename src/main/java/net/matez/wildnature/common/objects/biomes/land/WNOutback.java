@@ -1,5 +1,6 @@
 package net.matez.wildnature.common.objects.biomes.land;
 
+import net.matez.wildnature.common.objects.features.WNExtraTrees;
 import net.matez.wildnature.common.registry.biomes.WNBiome;
 import net.matez.wildnature.common.registry.biomes.WNBiomes;
 import net.minecraft.data.worldgen.BiomeDefaultFeatures;
@@ -37,7 +38,7 @@ public class WNOutback extends WNBiome {
     public BiomeGenerationSettings.Builder buildBiome() {
         BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder();
         globalOverworldGeneration(biomeBuilder);
-        BiomeDefaultFeatures.addForestGrass(biomeBuilder);
+        BiomeDefaultFeatures.addBadlandGrass(biomeBuilder);
 
         return biomeBuilder;
     }
@@ -46,7 +47,7 @@ public class WNOutback extends WNBiome {
     @Override
     public void applyCustomFeatures(BiomeLoadingEvent event) {
         // -- TREES
-
+        addTree(event, WNExtraTrees.CITRUS, 1, 0.5F, 2);
         // -- FLOWERS
 }
 

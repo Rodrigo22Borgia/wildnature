@@ -1,0 +1,16 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+    "X X",
+    "XXX"
+    ],
+    "key": {
+        "X": {
+            "item": "wildnature:mangrove_planks"
+        }
+    },
+    "result": {
+        "item": "minecraft:oak_boat",
+        "count": 1
+    }
+}

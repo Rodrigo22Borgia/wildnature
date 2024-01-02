@@ -6,30 +6,48 @@
 
 package net.matez.wildnature.common.util;
 
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.Random;
+import java.util.*;
 
 public class WeightedList<T> extends LinkedHashMap<T, Integer> {
+    private static final Random random = new Random();
     public T getWeightedEntry() {
-        if (!(size() == 0)) {
-            var objects = new ArrayList<>(this.keySet());
-            int x = WNUtil.rint(0, objects.size() - 1);
+        if (isEmpty()) {return null;}
 
-            return objects.get(x);
+        int x = 0;
+        for (Map.Entry<T, Integer> entry : entrySet()) {
+            x += entry.getValue();
+        }
+
+        x = random.nextInt(x) + 1;
+        int y = 0;
+
+        for (Map.Entry<T, Integer> entry : entrySet()) {
+            if (x <= (y += entry.getValue())) {
+                return entry.getKey();
+            }
         }
         return null;
     }
 
-    public T getWeightedEntry(Random rand) {
-        if (!(size() == 0)) {
-            var objects = new ArrayList<>(this.keySet());
-            int x = WNUtil.rint(0, objects.size() - 1, rand);
+    public T getWeightedEntry(Random rnd) {
+        if (isEmpty()) {return null;}
 
-            return objects.get(x);
+        int x = 0;
+        for (Map.Entry<T, Integer> entry : entrySet()) {
+            x += entry.getValue();
+        }
+
+        x = rnd.nextInt(x) + 1;
+        int y = 0;
+
+        for (Map.Entry<T, Integer> entry : entrySet()) {
+            if (x <= (y += entry.getValue())) {
+                return entry.getKey();
+            }
         }
         return null;
     }
+
 
     public ArrayList<T> getAllWithWeight(int weight) {
         ArrayList<T> list = new ArrayList<>();

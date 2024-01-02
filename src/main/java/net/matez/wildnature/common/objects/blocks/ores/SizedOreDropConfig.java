@@ -29,12 +29,12 @@ public class SizedOreDropConfig implements OreDropConfig{
     }
 
     @Override
-    public ItemStack getDrops(BlockState state, ServerLevel level, float luck) {
+    public ItemStack getDrops(BlockState state, ServerLevel level, int luck) {
         if(state.getBlock() instanceof WNOreDoubleFormationBlock) {
             if(state.getValue(WNOreDoubleFormationBlock.SIZE) == BigSmallBlock.SMALL) {
-                return new ItemStack(WNItems.ORE_ITEMS.get(itemSmall), WNUtil.rint(minSmall, maxSmall));
+                return new ItemStack(WNItems.ORE_ITEMS.get(itemSmall), WNUtil.rint(minSmall, maxSmall+luck));
             }else{
-                return new ItemStack(WNItems.ORE_ITEMS.get(itemBig), WNUtil.rint(minBig, maxBig));
+                return new ItemStack(WNItems.ORE_ITEMS.get(itemBig), WNUtil.rint(minBig, maxBig+luck));
             }
         }
         return ItemStack.EMPTY;

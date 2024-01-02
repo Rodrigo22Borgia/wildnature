@@ -12,7 +12,7 @@ import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.state.BlockState;
 
 public interface OreDropConfig {
-    ItemStack getDrops(BlockState state, ServerLevel level, float luck);
+    ItemStack getDrops(BlockState state, ServerLevel level, int luck);
 
     int getExpDrops(BlockState state, LevelReader reader, int fortune, int silkTouch);
 }

@@ -8,17 +8,23 @@ package net.matez.wildnature.common.objects.blocks.ores;
 
 import net.matez.wildnature.common.objects.blocks.setup.WNBlock;
 import net.matez.wildnature.common.objects.tags.WNTags;
+import net.matez.wildnature.common.util.WNUtil;
 import net.matez.wildnature.data.block_models.WNBlockModel_CubeAll;
 import net.matez.wildnature.data.blockstates.WNBlockstate_RandomlyRotatedCube;
 import net.matez.wildnature.data.setup.base.WNResource;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.common.Tags;
 import org.jetbrains.annotations.Nullable;
+
+import static net.matez.wildnature.setup.WildNature.modid;
 
 public class WNOreBlock extends WNBlock {
     protected final Ore ore;
@@ -45,7 +51,7 @@ public class WNOreBlock extends WNBlock {
         );
     }
 
-    @Nullable
+/*    @Nullable
     @Override
     public DropList getDrops(BlockState state, ServerLevel level, float luck) {
         ItemStack drop = this.ore.getDropConfig().getDrops(state,level,luck);
@@ -53,6 +59,14 @@ public class WNOreBlock extends WNBlock {
             return super.getDrops(state, level, luck);
         }
 
+        return new DropList().with(drop);
+    }*/
+    @Override
+    public @Nullable DropList getDrops(BlockState state, ServerLevel level, float luck, int fortune, boolean silkTouch, @Nullable LivingEntity entity, ItemStack brokenBy) {
+        if (silkTouch) {
+            return DropList.single(asItem());
+        }
+        ItemStack drop = this.ore.getDropConfig().getDrops(state,level, fortune);
         return new DropList().with(drop);
     }
 

@@ -8,6 +8,7 @@ package net.matez.wildnature.common.objects.blocks.saplings;
 
 import net.matez.wildnature.common.objects.blocks.setup.WNBlock;
 import net.matez.wildnature.common.objects.blocks.wood.LogType;
+import net.matez.wildnature.common.objects.items.waterlilies.WNWaterLilyBlockItem;
 import net.matez.wildnature.common.registry.blocks.WNBlocks;
 import net.matez.wildnature.data.block_models.WNBlockModel_Sapling;
 import net.matez.wildnature.data.item_models.WNItemModel_Generated;
@@ -16,6 +17,8 @@ import net.minecraft.client.color.block.BlockColor;
 import net.minecraft.client.renderer.BiomeColors;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.FoliageColor;
 import net.minecraft.world.level.block.Block;
 import org.jetbrains.annotations.Nullable;
@@ -77,5 +80,15 @@ public class WNSaplingBlock extends WNAbstractSaplingBlock {
         }
         return null;
     }
-
+    @Override
+    public void createBlockItem(Item.Properties itemProperties) {
+        this.item = new WNWaterLilyBlockItem(this,itemProperties) {
+            @Override
+            public int getBurnTime(ItemStack itemStack, @org.jetbrains.annotations.Nullable RecipeType<?> recipeType) {
+                return 100;
+            }
+        };
+        this.item.setRegistryName(this.getRegistryName());
+        WNBlocks.BLOCK_ITEMS.put(this.getRegistryName(), this.item);
+    }
 }

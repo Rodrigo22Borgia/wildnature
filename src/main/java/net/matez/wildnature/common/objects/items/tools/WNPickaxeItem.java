@@ -18,7 +18,7 @@ public class WNPickaxeItem extends PickaxeItem implements IWNItem {
     private final ToolItem toolItem;
 
     public WNPickaxeItem(Tier tier, Properties properties, ToolItem toolItem) {
-        super(tier, 6,-2.8F, properties);
+        super(tier, 0,-2.8F, properties);
         this.toolItem = toolItem;
     }
 
