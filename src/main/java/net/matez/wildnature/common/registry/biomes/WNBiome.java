@@ -205,9 +205,9 @@ public abstract class WNBiome {
         event.getGeneration().getFeatures(GenerationStep.Decoration.VEGETAL_DECORATION).add(BuiltinRegistries.PLACED_FEATURE.getHolderOrThrow(ResourceKey.create(Registry.PLACED_FEATURE_REGISTRY,new ResourceLocation(pLocation))));
     }
 
-    protected static void addBush(final BiomeLoadingEvent event, PlantFeature plant, int chunkAverage) {
+    protected static void addBush(final BiomeLoadingEvent event, PlantFeature plant, int everyXchunks) {
         String cLocation = "wildnature:" + plant.toString().toLowerCase() + "_";
-        String pLocation = cLocation + chunkAverage;
+        String pLocation = cLocation + everyXchunks;
 
         if (!BuiltinRegistries.PLACED_FEATURE.containsKey(new ResourceLocation(pLocation))) {
 
@@ -222,13 +222,13 @@ public abstract class WNBiome {
                                 BlockTags.AZALEA_GROWS_ON,
                                 new BlockPos(0, -1, 0))))));
             }
-            PlacementUtils.register(pLocation, BuiltinRegistries.CONFIGURED_FEATURE.getHolderOrThrow(ResourceKey.create(Registry.CONFIGURED_FEATURE_REGISTRY,new ResourceLocation(cLocation))), RarityFilter.onAverageOnceEvery(chunkAverage), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE);
+            PlacementUtils.register(pLocation, BuiltinRegistries.CONFIGURED_FEATURE.getHolderOrThrow(ResourceKey.create(Registry.CONFIGURED_FEATURE_REGISTRY,new ResourceLocation(cLocation))), RarityFilter.onAverageOnceEvery(everyXchunks), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE);
         }
         event.getGeneration().getFeatures(GenerationStep.Decoration.VEGETAL_DECORATION).add(BuiltinRegistries.PLACED_FEATURE.getHolderOrThrow(ResourceKey.create(Registry.PLACED_FEATURE_REGISTRY,new ResourceLocation(pLocation))));
     }
-    protected static void addPlant(final BiomeLoadingEvent event, PlantFeature plant, int chunkAverage) {
+    protected static void addPlant(final BiomeLoadingEvent event, PlantFeature plant, int everyXchunks) {
         String cLocation = "wildnature:" + plant.toString().toLowerCase() + "_";
-        String pLocation = cLocation + chunkAverage;
+        String pLocation = cLocation + everyXchunks;
 
         if (!BuiltinRegistries.PLACED_FEATURE.containsKey(new ResourceLocation(pLocation))) {
 
@@ -241,7 +241,7 @@ public abstract class WNBiome {
                                 plant.featureBlockState()
                         )))));
             }
-            PlacementUtils.register(pLocation, BuiltinRegistries.CONFIGURED_FEATURE.getHolderOrThrow(ResourceKey.create(Registry.CONFIGURED_FEATURE_REGISTRY,new ResourceLocation(cLocation))), RarityFilter.onAverageOnceEvery(chunkAverage), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE);
+            PlacementUtils.register(pLocation, BuiltinRegistries.CONFIGURED_FEATURE.getHolderOrThrow(ResourceKey.create(Registry.CONFIGURED_FEATURE_REGISTRY,new ResourceLocation(cLocation))), RarityFilter.onAverageOnceEvery(everyXchunks), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE);
         }
         event.getGeneration().getFeatures(GenerationStep.Decoration.VEGETAL_DECORATION).add(BuiltinRegistries.PLACED_FEATURE.getHolderOrThrow(ResourceKey.create(Registry.PLACED_FEATURE_REGISTRY,new ResourceLocation(pLocation))));
     }

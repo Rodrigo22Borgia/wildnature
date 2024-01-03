@@ -6,11 +6,13 @@ import net.matez.wildnature.common.objects.surface.WNSurface;
 import net.matez.wildnature.common.registry.biomes.WNBiome;
 import net.matez.wildnature.common.registry.biomes.WNBiomes;
 import net.minecraft.data.worldgen.BiomeDefaultFeatures;
+import net.minecraft.data.worldgen.placement.VegetationPlacements;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.BiomeGenerationSettings;
 import net.minecraft.world.level.biome.MobSpawnSettings;
+import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.SurfaceRules;
 import net.minecraftforge.event.world.BiomeLoadingEvent;
 
@@ -43,7 +45,7 @@ public class WNLushDesert extends WNBiome {
     public BiomeGenerationSettings.Builder buildBiome() {
         BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder();
         globalOverworldGeneration(biomeBuilder);
-        BiomeDefaultFeatures.addForestGrass(biomeBuilder);
+        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.PATCH_CACTUS_DECORATED);
 
         return biomeBuilder;
     }
@@ -55,15 +57,7 @@ public class WNLushDesert extends WNBiome {
         addTree(event, WNExtraTrees.ACACIA, 1, 0.5F, 2);
 
         // -- FLOWERS
-        addPlant(event, FlowerType.AZALEA_ORANGE, 6);
-        addPlant(event, FlowerType.AZALEA_PINK, 6);
-        addPlant(event, FlowerType.AZALEA_RED, 6);
-        addPlant(event, FlowerType.AZALEA_WHITE, 6);
-        addPlant(event, FlowerType.AZALEA_YELLOW, 6);
-        addPlant(event, FlowerType.LUPINE_PINK, 12);
-        addPlant(event, FlowerType.LUPINE_RED, 12);
-        addPlant(event, FlowerType.LUPINE_VIOLET, 12);
-        addPlant(event, FlowerType.MARIGOLD_YELLOW, 12);
+        addPlant(event, FlowerType.DESERT_GRASS, 1);
 }
 
 
