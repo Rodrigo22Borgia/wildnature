@@ -53,8 +53,8 @@ public class WNTaigaClearing extends WNBiome {
     @Override
     public void applyCustomFeatures(BiomeLoadingEvent event) {
         // -- TREES
-        addTree(event, WNFallenTrees.BIRCH, 1, 0.5F, 2);
-        addTree(event, WNFallenTrees.SPRUCE, 2, 0.5F, 2);
+        //addTree(event, WNFallenTrees.BIRCH, 1, 0.5F, 2);
+        //addTree(event, WNFallenTrees.SPRUCE, 2, 0.5F, 2);
         addTree(event, WNExtraTrees.MINI_PINE, 2, 0.5F, 2);
 
         // -- FLOWERS

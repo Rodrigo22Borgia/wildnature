@@ -1,9 +1,0 @@
-{
-    "type": "minecraft:blasting",
-    "ingredient": {
-        "item": "wildnature:tin_deepslate_ore"
-    },
-    "result": "wildnature:tin_ingot",
-    "experience": 0.1,
-    "cookingtime": 400
-}

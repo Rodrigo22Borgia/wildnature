@@ -585,7 +585,8 @@ public class WNBlocks {
             location("soil"),
             BlockBehaviour.Properties.of(Material.DIRT, MaterialColor.DIRT)
                     .strength(0.6F)
-                    .sound(SoundType.GRAVEL),
+                    .sound(SoundType.GRAVEL)
+                    .randomTicks(),
             new Item.Properties()
                     .tab(WNTabs.TAB_SURFACE)
     ));
@@ -656,6 +657,7 @@ public class WNBlocks {
                         .randomTicks()
                         .noOcclusion()
                         .noCollission()
+                        .speedFactor(0.4F)
                         .isSuffocating(WNBlocks::never)
                         .isViewBlocking(WNBlocks::never),
                 new Item.Properties()

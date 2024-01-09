@@ -180,13 +180,11 @@ abstract class WNRecipes {
             writeJSON(getJSON(oneToOne, result, material, 9), gem.getItem().getId() + "_from_block");
         }
 //SMELTING
-        writeJSON(getJSON(smithing, modid + ":" + OreItem.TIN_INGOT.getId() , "minecraft:copper_ingot"                   , modid + ":" + OreItem.BRONZE_INGOT.getId()), "bronze_1");
-        writeJSON(getJSON(smithing, "minecraft:copper_ingot"                , modid + ":" + OreItem.TIN_INGOT.getId()    , modid + ":" + OreItem.BRONZE_INGOT.getId()), "bronze_2");
+        writeJSON(getJSON(smithing, modid + ":" + OreItem.TIN_INGOT.getId()       , "minecraft:copper_ingot"                   , modid + ":" + OreItem.BRONZE_INGOT.getId()), "bronze_1");
+        writeJSON(getJSON(smithing, "minecraft:copper_ingot"                      , modid + ":" + OreItem.TIN_INGOT.getId()    , modid + ":" + OreItem.BRONZE_INGOT.getId()), "bronze_2");
         writeJSON(getJSON(blasting, "minecraft:iron_ingot"                        , modid + ":" + OreItem.STEEL_INGOT.getId()  , 8000), "blasting_steel");
-        writeJSON(getJSON(blasting, modid + ":" + Ore.SILVER_ORE.getId()          , modid + ":" + OreItem.SILVER_INGOT.getId() , 400) , "blasting_silver");
-        writeJSON(getJSON(blasting, modid + ":" + Ore.TIN_ORE.getId()             , modid + ":" + OreItem.TIN_INGOT.getId()    , 400) , "blasting_tin");
-        writeJSON(getJSON(blasting, modid + ":" + Ore.SILVER_DEEPSLATE_ORE.getId(), modid + ":" + OreItem.SILVER_INGOT.getId() , 400) , "blasting_deep_silver");
-        writeJSON(getJSON(blasting, modid + ":" + Ore.TIN_DEEPSLATE_ORE.getId()   , modid + ":" + OreItem.TIN_INGOT.getId()    , 400) , "blasting_deep_tin");
+        writeJSON(getJSON(blasting, modid + ":" + OreItem.SILVER_RAW.getId()      , modid + ":" + OreItem.SILVER_INGOT.getId() , 200) , "blasting_silver");
+        writeJSON(getJSON(blasting, modid + ":" + OreItem.TIN_RAW.getId()         , modid + ":" + OreItem.TIN_INGOT.getId()    , 200) , "blasting_tin");
         writeJSON(getJSON(blasting, modid + ":" + Ore.AMBER_ORE.getId()           , modid + ":" + OreItem.AMBER.getId()        , 200) , "blasting_amber");
         writeJSON(getJSON(smelting, modid + ":" + Ore.AMBER_ORE.getId()           , modid + ":" + OreItem.AMBER.getId())       , "smelting_amber");
         writeJSON(getJSON(smelting, modid + ":" + OreItem.SILVER_RAW.getId()      , modid + ":" + OreItem.SILVER_INGOT.getId()), "smelting_silver");
@@ -196,10 +194,10 @@ abstract class WNRecipes {
         writeJSON(getJSON(smelting, modid + ":" + Ore.SILVER_DEEPSLATE_ORE.getId(), modid + ":" + OreItem.SILVER_RAW.getId())  , "raw_deep_silver");
         writeJSON(getJSON(smelting, modid + ":" + Ore.TIN_DEEPSLATE_ORE.getId()   , modid + ":" + OreItem.TIN_RAW.getId())     , "raw_deep_tin");
 
-        writeJSON(getJSON(blasting, modid + ":" + Ore.DARK_AMETHYST_FORMATION.getId(), modid + ":" + OreItem.DARK_AMETHYST.getId()       , 400), "blasting_amethyst");
-        writeJSON(getJSON(blasting, modid + ":" + Ore.SAPPHIRE_FORMATION.getId()     , modid + ":" + OreItem.SAPPHIRE.getId()            , 400), "blasting_sapphire");
-        writeJSON(getJSON(blasting, modid + ":" + Ore.RUBY_FORMATION.getId()         , modid + ":" + OreItem.RUBY.getId()                , 400), "blasting_ruby");
-        writeJSON(getJSON(blasting, modid + ":" + Ore.TOPAZ_FORMATION.getId()        , modid + ":" + OreItem.TOPAZ.getId()               , 400), "blasting_topaz");
+        writeJSON(getJSON(blasting, modid + ":" + OreItem.DARK_AMETHYST_SHARD.getId(), modid + ":" + OreItem.DARK_AMETHYST.getId()       , 200), "blasting_amethyst");
+        writeJSON(getJSON(blasting, modid + ":" + OreItem.SAPPHIRE_RAW.getId()       , modid + ":" + OreItem.SAPPHIRE.getId()            , 200), "blasting_sapphire");
+        writeJSON(getJSON(blasting, modid + ":" + OreItem.RUBY_RAW.getId()           , modid + ":" + OreItem.RUBY.getId()                , 200), "blasting_ruby");
+        writeJSON(getJSON(blasting, modid + ":" + OreItem.TOPAZ_RAW.getId()          , modid + ":" + OreItem.TOPAZ.getId()               , 200), "blasting_topaz");
         writeJSON(getJSON(smelting, modid + ":" + Ore.DARK_AMETHYST_FORMATION.getId(), modid + ":" + OreItem.DARK_AMETHYST_SHARD.getId()), "raw_amethyst");
         writeJSON(getJSON(smelting, modid + ":" + Ore.SAPPHIRE_FORMATION.getId()     , modid + ":" + OreItem.SAPPHIRE_RAW.getId())       , "raw_sapphire");
         writeJSON(getJSON(smelting, modid + ":" + Ore.RUBY_FORMATION.getId()         , modid + ":" + OreItem.RUBY_RAW.getId())           , "raw_ruby");

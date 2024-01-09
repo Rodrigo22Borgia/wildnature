@@ -58,7 +58,6 @@ public class WNThujaShield extends WNBiome {
         addTree(event, WNExtraTrees.POINTY_BIRCH, 1, 0.5F, 2);
         addTree(event, WNExtraTrees.ROWAN, 1, 0.5F, 2);
         addTree(event, WNExtraTrees.SPIKY_BIRCH_, 1, 0.5F, 2);
-        addTree(event, WNExtraTrees.SPRUCE, 1, 0.5F, 2);
         addTree(event, WNExtraTrees.TREE_BPINE, 1, 0.5F, 2);
         addTree(event, WNExtraTrees.TREE_LARCH, 1, 0.5F, 2);
         addTree(event, WNExtraTrees.TREE_PINE, 1, 0.5F, 2);

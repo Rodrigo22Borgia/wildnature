@@ -8,6 +8,7 @@ package net.matez.wildnature.common.objects.features;
 
 import com.mojang.serialization.Codec;
 import net.matez.wildnature.common.objects.structures.WNStructurePlacement;
+import net.matez.wildnature.common.objects.structures.types.WNFallenTreeStructure;
 import net.matez.wildnature.common.util.WNUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.tags.BlockTags;
@@ -41,7 +42,7 @@ public class WNFallenTreeFeature extends Feature<NoneFeatureConfiguration> {
             return false;
         }
 
-        var structure = placement.structure();
+        var structure = (WNFallenTreeStructure) placement.structure();
         var height = structure.getMax().getY() + 1;
 
         for (int i = 1; i < height; i += 4) {

@@ -108,8 +108,8 @@ public abstract class WNAbstractBranchBlock extends WNBlock implements SimpleWat
         if (silkTouch) {
             return DropList.single(asItem());
         } else {
-            return new DropList()
-                    .with(getLog().asItem(), 1).with(new ItemStack(Items.STICK, WNUtil.rint(1, Math.max(3, 2 * fortune))), 2);
+            //return new DropList().with(getLog().asItem(), 1).with(new ItemStack(Items.STICK, WNUtil.rint(1, Math.max(3, 2 * fortune))), 2);
+            return DropList.single(getLog().asItem());
         }
     }
 

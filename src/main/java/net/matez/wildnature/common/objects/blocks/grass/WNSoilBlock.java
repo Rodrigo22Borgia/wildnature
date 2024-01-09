@@ -11,15 +11,19 @@ import net.matez.wildnature.common.objects.blocks.basic.WNBaseEntityBlock;
 import net.matez.wildnature.common.objects.tags.WNTags;
 import net.matez.wildnature.data.block_models.WNBlockModel_CubeAll;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.material.Fluids;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Random;
@@ -36,13 +40,15 @@ public class WNSoilBlock extends WNBaseEntityBlock {
     @Override
     public void randomTick(BlockState state, ServerLevel level, BlockPos pos, Random random) {
         BlockState up = level.getBlockState(pos.above());
-        if (!up.isAir()) {
-            if (up.is(BlockTags.FLOWERS) || up.is(BlockTags.SAPLINGS) || up.is(BlockTags.BEE_GROWABLES)) {
-                if (up.getBlock().isRandomlyTicking(up)) {
-                    up.getBlock().randomTick(up, level, pos.above(), random);
-                }
-            }
+        //if (isRandomlyTicking(up) && up.is(BlockTags.FLOWERS) || up.is(BlockTags.SAPLINGS) || up.is(BlockTags.BEE_GROWABLES)) {
+            up.getBlock().randomTick(up, level, pos.above(), random);
+    }
+
+    public BlockState updateShape(BlockState p_58014_, Direction p_58015_, BlockState p_58016_, LevelAccessor p_58017_, BlockPos p_58018_, BlockPos p_58019_) {
+        if (p_58015_ == Direction.UP && p_58016_.isAir() && p_58017_.getBlockEntity(p_58018_) instanceof WNSoilBlockEntity soil) {
+            soil.destroy();
         }
+        return p_58014_;
     }
 
     @Nullable

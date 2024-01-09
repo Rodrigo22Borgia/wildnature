@@ -13,6 +13,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -27,6 +28,7 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.common.IForgeShearable;
+import net.minecraftforge.common.Tags;
 import org.jetbrains.annotations.Nullable;
 
 public class WNBushLeafBlock extends WNBlock implements IForgeShearable {
@@ -68,9 +70,12 @@ public class WNBushLeafBlock extends WNBlock implements IForgeShearable {
 
     @Nullable
     @Override
-    public DropList getDrops(BlockState state, ServerLevel level, float luck) {
-        //todo shears
-        return new DropList().with(new ItemStack(Items.STICK, WNUtil.rint(1,3))).with(ItemStack.EMPTY,4);
+    public DropList getDrops(BlockState state, ServerLevel level, float luck, int fortune, boolean silkTouch, @Nullable LivingEntity entity, ItemStack brokenBy) {
+        if (brokenBy.is(Tags.Items.SHEARS)) {
+            return DropList.single(asItem());
+        } else {
+            return new DropList().with(new ItemStack(Items.STICK, WNUtil.rint(1,3))).with(ItemStack.EMPTY,4);
+        }
     }
 
     @Override
@@ -95,10 +100,10 @@ public class WNBushLeafBlock extends WNBlock implements IForgeShearable {
         }
         return SHAPE;
     }
-
     public VoxelShape getBlockSupportShape(BlockState p_56707_, BlockGetter p_56708_, BlockPos p_56709_) {
-        return Shapes.block();
+        return Shapes.empty();
     }
+
 
     public VoxelShape getVisualShape(BlockState p_56684_, BlockGetter p_56685_, BlockPos p_56686_, CollisionContext p_56687_) {
         return Shapes.block();

@@ -1,9 +1,9 @@
 {
     "type": "minecraft:blasting",
     "ingredient": {
-        "item": "wildnature:ruby_formation"
+        "item": "wildnature:ruby_raw"
     },
     "result": "wildnature:ruby",
     "experience": 0.1,
-    "cookingtime": 400
+    "cookingtime": 200
 }

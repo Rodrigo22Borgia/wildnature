@@ -1,9 +1,9 @@
 {
     "type": "minecraft:blasting",
     "ingredient": {
-        "item": "wildnature:sapphire_formation"
+        "item": "wildnature:sapphire_raw"
     },
     "result": "wildnature:sapphire",
     "experience": 0.1,
-    "cookingtime": 400
+    "cookingtime": 200
 }

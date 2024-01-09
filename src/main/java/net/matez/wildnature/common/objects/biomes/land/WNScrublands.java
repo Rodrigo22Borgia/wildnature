@@ -49,8 +49,8 @@ public class WNScrublands extends WNBiome {
     @Override
     public void applyCustomFeatures(BiomeLoadingEvent event) {
         // -- TREES
-        addTree(event, WNExtraTrees.SCRUBLAND_SHRUB, 1, 0.5F, 2);
         addTree(event, WNExtraTrees.SHRUB_TALL, 4, 0.5F,2);
+        addTree(event, WNExtraTrees.SCRUBLAND_SHRUB, 1, 0.5F, 2);
 
         // -- FLOWERS
         addPlant(event, FlowerType.AZALEA_ORANGE, 12);
