@@ -10,13 +10,8 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Matrix3f;
 import com.mojang.math.Matrix4f;
-import net.minecraft.client.renderer.LevelRenderer;
-import net.minecraft.world.phys.AABB;
 
 public class WNRenderUtils {
-    public static void drawBoundingBox(PoseStack matrixStackIn, VertexConsumer bufferIn, AABB boundingBox, int red, int green, int blue, int alpha) {
-        LevelRenderer.renderLineBox(matrixStackIn, bufferIn, boundingBox.minX, boundingBox.minY, boundingBox.minZ, boundingBox.maxX, boundingBox.maxY, boundingBox.maxZ, red / 255f, green / 255f, blue / 255f, alpha / 255f);
-    }
 
     public static void drawBoundingBox(PoseStack matrixStackIn, VertexConsumer bufferIn, double minX, double minY, double minZ, double maxX, double maxY, double maxZ, int red, int green, int blue, int alpha) {
         Matrix4f matrix4f = matrixStackIn.last().pose();

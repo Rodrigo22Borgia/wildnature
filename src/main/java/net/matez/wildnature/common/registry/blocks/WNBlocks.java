@@ -59,6 +59,8 @@ import net.matez.wildnature.common.registry.tabs.WNTabs;
 import net.matez.wildnature.setup.WildNature;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.BlockTags;
+import net.minecraft.util.Tuple;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
@@ -69,18 +71,16 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
 
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 
 @Initialize(InitStage.REG_BLOCKS)
 public class WNBlocks {
-    private static final WNLogger log = WildNature.getLogger();
 
     //# --- ALL BLOCKS ---
     public static final LinkedHashMap<ResourceLocation, WNBlock> BLOCKS = new LinkedHashMap<>();
     public static final LinkedHashMap<ResourceLocation, WNBlockItem> BLOCK_ITEMS = new LinkedHashMap<>();
 
-    //#-------------------
-    //?---
     //# --- ENUM MAPS ---
 
     //################# WOODEN STUFF

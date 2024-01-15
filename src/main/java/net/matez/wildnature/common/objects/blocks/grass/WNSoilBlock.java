@@ -40,8 +40,9 @@ public class WNSoilBlock extends WNBaseEntityBlock {
     @Override
     public void randomTick(BlockState state, ServerLevel level, BlockPos pos, Random random) {
         BlockState up = level.getBlockState(pos.above());
-        //if (isRandomlyTicking(up) && up.is(BlockTags.FLOWERS) || up.is(BlockTags.SAPLINGS) || up.is(BlockTags.BEE_GROWABLES)) {
+        if (isRandomlyTicking(up) && up.is(BlockTags.FLOWERS) || up.is(BlockTags.SAPLINGS) || up.is(BlockTags.BEE_GROWABLES)) {
             up.getBlock().randomTick(up, level, pos.above(), random);
+        }
     }
 
     public BlockState updateShape(BlockState p_58014_, Direction p_58015_, BlockState p_58016_, LevelAccessor p_58017_, BlockPos p_58018_, BlockPos p_58019_) {

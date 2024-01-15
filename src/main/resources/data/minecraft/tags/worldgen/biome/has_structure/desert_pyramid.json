@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "wildnature:oasis",
+    "wildnature:sahara",
+    "wildnature:lush_desert",
+    "wildnature:cracked_desert"
+  ]
+}

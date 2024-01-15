@@ -2,7 +2,10 @@ package net.matez.wildnature.common.registry.biomes;
 
 import net.matez.wildnature.common.log.WNLogger;
 import net.matez.wildnature.setup.WildNature;
+import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.levelgen.GenerationStep;
+import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.minecraftforge.event.world.BiomeLoadingEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -18,13 +21,28 @@ public class WNFeatureConstructor {
     public static void biomeLoadingEvent(final BiomeLoadingEvent event) {
         // loop over all the biomes, check if matches with current and register its features
         log.debug("Registering features for " + event.getName().toString() + " biome");
-
-        for (Map.Entry<ResourceLocation, WNBiome> entry : WNBiomeRegistry.WN_BIOMES.entrySet()) {
-            if (entry.getValue().getKey().location().toString().equals(event.getName().toString())) {
-                entry.getValue().applyCustomFeatures(event);
-                log.debug("Successfully registered features for " + event.getName().toString() + " biome");
-                break;
+        if (event.getName().getNamespace().equals("minecraft"))
+            switch (event.getName().getPath()) {
+                case "dripstone_caves" -> {
+                    event.getGeneration().addFeature(GenerationStep.Decoration.UNDERGROUND_ORES,WNBiome.QUARTZITE);
+                    for (Holder<PlacedFeature> feature: WNBiome.DRIPSTONE_DECORATION) {event.getGeneration().addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, feature);};
+                }
+                case "lush_caves"      -> {
+                    event.getGeneration().addFeature(GenerationStep.Decoration.UNDERGROUND_ORES,WNBiome.MARBLE);
+                    event.getGeneration().addFeature(GenerationStep.Decoration.UNDERGROUND_ORES,WNBiome.LIMESTONE);
+                    for (Holder<PlacedFeature> feature: WNBiome.LUSH_CAVE_DECORATION) {event.getGeneration().addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, feature);};
+                }
             }
+
+        else if (event.getName().getNamespace().equals(WildNature.modid)) {
+            for (Map.Entry<ResourceLocation, WNBiome> entry : WNBiomeRegistry.WN_BIOMES.entrySet()) {
+                if (entry.getValue().getKey().location().toString().equals(event.getName().toString())) {
+                    entry.getValue().applyCustomFeatures(event);
+                    log.debug("Successfully registered features for " + event.getName().toString() + " biome");
+                    break;
+                }
+            }
+
         }
     }
 }

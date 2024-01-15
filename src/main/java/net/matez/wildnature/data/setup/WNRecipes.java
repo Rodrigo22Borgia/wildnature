@@ -11,6 +11,7 @@ import net.matez.wildnature.common.objects.items.ores.OreFamily;
 import net.matez.wildnature.common.objects.items.ores.OreItem;
 import net.matez.wildnature.common.objects.items.tools.ToolItem;
 import net.matez.wildnature.common.registry.blocks.WNBlocks;
+import net.matez.wildnature.common.registry.items.WNItems;
 import net.minecraft.world.item.Item;
 
 import java.io.FileWriter;
@@ -210,9 +211,10 @@ abstract class WNRecipes {
         writeJSON(getJSON(backpack, "minecraft:string"     , "minecraft:leather"    , modid + ":backpack_small" , 1), "backpack_small");
         writeJSON(getJSON(backpack, "minecraft:rabbit_hide", "minecraft:leather"    , modid + ":backpack_medium", 1), "backpack_medium");
         writeJSON(getJSON(backpack, "minecraft:scute"      , "minecraft:rabbit_hide", modid + ":backpack_big"   , 1), "backpack_big");
-//EXTRA
-        writeJSON(getJSON(string, "minecraft:string", 4), "wool_string");
-        writeJSON(getJSON(shaped2, """
+//MISC
+        writeJSON(getJSON(string  , "minecraft:string"                        , 4)                                             , "wool_string");
+        writeJSON(getJSON(oneToOne, WNBlocks.SOIL.getRegistryName().toString(), WNItems.FERTILIZER.getRegistryName().toString(), 2)             , "fertilizer");
+        writeJSON(getJSON(shaped2 , """
                 " O ",
                 "X X",
                 "XXX"

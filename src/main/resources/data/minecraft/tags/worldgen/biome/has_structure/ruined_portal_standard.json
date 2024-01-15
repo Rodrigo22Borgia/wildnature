@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    "wildnature:grasslands",
+    "wildnature:farmlands",
+    "wildnature:fields",
+    "wildnature:meadow",
+    "wildnature:lavender_garden",
+    "wildnature:hyacinth_fields",
+    "wildnature:marigold_fields",
+    "wildnature:sunflower_fields"
+  ]
+}

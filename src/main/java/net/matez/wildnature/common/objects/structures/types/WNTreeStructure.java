@@ -6,7 +6,6 @@
 
 package net.matez.wildnature.common.objects.structures.types;
 
-import net.matez.wildnature.common.log.WNLogger;
 import net.matez.wildnature.common.objects.blockentities.soil.WNSoilBlockEntity;
 import net.matez.wildnature.common.objects.blocks.basic.WNBaseEntityBlock;
 import net.matez.wildnature.common.objects.structures.WNStructure;
@@ -14,6 +13,7 @@ import net.matez.wildnature.common.objects.structures.WNStructureConfig;
 import net.matez.wildnature.common.registry.blocks.WNBlocks;
 import net.matez.wildnature.setup.WildNature;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.LevelAccessor;
@@ -23,16 +23,15 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.chunk.LevelChunk;
+import net.minecraft.world.level.material.Material;
 
 import javax.annotation.Nullable;
 import java.util.Map;
 import java.util.Random;
 
-import static net.matez.wildnature.setup.WildNature.getLogger;
-
 public class WNTreeStructure extends WNStructure {
     private BlockPos minLeaf, maxLeaf;
-    private BlockState leafBlock;
+    private BlockState leafBlock, baseBlock;
 
     public WNTreeStructure(ResourceLocation location) {
         super(location);
@@ -41,52 +40,36 @@ public class WNTreeStructure extends WNStructure {
     @Override
     protected void onLoad() {
         super.onLoad();
-        this.loadMaxLeaf();
+        //this.loadMaxLeaf();
         this.loadMinLeaf();
-        this.loadLeafBlock();
+        //this.loadLeafBlock();
     }
 
     private void loadMinLeaf() {
         BlockPos min = null;
-        for (Map.Entry<BlockPos, BlockState> entry : this.blocks.entrySet()) {
-            BlockPos blockPos = entry.getKey();
-            if (entry.getValue().is(BlockTags.LEAVES)) {
+        BlockPos max = null;
+        for (Map.Entry<BlockPos, BlockState> entry : blocks.entrySet()) {
+            BlockPos   blockPos   = entry.getKey();
+            BlockState BlockState = entry.getValue();
+            if (BlockState.is(BlockTags.LEAVES)) {
                 if (min == null) {
                     min = blockPos;
+                    max = blockPos;
+                    leafBlock = BlockState;
                 } else {
                     min = new BlockPos(Math.min(blockPos.getX(), min.getX()), Math.min(blockPos.getY(), min.getY()), Math.min(blockPos.getZ(), min.getZ()));
-                }
-            }
-        }
-        this.minLeaf = min;
-    }
-
-    public void loadMaxLeaf() {
-        BlockPos max = null;
-        for (Map.Entry<BlockPos, BlockState> entry : this.blocks.entrySet()) {
-            BlockPos blockPos = entry.getKey();
-            if (entry.getValue().is(BlockTags.LEAVES)) {
-                if (max == null) {
-                    max = blockPos;
-                } else {
                     max = new BlockPos(Math.max(blockPos.getX(), max.getX()), Math.max(blockPos.getY(), max.getY()), Math.max(blockPos.getZ(), max.getZ()));
                 }
             }
-        }
-        this.maxLeaf = max;
-    }
-
-    private void loadLeafBlock() {
-        int max = -1;
-        BlockState value = null;
-        for (Map.Entry<BlockState, Integer> entry : getBlockOccurrences((state) -> state.is(BlockTags.LEAVES)).entrySet()) {
-            if (value == null || entry.getValue() > max) {
-                max = entry.getValue();
-                value = entry.getKey();
+            if (baseBlock == null && BlockState.is(BlockTags.LOGS)) {
+                baseBlock = BlockState;
             }
         }
-
-        this.leafBlock = value;
+        if (baseBlock == null) {
+            baseBlock = Blocks.ROOTED_DIRT.defaultBlockState();
+        }
+        minLeaf = min;
+        maxLeaf = max;
     }
 
     public BlockPos getMaxLeaf() {
@@ -104,6 +87,43 @@ public class WNTreeStructure extends WNStructure {
     @Override
     public void place(LevelAccessor level, BlockPos pos, @org.jetbrains.annotations.Nullable Rotation rotation, @org.jetbrains.annotations.Nullable WNStructureConfig config, Random random, int placeData) {
         super.place(level, pos, rotation, config, random, placeData);
+        Integer[] X = {-1, 1, 0,1};
+        Integer[] Z = { 0, 1,-2,1};
+
+        BlockPos.MutableBlockPos root  = new BlockPos.MutableBlockPos(pos.getX(),pos.getY()+1,pos.getZ());
+
+        for (int p = 0; p<4 ;p++) {
+            root.setX(root.getX()+X[p]);
+            root.setZ(root.getZ()+Z[p]);
+            BlockState M = level.getBlockState(root);
+
+            if (M.canOcclude() && M.getMaterial().isFlammable()) {
+                root.setX(pos.getX()-4);
+
+                for (int i = 0; i < 7; i++) {
+                    root.setX(root.getX()+1);
+                    root.setZ(pos .getZ()-3);
+
+                    for (int j = 0; j < 7; j++) {
+                        root.setZ(root.getZ()+1);
+                        root.setY(pos. getY()+1);
+
+                        M = level.getBlockState(root);
+                        if (M.canOcclude() && M.getMaterial().isFlammable()) {
+                            for (int k = 0; k < 7; k++) {
+                                if (!level.getBlockState(root.setY(root.getY()-1)).canOcclude()) {
+                                    level.setBlock(root, baseBlock, 2);
+                                } else {
+                                    level.setBlock(root, Blocks.ROOTED_DIRT.defaultBlockState(), 2);
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                }
+                break;
+            }
+        }
 
         level.setBlock(pos, WNBlocks.SOIL.defaultBlockState(), placeData | 3);
         BlockEntity entity;
@@ -125,8 +145,7 @@ public class WNTreeStructure extends WNStructure {
                 soil.min = new BlockPos(Math.min(min.getX(), max.getX()), Math.min(min.getY(), max.getY()), Math.min(min.getZ(), max.getZ()));
                 soil.max = new BlockPos(Math.max(min.getX(), max.getX()), Math.max(min.getY(), max.getY()), Math.max(min.getZ(), max.getZ()));
 
-
-            var state = this.getLeafBlock();
+            BlockState state = this.leafBlock;
             if (config != null) {
                 state = config.processState(level, state, pos, level.getRandom(), rotation);
             }
@@ -134,6 +153,7 @@ public class WNTreeStructure extends WNStructure {
             if (state != null) {
                 soil.leaf = state.getBlock();
             }
+
             } catch (NullPointerException e) {
             WildNature.getLogger().error(super.location.toString() + " does not have leaf bounding box");}
         }

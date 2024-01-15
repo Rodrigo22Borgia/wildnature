@@ -51,7 +51,7 @@ public class WNCypressFields extends WNBiome {
     @Override
     public void applyCustomFeatures(BiomeLoadingEvent event) {
         // -- TREES
-        addTree(event, WNExtraTrees.CYPRESS, 15, 0.5F, 2);
+        addTree(event, WNExtraTrees.CYPRESS, 1, 0.5F, 2);
         addTree(event, WNExtraTrees.OAKLANDS_SHRUB, 1, 0.5F, 2);
         addTree(event, WNExtraTrees.OAKLANDS_SMALLSHRUB, 1, 0.5F, 2);
         addTree(event, WNExtraTrees.PEAR, 1, 0.5F, 2);

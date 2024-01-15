@@ -1,0 +1,12 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "wildnature:soil"
+        }
+    ],
+    "result": {
+        "item": "wildnature:fertilizer",
+        "count": 2
+    }
+}

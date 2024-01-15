@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "wildnature:hornbeam_hills",
+    "wildnature:greenwood_hills",
+    "wildnature:hornbeam_forest",
+    "wildnature:greenwood",
+    "wildnature:hornbeam_valley",
+    "wildnature:dense_oaklands"
+  ]
+}

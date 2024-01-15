@@ -34,6 +34,10 @@ public class WNSurface {
                     SurfaceRules.ifTrue(DEEP_UNDER_FLOOR,
                             makeStateRule(Blocks.SANDSTONE))
             );
+    public static final SurfaceRules.RuleSource SALT =
+            SurfaceRules.ifTrue(UNDER_FLOOR,
+                    makeStateRule(WNBlocks.SALT)
+            );
     public static final SurfaceRules.RuleSource STONE_STONE_GRAVEL_CONFIG =
             SurfaceRules.ifTrue(ON_FLOOR,
                     SurfaceRules.sequence(

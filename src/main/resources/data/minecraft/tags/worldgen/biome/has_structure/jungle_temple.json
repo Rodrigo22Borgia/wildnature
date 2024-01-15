@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "wildnature:sakura_jungle",
+    "wildnature:rainforest_moor",
+    "wildnature:rainforest",
+    "wildnature:rainforest_hills",
+    "wildnature:mahogany_rainforest",
+    "wildnature:mahogany_cliffs"
+  ]
+}

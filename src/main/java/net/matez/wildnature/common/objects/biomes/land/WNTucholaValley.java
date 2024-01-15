@@ -1,6 +1,7 @@
 package net.matez.wildnature.common.objects.biomes.land;
 
 import net.matez.wildnature.common.objects.blocks.plant.FlowerType;
+import net.matez.wildnature.common.objects.features.WNExtraTrees;
 import net.matez.wildnature.common.registry.biomes.WNBiome;
 import net.matez.wildnature.common.registry.biomes.WNBiomes;
 import net.minecraft.data.worldgen.BiomeDefaultFeatures;
@@ -51,7 +52,7 @@ public class WNTucholaValley extends WNBiome {
     @Override
     public void applyCustomFeatures(BiomeLoadingEvent event) {
         // -- TREES
-
+        addTree(event, WNExtraTrees.TREE_PINE, 5, 0.5F,2);
         // -- FLOWERS
         addPlant(event, FlowerType.BLUEBELL, 12);
         addPlant(event, FlowerType.FERNSPROUT, 6);

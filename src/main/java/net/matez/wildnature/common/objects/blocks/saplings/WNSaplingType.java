@@ -364,7 +364,7 @@ public enum WNSaplingType {
             new WNStructurePlacement(WNStructureFolders.TREE_HORNBEAM)
                     .with(1, "tree_hornbeam_1")
                     .with(1, "tree_hornbeam_2")
-                    .with(1, "tree_hornbeam_3")
+                    //.with(1, "tree_hornbeam_3")
                     .with(1, "tree_hornbeam_4")
                     .with(1, "tree_hornbeam_5")
                     .with(1, "tree_hornbeam_6")
@@ -427,7 +427,7 @@ public enum WNSaplingType {
     MANGROVE(LeafType.MANGROVE, () -> WNBlocks.LOGS.get(LogType.MANGROVE),
             new WNStructurePlacement(WNStructureFolders.TREE_MANGROVE)
                     .with(1, "mangrove_1")
-                    .with(1, "mangrove_2")
+                    //.with(1, "mangrove_2")
                     .with(1, "mangrove_3")
                     .with(1, "mangrove_4")
                     .with(1, "mangrove_5")

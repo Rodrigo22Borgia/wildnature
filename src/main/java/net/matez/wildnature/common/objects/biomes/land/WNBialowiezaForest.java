@@ -53,7 +53,7 @@ public class WNBialowiezaForest extends WNBiome {
     @Override
     public void applyCustomFeatures(BiomeLoadingEvent event) {
         // -- TREES
-        addTree(event, WNExtraTrees.TREE_BIALOWIEZA, 1, 0.5F, 2);
+        addTree(event, WNExtraTrees.TREE_BIALOWIEZA, 2, 0.5F, 2);
 
         addShrub(event, Blocks.DARK_OAK_LOG, Blocks.SPRUCE_LEAVES, 4, 0.5F, 2);
 

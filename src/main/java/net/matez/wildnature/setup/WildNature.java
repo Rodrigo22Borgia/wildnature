@@ -13,6 +13,7 @@ import net.matez.wildnature.client.registry.screen.WNScreenMenuBindings;
 import net.matez.wildnature.client.registry.setup.WNClientRegistry;
 import net.matez.wildnature.common.log.WNLogger;
 import net.matez.wildnature.common.networking.WNNetworking;
+import net.matez.wildnature.common.networking.packets.WNDevStructurePacket;
 import net.matez.wildnature.common.objects.features.WNStructureRegistry;
 import net.matez.wildnature.common.objects.initializer.InitStage;
 import net.matez.wildnature.common.objects.initializer.NewInitializer;
@@ -24,6 +25,8 @@ import net.matez.wildnature.common.registry.commands.WNCommands;
 import net.matez.wildnature.data.setup.DataGenType;
 import net.matez.wildnature.data.setup.WNDataGenerator;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegisterCommandsEvent;
 import net.minecraftforge.event.server.ServerAboutToStartEvent;
@@ -33,6 +36,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.*;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.network.NetworkDirection;
 import terrablender.api.Regions;
 import terrablender.api.SurfaceRuleManager;
 
@@ -73,20 +77,24 @@ public class WildNature {
         WNStructureRegistry.init(modEventBus);
 
         //# --- EVENT BUS ---
+        try {client();} catch (NoSuchMethodError e) {}
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::construct);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::terraBlender);
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::clientSetup);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::enqueueIMC);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::processIMC);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::finish);
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(WNClientRegistry::registerParticleFactories);
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(WNClientRegistry::registerBlockEntityRenderers);
         //# -----------------
 
         MinecraftForge.EVENT_BUS.register(this);
         initializer.init(InitStage.START);
     }
+    @OnlyIn(Dist.CLIENT)
+    private void client() {
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(WNClientRegistry::registerParticleFactories);
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(WNClientRegistry::registerBlockEntityRenderers);
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::clientSetup);
+    };
 
     private void construct(final FMLConstructModEvent event) {
         log.progress("WildNature Construct");
@@ -134,7 +142,7 @@ public class WildNature {
     private void setup(final FMLCommonSetupEvent event) {
         log.progress("WildNature Setup");
         initializer.init(InitStage.SETUP);
-        WNNetworking.register();
+        try {WNNetworking.register();} catch (NoSuchMethodError e) {}
 
         log.success("WildNature Setup Complete");
         if (dataGenType == dataGenType.GEN_RECIPES) {

@@ -15,9 +15,11 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.ParticleEngine;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
 import java.util.LinkedHashMap;
-
+@OnlyIn(Dist.CLIENT)
 @Initialize(InitStage.CLIENT)
 public class WNParticles {
     //# --- ALL PARTICLES ---

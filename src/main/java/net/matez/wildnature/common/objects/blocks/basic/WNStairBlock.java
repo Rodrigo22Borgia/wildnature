@@ -26,6 +26,8 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
 import java.util.Random;
 import java.util.function.Supplier;
@@ -113,7 +115,7 @@ public abstract class WNStairBlock extends WNBlock implements SimpleWaterloggedB
    private int getShapeIndex(BlockState p_56983_) {
       return p_56983_.getValue(SHAPE).ordinal() * 4 + p_56983_.getValue(FACING).get2DDataValue();
    }
-
+   @OnlyIn(Dist.CLIENT)
    public void animateTick(BlockState p_56914_, Level p_56915_, BlockPos p_56916_, Random p_56917_) {
       this.base.animateTick(p_56914_, p_56915_, p_56916_, p_56917_);
    }

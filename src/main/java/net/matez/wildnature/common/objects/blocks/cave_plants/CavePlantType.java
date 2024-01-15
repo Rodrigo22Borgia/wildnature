@@ -20,6 +20,8 @@ import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.MaterialColor;
 import net.minecraft.world.phys.Vec3;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
 import java.util.Random;
 
@@ -46,6 +48,7 @@ public enum CavePlantType {
     DRAGON_SHROOM("dragon_shroom",MaterialColor.PLANT,(type, blockProp, itemProp) -> new WNCaveBushBlock(type.getLoc(),blockProp,itemProp,type),BushConfig.CAVE_BUSH.get().makeSelfItem()),
     GLOWING_SHADOW_SHROOM("glowing_shadow_shroom",MaterialColor.PLANT,(type, blockProp, itemProp) -> new WNCaveBushBlock(type.getLoc(),blockProp,itemProp,type) {
         //TODO fix animateTick()
+        @OnlyIn(Dist.CLIENT)
         @Override
         public void animateTick(BlockState state, Level level, BlockPos pos, Random random) {
             super.animateTick(state, level, pos, random);
@@ -64,6 +67,7 @@ public enum CavePlantType {
     SLIME_SHROOM_BLUE("slime_shroom_blue",MaterialColor.PLANT,(type, blockProp, itemProp) -> new WNCaveBushBlock(type.getLoc(),blockProp,itemProp,type) {
 
         //TODO fix animateTick()
+        @OnlyIn(Dist.CLIENT)
 
         @Override
         public void animateTick(BlockState state, Level level, BlockPos pos, Random random) {
@@ -78,6 +82,7 @@ public enum CavePlantType {
     },BushConfig.CAVE_BUSH.get().makeSelfItem()),
     HANGING_SLIME_SHROOM_BLUE("hanging_slime_shroom_blue","slime_shroom_blue",MaterialColor.PLANT,(type, blockProp, itemProp) -> new WNCaveHangingBushBlock(type.getLoc(),blockProp,itemProp,type) {
         //TODO fix animateTick()
+        @OnlyIn(Dist.CLIENT)
         @Override
         public void animateTick(BlockState state, Level level, BlockPos pos, Random random) {
             super.animateTick(state, level, pos, random);
@@ -91,6 +96,7 @@ public enum CavePlantType {
     },BushConfig.CAVE_BUSH.get().makeSelfItem()),
     SLIME_SHROOM_GREEN("slime_shroom_green",MaterialColor.PLANT,(type, blockProp, itemProp) -> new WNCaveBushBlock(type.getLoc(),blockProp,itemProp,type) {
         //TODO fix animateTick()
+        @OnlyIn(Dist.CLIENT)
         @Override
         public void animateTick(BlockState state, Level level, BlockPos pos, Random random) {
             super.animateTick(state, level, pos, random);
@@ -105,6 +111,7 @@ public enum CavePlantType {
     HANGING_SLIME_SHROOM_GREEN("hanging_slime_shroom_green","slime_shroom_green",MaterialColor.PLANT,(type, blockProp, itemProp) -> new WNCaveHangingBushBlock(type.getLoc(),blockProp,itemProp,type) {
 
         //TODO fix animateTick()
+        @OnlyIn(Dist.CLIENT)
         @Override
         public void animateTick(BlockState state, Level level, BlockPos pos, Random random) {
             super.animateTick(state, level, pos, random);

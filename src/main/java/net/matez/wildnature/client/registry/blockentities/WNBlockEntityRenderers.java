@@ -15,9 +15,11 @@ import net.matez.wildnature.setup.WildNature;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
 import java.util.LinkedHashMap;
-
+@OnlyIn(Dist.CLIENT)
 @Initialize(InitStage.ENTITY_RENDERER)
 public class WNBlockEntityRenderers {
     //# --- ALL PARTICLES ---

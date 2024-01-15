@@ -1,5 +1,6 @@
 package net.matez.wildnature.common.registry.biomes;
 
+import net.matez.wildnature.common.objects.blocks.cave_plants.CavePlantType;
 import net.matez.wildnature.common.objects.blocks.ores.BigSmallBlock;
 import net.matez.wildnature.common.objects.blocks.ores.Ore;
 import net.matez.wildnature.common.objects.blocks.plant.PlantFeature;
@@ -15,6 +16,7 @@ import net.minecraft.data.BuiltinRegistries;
 import net.minecraft.data.worldgen.BiomeDefaultFeatures;
 import net.minecraft.data.worldgen.features.CaveFeatures;
 import net.minecraft.data.worldgen.features.FeatureUtils;
+import net.minecraft.data.worldgen.features.VegetationFeatures;
 import net.minecraft.data.worldgen.placement.CavePlacements;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.data.worldgen.placement.VegetationPlacements;
@@ -45,6 +47,7 @@ import net.minecraft.world.level.levelgen.placement.*;
 import net.minecraftforge.event.world.BiomeLoadingEvent;
 
 import javax.annotation.Nullable;
+import java.util.ArrayList;
 import java.util.List;
 
 import static net.matez.wildnature.common.objects.blocks.setup.WNBlockProperties.SIZE;
@@ -52,13 +55,13 @@ import static net.minecraft.data.worldgen.features.OreFeatures.*;
 
 public abstract class WNBiome {
     // KEEP HERE SHARED VARIABLES FOR BIOMES
-    public static final Holder<PlacedFeature> MARBLE       = PlacementUtils.register("marble_patch"      , FeatureUtils.register("marble_patch"      , Feature.ORE, new OreConfiguration(NATURAL_STONE, WNBlocks.ROCKS.get(RockType.MARBLE).defaultBlockState()      , 64)), commonOrePlacement(2, HeightRangePlacement.uniform(VerticalAnchor.absolute(0), VerticalAnchor.absolute(60))));
-    public static final Holder<PlacedFeature> GNEISS       = PlacementUtils.register("gneiss_patch"      , FeatureUtils.register("gneiss_patch"      , Feature.ORE, new OreConfiguration(NATURAL_STONE, WNBlocks.ROCKS.get(RockType.GNEISS).defaultBlockState()      , 64)), commonOrePlacement(2, HeightRangePlacement.uniform(VerticalAnchor.absolute(0), VerticalAnchor.absolute(60))));
-    public static final Holder<PlacedFeature> LIMESTONE    = PlacementUtils.register("limestone_patch"   , FeatureUtils.register("limestone_patch"   , Feature.ORE, new OreConfiguration(NATURAL_STONE, WNBlocks.ROCKS.get(RockType.LIMESTONE).defaultBlockState()   , 64)), commonOrePlacement(2, HeightRangePlacement.uniform(VerticalAnchor.absolute(0), VerticalAnchor.absolute(60))));
-    public static final Holder<PlacedFeature> SLATE_BLUE   = PlacementUtils.register("slate_blue_patch"  , FeatureUtils.register("slate_blue_patch"  , Feature.ORE, new OreConfiguration(NATURAL_STONE, WNBlocks.ROCKS.get(RockType.SLATE_BLUE).defaultBlockState()  , 64)), commonOrePlacement(2, HeightRangePlacement.uniform(VerticalAnchor.absolute(0), VerticalAnchor.absolute(60))));
-    public static final Holder<PlacedFeature> SLATE_PURPLE = PlacementUtils.register("slate_purple_patch", FeatureUtils.register("slate_purple_patch", Feature.ORE, new OreConfiguration(NATURAL_STONE, WNBlocks.ROCKS.get(RockType.SLATE_PURPLE).defaultBlockState(), 64)), commonOrePlacement(2, HeightRangePlacement.uniform(VerticalAnchor.absolute(0), VerticalAnchor.absolute(60))));
-    public static final Holder<PlacedFeature> QUARTZITE    = PlacementUtils.register("quartzite_patch"   , FeatureUtils.register("quartzite_patch"   , Feature.ORE, new OreConfiguration(NATURAL_STONE, WNBlocks.ROCKS.get(RockType.QUARTZITE).defaultBlockState()   , 64)), commonOrePlacement(2, HeightRangePlacement.uniform(VerticalAnchor.absolute(0), VerticalAnchor.absolute(60))));
-    public static final Holder<PlacedFeature> BASANITE     = PlacementUtils.register("basanite_patch"    , FeatureUtils.register("basanite_patch"    , Feature.ORE, new OreConfiguration(NATURAL_STONE, WNBlocks.ROCKS.get(RockType.BASANITE).defaultBlockState()    , 64)), commonOrePlacement(2, HeightRangePlacement.uniform(VerticalAnchor.absolute(0), VerticalAnchor.absolute(60))));
+    public static final Holder<PlacedFeature> MARBLE       = PlacementUtils.register("marble_patch"      , FeatureUtils.register("marble_patch"      , Feature.ORE, new OreConfiguration(NATURAL_STONE, WNBlocks.ROCKS.get(RockType.MARBLE).defaultBlockState()      , 64)), commonOrePlacement(2, HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(60))));
+    public static final Holder<PlacedFeature> GNEISS       = PlacementUtils.register("gneiss_patch"      , FeatureUtils.register("gneiss_patch"      , Feature.ORE, new OreConfiguration(NATURAL_STONE, WNBlocks.ROCKS.get(RockType.GNEISS).defaultBlockState()      , 64)), commonOrePlacement(2, HeightRangePlacement.uniform(VerticalAnchor.absolute(6), VerticalAnchor.absolute(60))));
+    public static final Holder<PlacedFeature> LIMESTONE    = PlacementUtils.register("limestone_patch"   , FeatureUtils.register("limestone_patch"   , Feature.ORE, new OreConfiguration(NATURAL_STONE, WNBlocks.ROCKS.get(RockType.LIMESTONE).defaultBlockState()   , 64)), commonOrePlacement(2, HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(60))));
+    public static final Holder<PlacedFeature> SLATE_BLUE   = PlacementUtils.register("slate_blue_patch"  , FeatureUtils.register("slate_blue_patch"  , Feature.ORE, new OreConfiguration(NATURAL_STONE, WNBlocks.ROCKS.get(RockType.SLATE_BLUE).defaultBlockState()  , 64)), commonOrePlacement(2, HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(0))));
+    public static final Holder<PlacedFeature> SLATE_PURPLE = PlacementUtils.register("slate_purple_patch", FeatureUtils.register("slate_purple_patch", Feature.ORE, new OreConfiguration(NATURAL_STONE, WNBlocks.ROCKS.get(RockType.SLATE_PURPLE).defaultBlockState(), 64)), commonOrePlacement(2, HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(0))));
+    public static final Holder<PlacedFeature> QUARTZITE    = PlacementUtils.register("quartzite_patch"   , FeatureUtils.register("quartzite_patch"   , Feature.ORE, new OreConfiguration(NATURAL_STONE, WNBlocks.ROCKS.get(RockType.QUARTZITE).defaultBlockState()   , 64)), commonOrePlacement(2, HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(60))));
+    public static final Holder<PlacedFeature> BASANITE     = PlacementUtils.register("basanite_patch"    , FeatureUtils.register("basanite_patch"    , Feature.ORE, new OreConfiguration(NATURAL_STONE, WNBlocks.ROCKS.get(RockType.BASANITE).defaultBlockState()    , 64)), commonOrePlacement(2, HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(0))));
 
 
     public static final Holder<PlacedFeature> AMBER_ORE  = PlacementUtils.register("ore_amber" , FeatureUtils.register("ore_amber" , Feature.ORE, new OreConfiguration(List.of(OreConfiguration.target(STONE_ORE_REPLACEABLES, WNBlocks.ORES.get(Ore.AMBER_ORE).defaultBlockState()) , OreConfiguration.target(DEEPSLATE_ORE_REPLACEABLES, Blocks.DEEPSLATE_IRON_ORE.defaultBlockState()))                  , 9)), commonOrePlacement(4, HeightRangePlacement.triangle(VerticalAnchor.absolute(-32), VerticalAnchor.absolute(32))));
@@ -70,6 +73,32 @@ public abstract class WNBiome {
     public static final Holder<PlacedFeature> RUBY_GEODE     = PlacementUtils.register("ruby_geode"    , FeatureUtils.register("ruby_geode"    , Feature.GEODE, new GeodeConfiguration(new GeodeBlockSettings(BlockStateProvider.simple(Blocks.AIR), BlockStateProvider.simple(Blocks.TINTED_GLASS), BlockStateProvider.simple(Blocks.DEEPSLATE_REDSTONE_ORE), BlockStateProvider.simple(Blocks.RED_CONCRETE)       , BlockStateProvider.simple(Blocks.SMOOTH_BASALT), List.of(WNBlocks.ORES.get(Ore.RUBY_FORMATION).defaultBlockState()         , WNBlocks.ORES.get(Ore.RUBY_FORMATION).defaultBlockState().setValue(SIZE         , BigSmallBlock.BIG)), BlockTags.FEATURES_CANNOT_REPLACE, BlockTags.GEODE_INVALID_BLOCKS), new GeodeLayerSettings(1.7D, 2.2D, 3.2D, 4.2D), new GeodeCrackSettings(0.95D, 2.0D, 2), 0.35D, 0.083D, true, UniformInt.of(4, 6), UniformInt.of(3, 4), UniformInt.of(1, 2), -16, 16, 0.05D, 1)), RarityFilter.onAverageOnceEvery(100), InSquarePlacement.spread(), HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(54), VerticalAnchor.aboveBottom(78)), BiomeFilter.biome());
     public static final Holder<PlacedFeature> SAPPHIRE_GEODE = PlacementUtils.register("sapphire_geode", FeatureUtils.register("sapphire_geode", Feature.GEODE, new GeodeConfiguration(new GeodeBlockSettings(BlockStateProvider.simple(Blocks.AIR), BlockStateProvider.simple(Blocks.TINTED_GLASS), BlockStateProvider.simple(Blocks.DEEPSLATE_LAPIS_ORE)   , BlockStateProvider.simple(Blocks.BLUE_CONCRETE)      , BlockStateProvider.simple(Blocks.SMOOTH_BASALT), List.of(WNBlocks.ORES.get(Ore.SAPPHIRE_FORMATION).defaultBlockState()     , WNBlocks.ORES.get(Ore.SAPPHIRE_FORMATION).defaultBlockState().setValue(SIZE     , BigSmallBlock.BIG)), BlockTags.FEATURES_CANNOT_REPLACE, BlockTags.GEODE_INVALID_BLOCKS), new GeodeLayerSettings(1.7D, 2.2D, 3.2D, 4.2D), new GeodeCrackSettings(0.95D, 2.0D, 2), 0.35D, 0.083D, true, UniformInt.of(4, 6), UniformInt.of(3, 4), UniformInt.of(1, 2), -16, 16, 0.05D, 1)), RarityFilter.onAverageOnceEvery(100), InSquarePlacement.spread(), HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(78), VerticalAnchor.aboveBottom(102)), BiomeFilter.biome());
 
+    public static final Holder<PlacedFeature>[] UNDER_SURFACE_DECORATION = addCavePlants(new CavePlantType[]{
+            CavePlantType.GLOWING_SHADOW_SHROOM,
+            CavePlantType.DRAGON_SHROOM,
+            CavePlantType.POISON_SHROOM,
+            CavePlantType.ROOTS,
+            CavePlantType.STONE_GRASS},HeightRangePlacement.uniform(VerticalAnchor.absolute(6), VerticalAnchor.absolute(60)));
+    public static final Holder<PlacedFeature>[] LUSH_CAVE_DECORATION = addCavePlants(new CavePlantType[]{
+            CavePlantType.GLOWSHROOM,
+            CavePlantType.SLIME_SHROOM_GREEN,
+            CavePlantType.HANGING_SLIME_SHROOM_GREEN,
+            CavePlantType.CAVE_LILY},HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(60)));
+    public static final Holder<PlacedFeature>[] DRIPSTONE_DECORATION = addCavePlants(new CavePlantType[]{
+            CavePlantType.ICE_SHROOM,
+            CavePlantType.ICICLE,
+            CavePlantType.ICE_GRASS,
+            CavePlantType.SLIME_SHROOM_BLUE,
+            CavePlantType.HANGING_SLIME_SHROOM_BLUE},HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(60)));
+    public static final Holder<PlacedFeature>[] DEEPSLATE_DECORATION = addCavePlants(new CavePlantType[]{
+            CavePlantType.STALACTITE,
+            CavePlantType.STALAGMITE,
+            CavePlantType.MAGMA_PAD,
+            CavePlantType.GRAVITY_SHROOM,
+            CavePlantType.MAGMA_SHROOM,
+            CavePlantType.SULFUR_SHROOM,
+            CavePlantType.SUN_SHROOM},HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(5)));
+
 
     private static List<PlacementModifier> orePlacement(PlacementModifier p_195347_, PlacementModifier p_195348_) {
         return List.of(p_195347_, InSquarePlacement.spread(), p_195348_, BiomeFilter.biome());
@@ -78,6 +107,9 @@ public abstract class WNBiome {
     private static List<PlacementModifier> commonOrePlacement(int p_195344_, PlacementModifier p_195345_) {
         return orePlacement(CountPlacement.of(p_195344_), p_195345_);
     }
+
+
+
 
     @Nullable
     protected static final Music NORMAL_MUSIC = null;
@@ -96,6 +128,7 @@ public abstract class WNBiome {
         this.biome = WNBiomeBuilder.makeBiome(precipitation, category, temperature, downfall, buildMobSpawn(), buildBiome(), music, colors);
         this.biome.setRegistryName(resourceKey.location());
     }
+
 
     // ------------------------------------
     // KEEP HERE SHARED FUNCTIONS FOR BIOMES
@@ -118,15 +151,15 @@ public abstract class WNBiome {
         builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, SILVER_ORE);
         builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, TIN_ORE);
 
-        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, MARBLE);
         builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, GNEISS);
-        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, LIMESTONE);
         builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, SLATE_BLUE);
         builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, SLATE_PURPLE);
-        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, QUARTZITE);
         builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, BASANITE);
         BiomeDefaultFeatures.addDefaultSprings(builder);
         BiomeDefaultFeatures.addSurfaceFreezing(builder);
+
+        for (Holder<PlacedFeature> feature: UNDER_SURFACE_DECORATION) {builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, feature);}
+        for (Holder<PlacedFeature> feature: DEEPSLATE_DECORATION) {builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, feature);}
     }
 
     public abstract MobSpawnSettings.Builder buildMobSpawn();
@@ -245,5 +278,26 @@ public abstract class WNBiome {
             PlacementUtils.register(pLocation, BuiltinRegistries.CONFIGURED_FEATURE.getHolderOrThrow(ResourceKey.create(Registry.CONFIGURED_FEATURE_REGISTRY,new ResourceLocation(cLocation))), RarityFilter.onAverageOnceEvery(everyXchunks), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE);
         }
         event.getGeneration().getFeatures(GenerationStep.Decoration.VEGETAL_DECORATION).add(BuiltinRegistries.PLACED_FEATURE.getHolderOrThrow(ResourceKey.create(Registry.PLACED_FEATURE_REGISTRY,new ResourceLocation(pLocation))));
+    }
+
+
+    protected static Holder<PlacedFeature>[] addCavePlants(CavePlantType[] plants, HeightRangePlacement range) {
+        List<Holder<PlacedFeature>> plantList = new ArrayList<>();
+
+        for (CavePlantType plant: plants) {
+            String location = "wildnature:" + plant.toString().toLowerCase() + "_";
+            //plantList.add(PlacementUtils.register(location, VegetationFeatures.PATCH_RED_MUSHROOM, RarityFilter.onAverageOnceEvery(2), InSquarePlacement.spread(), HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(60)), BiomeFilter.biome()));
+
+            FeatureUtils.register(location, Feature.FLOWER, new RandomPatchConfiguration(
+                    30,
+                    5,
+                    1,
+                    PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(
+                            WNBlocks.CAVE_PLANTS.get(plant)
+                    )))));
+
+            plantList.add(PlacementUtils.register(location, BuiltinRegistries.CONFIGURED_FEATURE.getHolderOrThrow(ResourceKey.create(Registry.CONFIGURED_FEATURE_REGISTRY, new ResourceLocation(location))), CountPlacement.of(UniformInt.of(4, 8)), InSquarePlacement.spread(), range));
+        }
+        return plantList.toArray(new Holder[]{});
     }
 }

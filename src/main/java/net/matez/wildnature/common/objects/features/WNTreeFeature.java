@@ -58,7 +58,7 @@ public class WNTreeFeature extends Feature<NoneFeatureConfiguration> {
         structure.place(context.level(), context.origin().below(), Rotation.values()[WNUtil.rint(0, 3, context.random())], placement.config(), context.random(), 3);
 
         //Generates support for trees
-        BlockState wood = context.level().getBlockState(context.origin().above(2));
+        /*BlockState wood = context.level().getBlockState(context.origin().above(2));
         if (context.level().getBlockState(context.origin().north()).is(BlockTags.LOGS)
         ||  context.level().getBlockState(context.origin().east()).is(BlockTags.LOGS)
         ||  context.level().getBlockState(context.origin().west()).is(BlockTags.LOGS)
@@ -79,7 +79,7 @@ public class WNTreeFeature extends Feature<NoneFeatureConfiguration> {
                     }
                 }
             }
-        }
+        }*/
         return true;
     }
 }

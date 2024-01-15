@@ -1,0 +1,19 @@
+{
+  "replace": false,
+  "values": [
+    "wildnature:grasslands",
+    "wildnature:farmlands",
+    "wildnature:fields",
+    "wildnature:meadow",
+    "wildnature:lavender_garden",
+    "wildnature:hyacinth_fields",
+    "wildnature:marigold_fields",
+    "wildnature:sunflower_fields",
+    "wildnature:cold_taiga_marsh",
+    "wildnature:frozen_taiga",
+    "wildnature:bialowieza_frozen_marsh",
+    "wildnature:cold_taiga_clearing",
+    "wildnature:cold_taiga",
+    "wildnature:taiga_clearing"
+  ]
+}

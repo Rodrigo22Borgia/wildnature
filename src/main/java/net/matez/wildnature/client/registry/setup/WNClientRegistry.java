@@ -22,7 +22,7 @@ import net.minecraftforge.fml.common.Mod;
 @Mod.EventBusSubscriber(bus=Mod.EventBusSubscriber.Bus.MOD,value=Dist.CLIENT)
 public class WNClientRegistry {
     private static final WNLogger log = WildNature.getLogger();
-
+    @OnlyIn(Dist.CLIENT)
     public static void registerParticleFactories(final ParticleFactoryRegisterEvent event) {
         log.progress("Registering particle factories");
         WildNature.instance.initializer.init(InitStage.PARTICLE);
@@ -32,7 +32,7 @@ public class WNClientRegistry {
         }
         log.success("Registered " + WNParticles.PARTICLE_PROVIDERS.size() + " particle factories");
     }
-
+    @OnlyIn(Dist.CLIENT)
     public static void registerBlockEntityRenderers(final EntityRenderersEvent.RegisterRenderers event) {
         log.progress("Registering entity renderers");
         WildNature.instance.initializer.init(InitStage.ENTITY_RENDERER);

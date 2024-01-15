@@ -8,12 +8,15 @@ package net.matez.wildnature.common.managers.structure.client;
 
 import net.matez.wildnature.common.managers.structure.WNDevStructureSelection;
 import net.minecraft.world.entity.player.Player;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
 import java.util.LinkedHashMap;
 
 /**
  * Client only
  */
+@OnlyIn(Dist.CLIENT)
 public class WNDevClientStructureManager {
     public static final LinkedHashMap<Player, WNDevClientStructureSelection> STRUCTURE_SELECTIONS = new LinkedHashMap<>();
 

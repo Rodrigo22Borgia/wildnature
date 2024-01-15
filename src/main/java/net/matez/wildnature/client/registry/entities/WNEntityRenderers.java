@@ -14,9 +14,11 @@ import net.matez.wildnature.common.registry.entities.WNEntities;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
 import java.util.LinkedHashMap;
-
+@OnlyIn(Dist.CLIENT)
 @Initialize(InitStage.ENTITY_RENDERER)
 public class WNEntityRenderers {
     //# --- ALL PARTICLES ---

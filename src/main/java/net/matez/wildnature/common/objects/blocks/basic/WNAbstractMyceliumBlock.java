@@ -7,6 +7,8 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
 import java.util.Random;
 
@@ -31,6 +33,7 @@ public abstract class WNAbstractMyceliumBlock extends WNSpreadingSnowyDirtBlock 
       }
 
    } */
+   @OnlyIn(Dist.CLIENT)
    public void animateTick(BlockState state, Level level, BlockPos pos, Random random) {
       super.animateTick(state, level, pos, random);
       if (random.nextInt(10) == 0) {

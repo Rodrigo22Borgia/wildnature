@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "wildnature:wetlands",
+    "wildnature:mangrove_bayou",
+    "wildnature:backwaters",
+    "wildnature:land_of_rivers",
+    "wildnature:bialowieza_marsh"
+  ]
+}

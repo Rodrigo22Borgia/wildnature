@@ -20,6 +20,7 @@ package net.matez.wildnature.common.registry.biomes;
 import net.matez.wildnature.common.log.WNLogger;
 import net.matez.wildnature.common.objects.biomes.land.*;
 import net.matez.wildnature.setup.WildNature;
+import net.minecraft.data.tags.BiomeTagsProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraftforge.event.RegistryEvent;
@@ -254,8 +255,6 @@ public class WNBiomeRegistry {
         register(e, new WNWoodedJacarandaMeadow());
         register(e, new WNWoodedMeadow());
         register(e, new WNWoodedOutback());/**/
-
-        log.success("Registered " + WN_BIOMES.size() + " biomes");
     }
 
     private static WNBiome register(RegistryEvent.Register<Biome> event, WNBiome biome) {

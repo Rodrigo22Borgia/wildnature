@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "wildnature:cold_taiga_marsh",
+    "wildnature:frozen_taiga",
+    "wildnature:bialowieza_frozen_marsh",
+    "wildnature:cold_taiga_clearing",
+    "wildnature:cold_taiga",
+    "wildnature:taiga_clearing"
+  ]
+}

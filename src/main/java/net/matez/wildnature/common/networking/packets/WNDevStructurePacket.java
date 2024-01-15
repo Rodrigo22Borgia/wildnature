@@ -18,6 +18,8 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.network.NetworkEvent;
 
 import javax.annotation.Nullable;
@@ -69,30 +71,33 @@ public class WNDevStructurePacket extends WNPacket<WNDevStructurePacket> {
         buf.writeNbt(nbt);
     }
 
+
     @Override
     public void handle(Supplier<NetworkEvent.Context> ctx) {
-        ctx.get().enqueueWork(() -> {
-            ClientLevel level = Minecraft.getInstance().level;
-            if (level != null) {
-                Player owner = null;
-                if (Minecraft.getInstance().player != null && this.owner == Minecraft.getInstance().player.getUUID()) {
-                    owner = Minecraft.getInstance().player;
-                } else {
-                    owner = level.getPlayerByUUID(this.owner);
-                }
-
-                if (owner != null) {
-                    var sel = parse(owner);
-                    if (sel == null) {
-                        WNDevClientStructureManager.STRUCTURE_SELECTIONS.remove(owner);
-                    } else {
-                        WNDevClientStructureManager.STRUCTURE_SELECTIONS.put(owner, sel);
-                    }
-                }
-            }
-        });
+        ctx.get().enqueueWork(() -> {client();});
         ctx.get().setPacketHandled(true);
     }
+    @OnlyIn(Dist.CLIENT)
+    public void client() {
+        ClientLevel level = Minecraft.getInstance().level;
+        if (level != null) {
+            Player owner = null;
+            if (Minecraft.getInstance().player != null && this.owner == Minecraft.getInstance().player.getUUID()) {
+                owner = Minecraft.getInstance().player;
+            } else {
+                owner = level.getPlayerByUUID(this.owner);
+            }
+
+            if (owner != null) {
+                var sel = parse(owner);
+                if (sel == null) {
+                    WNDevClientStructureManager.STRUCTURE_SELECTIONS.remove(owner);
+                } else {
+                    WNDevClientStructureManager.STRUCTURE_SELECTIONS.put(owner, sel);
+                }
+            }
+        }
+    };
 
     public WNDevClientStructureSelection parse(Player owner) {
         if (pos1 == null && pos2 == null) {

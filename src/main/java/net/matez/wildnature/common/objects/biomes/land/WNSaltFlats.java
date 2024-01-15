@@ -1,5 +1,6 @@
 package net.matez.wildnature.common.objects.biomes.land;
 
+import net.matez.wildnature.common.objects.surface.WNSurface;
 import net.matez.wildnature.common.registry.biomes.WNBiome;
 import net.matez.wildnature.common.registry.biomes.WNBiomes;
 import net.minecraft.data.worldgen.BiomeDefaultFeatures;
@@ -52,6 +53,6 @@ public class WNSaltFlats extends WNBiome {
 
     @Override
     public SurfaceRules.RuleSource getSurface() {
-        return null;
+        return WNSurface.SALT;
     }
 }

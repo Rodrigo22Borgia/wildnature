@@ -29,10 +29,7 @@ import org.apache.commons.lang3.ArrayUtils;
 import javax.annotation.Nullable;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.Random;
+import java.util.*;
 import java.util.function.Function;
 import java.util.zip.InflaterInputStream;
 
@@ -163,6 +160,7 @@ public class WNStructure {
                     continue;
                 }
                 this.blocks.put(pos, state);
+
             } catch (CommandSyntaxException e) {
                 log.error("Unable to load block at " + pos.toShortString() + " in structure " + location + ": " + e.getMessage());
             } catch (Exception e) {
@@ -170,6 +168,7 @@ public class WNStructure {
                     missingStates.add(obj.get("block").getAsString());
                 }
             }
+
         }
 
         this.options = entry.options;
@@ -181,7 +180,6 @@ public class WNStructure {
                 log.error("- " + missingState);
             }
         }
-
         onLoad();
     }
 
@@ -196,21 +194,27 @@ public class WNStructure {
 
     public void place(LevelAccessor level, BlockPos pos, @Nullable Rotation rotation, @Nullable WNStructureConfig config, Random random, int placeData) {
         LinkedHashMap<BlockPos, BlockState> secondary = new LinkedHashMap<>();
-        this.blocks.forEach((blockPos, blockState) -> {
+        //this.blocks.forEach((blockPos, blockState) -> {
+        for (Map.Entry<BlockPos,BlockState> block: this.blocks.entrySet())
+            {
             BlockPos newPos = null;
-            BlockState newState = blockState;
+            BlockState newState = block.getValue();
 
             if (rotation != null) {
-                newPos = blockPos.rotate(rotation).offset(pos);
+                newPos = block.getKey().rotate(rotation).offset(pos);
                 newState = newState.rotate(level, newPos, rotation);
             } else {
-                newPos = blockPos.offset(pos);
+                newPos = block.getKey().offset(pos);
             }
 
-            if (newState.hasProperty(BlockStateProperties.WATERLOGGED) && level.getBlockState(newPos).getFluidState().is(Fluids.WATER)) {
+            BlockState onPos = level.getBlockState(newPos);
+            if (onPos.canOcclude()) {
+                continue;
+            }
+
+            if (newState.hasProperty(BlockStateProperties.WATERLOGGED) && onPos.getFluidState().is(Fluids.WATER)) {
 
                     newState = newState.setValue(BlockStateProperties.WATERLOGGED, true);
-
             }
 
             if (config != null) {
@@ -224,7 +228,7 @@ public class WNStructure {
             } else {
                 secondary.put(newPos, newState);
             }
-        });
+        }
 
         secondary.forEach((blockPos, blockState) -> {
             level.setBlock(blockPos, blockState, placeData);

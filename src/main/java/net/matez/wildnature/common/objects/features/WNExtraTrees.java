@@ -158,8 +158,7 @@ public enum WNExtraTrees {
             .with(1, "mangrove_shrub_1")
             .with(1, "mangrove_shrub_2")
             .with(1, "mangrove_shrub_3")
-            .with(1, "mangrove_shrub_4")
-            .with(1, "mangrove_shrub_5")),
+            .with(1, "mangrove_shrub_4")),
     MAPLE(WNSaplingType.MAPLE.getPlacement()),
     MAPLE_BROWN(WNSaplingType.MAPLE_BROWN.getPlacement()),
     MAPLE_ORANGE(WNSaplingType.MAPLE_ORANGE.getPlacement()),

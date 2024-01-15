@@ -223,7 +223,7 @@ public abstract class WNLeavesTypedBlock extends WNLeavesBlock {
         if (fruit != null && list != null) {
             return list.with(fruit, 0);
         }
-        return list.with(Registry.ITEM.get(new ResourceLocation(modid, leafType.getSapling())),1);
+        return list.with(leafType.getSaplingItem(),1);
     }
 
     @Override

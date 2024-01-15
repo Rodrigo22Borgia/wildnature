@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "wildnature:steppe",
+    "wildnature:safari",
+    "wildnature:prairie_plateau",
+    "wildnature:badlands",
+    "wildnature:outback"
+  ]
+}

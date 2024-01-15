@@ -1,6 +1,9 @@
 {
   "replace": false,
   "values": [
+    "wildnature:large_bush",
+    "wildnature:dense_bush",
+    "wildnature:small_bush",
     "wildnature:apple_leaves",
     "wildnature:paradise_apple_leaves",
     "wildnature:aspen_leaves",
