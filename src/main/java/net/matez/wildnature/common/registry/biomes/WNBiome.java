@@ -151,15 +151,18 @@ public abstract class WNBiome {
         builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, SILVER_ORE);
         builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, TIN_ORE);
 
-        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, GNEISS);
-        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, SLATE_BLUE);
-        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, SLATE_PURPLE);
-        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, BASANITE);
         BiomeDefaultFeatures.addDefaultSprings(builder);
         BiomeDefaultFeatures.addSurfaceFreezing(builder);
+    }
 
-        for (Holder<PlacedFeature> feature: UNDER_SURFACE_DECORATION) {builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, feature);}
-        for (Holder<PlacedFeature> feature: DEEPSLATE_DECORATION) {builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, feature);}
+    public static void addWNdefault(BiomeGenerationSettings.Builder builder){
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, WNBiome.GNEISS);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, WNBiome.SLATE_BLUE);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, WNBiome.SLATE_PURPLE);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, WNBiome.BASANITE);
+
+        for (Holder<PlacedFeature> feature: WNBiome.UNDER_SURFACE_DECORATION) {builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, feature);}
+        for (Holder<PlacedFeature> feature: WNBiome.DEEPSLATE_DECORATION) {builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, feature);}
     }
 
     public abstract MobSpawnSettings.Builder buildMobSpawn();

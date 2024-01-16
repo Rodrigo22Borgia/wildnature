@@ -1,6 +1,7 @@
 package net.matez.wildnature.common.objects.biomes.land;
 
 import net.matez.wildnature.common.objects.blocks.plant.FlowerType;
+import net.matez.wildnature.common.objects.features.WNExtraTrees;
 import net.matez.wildnature.common.registry.biomes.WNBiome;
 import net.matez.wildnature.common.registry.biomes.WNBiomes;
 import net.minecraft.data.worldgen.BiomeDefaultFeatures;
@@ -50,6 +51,9 @@ public class WNSnowyBorealForest extends WNBiome {
     @Override
     public void applyCustomFeatures(BiomeLoadingEvent event) {
         // -- TREES
+        addTree(event, WNExtraTrees.TREE_LARCH, 1, 0.5F, 1);
+        addTree(event, WNExtraTrees.TREE_SPRUCE_M, 1, 0.5F, 1);
+        addTree(event, WNExtraTrees.PINE, 2, 0.5F, 2);
 
         // -- FLOWERS
         addPlant(event, FlowerType.BLUEBELL, 12);
