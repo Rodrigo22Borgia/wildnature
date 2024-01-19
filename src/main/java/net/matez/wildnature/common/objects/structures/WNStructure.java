@@ -19,6 +19,7 @@ import net.minecraft.commands.arguments.blocks.BlockStateParser;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.Tuple;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.block.state.BlockState;
@@ -37,10 +38,11 @@ public class WNStructure {
     private static final WNLogger log = WildNature.getLogger();
 
     protected final ResourceLocation location;
-    protected final LinkedHashMap<BlockPos, BlockState> blocks = new LinkedHashMap<>();
+    //protected final LinkedHashMap<BlockPos, BlockState> blocks = new LinkedHashMap<>();
+    protected Tuple<BlockPos, BlockState>[][] blocks;
     protected final ArrayList<String> missingStates = new ArrayList<>();
     protected CompoundTag options = new CompoundTag();
-    private BlockPos min, max;
+    protected BlockPos min, max;
 
     public WNStructure(ResourceLocation location) {
         this.location = location;
@@ -145,9 +147,12 @@ public class WNStructure {
     }
 
     public void load(WNStructureEntry entry) {
+        HashMap<String, List<Tuple<BlockPos, BlockState>>> map = new HashMap<>();
         for (JsonElement block : entry.blocks) {
             var obj = block.getAsJsonObject();
             BlockPos pos = BlockPos.of(obj.get("pos").getAsLong());
+
+
 
             try {
                 BlockStateParser parser = new BlockStateParser(new StringReader(obj.get("block").getAsString()), false).parse(true);
@@ -159,7 +164,20 @@ public class WNStructure {
                     }
                     continue;
                 }
-                this.blocks.put(pos, state);
+
+                List<Tuple<BlockPos, BlockState>> l = map.computeIfAbsent(pos.getX() + ":" + pos.getZ(), k -> new ArrayList<>());
+                l.add(new Tuple<>(pos,state));
+
+                //this.blocks.put(pos, state);
+
+                if (min == null) {
+                    min = pos;
+                    max = pos;
+                } else {
+                    min = new BlockPos(Math.min(pos.getX(), min.getX()), Math.min(pos.getY(), min.getY()), Math.min(pos.getZ(), min.getZ()));
+                    max = new BlockPos(Math.max(pos.getX(), max.getX()), Math.max(pos.getY(), max.getY()), Math.max(pos.getZ(), max.getZ()));
+                }
+
 
             } catch (CommandSyntaxException e) {
                 log.error("Unable to load block at " + pos.toShortString() + " in structure " + location + ": " + e.getMessage());
@@ -168,7 +186,6 @@ public class WNStructure {
                     missingStates.add(obj.get("block").getAsString());
                 }
             }
-
         }
 
         this.options = entry.options;
@@ -180,12 +197,18 @@ public class WNStructure {
                 log.error("- " + missingState);
             }
         }
+        blocks = new Tuple[map.size()][];
+        int i = 0;
+        for (List<Tuple<BlockPos, BlockState>> list: map.values()) {
+            blocks[i] = list.toArray(new Tuple[0]);
+            i++;
+        }
         onLoad();
     }
 
     protected void onLoad() {
-        loadMin();
-        loadMax();
+        //loadMin();
+        //loadMax();
     }
 
     public void place(LevelAccessor level, BlockPos pos, @Nullable Rotation rotation, Random random, int placeData) {
@@ -194,45 +217,42 @@ public class WNStructure {
 
     public void place(LevelAccessor level, BlockPos pos, @Nullable Rotation rotation, @Nullable WNStructureConfig config, Random random, int placeData) {
         LinkedHashMap<BlockPos, BlockState> secondary = new LinkedHashMap<>();
-        //this.blocks.forEach((blockPos, blockState) -> {
-        for (Map.Entry<BlockPos,BlockState> block: this.blocks.entrySet())
-            {
-            BlockPos newPos = null;
-            BlockState newState = block.getValue();
+        for (Tuple<BlockPos, BlockState>[] array: blocks) {
+            for (Tuple<BlockPos, BlockState> block : array) {
+                BlockPos newPos = null;
+                BlockState newState = block.getB();
 
-            if (rotation != null) {
-                newPos = block.getKey().rotate(rotation).offset(pos);
-                newState = newState.rotate(level, newPos, rotation);
-            } else {
-                newPos = block.getKey().offset(pos);
-            }
+                if (rotation != null) {
+                    newPos = block.getA().rotate(rotation).offset(pos);
+                    newState = newState.rotate(level, newPos, rotation);
+                } else {
+                    newPos = block.getA().offset(pos);
+                }
 
-            BlockState onPos = level.getBlockState(newPos);
-            if (onPos.canOcclude()) {
-                continue;
-            }
+                BlockState onPos = level.getBlockState(newPos);
+                if (onPos.canOcclude()) {
+                    continue;
+                }
 
-            if (newState.hasProperty(BlockStateProperties.WATERLOGGED) && onPos.getFluidState().is(Fluids.WATER)) {
+                if (newState.hasProperty(BlockStateProperties.WATERLOGGED) && onPos.getFluidState().is(Fluids.WATER)) {
 
                     newState = newState.setValue(BlockStateProperties.WATERLOGGED, true);
-            }
+                }
 
-            if (config != null) {
-                newState = config.processState(level, newState, newPos, random, rotation);
-            }
+                if (config != null) {
+                    newState = config.processState(level, newState, newPos, random, rotation);
+                }
 
-            newState = processState(level, newState, newPos, random, rotation);
+                newState = processState(level, newState, newPos, random, rotation);
 
-            if (newState.canSurvive(level, newPos)) {
-                level.setBlock(newPos, newState, placeData);
-            } else {
-                secondary.put(newPos, newState);
+                if (newState.canSurvive(level, newPos)) {
+                    level.setBlock(newPos, newState, placeData);
+                } else {
+                    secondary.put(newPos, newState);
+                }
             }
         }
-
-        secondary.forEach((blockPos, blockState) -> {
-            level.setBlock(blockPos, blockState, placeData);
-        });
+        secondary.forEach((blockPos, blockState) -> level.setBlock(blockPos, blockState, placeData));
     }
 
     public BlockState processState(LevelAccessor level, BlockState state, BlockPos pos, Random random, @Nullable Rotation rotation) {
@@ -244,7 +264,7 @@ public class WNStructure {
     }
 
     public int getBlockAmount() {
-        return this.blocks.size();
+        return this.blocks.length;
     }
 
     public ResourceLocation getLocation() {
@@ -260,30 +280,6 @@ public class WNStructure {
         return getType(this.options);
     }
 
-    private void loadMin() {
-        BlockPos min = null;
-        for (BlockPos blockPos : this.blocks.keySet()) {
-            if (min == null) {
-                min = blockPos;
-            } else {
-                min = new BlockPos(Math.min(blockPos.getX(), min.getX()), Math.min(blockPos.getY(), min.getY()), Math.min(blockPos.getZ(), min.getZ()));
-            }
-        }
-        this.min = min;
-    }
-
-    public void loadMax() {
-        BlockPos max = null;
-        for (BlockPos blockPos : this.blocks.keySet()) {
-            if (max == null) {
-                max = blockPos;
-            } else {
-                max = new BlockPos(Math.max(blockPos.getX(), max.getX()), Math.max(blockPos.getY(), max.getY()), Math.max(blockPos.getZ(), max.getZ()));
-            }
-        }
-        this.max = max;
-    }
-
     public BlockPos getMin() {
         return min;
     }
@@ -294,12 +290,15 @@ public class WNStructure {
 
     public LinkedHashMap<BlockState, Integer> getBlockOccurrences(Function<BlockState, Boolean> canCount) {
         LinkedHashMap<BlockState, Integer> blocks = new LinkedHashMap<>();
-        for (Map.Entry<BlockPos, BlockState> entry : this.blocks.entrySet()) {
-            if (canCount.apply(entry.getValue())) {
-                if (blocks.containsKey(entry.getValue())) {
-                    blocks.put(entry.getValue(), blocks.get(entry.getValue()) + 1);
-                } else {
-                    blocks.put(entry.getValue(), 1);
+        for (Tuple<BlockPos, BlockState>[] array: this.blocks) {
+            for (Tuple<BlockPos, BlockState> block : array) {
+                BlockState b = block.getB();
+                if (canCount.apply(b)) {
+                    if (blocks.containsKey(b)) {
+                        blocks.put(b, blocks.get(b) + 1);
+                    } else {
+                        blocks.put(b, 1);
+                    }
                 }
             }
         }

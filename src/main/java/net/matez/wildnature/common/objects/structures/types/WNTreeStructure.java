@@ -13,9 +13,9 @@ import net.matez.wildnature.common.objects.structures.WNStructureConfig;
 import net.matez.wildnature.common.registry.blocks.WNBlocks;
 import net.matez.wildnature.setup.WildNature;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.util.Tuple;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.Rotation;
@@ -23,7 +23,6 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.chunk.LevelChunk;
-import net.minecraft.world.level.material.Material;
 
 import javax.annotation.Nullable;
 import java.util.Map;
@@ -40,36 +39,36 @@ public class WNTreeStructure extends WNStructure {
     @Override
     protected void onLoad() {
         super.onLoad();
-        //this.loadMaxLeaf();
-        this.loadMinLeaf();
-        //this.loadLeafBlock();
+        this.loadValues();
     }
 
-    private void loadMinLeaf() {
+    private void loadValues() {
         BlockPos min = null;
         BlockPos max = null;
-        for (Map.Entry<BlockPos, BlockState> entry : blocks.entrySet()) {
-            BlockPos   blockPos   = entry.getKey();
-            BlockState BlockState = entry.getValue();
-            if (BlockState.is(BlockTags.LEAVES)) {
-                if (min == null) {
-                    min = blockPos;
-                    max = blockPos;
-                    leafBlock = BlockState;
-                } else {
-                    min = new BlockPos(Math.min(blockPos.getX(), min.getX()), Math.min(blockPos.getY(), min.getY()), Math.min(blockPos.getZ(), min.getZ()));
-                    max = new BlockPos(Math.max(blockPos.getX(), max.getX()), Math.max(blockPos.getY(), max.getY()), Math.max(blockPos.getZ(), max.getZ()));
+        for (Tuple<BlockPos, BlockState>[] array: blocks) {
+            for (Tuple<BlockPos, BlockState> block : array) {
+                BlockPos   blockPos   = block.getA();
+                BlockState BlockState = block.getB();
+                if (BlockState.is(BlockTags.LEAVES)) {
+                    if (min == null) {
+                        min = blockPos;
+                        max = blockPos;
+                        leafBlock = BlockState;
+                    } else {
+                        min = new BlockPos(Math.min(blockPos.getX(), min.getX()), Math.min(blockPos.getY(), min.getY()), Math.min(blockPos.getZ(), min.getZ()));
+                        max = new BlockPos(Math.max(blockPos.getX(), max.getX()), Math.max(blockPos.getY(), max.getY()), Math.max(blockPos.getZ(), max.getZ()));
+                    }
+                }
+                if (baseBlock == null && BlockState.is(BlockTags.LOGS)) {
+                    baseBlock = BlockState;
                 }
             }
-            if (baseBlock == null && BlockState.is(BlockTags.LOGS)) {
-                baseBlock = BlockState;
+            if (baseBlock == null) {
+                baseBlock = Blocks.ROOTED_DIRT.defaultBlockState();
             }
+            minLeaf = min;
+            maxLeaf = max;
         }
-        if (baseBlock == null) {
-            baseBlock = Blocks.ROOTED_DIRT.defaultBlockState();
-        }
-        minLeaf = min;
-        maxLeaf = max;
     }
 
     public BlockPos getMaxLeaf() {

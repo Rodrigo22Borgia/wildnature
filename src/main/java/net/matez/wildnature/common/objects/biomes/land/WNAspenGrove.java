@@ -42,9 +42,8 @@ public class WNAspenGrove extends WNBiome {
     @Override
     public void applyCustomFeatures(BiomeLoadingEvent event) {
 // -- TREES
-
-        addTree(event, WNExtraTrees.TREE_SPRUCE_M, 0,0.5F,1);
         addTree(event, WNFallenTrees.SPRUCE, 0,0.5F,1);
+        addTree(event, WNExtraTrees.TREE_SPRUCE_M, 0,0.5F,1);
         addTree(event, WNExtraTrees.ASPEN, 6,1F,0);
         addTree(event, WNExtraTrees.FIR, 0,0.5F,2);
         addTree(event, WNExtraTrees.PINE, 1,1F,0);

@@ -12,7 +12,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class WNStructureRegistry {
-
+    /**
+     * Add enums to {@link net.matez.wildnature.common.objects.structures.WNStructures WNStructures.load(ResourceManager)} to load structures
+     */
     public static final DeferredRegister<Feature<?>> FEATURES = DeferredRegister.create(ForgeRegistries.FEATURES, WildNature.modid);
 
     public static final Map<String, RegistryObject<Feature<NoneFeatureConfiguration>>> WN_FEATURES = new HashMap<>();

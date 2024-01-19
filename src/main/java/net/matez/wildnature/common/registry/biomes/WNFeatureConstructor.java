@@ -3,7 +3,6 @@ package net.matez.wildnature.common.registry.biomes;
 import net.matez.wildnature.common.log.WNLogger;
 import net.matez.wildnature.setup.WildNature;
 import net.minecraft.core.Holder;
-import net.minecraft.data.worldgen.BiomeDefaultFeatures;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.biome.BiomeGenerationSettings;
 import net.minecraft.world.level.levelgen.GenerationStep;
@@ -41,7 +40,7 @@ public class WNFeatureConstructor {
 
         else if (event.getName().getNamespace().equals(WildNature.modid)) {
             for (Map.Entry<ResourceLocation, WNBiome> entry : WNBiomeRegistry.WN_BIOMES.entrySet()) {
-                if (entry.getValue().getKey().location().toString().equals(event.getName().toString())) {
+                if (entry.getValue().getKey().location().getPath().equals(event.getName().getPath())) {
                     entry.getValue().applyCustomFeatures(event);
                     WNBiome.addWNdefault(builder);
                     log.debug("Successfully registered features for " + event.getName().toString() + " biome");

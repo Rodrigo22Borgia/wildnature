@@ -13,7 +13,6 @@ import net.matez.wildnature.client.registry.screen.WNScreenMenuBindings;
 import net.matez.wildnature.client.registry.setup.WNClientRegistry;
 import net.matez.wildnature.common.log.WNLogger;
 import net.matez.wildnature.common.networking.WNNetworking;
-import net.matez.wildnature.common.networking.packets.WNDevStructurePacket;
 import net.matez.wildnature.common.objects.features.WNStructureRegistry;
 import net.matez.wildnature.common.objects.initializer.InitStage;
 import net.matez.wildnature.common.objects.initializer.NewInitializer;
@@ -36,7 +35,6 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.*;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.network.NetworkDirection;
 import terrablender.api.Regions;
 import terrablender.api.SurfaceRuleManager;
 
@@ -158,7 +156,7 @@ public class WildNature {
 
     @SubscribeEvent
     public void onServerAboutToStart(ServerAboutToStartEvent event) {
-        WNStructures.load(event.getServer().getResourceManager());
+        WNStructures.load();
     }
 
     public static WNLogger getLogger() {
